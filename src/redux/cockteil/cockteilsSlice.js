@@ -7,3 +7,5 @@ export const cockteilsSlise = createSlice({
   initialState,
   reducers: {},
 });
+
+export default cockteilsSlise.reducer;
