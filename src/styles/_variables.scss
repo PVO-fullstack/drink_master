@@ -1,0 +1,66 @@
+// Breakpoints
+$mobile: 375px;
+$tablet: 768px;
+$desktop: 1440px; // 1280px if next breakpoint is specified
+// $desktop-wide: 1440px;
+
+// Colors
+$accent: #f3f3f3;
+$accent-faded-50: rgba($accent, 0.5);
+$accent-faded-20: rgba($accent, 0.2);
+$black: #0a0a11;
+$dark-blue: #161f37;
+$dark-blue-faded: #434d67;
+$slate-blue: #434d67;
+$blue: #4070cd;
+$blue-faded: rgba($blue, 0.5); // #4070CD80;
+$light-green: #bce6d2;
+
+// Radius
+$button-radius: 42px;
+$drop-down-radius: 20px;
+$field-radius: 200px;
+
+// Font weight
+$regular: 400;
+$medium: 500;
+$bold: 600;
+
+// Font sizes
+:root {
+  --page-title: 2rem; // 32px
+  --section-title: 1.75rem; //28px
+  --sub-title: 1.125rem; // 18px
+  --message: 0.875rem; // 14px
+
+  @media screen and (min-width: $tablet) {
+    $page-title: 3.5rem; // 56px
+    $section-title: 2.5rem; //40px
+    $sub-title: 1.5rem; // 24px
+    $message: 1rem;
+  }
+
+  @media screen and (min-width: $desktop) {
+    $page-title: 4rem; // 64px
+    $message: 1.125rem; // 18px
+  }
+}
+
+$page-title: var(--page-title);
+$section-title: var(--section-title);
+$sub-title: var(--sub-title);
+$paragraph: var(--paragraph);
+
+// Container padding
+:root {
+  --container-padding: 20px;
+
+  @media screen and (min-width: $tablet) {
+    --container-padding: 32px;
+  }
+  @media screen and (min-width: $desktop) {
+    --container-padding: 160px 100px 140px;
+  }
+}
+
+$container-padding: var(--container-padding);

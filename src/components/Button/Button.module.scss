@@ -1,0 +1,102 @@
+@import '../../styles/variables';
+
+.button {
+  padding: 18px 44px;
+
+  font-size: 1rem;
+  font-weight: 600;
+
+  border-radius: $button-radius;
+
+  color: $accent;
+
+  $bg: $dark-blue;
+  background-color: $bg;
+  border: 1px solid $bg;
+
+  &:hover,
+  &:focus {
+    color: $dark-blue;
+    background-color: $accent;
+  }
+
+  &:active {
+    background-color: $slate-blue;
+  }
+
+  &:disabled {
+    color: $accent-faded-20;
+    background-color: $dark-blue-faded;
+  }
+}
+
+.button.accented {
+  color: $dark-blue;
+
+  $bg: $accent;
+  background-color: $bg;
+  border: 2px solid $bg;
+
+  &:hover,
+  &:focus {
+    color: $accent;
+
+    $bg: $dark-blue;
+    background-color: $bg;
+    border-color: $bg;
+  }
+
+  &:active {
+    border-color: $blue-faded;
+  }
+
+  &:disabled {
+    color: $accent-faded-50;
+    background-color: $accent-faded-20;
+  }
+}
+
+.button.transparent {
+  color: $accent;
+  background-color: transparent;
+  border: 1px solid $accent-faded-20;
+
+  &:hover,
+  &:focus {
+    $bg: $slate-blue;
+    background-color: $bg;
+    border-color: $bg;
+  }
+
+  &:active {
+    color: $dark-blue;
+
+    $bg: $accent;
+    background-color: $bg;
+    border-color: $bg;
+  }
+}
+
+.button.cancel {
+  background-color: $slate-blue;
+
+  &:hover,
+  &:focus {
+    color: $dark-blue;
+
+    $bg: $accent;
+    background-color: $bg;
+    border-color: $bg;
+  }
+
+  &:active {
+    $bg: $dark-blue;
+    background-color: $bg;
+    border-color: $bg;
+  }
+}
+
+.button.icon {
+  border-radius: 50%;
+  padding: 15px;
+}

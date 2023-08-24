@@ -12,9 +12,11 @@
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",
     "axios": "^1.4.0",
+    "clsx": "^2.0.0",
     "formik": "^2.4.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-hot-toast": "^2.4.1",
     "react-redux": "^8.1.2",
     "yup": "^1.2.0"
   },
