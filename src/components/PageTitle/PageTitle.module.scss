@@ -1,0 +1,12 @@
+@import '../../styles/variables';
+
+.pageTitle {
+  color: $accent;
+  font-size: $page-title;
+
+  margin-bottom: 40px;
+
+  @media screen and (min-width: $tablet) {
+    margin-bottom: 60px;
+  }
+}

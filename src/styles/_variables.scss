@@ -34,15 +34,15 @@ $bold: 600;
   --message: 0.875rem; // 14px
 
   @media screen and (min-width: $tablet) {
-    $page-title: 3.5rem; // 56px
-    $section-title: 2.5rem; //40px
-    $sub-title: 1.5rem; // 24px
-    $message: 1rem;
+    --page-title: 3.5rem; // 56px
+    --section-title: 2.5rem; //40px
+    --sub-title: 1.5rem; // 24px
+    --message: 1rem;
   }
 
   @media screen and (min-width: $desktop) {
-    $page-title: 4rem; // 64px
-    $message: 1.125rem; // 18px
+    --page-title: 4rem; // 64px
+    --message: 1.125rem; // 18px
   }
 }
 
