@@ -1,0 +1,96 @@
+/* @import-normalize; */
+
+:root {
+    text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -webkit-tap-highlight-color: transparent;
+
+    -moz-tab-size: 2;
+    tab-size: 2;
+
+    text-rendering: optimizeLegibility;
+}
+
+html {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Manrope, sans-serif;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    /* Firefox: */
+    scrollbar-width: thin;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    background-color: #161f37;
+    overflow: auto;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #434d67;
+    border-radius: 20px;
+}
+
+a,
+button {
+    --d: 200ms;
+    --tf: linear;
+
+    transition: color var(--d) var(--tf), background-color var(--d) var(--tf),
+        transform var(--d) var(--tf);
+}
+
+a {
+    /* background-color: transparent; */
+    text-decoration: none;
+    color: inherit;
+}
+
+button,
+[type='button'],
+[type='reset'],
+[type='submit'] {
+    cursor: pointer;
+    font-family: inherit;
+    text-align: center;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+button:disabled {
+    cursor: auto;
+}
+
+ul {
+    list-style: none;
+}
+
+address {
+    font-style: normal;
+}
+
+img,
+picture,
+svg {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
