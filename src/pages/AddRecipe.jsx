@@ -6,7 +6,7 @@ export const AddRecipe = () => {
   return (
     <div>
       <PageTitle>Add recipe</PageTitle>
-      <Button>Add</Button>
+      <Button variant="accented">Add</Button>
     </div>
   );
 };
