@@ -1,0 +1,19 @@
+.userMenu {
+    display: flex;
+    flex-direction: row;
+    gap: 14px;
+    align-items: center;
+}
+
+.userMenuImg {
+    border-radius: 50%;
+}
+
+.userMenuName {
+    margin: 0;
+}
+
+.userMenuBtn {
+    border: none;
+    background-color: transparent;
+}
