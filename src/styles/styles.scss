@@ -31,7 +31,7 @@ html {
 
 body {
     font-family: 'Manrope', sans-serif;
-    
+
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 
@@ -94,4 +94,14 @@ svg {
     display: block;
     max-width: 100%;
     height: auto;
+}
+
+/* background-color on body; */
+
+body {
+    background-color: rgba(10, 10, 17, 1);
+    background-image: url(../../public/images/PNG/Background.png), url(../../public/images/PNG/Background2.png), url(../../public/images/PNG/Background3.png);
+    background-position: top left, top 120px right, top right;
+    background-repeat: no-repeat, no-repeat, no-repeat;
+    background-size: 35%, 20%, 20%;
 }
