@@ -1,0 +1,112 @@
+// @import "../../styles/shared";
+
+.conteiner {
+    max-width: $desktop;
+    display: flex;
+    background: #0A0A11;
+    overflow: hidden;
+}
+
+.welcome {
+    z-index: 1;
+    padding: 273px 152px 273px 100px;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.60) 46.30%, rgba(0, 0, 0, 0.35) 72.75%, rgba(0, 0, 0, 0.00) 100%);
+}
+
+.title {
+    font-size: 40px;
+    font-weight: 600;
+    color: #FAFAFA;
+}
+
+.description {
+    margin-top: 14px;
+    margin-bottom: 40px;
+    width: 485px;
+    color: #FAFAFA;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.33;
+    letter-spacing: -0.36px;
+}
+
+.glass {
+    width: 703px;
+    // margin-left: 152px;
+    background: linear-gradient(0deg, rgba(10, 10, 17, 0.20) 0%, rgba(10, 10, 17, 0.20) 100%), linear-gradient(2deg, #0A0A11 0%, rgba(10, 10, 17, 0.00) 100%), linear-gradient(87deg, #060609 0%, rgba(10, 10, 17, 0.00) 100%), url(/startBg.jpg), lightgray 50% / cover no-repeat;
+}
+
+.elips1 {
+    position: absolute;
+    left: -494px;
+    top: -231px;
+    width: 784px;
+    height: 849px;
+    flex-shrink: 0;
+    border-radius: 849px;
+    background: rgba(64, 112, 205, 0.50);
+    filter: blur(104.8543701171875px);
+}
+
+.elips2 {
+    position: absolute;
+    left: 171px;
+    top: -132px;
+    width: 387px;
+    height: 381px;
+    flex-shrink: 0;
+    border-radius: 387px;
+    background: rgba(188, 230, 210, 0.40);
+    filter: blur(104.8543701171875px);
+}
+
+.elips3 {
+    position: absolute;
+    left: 1181px;
+    top: 458px;
+    width: 549px;
+    height: 543px;
+    flex-shrink: 0;
+    border-radius: 549px;
+    background: rgba(64, 112, 205, 0.50);
+    filter: blur(104.8543701171875px);
+}
+
+.btn {
+    display: inline-flex;
+
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.125;
+
+    border-radius: $button-radius;
+
+    color: $accent;
+
+    $bg: $dark-blue;
+    background-color: $bg;
+    border: 1px solid $bg;
+
+    &:hover,
+    &:focus {
+        color: $dark-blue;
+        background-color: $accent;
+    }
+
+    &:active {
+        background-color: $slate-blue;
+    }
+
+    &:disabled {
+        color: $accent-faded-20;
+        background-color: $dark-blue-faded;
+    }
+}
+
+.nextBtn {
+    margin-left: 14px;
+}
+
+.link {
+    padding: 18px 44px;
+}
