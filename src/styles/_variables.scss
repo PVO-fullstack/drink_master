@@ -31,18 +31,18 @@ $bold: 600;
   --page-title: 2rem; // 32px
   --section-title: 1.75rem; //28px
   --sub-title: 1.125rem; // 18px
-  --message: 0.875rem; // 14px
+  --paragraph: 0.875rem; // 14px
 
   @media screen and (min-width: $tablet) {
     --page-title: 3.5rem; // 56px
     --section-title: 2.5rem; //40px
     --sub-title: 1.5rem; // 24px
-    --message: 1rem;
+    --paragraph: 1rem;
   }
 
   @media screen and (min-width: $desktop) {
     --page-title: 4rem; // 64px
-    --message: 1.125rem; // 18px
+    --paragraph: 1.125rem; // 18px
   }
 }
 
@@ -59,7 +59,7 @@ $paragraph: var(--paragraph);
     --container-padding: 32px;
   }
   @media screen and (min-width: $desktop) {
-    --container-padding: 160px 100px 140px;
+    --container-padding: 100px;
   }
 }
 
