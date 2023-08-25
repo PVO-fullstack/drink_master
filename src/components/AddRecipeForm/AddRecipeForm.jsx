@@ -3,7 +3,7 @@
 import { Formik, Form, Field } from 'formik';
 // import * as Yup from 'yup';
 import style from './AddRecipeForm.module.scss';
-import addIcon from '../../../public/images/SVG/plus.svg';
+import { AddIcon } from '../../components';
 
 // ###################################################
 
@@ -50,13 +50,8 @@ export const AddRecipeForm = () => {
         <Form className={style.form}>
           {/* // */}
           <div className={style.labelWrapper}>
-            <label htmlFor="image">
-              <img
-                src={addIcon}
-                alt="Upload an image for your recipe"
-                height={28}
-                width={28}
-              />
+            <label htmlFor="imageUrl">
+              <AddIcon />
             </label>
 
             <p>Add image</p>
@@ -64,8 +59,8 @@ export const AddRecipeForm = () => {
 
           <input
             type="file"
-            id="image"
-            name="image"
+            id="imageUrl"
+            name="imageUrl"
             accept="image/png, image/jpeg"
           />
 

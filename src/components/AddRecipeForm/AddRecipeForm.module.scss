@@ -34,10 +34,19 @@ input[type='file'] {
   background-color: beige;
 }
 
-label[for='image'] {
+label[for='imageUrl'] {
   background: white;
   padding: 11px;
   border-radius: $standard-radius;
+}
+
+label[for='imageUrl']:hover {
+  background: linear-gradient(to right, $dark-blue, $dark-blue-faded);
+  color: $accent;
+}
+
+label[for='imageUrl']:active {
+  box-shadow: inset 1px 1px 3px #ccc;
 }
 
 .dropdown {

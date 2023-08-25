@@ -10,3 +10,6 @@ export { Button } from './Button/Button';
 // Blocks
 export { FollowUs } from './FollowUs/FollowUs';
 export { AddRecipeForm } from './AddRecipeForm/AddRecipeForm';
+
+// Icons
+export { AddIcon } from './icons/AddIcon/AddIcon';
