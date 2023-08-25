@@ -1,0 +1,13 @@
+.header {
+    border-bottom: 1px;
+    border-color: rgba(217, 217, 217, 1);
+
+}
+
+.headerContainer {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 20px 32px;
+}
