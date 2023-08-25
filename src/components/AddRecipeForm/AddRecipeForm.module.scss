@@ -1,1 +1,40 @@
 @import '../../styles/variables';
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: start;
+}
+
+.counterWrapper {
+  display: flex;
+  gap: 5px;
+  align-items: start;
+}
+
+.groupWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: start;
+}
+
+.itemWrapper {
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+}
+
+.item {
+  display: flex;
+  gap: 10px;
+  align-items: start;
+}
+
+.ingredient {
+  flex-grow: 1;
+}
+
+.quantity {
+}
