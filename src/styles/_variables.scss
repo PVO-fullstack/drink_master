@@ -10,7 +10,7 @@ $accent-faded-50: rgba($accent, 0.5);
 $accent-faded-20: rgba($accent, 0.2);
 $black: #0a0a11;
 $dark-blue: #161f37;
-$dark-blue-faded: #434d67;
+$dark-blue-faded: rgba($dark-blue, 0.5);
 $slate-blue: #434d67;
 $blue: #4070cd;
 $blue-faded: rgba($blue, 0.5); // #4070CD80;
@@ -20,6 +20,7 @@ $light-green: #bce6d2;
 $button-radius: 42px;
 $drop-down-radius: 20px;
 $field-radius: 200px;
+$standard-radius: 8px;
 
 // Font weight
 $regular: 400;

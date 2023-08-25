@@ -3,19 +3,22 @@
 import { Formik, Form, Field } from 'formik';
 // import * as Yup from 'yup';
 import style from './AddRecipeForm.module.scss';
+import addIcon from '../../../public/images/SVG/plus.svg';
 
 // ###################################################
 
 export const AddRecipeForm = () => {
   return (
     <>
+      {/* <div className={style.image}></div> */}
+
       <Formik
         initialValues={{
-          firstName: '',
-          lastName: '',
-          email: '',
-          acceptedTerms: false, // added for our checkbox
-          jobType: '', // added for our select
+          title: '',
+          description: '',
+          category: '',
+          glass: '',
+          items: [{ ingredient: '', quantity: '' }],
         }}
         // validationSchema={Yup.object({
         //   firstName: Yup.string()
@@ -46,7 +49,27 @@ export const AddRecipeForm = () => {
       >
         <Form className={style.form}>
           {/* // */}
-          <label htmlFor="ingredient">
+          <div className={style.labelWrapper}>
+            <label htmlFor="image">
+              <img
+                src={addIcon}
+                alt="Upload an image for your recipe"
+                height={28}
+                width={28}
+              />
+            </label>
+
+            <p>Add image</p>
+          </div>
+
+          <input
+            type="file"
+            id="image"
+            name="image"
+            accept="image/png, image/jpeg"
+          />
+
+          <label htmlFor="title">
             <Field
               name="title"
               className="field"
@@ -54,7 +77,7 @@ export const AddRecipeForm = () => {
             />
           </label>
 
-          <label htmlFor="ingredient">
+          <label htmlFor="description">
             <Field
               name="description"
               className="field"
@@ -62,15 +85,17 @@ export const AddRecipeForm = () => {
             />
           </label>
 
-          <label htmlFor="ingredient">
-            <Field name="category" as="select" className="dropdown">
+          <label htmlFor="category">
+            <Field name="category" as="select">
+              <option value="">select category</option>
               <option value="ordinary">Ordinary Drink</option>
               <option value="cocktail">Cocktail</option>
             </Field>
           </label>
 
-          <label htmlFor="ingredient">
-            <Field name="glass" as="select" className="dropdown">
+          <label htmlFor="glass">
+            <Field name="glass" as="select">
+              <option value="">select glass</option>
               <option value="highball">Highball glass</option>
               <option value="cocktail">Cocktail glass</option>
             </Field>
@@ -95,7 +120,7 @@ export const AddRecipeForm = () => {
                   >
                     <option value="horilka">Horilka</option>
                     <option value="lemon">Lemon</option>
-                  </Field>{' '}
+                  </Field>
                 </label>
 
                 <label htmlFor="quantity">
