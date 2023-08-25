@@ -8,7 +8,7 @@ export const App = () => {
 
   return (
     <div>
-      {!isLogin ? (
+      {isLogin ? (
         <AuthRoutes />
       ) : (
         <Layout>
