@@ -1,12 +1,12 @@
 // import React from 'react';
-import PageTitle from '../components/PageTitle/PageTitle';
-import { Button } from '../components/Button/Button';
+import { AddRecipeForm, FollowUs, PageTitle } from '../components';
 
 export const AddRecipe = () => {
   return (
     <div>
       <PageTitle>Add recipe</PageTitle>
-      <Button variant="accented">Add</Button>
+      <AddRecipeForm />
+      <FollowUs />
     </div>
   );
 };
