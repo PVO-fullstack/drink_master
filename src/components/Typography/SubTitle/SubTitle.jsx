@@ -1,12 +1,17 @@
 import PropTypes from 'prop-types';
-import style from './SubTitle.module.scss';
+import styles from './SubTitle.module.scss';
 
 // ###################################################
 
-export const SubTitle = ({ children }) => {
-  return <h3 className={style.heading}>{children}</h3>;
+export const SubTitle = ({ children, style = null }) => {
+  return (
+    <h3 className={styles.heading} style={style}>
+      {children}
+    </h3>
+  );
 };
 
 SubTitle.propTypes = {
   children: PropTypes.string,
+  style: PropTypes.object,
 };
