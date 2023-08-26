@@ -1,1 +1,93 @@
 @import '../../styles/variables';
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: start;
+}
+
+input[type='file'] {
+  height: 0;
+  padding: 0;
+  opacity: 0;
+}
+
+.image {
+  height: 320px;
+  width: 320px;
+  background: $dark-blue-faded;
+  // border: none;
+  border-radius: $standard-radius;
+  display: flex;
+  // flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.labelWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+  background-color: beige;
+}
+
+label[for='imageUrl'] {
+  background: white;
+  padding: 11px;
+  border-radius: $standard-radius;
+}
+
+label[for='imageUrl']:hover {
+  background: linear-gradient(to right, $dark-blue, $dark-blue-faded);
+  color: $accent;
+}
+
+label[for='imageUrl']:active {
+  box-shadow: inset 1px 1px 3px #ccc;
+}
+
+.dropdown {
+  // margin-bottom: 10px;
+  // margin-top: 10px;
+
+  background: $dark-blue;
+  color: #fff;
+  border: none;
+  padding: 14px;
+  border-radius: $drop-down-radius;
+}
+
+.counterWrapper {
+  display: flex;
+  gap: 5px;
+  align-items: start;
+}
+
+.groupWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: start;
+}
+
+.itemWrapper {
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+}
+
+.item {
+  display: flex;
+  gap: 10px;
+  align-items: start;
+}
+
+.ingredient {
+  flex-grow: 1;
+}
+
+.quantity {
+}

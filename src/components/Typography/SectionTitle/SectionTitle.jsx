@@ -1,12 +1,17 @@
 import PropTypes from 'prop-types';
-import style from './SectionTitle.module.scss';
+import styles from './SectionTitle.module.scss';
 
 // ###################################################
 
-export const SectionTitle = ({ children }) => {
-  return <h2 className={style.heading}>{children}</h2>;
+export const SectionTitle = ({ children, style = null }) => {
+  return (
+    <h2 className={styles.heading} style={style}>
+      {children}
+    </h2>
+  );
 };
 
 SectionTitle.propTypes = {
   children: PropTypes.string,
+  style: PropTypes.object,
 };
