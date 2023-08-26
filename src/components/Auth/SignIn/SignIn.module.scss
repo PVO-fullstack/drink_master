@@ -17,7 +17,7 @@
 
 .form_conteiner {
     // z-index: 1;
-    padding: 204px 0 204px 100px;
+    padding: 239px 0 207px 100px;
     // background: linear-gradient(180deg, rgba(0, 0, 0, 0.60) 46.30%, rgba(0, 0, 0, 0.35) 72.75%, rgba(0, 0, 0, 0.00) 100%);
 }
 
@@ -26,7 +26,7 @@
     width: 703px;
     height: 770px;
     // margin-left: 152px;
-    background: linear-gradient(0deg, rgba(10, 10, 17, 0.20) 0%, rgba(10, 10, 17, 0.20) 100%), linear-gradient(2deg, #0A0A11 0%, rgba(10, 10, 17, 0.00) 100%), linear-gradient(87deg, #060609 0%, rgba(10, 10, 17, 0.00) 100%), url(/startBg.jpg), lightgray 50% / cover no-repeat;
+    background: url(/startBg.jpg), lightgray 50% / cover no-repeat;
 }
 
 .form {
