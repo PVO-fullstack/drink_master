@@ -7,13 +7,18 @@
 
 .userMenuImg {
     border-radius: 50%;
+    color: rgba(243, 243, 243, 1);
+    fill: aliceblue;
 }
 
 .userMenuName {
-    margin: 0;
+    font-weight: 400;
+    font-size: 16px;
+    color: rgba(243, 243, 243, 1);
 }
 
 .userMenuBtn {
     border: none;
     background-color: transparent;
+    display: none;
 }

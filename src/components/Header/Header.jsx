@@ -9,7 +9,7 @@ export const Header = () => {
     <header className={css.header}>
       <div className={css.headerContainer}>
         <Logo />
-        <Navigation />
+        <Navigation style="csshead" />
         <UserMenu />
       </div>
     </header>

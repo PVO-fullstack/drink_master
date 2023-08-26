@@ -7,8 +7,6 @@ import style from './FollowUs.module.scss';
 export const FollowUs = () => {
   return (
     <div>
-      <div className={style.heading}>FollowUs</div>
-
       <div style={{ display: 'flex', flexDirection: 'row', gap: 10 }}>
         <div>Facebook</div>
         <div>Instagram</div>
