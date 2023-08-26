@@ -1,16 +1,17 @@
 // @import "../../styles/shared";
 
 .conteiner {
-    max-width: $desktop;
+    // max-width: $desktop;
     display: flex;
-    background: #0A0A11;
-    overflow: hidden;
+    justify-content: space-between;
+    // background: #0A0A11;
+    // overflow: hidden;
 }
 
 .welcome {
-    z-index: 1;
+    // z-index: 1;
     padding: 273px 152px 273px 100px;
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.60) 46.30%, rgba(0, 0, 0, 0.35) 72.75%, rgba(0, 0, 0, 0.00) 100%);
+    // background: linear-gradient(180deg, rgba(0, 0, 0, 0.60) 46.30%, rgba(0, 0, 0, 0.35) 72.75%, rgba(0, 0, 0, 0.00) 100%);
 }
 
 .title {
@@ -36,41 +37,41 @@
     background: linear-gradient(0deg, rgba(10, 10, 17, 0.20) 0%, rgba(10, 10, 17, 0.20) 100%), linear-gradient(2deg, #0A0A11 0%, rgba(10, 10, 17, 0.00) 100%), linear-gradient(87deg, #060609 0%, rgba(10, 10, 17, 0.00) 100%), url(/startBg.jpg), lightgray 50% / cover no-repeat;
 }
 
-.elips1 {
-    position: absolute;
-    left: -494px;
-    top: -231px;
-    width: 784px;
-    height: 849px;
-    flex-shrink: 0;
-    border-radius: 849px;
-    background: rgba(64, 112, 205, 0.50);
-    filter: blur(104.8543701171875px);
-}
+// .elips1 {
+//     position: absolute;
+//     left: -494px;
+//     top: -231px;
+//     width: 784px;
+//     height: 849px;
+//     flex-shrink: 0;
+//     border-radius: 849px;
+//     background: rgba(64, 112, 205, 0.50);
+//     filter: blur(104.8543701171875px);
+// }
 
-.elips2 {
-    position: absolute;
-    left: 171px;
-    top: -132px;
-    width: 387px;
-    height: 381px;
-    flex-shrink: 0;
-    border-radius: 387px;
-    background: rgba(188, 230, 210, 0.40);
-    filter: blur(104.8543701171875px);
-}
+// .elips2 {
+//     position: absolute;
+//     left: 171px;
+//     top: -132px;
+//     width: 387px;
+//     height: 381px;
+//     flex-shrink: 0;
+//     border-radius: 387px;
+//     background: rgba(188, 230, 210, 0.40);
+//     filter: blur(104.8543701171875px);
+// }
 
-.elips3 {
-    position: absolute;
-    left: 1181px;
-    top: 458px;
-    width: 549px;
-    height: 543px;
-    flex-shrink: 0;
-    border-radius: 549px;
-    background: rgba(64, 112, 205, 0.50);
-    filter: blur(104.8543701171875px);
-}
+// .elips3 {
+//     position: absolute;
+//     left: 1181px;
+//     top: 458px;
+//     width: 549px;
+//     height: 543px;
+//     flex-shrink: 0;
+//     border-radius: 549px;
+//     background: rgba(64, 112, 205, 0.50);
+//     filter: blur(104.8543701171875px);
+// }
 
 .btn {
     display: inline-flex;
