@@ -11,8 +11,8 @@ export const AuthNav = () => {
 
   return (
     <div className={style.conteiner}>
-      <div className={style.elips1}></div>
-      <div className={style.elips2}></div>
+      {/* <div className={style.elips1}></div>
+      <div className={style.elips2}></div> */}
       <div className={style.welcome}>
         <h1 className={style.title}>Welcome to the app!</h1>
         <p className={style.description}>
