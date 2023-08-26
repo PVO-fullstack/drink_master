@@ -1,152 +1,185 @@
-// import React from 'react'
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
+// eslint-disable-next-line no-unused-vars
+import React, { Fragment } from 'react';
+import ReactDOM from 'react-dom';
+import { useSelector, useDispatch } from 'react-redux';
+
+import Select from 'react-select';
+
+import { Formik, Form, Field, useField } from 'formik';
+import { string, array, object } from 'yup';
+
+import { AddIcon, Dropdown } from '../../components';
+import { FormikTextInput } from './FormikTextInput/FormikTextInput';
+
 // import PropTypes from "prop-types";
-import { Formik, Form, Field } from 'formik';
-// import * as Yup from 'yup';
 import style from './AddRecipeForm.module.scss';
-import { AddIcon } from '../../components';
+
+import glassesRaw from '../../data/glasses';
 
 // ###################################################
 
+// const SelectGlassType = () => <Dropdown options={glasses} />;
+
 export const AddRecipeForm = () => {
+  let drinkThumb = null;
+
   return (
-    <>
-      {/* <div className={style.image}></div> */}
+    <Formik
+      initialValues={initialValues}
+      // validationSchema={yupSchema}
+      onSubmit={(values, { setSubmitting }) => {
+        // let formData = new FormData();
+        // formData.append('drink', values.drink);
+        // for (let i = 0; i <= values.attachments.length; i += 1) {
+        //   formData.append(`attachments[${i}]`, values.attachments[i]);
+        // }
+        alert(JSON.stringify(values, null, 2));
+        setSubmitting(false);
+      }}
+    >
+      <Form className={style.form}>
+        {/* <div className={style.image}>
+            {drinkThumb && <img src={drinkThumb} alt="Drink image" />}
+          </div> */}
 
-      <Formik
-        initialValues={{
-          title: '',
-          description: '',
-          category: '',
-          glass: '',
-          items: [{ ingredient: '', quantity: '' }],
-        }}
-        // validationSchema={Yup.object({
-        //   firstName: Yup.string()
-        //     .max(15, 'Must be 15 characters or less')
-        //     .required('Required'),
-        //   lastName: Yup.string()
-        //     .max(20, 'Must be 20 characters or less')
-        //     .required('Required'),
-        //   email: Yup.string()
-        //     .email('Invalid email address')
-        //     .required('Required'),
-        //   acceptedTerms: Yup.boolean()
-        //     .required('Required')
-        //     .oneOf([true], 'You must accept the terms and conditions.'),
-        //   jobType: Yup.string()
-        //     .oneOf(
-        //       ['designer', 'development', 'product', 'other'],
-        //       'Invalid Job Type'
-        //     )
-        //     .required('Required'),
-        // })}
-        onSubmit={(values, { setSubmitting }) => {
-          setTimeout(() => {
-            alert(JSON.stringify(values, null, 2));
-            setSubmitting(false);
-          }, 400);
-        }}
-      >
-        <Form className={style.form}>
-          {/* // */}
-          <div className={style.labelWrapper}>
-            <label htmlFor="imageUrl">
-              <AddIcon />
-            </label>
-
-            <p>Add image</p>
-          </div>
-
-          <input
-            type="file"
-            id="imageUrl"
-            name="imageUrl"
-            accept="image/png, image/jpeg"
-          />
-
-          <label htmlFor="title">
-            <Field
-              name="title"
-              className="field"
-              placeholder="Enter recipe title"
-            />
+        <div className={style.labelWrapper}>
+          <label htmlFor="drinkThumb">
+            <AddIcon />
           </label>
 
-          <label htmlFor="description">
-            <Field
-              name="description"
-              className="field"
-              placeholder="Enter description"
-            />
-          </label>
+          <p>Add image</p>
+        </div>
+
+        <Field
+          type="file"
+          id="drinkThumb"
+          name="drinkThumb"
+          accept="image/png, image/jpeg"
+        />
+
+        <div className={style.fieldsGroup}>
+          <FormikTextInput name="drink" label="Drink title" />
+
+          <FormikTextInput name="description" label="Description" />
 
           <label htmlFor="category">
-            <Field name="category" as="select">
-              <option value="">select category</option>
-              <option value="ordinary">Ordinary Drink</option>
-              <option value="cocktail">Cocktail</option>
-            </Field>
+            <Dropdown
+              data={drinkTypes}
+              variant="addrecipe"
+              placeHolder="Select a category"
+              isSearchable={false}
+              name="category"
+            />
           </label>
 
           <label htmlFor="glass">
-            <Field name="glass" as="select">
-              <option value="">select glass</option>
-              <option value="highball">Highball glass</option>
-              <option value="cocktail">Cocktail glass</option>
-            </Field>
+            {/* <select name="glass" id="glass">
+              <option value="">Select glass type</option>
+              {glassesRaw.map((glass, index) => (
+                <Fragment key={index}>
+                  <option value={glass}>{glass}</option>
+                </Fragment>
+              ))}
+            </select> */}
+            <Dropdown
+              data={glassesRaw}
+              variant="addrecipe"
+              placeHolder="Select a glass"
+              isSearchable={false}
+              name="glass"
+            />
           </label>
+        </div>
 
-          <h3>Ingredients</h3>
+        <h3>Ingredients</h3>
+        <div className={style.counterWrapper}>
+          <button type="button">-</button>
+          <div>1</div>
+          <button type="button">+</button>
+        </div>
 
-          <div className={style.counterWrapper}>
-            <button type="button">-</button>
-            <div>1</div>
-            <button type="button">+</button>
-          </div>
+        <div className={style.groupWrapper}>
+          <div className={style.itemWrapper}>
+            <div className={style.item}>
+              <label htmlFor="ingredient">
+                <Field
+                  name="ingredient"
+                  as="select"
+                  className={style.ingredient}
+                >
+                  <option value="horilka">Horilka</option>
+                  <option value="lemon">Lemon</option>
+                </Field>
+              </label>
 
-          <div className={style.groupWrapper}>
-            <div className={style.itemWrapper}>
-              <div className={style.item}>
-                <label htmlFor="ingredient">
-                  <Field
-                    name="ingredient"
-                    as="select"
-                    className={style.ingredient}
-                  >
-                    <option value="horilka">Horilka</option>
-                    <option value="lemon">Lemon</option>
-                  </Field>
-                </label>
-
-                <label htmlFor="quantity">
-                  <Field name="quantity" as="select" className={style.quantity}>
-                    <option value="1">1 cl</option>
-                    <option value="2">2 cl</option>
-                  </Field>
-                </label>
-              </div>
-
-              <button type="button">Remove</button>
+              <label htmlFor="measure">
+                <Field name="measure" as="select" className={style.measure}>
+                  <option value="1">1 cl</option>
+                  <option value="2">2 cl</option>
+                </Field>
+              </label>
             </div>
-          </div>
 
-          <h3>Recipe Preparation</h3>
+            <button type="button">Remove</button>
+          </div>
+        </div>
+
+        <h3>Recipe Preparation</h3>
+        <label htmlFor="instructions">
           <Field
-            name="message"
+            name="instructions"
             as="textarea"
-            className="form-textarea"
             placeholder="Enter the recipe"
           />
+        </label>
 
-          <button type="submit">Add</button>
-        </Form>
-      </Formik>
-    </>
+        <button type="submit">Add</button>
+      </Form>
+    </Formik>
   );
 };
+
+// ####################################################
+
+const initialValues = {
+  drink: '',
+  description: '',
+  category: '',
+  glass: '',
+  ingredients: [{ ingredient: '', measure: '' }],
+  instructions: [],
+  drinkThumb: '',
+};
+
+const yupSchema = object({
+  drink: string()
+    .max(40, 'Title must be 40 characters or less')
+    .required('Title is required'),
+  description: string()
+    .max(100, 'Must be 100 characters or less')
+    .required('Description is required'),
+  category: string().required('Please select a glass'),
+  glass: string().required('Please select a glass'),
+  ingredients: array()
+    .of(
+      object().shape({
+        title: string(),
+        measure: string(),
+      })
+    )
+    .required('Please add at least one ingredient'),
+  instructions: array()
+    .of(string())
+    .required('Please leave instructions on how to mix the ingredients'),
+  drinkThumb: string().required('Please upload an image for your recipe'),
+});
 
 // AddRecipeForm.propTypes = {
 //     children: PropTypes.node,
 //     variant: PropTypes.string,
 //     disabled: PropTypes.bool,
 //   };
+
+const drinkTypes = ['Ordinary Drink', 'Cocktail'];

@@ -4,10 +4,11 @@ export { SectionTitle } from './Typography/SectionTitle/SectionTitle';
 export { SubTitle } from './Typography/SubTitle/SubTitle';
 export { Paragraph } from './Typography/Paragraph/Paragraph';
 
-// Buttons
+// Building blocks
 export { Button } from './Button/Button';
+export { Dropdown } from './Dropdown/Dropdown';
 
-// Blocks
+// Page elements
 export { FollowUs } from './FollowUs/FollowUs';
 export { AddRecipeForm } from './AddRecipeForm/AddRecipeForm';
 
