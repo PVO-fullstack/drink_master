@@ -1,74 +1,86 @@
-// import React from 'react'
+// eslint-disable-next-line no-unused-vars
+import React from 'react';
+import Select from 'react-select';
 // import PropTypes from "prop-types";
 import { Formik, Form, Field } from 'formik';
-// import * as Yup from 'yup';
+import { string, array, object } from 'yup';
+
 import style from './AddRecipeForm.module.scss';
-import { AddIcon } from '../../components';
+import { AddIcon, Dropdown } from '../../components';
+import glassesRaw from '../../data/glasses';
 
 // ###################################################
 
+// const drinks = [
+//   { value: 'chocolate', label: 'Chocolate' },
+//   { value: 'strawberry', label: 'Strawberry' },
+//   { value: 'vanilla', label: 'Vanilla' },
+// ];
+
+const glasses = glassesRaw.map((glass) => {
+  return { value: glass, label: glass };
+});
+
+const SelectGlassType = () => <Dropdown options={glasses} />;
+
+const drinkTypes = [
+  { value: 'Ordinary Drink', label: 'Ordinary Drink' },
+  { value: 'Cocktail', label: 'Cocktail' },
+];
+
 export const AddRecipeForm = () => {
+  let drinkThumb = null;
   return (
     <>
-      {/* <div className={style.image}></div> */}
-
       <Formik
         initialValues={{
-          title: '',
+          drink: '',
           description: '',
           category: '',
           glass: '',
-          items: [{ ingredient: '', quantity: '' }],
+          ingredients: [{ ingredient: '', measure: '' }],
+          instructions: [],
+          drinkThumb: '',
         }}
-        // validationSchema={Yup.object({
-        //   firstName: Yup.string()
-        //     .max(15, 'Must be 15 characters or less')
-        //     .required('Required'),
-        //   lastName: Yup.string()
-        //     .max(20, 'Must be 20 characters or less')
-        //     .required('Required'),
-        //   email: Yup.string()
-        //     .email('Invalid email address')
-        //     .required('Required'),
-        //   acceptedTerms: Yup.boolean()
-        //     .required('Required')
-        //     .oneOf([true], 'You must accept the terms and conditions.'),
-        //   jobType: Yup.string()
-        //     .oneOf(
-        //       ['designer', 'development', 'product', 'other'],
-        //       'Invalid Job Type'
-        //     )
-        //     .required('Required'),
-        // })}
+        // validationSchema={yupSchema}
         onSubmit={(values, { setSubmitting }) => {
-          setTimeout(() => {
-            alert(JSON.stringify(values, null, 2));
-            setSubmitting(false);
-          }, 400);
+          // let formData = new FormData();
+
+          // formData.append('drink', values.drink);
+
+          // for (let i = 0; i <= values.attachments.length; i += 1) {
+          //   formData.append(`attachments[${i}]`, values.attachments[i]);
+          // }
+
+          alert(JSON.stringify(values, null, 2));
+          setSubmitting(false);
         }}
       >
         <Form className={style.form}>
-          {/* // */}
+          {/* <div className={style.image}>
+            {drinkThumb && <img src={drinkThumb} alt="Drink image" />}
+          </div> */}
+
           <div className={style.labelWrapper}>
-            <label htmlFor="imageUrl">
+            <label htmlFor="drinkThumb">
               <AddIcon />
             </label>
 
             <p>Add image</p>
           </div>
 
-          <input
+          <Field
             type="file"
-            id="imageUrl"
-            name="imageUrl"
+            id="drinkThumb"
+            name="drinkThumb"
             accept="image/png, image/jpeg"
           />
 
-          <label htmlFor="title">
+          <label htmlFor="drink">
             <Field
-              name="title"
+              name="drink"
               className="field"
-              placeholder="Enter recipe title"
+              placeholder="Enter drink title"
             />
           </label>
 
@@ -89,11 +101,14 @@ export const AddRecipeForm = () => {
           </label>
 
           <label htmlFor="glass">
-            <Field name="glass" as="select">
+            {/* <Field name="glass" as="select">
               <option value="">select glass</option>
               <option value="highball">Highball glass</option>
               <option value="cocktail">Cocktail glass</option>
-            </Field>
+            </Field> */}
+
+            {/* <Dropdown options={glasses} /> */}
+            <Field name="glass" as={SelectGlassType} />
           </label>
 
           <h3>Ingredients</h3>
@@ -118,8 +133,8 @@ export const AddRecipeForm = () => {
                   </Field>
                 </label>
 
-                <label htmlFor="quantity">
-                  <Field name="quantity" as="select" className={style.quantity}>
+                <label htmlFor="measure">
+                  <Field name="measure" as="select" className={style.measure}>
                     <option value="1">1 cl</option>
                     <option value="2">2 cl</option>
                   </Field>
@@ -131,12 +146,13 @@ export const AddRecipeForm = () => {
           </div>
 
           <h3>Recipe Preparation</h3>
-          <Field
-            name="message"
-            as="textarea"
-            className="form-textarea"
-            placeholder="Enter the recipe"
-          />
+          <label htmlFor="instructions">
+            <Field
+              name="instructions"
+              as="textarea"
+              placeholder="Enter the recipe"
+            />
+          </label>
 
           <button type="submit">Add</button>
         </Form>
@@ -144,6 +160,29 @@ export const AddRecipeForm = () => {
     </>
   );
 };
+
+const yupSchema = object({
+  drink: string()
+    .max(40, 'Title must be 40 characters or less')
+    .required('Title is required'),
+  description: string()
+    .max(100, 'Must be 100 characters or less')
+    .required('Description is required'),
+  category: string().required('Please select a glass'),
+  glass: string().required('Please select a glass'),
+  ingredients: array()
+    .of(
+      object().shape({
+        title: string(),
+        measure: string(),
+      })
+    )
+    .required('Please add at least one ingredient'),
+  instructions: array()
+    .of(string())
+    .required('Please leave instructions on how to mix the ingredients'),
+  drinkThumb: string().required('Please upload an image for your recipe'),
+});
 
 // AddRecipeForm.propTypes = {
 //     children: PropTypes.node,
