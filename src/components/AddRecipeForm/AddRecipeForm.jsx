@@ -24,7 +24,6 @@ import glassesRaw from '../../data/glasses';
 
 export const AddRecipeForm = () => {
   let drinkThumb = null;
-  // console.log('glassesRaw: ', glassesRaw);
 
   return (
     <Formik
@@ -44,8 +43,6 @@ export const AddRecipeForm = () => {
         {/* <div className={style.image}>
             {drinkThumb && <img src={drinkThumb} alt="Drink image" />}
           </div> */}
-
-        <Dropdown options={glasses} />
 
         <div className={style.labelWrapper}>
           <label htmlFor="drinkThumb">
@@ -68,25 +65,31 @@ export const AddRecipeForm = () => {
           <FormikTextInput name="description" label="Description" />
 
           <label htmlFor="category">
-            <Field name="category" as="select">
-              <option value="">select category</option>
-              <option value="ordinary">Ordinary Drink</option>
-              <option value="cocktail">Cocktail</option>
-            </Field>
+            <Dropdown
+              data={drinkTypes}
+              variant="addrecipe"
+              placeHolder="Select a category"
+              isSearchable={false}
+              name="category"
+            />
           </label>
 
           <label htmlFor="glass">
-            <select name="glass" id="glass">
-              {/* <option value="">Select glass type</option> */}
+            {/* <select name="glass" id="glass">
+              <option value="">Select glass type</option>
               {glassesRaw.map((glass, index) => (
                 <Fragment key={index}>
                   <option value={glass}>{glass}</option>
                 </Fragment>
               ))}
-            </select>
-
-            {/* <Dropdown options={glasses} /> */}
-            {/* <Field name="glass" as={SelectGlassType} /> */}
+            </select> */}
+            <Dropdown
+              data={glassesRaw}
+              variant="addrecipe"
+              placeHolder="Select a glass"
+              isSearchable={false}
+              name="glass"
+            />
           </label>
         </div>
 
@@ -173,18 +176,10 @@ const yupSchema = object({
   drinkThumb: string().required('Please upload an image for your recipe'),
 });
 
-const glasses = glassesRaw.map((glass) => {
-  return { value: glass, label: glass };
-});
-// console.log('glasses: ', glasses);
-
-const drinkTypes = [
-  { value: 'Ordinary Drink', label: 'Ordinary Drink' },
-  { value: 'Cocktail', label: 'Cocktail' },
-];
-
 // AddRecipeForm.propTypes = {
 //     children: PropTypes.node,
 //     variant: PropTypes.string,
 //     disabled: PropTypes.bool,
 //   };
+
+const drinkTypes = ['Ordinary Drink', 'Cocktail'];
