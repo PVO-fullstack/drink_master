@@ -1,0 +1,40 @@
+.SubscribeForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    width: 304px;
+    margin: 0;
+}
+
+.SubscribeFormText {
+    color: $accent;
+    font-weight: 400;
+    font-size: 18px;
+}
+
+.SubscribeFormInput {
+    color: $accent;
+    font-weight: 400;
+    font-size: 14px;
+    width: 309px;
+    height: 56px;
+    border-style: none;
+    border: 1px solid rgba(243, 243, 243, 1);
+    border-radius: 40px;
+    background-color: transparent;
+    padding: 14px 24px;
+}
+
+.SubscribeFormSubmit {
+    color: $accent;
+    font-weight: 500;
+    font-size: 17px;
+    width: 309px;
+    height: 56px;
+    border-radius: 40px;
+    border-style: none;
+    border: 1px solid rgba(243, 243, 243, 1);
+    border-radius: 40px;
+    background-color: transparent;
+}

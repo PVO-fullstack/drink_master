@@ -8,7 +8,7 @@ $desktop: 1440px; // 1280px if next breakpoint is specified
 $accent: #f3f3f3;
 $accent-faded-50: rgba($accent, 0.5);
 $accent-faded-20: rgba($accent, 0.2);
-$black: #0a0a11;
+$black: #010118;
 $dark-blue: #161f37;
 $dark-blue-faded: rgba($dark-blue, 0.5);
 $slate-blue: #434d67;
@@ -51,6 +51,7 @@ $page-title: var(--page-title);
 $section-title: var(--section-title);
 $sub-title: var(--sub-title);
 $paragraph: var(--paragraph);
+$input-placeholder: var(--paragraph);
 
 // Container padding
 :root {
@@ -65,3 +66,7 @@ $paragraph: var(--paragraph);
 }
 
 $container-padding: var(--container-padding);
+
+// Transitions (standard)
+$transition-duration: 200ms;
+$transition-timing-function: ease-out;
