@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 // eslint-disable-next-line no-unused-vars
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import ReactDOM from 'react-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -23,7 +23,20 @@ import glassesRaw from '../../data/glasses';
 // const SelectGlassType = () => <Dropdown options={glasses} />;
 
 export const AddRecipeForm = () => {
+  const [selectedFile, setSelectedFile] = useState(null);
+
   let drinkThumb = null;
+
+  const handleImageUpload = (event) => {
+    const selectedFile = event.target.files[0];
+    console.log(selectedFile);
+
+    if (selectedFile.size > 2000000) {
+      alert('File too large');
+      throw new Error('File too large');
+    }
+    setSelectedFile(selectedFile);
+  };
 
   return (
     <Formik
@@ -43,21 +56,28 @@ export const AddRecipeForm = () => {
         {/* <div className={style.image}>
             {drinkThumb && <img src={drinkThumb} alt="Drink image" />}
           </div> */}
-
         <div className={style.labelWrapper}>
           <label htmlFor="drinkThumb">
             <AddIcon />
           </label>
-
           <p>Add image</p>
         </div>
 
-        <Field
+        <input
+          type="file"
+          id="drinkThumb"
+          name="drinkThumb"
+          accept="image/*"
+          onChange={handleImageUpload}
+        />
+
+        {/* <Field
           type="file"
           id="drinkThumb"
           name="drinkThumb"
           accept="image/png, image/jpeg"
-        />
+          onChange
+        /> */}
 
         <div className={style.fieldsGroup}>
           <FormikTextInput name="drink" label="Drink title" />
@@ -71,6 +91,8 @@ export const AddRecipeForm = () => {
               placeHolder="Select a category"
               isSearchable={false}
               name="category"
+              // onChange={ }
+              // value={}
             />
           </label>
 
