@@ -6,6 +6,7 @@ import ReactDOM from 'react-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
 import Select from 'react-select';
+import { RiCloseCircleFill } from 'react-icons/ri';
 
 import { Formik, Form, Field, useField } from 'formik';
 import { string, array, object } from 'yup';
@@ -24,25 +25,30 @@ import glassesRaw from '../../data/glasses';
 
 export const AddRecipeForm = () => {
   const [selectedFile, setSelectedFile] = useState(null);
-
-  let drinkThumb = null;
+  const [objectURL, setObjectURL] = useState(null);
 
   const handleImageUpload = (event) => {
     const selectedFile = event.target.files[0];
-    console.log(selectedFile);
 
     if (selectedFile.size > 2000000) {
       alert('File too large');
       throw new Error('File too large');
     }
+
     setSelectedFile(selectedFile);
+    setObjectURL(URL.createObjectURL(selectedFile));
+  };
+
+  const handleRemoveThumbnail = () => {
+    URL.revokeObjectURL(objectURL);
+    setObjectURL(null);
   };
 
   return (
     <Formik
       initialValues={initialValues}
       // validationSchema={yupSchema}
-      onSubmit={(values, { setSubmitting }) => {
+      onSubmit={async (values, { setSubmitting }) => {
         // let formData = new FormData();
         // formData.append('drink', values.drink);
         // for (let i = 0; i <= values.attachments.length; i += 1) {
@@ -53,14 +59,38 @@ export const AddRecipeForm = () => {
       }}
     >
       <Form className={style.form}>
-        {/* <div className={style.image}>
-            {drinkThumb && <img src={drinkThumb} alt="Drink image" />}
-          </div> */}
-        <div className={style.labelWrapper}>
-          <label htmlFor="drinkThumb">
-            <AddIcon />
-          </label>
-          <p>Add image</p>
+        {/* ------------------------------------- */}
+        <div className={style.thumbnail}>
+          {/* ------------------------------------- */}
+          {!objectURL ? (
+            <div className={style.fileLabelGroup}>
+              {/* ------------------------------------- */}
+              <label
+                htmlFor="drinkThumb"
+                className={style.fileLabel}
+                aria-label="Upload a drink image"
+              >
+                <AddIcon />
+              </label>
+
+              <p className={style.fileLabelText}>Add image</p>
+            </div>
+          ) : (
+            <>
+              <img
+                src={objectURL}
+                alt="Drink image preview"
+                className={style.image}
+              />
+              <button
+                className={style.closeButton}
+                aria-label="Remove image preview"
+                onClick={handleRemoveThumbnail}
+              >
+                <RiCloseCircleFill className={style.removeImageIcon} />
+              </button>
+            </>
+          )}
         </div>
 
         <input
