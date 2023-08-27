@@ -27,12 +27,13 @@ import { selectIngredients } from '../../redux/ingredients/selectors';
 // ###################################################
 
 export const AddRecipeForm = () => {
+  //
   // ******************** Global State *********************
   const { ingredients, categories, glasses, isLoading, error, currentId } =
     useSelector(selectIngredients);
   console.log('ingredients: ', ingredients);
 
-  // ******************** Local State **********************
+  // ****************** Component State ********************
   const [objectURL, setObjectURL] = useState(null);
   const [selectedFile, setSelectedFile] = useState(null);
   const [counterValue, setCounterValue] = useState(1);
