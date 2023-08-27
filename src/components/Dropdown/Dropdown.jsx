@@ -11,9 +11,8 @@ export const Dropdown = ({
   placeHolder = 'Please select',
   isSearchable = true,
   name,
+  onChange,
 }) => {
-  const [value, setValue] = useState(null);
-
   const makeOptions = (strings) =>
     strings.map((item) => ({ value: item, label: item }));
 
@@ -21,14 +20,13 @@ export const Dropdown = ({
 
   return (
     <Select
-      options={options}
       components={{ IndicatorSeparator: null }}
       styles={reactSelectStyles(variant)}
+      options={options}
       placeholder={placeHolder}
       isSearchable={isSearchable}
       name={name}
-      value={value}
-      onChange={(newValue) => setValue(newValue)}
+      onChange={onChange}
     />
   );
 };
@@ -39,6 +37,7 @@ Dropdown.propTypes = {
   placeHolder: PropTypes.string,
   name: PropTypes.string,
   isSearchable: PropTypes.bool,
+  onChange: PropTypes.func,
 };
 
 // ###############################################

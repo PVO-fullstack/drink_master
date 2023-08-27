@@ -1,5 +1,4 @@
 /* eslint-disable no-unused-vars */
-/* eslint-disable react/prop-types */
 // eslint-disable-next-line no-unused-vars
 import React, { Fragment, useState } from 'react';
 import ReactDOM from 'react-dom';
@@ -8,7 +7,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import Select from 'react-select';
 import { RiCloseCircleFill } from 'react-icons/ri';
 
-import { Formik, Form, Field, useField } from 'formik';
+import { Formik, Form, Field, useField, FieldArray } from 'formik';
 import { string, array, object } from 'yup';
 
 import { AddIcon, Dropdown } from '../../components';
@@ -18,15 +17,42 @@ import { FormikTextInput } from './FormikTextInput/FormikTextInput';
 import style from './AddRecipeForm.module.scss';
 
 import glassesRaw from '../../data/glasses';
+import { FormikSelect } from './FormikSelect/FormikSelect';
 
 // ###################################################
 
-// const SelectGlassType = () => <Dropdown options={glasses} />;
-
 export const AddRecipeForm = () => {
-  const [selectedFile, setSelectedFile] = useState(null);
+  // ******************** State ****************************
+  // Image and thumbnail
   const [objectURL, setObjectURL] = useState(null);
+  const [selectedFile, setSelectedFile] = useState(null);
 
+  // Ingredient fields
+  const [counterValue, setCounterValue] = useState(1);
+  // const [ingredientFields, setIngredientFields] = useState([{}]);
+  // ******************** End of state *********************
+
+  // ******************** Handlers *************************
+  // const addIngredientField = () => {
+  //   const newField = { ingredient: '', measure: '' };
+  //   ingredientFields.push(newField);
+  //   setIngredientFields(ingredientFields);
+  // };
+
+  const incrementIngredients = (arrayHelpers) => {
+    setCounterValue((state) => state + 1);
+    // addIngredientField();
+    arrayHelpers.push('');
+  };
+  const decrementIngredients = (arrayHelpers) => {
+    if (counterValue === 1) {
+      throw new Error("Can't make a cocktail out of nothing");
+    }
+    setCounterValue((state) => state - 1);
+    // ingredientFields.pop();
+    // setIngredientFields(ingredientFields);
+    arrayHelpers.pop();
+  };
   const handleImageUpload = (event) => {
     const selectedFile = event.target.files[0];
 
@@ -34,173 +60,193 @@ export const AddRecipeForm = () => {
       alert('File too large');
       throw new Error('File too large');
     }
-
-    setSelectedFile(selectedFile);
     setObjectURL(URL.createObjectURL(selectedFile));
+    setSelectedFile(selectedFile);
   };
-
   const handleRemoveThumbnail = () => {
     URL.revokeObjectURL(objectURL);
     setObjectURL(null);
+    setSelectedFile(null);
   };
+  // ******************** End of handlers ******************
 
   return (
     <Formik
       initialValues={initialValues}
       // validationSchema={yupSchema}
       onSubmit={async (values, { setSubmitting }) => {
+        console.log('Formik values: ', values);
         // let formData = new FormData();
-        // formData.append('drink', values.drink);
+        // formData.append('drinkThumb', myFileInput.files[0]);
+        // formData.append('drink', true);
+        // formData.append('description', 72);
+        // formData.append('category', 72);
+        // formData.append('glass', 72);
+        // formData.append('ingredients', 72);
+        // formData.append('instructions', 72);
+
         // for (let i = 0; i <= values.attachments.length; i += 1) {
         //   formData.append(`attachments[${i}]`, values.attachments[i]);
         // }
         alert(JSON.stringify(values, null, 2));
         setSubmitting(false);
       }}
-    >
-      <Form className={style.form}>
-        {/* ------------------------------------- */}
-        <div className={style.thumbnail}>
-          {/* ------------------------------------- */}
-          {!objectURL ? (
-            <div className={style.fileLabelGroup}>
+      render={({ values }) => (
+        <Form className={style.form}>
+          {/* Thumbnail and button */}
+          <>
+            {/* //#magenta */}
+            <div className={style.thumbnail}>
               {/* ------------------------------------- */}
-              <label
-                htmlFor="drinkThumb"
-                className={style.fileLabel}
-                aria-label="Upload a drink image"
-              >
-                <AddIcon />
-              </label>
+              {!objectURL ? (
+                <div className={style.fileLabelGroup}>
+                  {/* ------------------------------------- */}
+                  <label
+                    htmlFor="drinkThumb"
+                    className={style.fileLabel}
+                    aria-label="Upload a drink image"
+                  >
+                    <AddIcon />
+                  </label>
 
-              <p className={style.fileLabelText}>Add image</p>
+                  <p className={style.fileLabelText}>Add image</p>
+                </div>
+              ) : (
+                <>
+                  <img
+                    src={objectURL}
+                    alt="Drink image preview"
+                    className={style.image}
+                  />
+                  <button
+                    className={style.closeButton}
+                    aria-label="Remove image preview"
+                    onClick={handleRemoveThumbnail}
+                  >
+                    <RiCloseCircleFill className={style.removeImageIcon} />
+                  </button>
+                </>
+              )}
             </div>
-          ) : (
-            <>
-              <img
-                src={objectURL}
-                alt="Drink image preview"
-                className={style.image}
-              />
-              <button
-                className={style.closeButton}
-                aria-label="Remove image preview"
-                onClick={handleRemoveThumbnail}
-              >
-                <RiCloseCircleFill className={style.removeImageIcon} />
-              </button>
-            </>
-          )}
-        </div>
+            {/* //# */}
+          </>
 
-        <input
-          type="file"
-          id="drinkThumb"
-          name="drinkThumb"
-          accept="image/*"
-          onChange={handleImageUpload}
-        />
+          <input
+            type="file"
+            id="drinkThumb"
+            name="drinkThumb"
+            accept="image/*"
+            onChange={handleImageUpload}
+          />
 
-        {/* <Field
-          type="file"
-          id="drinkThumb"
-          name="drinkThumb"
-          accept="image/png, image/jpeg"
-          onChange
-        /> */}
+          {/* RecipeDescriptionFields */}
+          <div className={style.fieldsGroup}>
+            <FormikTextInput name="drink" label="Drink title" />
 
-        <div className={style.fieldsGroup}>
-          <FormikTextInput name="drink" label="Drink title" />
+            <FormikTextInput name="description" label="Description" />
 
-          <FormikTextInput name="description" label="Description" />
-
-          <label htmlFor="category">
-            <Dropdown
+            <FormikSelect
+              name="category"
+              label="Category"
               data={drinkTypes}
-              variant="addrecipe"
+              variant={variant}
               placeHolder="Select a category"
               isSearchable={false}
-              name="category"
-              // onChange={ }
-              // value={}
             />
-          </label>
 
-          <label htmlFor="glass">
-            {/* <select name="glass" id="glass">
-              <option value="">Select glass type</option>
-              {glassesRaw.map((glass, index) => (
-                <Fragment key={index}>
-                  <option value={glass}>{glass}</option>
-                </Fragment>
-              ))}
-            </select> */}
-            <Dropdown
-              data={glassesRaw}
-              variant="addrecipe"
-              placeHolder="Select a glass"
-              isSearchable={false}
+            <FormikSelect
               name="glass"
+              label="Glass"
+              data={drinkTypes}
+              variant={variant}
+              placeHolder="Select glass type"
+              isSearchable={false}
             />
-          </label>
-        </div>
-
-        <h3>Ingredients</h3>
-        <div className={style.counterWrapper}>
-          <button type="button">-</button>
-          <div>1</div>
-          <button type="button">+</button>
-        </div>
-
-        <div className={style.groupWrapper}>
-          <div className={style.itemWrapper}>
-            <div className={style.item}>
-              <label htmlFor="ingredient">
-                <Field
-                  name="ingredient"
-                  as="select"
-                  className={style.ingredient}
-                >
-                  <option value="horilka">Horilka</option>
-                  <option value="lemon">Lemon</option>
-                </Field>
-              </label>
-
-              <label htmlFor="measure">
-                <Field name="measure" as="select" className={style.measure}>
-                  <option value="1">1 cl</option>
-                  <option value="2">2 cl</option>
-                </Field>
-              </label>
-            </div>
-
-            <button type="button">Remove</button>
           </div>
-        </div>
 
-        <h3>Recipe Preparation</h3>
-        <label htmlFor="instructions">
-          <Field
-            name="instructions"
-            as="textarea"
-            placeholder="Enter the recipe"
+          <h3>Ingredients</h3>
+          <FieldArray
+            name="ingredients"
+            render={(arrayHelpers) => (
+              <div>
+                {/* Button and counter */}
+                <div className={style.counterWrapper}>
+                  <button
+                    type="button"
+                    onClick={() => decrementIngredients(arrayHelpers)}
+                  >
+                    -
+                  </button>
+                  <div>{counterValue}</div>
+                  <button
+                    type="button"
+                    onClick={() => incrementIngredients(arrayHelpers)}
+                  >
+                    +
+                  </button>
+                </div>
+
+                {values.ingredients.map((friend, index) => (
+                  <div key={index}>
+                    <Field
+                      name={`ingredients[${index}].ingredient`}
+                      as="select"
+                    >
+                      <option value="">Select ingredient</option>
+                      <option value="horilka">Horilka</option>
+                      <option value="lemon">Lemon</option>
+                    </Field>
+
+                    <Field name={`ingredients[${index}].measure`} as="select">
+                      <option value="">Select measure</option>
+                      <option value="1 cl">1 cl</option>
+                      <option value="2 cl">2 cl</option>
+                    </Field>
+
+                    <button
+                      type="button"
+                      onClick={() => {
+                        values.ingredients.length > 1 &&
+                          arrayHelpers.remove(index);
+                      }}
+                      disabled={values.ingredients.length === 1}
+                    >
+                      -
+                    </button>
+                  </div>
+                ))}
+              </div>
+            )}
           />
-        </label>
 
-        <button type="submit">Add</button>
-      </Form>
-    </Formik>
+          <h3>Recipe Preparation</h3>
+          <>
+            <label htmlFor="instructions">
+              <Field
+                name="instructions"
+                as="textarea"
+                placeholder="Enter the recipe"
+              />
+            </label>
+          </>
+
+          <button type="submit">Add</button>
+        </Form>
+      )}
+    />
   );
 };
 
 // ####################################################
+
+const variant = 'addrecipe';
 
 const initialValues = {
   drink: '',
   description: '',
   category: '',
   glass: '',
-  ingredients: [{ ingredient: '', measure: '' }],
+  ingredients: [{}],
   instructions: [],
   drinkThumb: '',
 };

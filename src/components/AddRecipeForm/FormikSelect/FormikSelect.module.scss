@@ -1,0 +1,58 @@
+@import '../../../styles/variables';
+
+.wrapper {
+  position: relative;
+}
+
+.field {
+  background-color: transparent;
+  border: none;
+  height: 36px;
+  border-bottom: 1px solid $accent-faded-50;
+  padding-bottom: 0;
+
+  &::placeholder {
+    color: $accent-faded-50;
+    font-size: $input-placeholder;
+    font-weight: $regular;
+    letter-spacing: -0.32px;
+
+    // visibility: hidden;
+    color: transparent;
+  }
+
+  &:focus {
+    outline: none;
+    outline-offset: 1px;
+    border-color: $accent;
+  }
+}
+
+.label {
+  color: $accent-faded-50;
+  // color: greenyellow;
+
+  font-size: $input-placeholder;
+  font-weight: $regular;
+  letter-spacing: -0.32px;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  transition: color $transition-duration $transition-timing-function,
+    transform $transition-duration $transition-timing-function;
+
+  .field:focus + & {
+    color: $accent;
+  }
+
+  .field:not(:placeholder-shown) + & {
+    // color: magenta;
+    visibility: hidden;
+  }
+
+  // .field:required + &::after {
+  //   content: '*';
+  // }
+}
