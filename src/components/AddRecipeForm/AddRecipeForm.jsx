@@ -21,11 +21,18 @@ import { FormikSelect } from './FormikSelect/FormikSelect';
 import { ImageUploadBlock } from './ImageUploadBlock/ImageUploadBlock';
 import { yupSchema } from './YupSchema';
 import { FormikImageUploader } from './FormikImageUploader/FormikImageUploader';
+import { useSelector } from 'react-redux';
+import { selectIngredients } from '../../redux/ingredients/selectors';
 
 // ###################################################
 
 export const AddRecipeForm = () => {
-  // ******************** State ****************************
+  // ******************** Global State *********************
+  const { ingredients, categories, glasses, isLoading, error, currentId } =
+    useSelector(selectIngredients);
+  console.log('ingredients: ', ingredients);
+
+  // ******************** Local State **********************
   const [objectURL, setObjectURL] = useState(null);
   const [selectedFile, setSelectedFile] = useState(null);
   const [counterValue, setCounterValue] = useState(1);
