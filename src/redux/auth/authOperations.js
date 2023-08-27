@@ -27,7 +27,7 @@ export const logInUser = createAsyncThunk(
   "user/login",
   async (credentials, thunkAPI) => {
     try {
-      const user = await instance.post("/auth/login", credentials);
+      const user = await instance.post("/auth/signin", credentials);
       token.set(user.data.token);
       return user.data;
     } catch (e) {
