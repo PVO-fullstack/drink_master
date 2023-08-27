@@ -30,7 +30,6 @@
 
 .label {
   color: $accent-faded-50;
-  // color: greenyellow;
 
   font-size: $input-placeholder;
   font-weight: $regular;
@@ -48,11 +47,14 @@
   }
 
   .field:not(:placeholder-shown) + & {
-    // color: magenta;
     visibility: hidden;
   }
 
   // .field:required + &::after {
   //   content: '*';
   // }
+}
+
+.error {
+  color: $error;
 }

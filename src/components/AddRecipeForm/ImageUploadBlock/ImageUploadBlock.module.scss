@@ -1,0 +1,88 @@
+@import '../../../styles/variables';
+
+.thumbnail {
+  height: 320px;
+  width: 320px;
+  background-color: $dark-blue-faded;
+  overflow: hidden;
+  border-radius: $standard-radius;
+  display: flex;
+  // flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.fileLabelGroup {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+  color: $accent;
+}
+
+.fileLabel {
+  background-color: $accent;
+  padding: 11px;
+  border-radius: $standard-radius;
+  color: $dark-blue;
+  cursor: pointer;
+
+  &:hover {
+    background: linear-gradient(to bottom, $accent, LightSlateGray);
+    box-shadow: 1px 1px 5px 3px rgba($black, 0.2);
+  }
+
+  &:active {
+    box-shadow: inset 1px 1px 5px 1px #39393f;
+  }
+}
+
+.fileLabelText {
+  .fileLabel:hover + & {
+    color: Silver;
+  }
+}
+
+.image {
+  height: 320px;
+  width: 320px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.closeButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 10;
+
+  height: 24px;
+  width: 24px;
+  border: none;
+  border-radius: 50%;
+
+  opacity: 0.5;
+  transition: opacity $transition-duration $transition-timing-function;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.removeImageIcon {
+  fill: currentColor;
+  height: 100%;
+  width: 100%;
+}
+
+input[type='file'] {
+  height: 0;
+  padding: 0;
+  opacity: 0;
+}
+
+.error {
+  color: $error;
+}
