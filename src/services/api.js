@@ -16,6 +16,7 @@ export const addRecipe = async (recipe) => {
 
 export const fetchIngredients = async () => {
   const { data } = await axios.get('/ingredients');
+  console.log('data: ', data);
   return data;
 };
 
