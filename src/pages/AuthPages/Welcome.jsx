@@ -1,9 +1,9 @@
 import { AuthNav } from "../../components/Auth/AuthNav/AuthNav";
 
-export const Start = () => {
+export const Welcome = () => {
   return (
-    <div>
+    <>
       <AuthNav />
-    </div>
+    </>
   );
 };
