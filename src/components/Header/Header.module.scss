@@ -2,7 +2,6 @@
     width: 100vw;
     position: fixed;
     height: 84px;
-    z-index: 10;
 
 }
 
@@ -43,7 +42,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 5;
 
 
     background-color: rgba(10, 10, 17, 1);
@@ -51,6 +49,7 @@
     background-position: top left, top 120px right, top right;
     background-repeat: no-repeat, no-repeat, no-repeat;
     background-size: 35%, 20%, 20%;
+    transition: top 500ms ease-in-out;
 
 }
 
