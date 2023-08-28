@@ -1,13 +1,12 @@
 @import '../../styles/variables';
 
 .Navigation {
+    width: 103px;
+    height: 259px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    gap: 30px;
-
-    @media screen and (max-width: 1199px) {
-        display: none;
-    }
+    gap: 30px
 }
 
 .NavigationLink {
