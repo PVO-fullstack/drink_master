@@ -1,18 +1,9 @@
-import React from "react";
-import { Button } from "../../Button/Button";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import style from "./AuthNav.module.scss";
 
 export const AuthNav = () => {
-  const handleRegistrationClick = () => {
-    console.log("hello2");
-    <Link to="/signup" />;
-  };
-
   return (
     <div className={style.conteiner}>
-      {/* <div className={style.elips1}></div>
-      <div className={style.elips2}></div> */}
       <div className={style.welcome}>
         <h1 className={style.title}>Welcome to the app!</h1>
         <p className={style.description}>
