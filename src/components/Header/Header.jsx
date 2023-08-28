@@ -12,6 +12,7 @@ export const Header = () => {
         <Navigation style="csshead" />
         <UserMenu />
       </div>
+      <div className={css.headerUnderline}></div>
     </header>
   );
 };
