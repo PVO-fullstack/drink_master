@@ -1,4 +1,3 @@
-import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import style from "./SignUp.module.scss";
@@ -42,7 +41,7 @@ export const SignUp = () => {
           }}
         >
           {(formik) => {
-            const { errors, touched, isValid, dirty } = formik;
+            const { isValid, dirty } = formik;
             return (
               <Form className={style.form}>
                 <Field
@@ -91,7 +90,6 @@ export const SignUp = () => {
           }}
         </Formik>
       </div>
-      <div className={style.glass}></div>
     </div>
   );
 };

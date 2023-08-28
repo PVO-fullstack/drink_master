@@ -7,25 +7,36 @@
 //   }
 
 .conteiner {
-    // display: flex;
-    // justify-content: space-between;
-
-    @media screen and (min-width: 375px) {
-        background-image: url(/startBg.jpg);
-        // background-position: right -80px;
+    @media screen and (min-width: $mobile) {
+        background-image: url(/startBgTablet.jpg);
+        background-position: top -145px right -100px;
         background-repeat: no-repeat;
-        // background-size: 35%;
-        // background: linear-gradient(0deg, rgba(10, 10, 17, 0.20) 0%, rgba(10, 10, 17, 0.20) 100%), linear-gradient(2deg, #0A0A11 0%, rgba(10, 10, 17, 0.00) 100%), linear-gradient(85deg, #0A0A11 0%, rgba(10, 10, 17, 0.00) 100%), url(/startBG.jpg), lightgray -3px -13.319px / 100.511% 101.679% no-repeat;
+    }
+
+    @media screen and (min-width: $tablet) {
+        background-image: url(/startBgTablet.jpg);
+        background-position: right;
+        background-repeat: no-repeat;
+    }
+
+    @media screen and (min-width: $desktop) {
+        background-image: url(/startBg.jpg);
+        background-position: right;
+        background-repeat: no-repeat;
     }
 }
 
 .welcome {
-    @media screen and (min-width: 375px) {
+    @media screen and (min-width: $mobile) {
         padding: 304px 20px 304px 20px;
         align-items: center;
     }
 
-    @media screen and (min-width: 1200px) {
+    @media screen and (min-width: $tablet) {
+        padding: 400px 0 400px 64px;
+    }
+
+    @media screen and (min-width: $desktop) {
         padding: 273px 152px 273px 100px;
     }
 
@@ -36,14 +47,16 @@
     font-weight: 600;
     color: #FAFAFA;
 
-    @media screen and (min-width: 375px) {
+    @media screen and (min-width: $mobile) {
         font-size: 28px;
         line-height: 1.14;
         letter-spacing: -0.56px;
     }
 
-    @media screen and (min-width: 768px) {
+    @media screen and (min-width: $tablet) {
         font-size: 40px;
+        line-height: 1.1;
+        letter-spacing: -0.8px;
     }
 }
 
@@ -55,33 +68,31 @@
     font-weight: 400;
 
 
-    @media screen and (min-width: 375px) {
+    @media screen and (min-width: $mobile) {
         width: 319px;
         font-size: 14px;
         line-height: 1.29;
         letter-spacing: -0.28px;
     }
 
-    @media screen and (min-width: 768px) {
-        font-size: 18px;
-    }
-
-    @media screen and (min-width: 1200px) {
+    @media screen and (min-width: $tablet) {
+        width: 470px;
         margin-top: 14px;
         margin-bottom: 40px;
-        width: 485px;
-        color: #FAFAFA;
         font-size: 18px;
-        font-weight: 400;
         line-height: 1.33;
         letter-spacing: -0.36px;
     }
+
+    @media screen and (min-width: $desktop) {
+        width: 485px;
+    }
 }
 
-.glass {
-    width: 703px;
-    background: url(/startBg.jpg), lightgray 50% / cover no-repeat;
-}
+// .glass {
+//     width: 703px;
+//     background: url(/startBg.jpg), lightgray 50% / cover no-repeat;
+// }
 
 // .elips3 {
 //     position: absolute;
@@ -124,11 +135,11 @@
         background-color: $dark-blue-faded;
     }
 
-    @media screen and (min-width: 375px) {
+    @media screen and (min-width: $mobile) {
         font-size: 14px;
     }
 
-    @media screen and (min-width: 768px) {
+    @media screen and (min-width: $tablet) {
         font-size: 16px;
     }
 }
@@ -138,11 +149,13 @@
 }
 
 .link {
-    @media screen and (min-width: 375px) {
+    @media screen and (min-width: $mobile) {
         padding: 14px 40px;
     }
 
-    @media screen and (min-width: 768px) {}
+    @media screen and (min-width: $tablet) {
+        padding: 18px 44px;
+    }
 
-    padding: 18px 44px;
+
 }
