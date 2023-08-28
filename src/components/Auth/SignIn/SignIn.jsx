@@ -9,8 +9,8 @@ import { useDispatch } from "react-redux";
 export const SignIn = () => {
   const dispatch = useDispatch();
 
-  const passwordRules = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}$/;
-  // min 5 characters, 1 upper case letter, 1 lower case letter, 1 numeric digit.
+  const passwordRules = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,16}$/;
+  // min 6 characters, 1 upper case letter, 1 lower case letter, 1 numeric digit.
 
   const SignupSchema = Yup.object({
     email: Yup.string().email("Invalid email address").required("Required"),

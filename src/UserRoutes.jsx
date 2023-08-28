@@ -6,7 +6,7 @@ import { MyRecipes } from "./pages/MyRecipes";
 import { Favorites } from "./pages/Favorites";
 import { Layout } from "./components/Layout/Layout";
 import { RestrictedRoute } from "./components/Routes/RestrictedRoute";
-import { Start } from "./pages/AuthPages/Start";
+import { Welcome } from "./pages/AuthPages/Welcome";
 import { Registration } from "./pages/AuthPages/Registration";
 import { Login } from "./pages/AuthPages/Login";
 import { PrivatRoute } from "./components/Routes/PrivatRoute";
@@ -50,7 +50,7 @@ export const UserRoutes = () => {
         </Route>
         <Route
           path="/welcome"
-          element={<RestrictedRoute redirectTo="/" component={<Start />} />}
+          element={<RestrictedRoute redirectTo="/" component={<Welcome />} />}
         />
         <Route
           path="/signup"

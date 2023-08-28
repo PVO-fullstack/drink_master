@@ -23,7 +23,7 @@ export const AuthNav = () => {
           </NavLink>
         </div>
       </div>
-      <div className={style.glass}></div>
+      {/* <div className={style.glass}></div> */}
       {/* <div className={style.elips3}></div> */}
     </div>
   );
