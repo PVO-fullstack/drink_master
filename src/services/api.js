@@ -1,4 +1,3 @@
-// import axios from 'axios';
 import instance from '../shared/api/instance';
 
 // ############### Recipes ##########################

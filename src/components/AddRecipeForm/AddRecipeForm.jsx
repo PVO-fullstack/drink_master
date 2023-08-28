@@ -18,25 +18,24 @@ import {
   selectIngredients,
   selectPreparation,
 } from '../../redux/preparation/selectors';
+import { fetchIngredients } from '../../redux/preparation/operations';
 
 // ###################################################
 
 export const AddRecipeForm = () => {
-  // const dispatch = useDispatch();
+  //
+  // ****************** Lifecycle ********************
+  const dispatch = useDispatch();
 
-  const ingredients = useSelector(selectIngredients);
-  // const preparation = useSelector(selectPreparation);
-  // const { ingredients, categories, glasses, isLoading, error, currentId } = slice;
+  useEffect(() => {
+    dispatch(fetchIngredients())
+      .unwrap()
+      .catch((e) => console.log('error: ', e));
+  }, [dispatch]);
 
-  // console.clear();
-  // console.log('preparation: ', preparation);
-  console.table('ingredients: ', ingredients);
-
-  // useEffect(() => {
-  //   dispatch(fetchIngredients())
-  //     .unwrap()
-  //     .catch((e) => console.log('error: ', e));
-  // }, [dispatch]);
+  // ****************** Global State ********************
+  const { ingredients, categories, glasses, isLoading, error, currentId } =
+    useSelector(selectPreparation);
 
   // ****************** Component State ********************
   const [objectURL, setObjectURL] = useState(null);
