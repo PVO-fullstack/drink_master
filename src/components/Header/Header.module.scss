@@ -1,6 +1,6 @@
 .header {
-    border-bottom: 1px;
-    border-color: rgba(217, 217, 217, 1);
+    position: relative;
+
 
 }
 
@@ -10,4 +10,13 @@
     flex-direction: row;
     justify-content: space-between;
     padding: 28px 100px;
+}
+
+.headerUnderline {
+    position: absolute;
+    width: 100vw;
+    height: 1px;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(243, 243, 243, 0.2);
 }

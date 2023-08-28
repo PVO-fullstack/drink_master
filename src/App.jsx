@@ -1,24 +1,18 @@
-import { useState } from "react";
-import { Layout } from "./components/Layout/Layout";
+import { useDispatch } from "react-redux";
 import { UserRoutes } from "./UserRoutes";
-import { AuthRoutes } from "./AuthRoutes";
-import { useSelector } from "react-redux";
-import { isLogin } from "./redux/auth/authSelectors";
+import { useEffect } from "react";
+import { refreshUser } from "./redux/auth/authOperations";
 
 export const App = () => {
-  const isLogin = useSelector((state) => state.auth.isLoggedIn);
+  const dispatch = useDispatch();
 
-  console.log("isLogin", isLogin);
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
 
   return (
     <div>
-      {isLogin ? (
-        <AuthRoutes />
-      ) : (
-        <Layout>
-          <UserRoutes />
-        </Layout>
-      )}
+      <UserRoutes />
     </div>
   );
 };

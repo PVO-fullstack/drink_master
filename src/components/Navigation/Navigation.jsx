@@ -9,7 +9,7 @@ export const Navigation = ({ style }) => {
   let css = style === 'csshead' ? csshead : cssfoot;
   return (
     <nav className={css.Navigation}>
-      <NavLink className={css.NavigationLink} to="/">Home</NavLink>
+      {style !== `cssfoot` && <NavLink className={css.NavigationLink} to="/">Home</NavLink>}
       <NavLink className={css.NavigationLink} to="/drinks">Drinks</NavLink>
       <NavLink className={css.NavigationLink} to="/addrecipe">Add recipe</NavLink>
       <NavLink className={css.NavigationLink} to="/myrecipes">My recipe</NavLink>

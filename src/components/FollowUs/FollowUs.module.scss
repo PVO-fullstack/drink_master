@@ -1,6 +1,21 @@
-@import '../../styles/variables';
+.followUs {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
 
-.heading {
-  font-size: $sub-title;
-  color: $accent;
+
+
+.followUsAncor {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(243, 243, 243, 0.2);
+  border-radius: 10px;
+}
+
+.followUsImage {
+  fill: rgba(243, 243, 243, 1);
 }

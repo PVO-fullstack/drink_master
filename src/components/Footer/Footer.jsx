@@ -7,7 +7,7 @@ import SubscribeForm from '../SubscribeForm/SubscribeForm';
 
 const Footer = () => {
   return (
-    <footer>
+    <footer className={css.footer}>
       <div className={css.footerContainer}>
         <div className={css.footerContentContainer}>
           <div className={css.footerFollowUs}>
