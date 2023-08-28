@@ -45,7 +45,7 @@ export const ImageUploadBlock = ({ labelFor, imageURL, removeHandler }) => {
 };
 
 ImageUploadBlock.propTypes = {
-  imageURL: PropTypes.object || null,
+  imageURL: PropTypes.string || null,
   removeHandler: PropTypes.func,
   labelFor: PropTypes.string,
 };

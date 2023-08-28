@@ -1,30 +1,31 @@
 // Common:
 export const handleFulfilled = (state) => {
-  state.isLoading = false;
-  state.error = null;
+  state.preparation.isLoading = false;
+  state.preparation.error = null;
 };
 
 export const handlePending = (state) => {
-  state.isLoading = true;
+  state.preparation.isLoading = true;
 };
 export const handleRejected = (state, { error, payload }) => {
-  state.isLoading = false;
-  state.error = payload ?? error.message;
+  state.preparation.isLoading = false;
+  state.preparation.error = payload ?? error.message;
 };
 
 // On success:
 
 // Fetch ingredients
 export const handleFetchIngredientsFulfilled = (state, { payload }) => {
-  state.ingredients = payload;
+  console.log('payload in Ops, FetchIngredient: ', payload);
+  state.preparation.ingredients = payload;
 };
 
 // Fetch categories
 export const handleFetchCategoriesFulfilled = (state, { payload }) => {
-  state.categories = payload;
+  state.preparation.categories = payload;
 };
 
 // Fetch glasses
 export const handleFetchGlassesFulfilled = (state, { payload }) => {
-  state.glasses = payload;
+  state.preparation.glasses = payload;
 };

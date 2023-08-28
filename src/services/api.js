@@ -1,31 +1,31 @@
-import axios from 'axios';
+// import axios from 'axios';
+import instance from '../shared/api/instance';
 
 // ############### Recipes ##########################
 
 export const fetchRecipes = async () => {
-  const { data } = await axios.get('/recipes');
+  const { data } = await instance.get('/recipes');
   return data;
 };
 
 export const addRecipe = async (recipe) => {
-  const { data } = await axios.post('/addrecipe', recipe);
+  const { data } = await instance.post('/addrecipe', recipe);
   return data;
 };
 
-// ############### Recipe Aux #######################
+// ############### Preparation #######################
 
 export const fetchIngredients = async () => {
-  const { data } = await axios.get('/ingredients');
-  console.log('data: ', data);
+  const { data } = await instance.get('/ingredients');
   return data;
 };
 
 export const fetchCategories = async () => {
-  const { data } = await axios.get('/category');
+  const { data } = await instance.get('/category');
   return data;
 };
 
 export const fetchGlasses = async () => {
-  const { data } = await axios.get('/glass');
+  const { data } = await instance.get('/glass');
   return data;
 };

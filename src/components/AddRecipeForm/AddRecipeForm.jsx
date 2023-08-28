@@ -1,37 +1,42 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 // import ReactDOM from 'react-dom';
 // import { useSelector, useDispatch } from 'react-redux';
 
-import {
-  Formik,
-  Form,
-  Field,
-  useField,
-  FieldArray,
-  ErrorMessage,
-} from 'formik';
+import { Formik, Form, Field, FieldArray, ErrorMessage } from 'formik';
 
 import { FormikTextInput } from './FormikTextInput/FormikTextInput';
 
 import style from './AddRecipeForm.module.scss';
 
-import glassesRaw from '../../data/glasses';
 import { FormikSelect } from './FormikSelect/FormikSelect';
 import { ImageUploadBlock } from './ImageUploadBlock/ImageUploadBlock';
 import { yupSchema } from './YupSchema';
 import { FormikImageUploader } from './FormikImageUploader/FormikImageUploader';
-import { useSelector } from 'react-redux';
-import { selectIngredients } from '../../redux/ingredients/selectors';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  selectIngredients,
+  selectPreparation,
+} from '../../redux/preparation/selectors';
 
 // ###################################################
 
 export const AddRecipeForm = () => {
-  //
-  // ******************** Global State *********************
-  const { ingredients, categories, glasses, isLoading, error, currentId } =
-    useSelector(selectIngredients);
-  console.log('ingredients: ', ingredients);
+  // const dispatch = useDispatch();
+
+  const ingredients = useSelector(selectIngredients);
+  // const preparation = useSelector(selectPreparation);
+  // const { ingredients, categories, glasses, isLoading, error, currentId } = slice;
+
+  // console.clear();
+  // console.log('preparation: ', preparation);
+  console.table('ingredients: ', ingredients);
+
+  // useEffect(() => {
+  //   dispatch(fetchIngredients())
+  //     .unwrap()
+  //     .catch((e) => console.log('error: ', e));
+  // }, [dispatch]);
 
   // ****************** Component State ********************
   const [objectURL, setObjectURL] = useState(null);
@@ -161,8 +166,11 @@ export const AddRecipeForm = () => {
                     <label className={style.ingredientLabel}>
                       <Field name={`ingredients.${index}.title`} as="select">
                         <option value="">Select ingredient</option>
-                        <option value="horilka">Horilka</option>
-                        <option value="lemon">Lemon</option>
+                        {ingredients.map(({ title, _id: id }) => (
+                          <option key={id} value={title}>
+                            {title}
+                          </option>
+                        ))}
                       </Field>
                       <ErrorMessage
                         className={style.error}

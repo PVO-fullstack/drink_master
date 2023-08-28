@@ -5,8 +5,8 @@ import {
   isRejected,
 } from '@reduxjs/toolkit';
 
-import * as ops from 'redux/ingredients/operations';
-import * as rds from 'redux/ingredients/reducers';
+import * as ops from './operations';
+import * as rds from './reducers';
 
 // ################################################
 
@@ -16,8 +16,8 @@ const extraActions = [
   ops.fetchCategories,
 ];
 
-const ingredientsSlice = createSlice({
-  name: 'ingredients',
+export const preparationSlice = createSlice({
+  name: 'preparation',
   initialState: {
     ingredients: [],
     categories: [],
@@ -26,7 +26,6 @@ const ingredientsSlice = createSlice({
     error: null,
   },
   reducers: {},
-
   extraReducers: (builder) =>
     builder
       .addCase(
@@ -42,5 +41,3 @@ const ingredientsSlice = createSlice({
       .addMatcher(isPending(...extraActions), rds.handlePending)
       .addMatcher(isRejected(...extraActions), rds.handleRejected),
 });
-
-export const ingredientsReducer = ingredientsSlice.reducer;
