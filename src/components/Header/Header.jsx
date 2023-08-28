@@ -3,6 +3,8 @@ import { Navigation } from "../Navigation/Navigation";
 import UserMenu from "../UserMenu/UserMenu";
 import Logo from "../Logo/Logo";
 import css from './Header.module.scss'
+import AlignJustify from "../ComponentsSVG/AlignJustify";
+import CloseSVG from "../ComponentsSVG/CloseSVG";
 
 export const Header = () => {
   const [BurgerNavigation, setBurgerNavigation] = useState(false);
@@ -21,13 +23,7 @@ export const Header = () => {
         <div className={css.headerSideWrapper}>
           <UserMenu />
           <button onClick={togleBurgerBackdrop} className={css.headerBurgerMenuBTN}>
-            <img
-              src={BurgerNavigation ? "/images/SVG/close.svg" : "/images/SVG/align-justify.svg"}
-              alt="Navigation Icon"
-              className={css.headerBurgerMenuIcon}
-              width={32}
-              height={32}
-            ></img>
+            {BurgerNavigation ? <CloseSVG className={`headerBurgerMenuIcon`} fill={"#F3F3F3"} /> : <AlignJustify className={`headerBurgerMenuIcon`} fill={"#F3F3F3"} />}
           </button>
         </div>
       </div>
