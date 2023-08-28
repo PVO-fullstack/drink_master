@@ -1,6 +1,7 @@
 .header {
-    position: relative;
-
+    width: 100vw;
+    position: fixed;
+    height: 84px;
 
 }
 
@@ -9,7 +10,51 @@
     align-items: center;
     flex-direction: row;
     justify-content: space-between;
-    padding: 28px 100px;
+    padding: 20px 100px;
+
+    @media screen and (min-width: 1199px) {
+        justify-content: space-between;
+    }
+}
+
+.headerSideWrapper {
+    display: flex;
+    gap: 24px;
+}
+
+.headerBurgerMenuBTN {
+    border: none;
+    background-color: transparent;
+
+    @media screen and (min-width: 1199px) {
+        display: none;
+    }
+}
+
+.headerBurgerMenuIcon {
+    margin: 0;
+}
+
+.headerBurgerBackdrop {
+    position: absolute;
+    width: 100vw;
+    height: calc(100vh - 84px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+    background-color: rgba(10, 10, 17, 1);
+    background-image: url(/images/PNG/Background.png), url(/images/PNG/Background2.png), url(/images/PNG/Background3.png);
+    background-position: top left, top 120px right, top right;
+    background-repeat: no-repeat, no-repeat, no-repeat;
+    background-size: 35%, 20%, 20%;
+    transition: top 500ms ease-in-out;
+
+}
+
+.headerBurgerBackdropOpen {
+    margin: 0;
 }
 
 .headerUnderline {

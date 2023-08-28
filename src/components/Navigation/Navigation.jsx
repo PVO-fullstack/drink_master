@@ -2,11 +2,17 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import csshead from "./Navigation.module.scss";
 import cssfoot from "./NavigationFooter.module.scss";
+import cssBurger from "./NavigationBurger.module.scss";
 
 import propTypes from 'prop-types';
 
 export const Navigation = ({ style }) => {
-  let css = style === 'csshead' ? csshead : cssfoot;
+  const cssSelector = (style) => {
+    if (style === `csshead`) return csshead;
+    if (style === `cssfoot`) return cssfoot;
+    if (style === `cssBurger`) return cssBurger;
+  }
+  const css = cssSelector(style);
   return (
     <nav className={css.Navigation}>
       {style !== `cssfoot` && <NavLink className={css.NavigationLink} to="/">Home</NavLink>}
@@ -19,5 +25,5 @@ export const Navigation = ({ style }) => {
 };
 
 Navigation.propTypes = {
-  style: propTypes.oneOf(['csshead', 'cssfoot']).isRequired,
+  style: propTypes.oneOf(['csshead', 'cssfoot', 'cssBurger']).isRequired,
 }
