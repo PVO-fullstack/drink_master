@@ -8,12 +8,6 @@
   color: $accent;
 }
 
-.fieldsGroup {
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
-}
-
 input,
 textarea,
 select {
@@ -30,12 +24,6 @@ textarea {
   font-size: $input-placeholder;
   font-weight: $regular;
   letter-spacing: -0.32px;
-}
-
-input[type='file'] {
-  height: 0;
-  padding: 0;
-  opacity: 0;
 }
 
 .dropdown {

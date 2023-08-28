@@ -1,7 +1,5 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
-// import ReactDOM from 'react-dom';
-// import { useSelector, useDispatch } from 'react-redux';
 
 import { Formik, Form, Field, FieldArray, ErrorMessage } from 'formik';
 
@@ -10,7 +8,6 @@ import { FormikTextInput } from './FormikTextInput/FormikTextInput';
 import style from './AddRecipeForm.module.scss';
 
 import { FormikSelect } from './FormikSelect/FormikSelect';
-import { ImageUploadBlock } from './ImageUploadBlock/ImageUploadBlock';
 import { yupSchema } from './YupSchema';
 import { FormikImageUploader } from './FormikImageUploader/FormikImageUploader';
 import { useDispatch, useSelector } from 'react-redux';
@@ -18,11 +15,8 @@ import {
   selectIngredients,
   selectPreparation,
 } from '../../redux/preparation/selectors';
-import {
-  fetchCategories,
-  fetchGlasses,
-  fetchIngredients,
-} from '../../redux/preparation/operations';
+import { fetchIngredients } from '../../redux/preparation/operations';
+import { RecipeDescriptionFields } from './RecipeDescriptionFields/RecipeDescriptionFields';
 
 // ###################################################
 
@@ -36,29 +30,10 @@ export const AddRecipeForm = () => {
       .catch((e) => console.log('error: ', e));
   }, [dispatch]);
 
-  useEffect(() => {
-    dispatch(fetchCategories())
-      .unwrap()
-      .catch((e) => console.log('error: ', e));
-  }, [dispatch]);
-
-  useEffect(() => {
-    dispatch(fetchGlasses())
-      .unwrap()
-      .catch((e) => console.log('error: ', e));
-  }, [dispatch]);
-
   // ****************** Global State ********************
-  const { ingredients, categories, glasses, isLoading, error, currentId } =
-    useSelector(selectPreparation);
-
-  // console.clear();
-  // console.log('glasses: ', glasses);
-  // console.log('categories: ', categories);
+  const { ingredients } = useSelector(selectPreparation);
 
   // ****************** Component State ********************
-  const [objectURL, setObjectURL] = useState(null);
-  const [selectedFile, setSelectedFile] = useState(null);
   const [counterValue, setCounterValue] = useState(1);
 
   // ******************** Handlers *************************
@@ -73,29 +48,14 @@ export const AddRecipeForm = () => {
     setCounterValue((state) => state - 1);
     arrayHelpers.pop();
   };
-  const handleImageUpload = (event) => {
-    const selectedFile = event.target.files[0];
-
-    if (selectedFile.size > 2000000) {
-      alert('File too large');
-      throw new Error('File too large');
-    }
-    setObjectURL(URL.createObjectURL(selectedFile));
-    setSelectedFile(selectedFile);
-  };
-  const handleRemoveThumbnail = () => {
-    URL.revokeObjectURL(objectURL);
-    setObjectURL(null);
-    setSelectedFile(null);
-  };
 
   const handleSubmit = async (values, { setSubmitting }) => {
-    values.drinkThumb = selectedFile;
+    // values.drinkThumb = selectedFile;
     let formData = new FormData();
     for (const key in values) {
       formData.append(key, values[key]);
     }
-    // console.log('formData: ', formData);
+    console.log('formData: ', formData);
     // alert(JSON.stringify(values, null, 2));
     setSubmitting(false);
     // try {
@@ -114,47 +74,8 @@ export const AddRecipeForm = () => {
     >
       {({ values, setFieldValue }) => (
         <Form className={style.form}>
-          <ImageUploadBlock
-            labelFor="drinkThumb" //must match FormikImageUploader
-            imageURL={objectURL}
-            removeHandler={handleRemoveThumbnail}
-          />
-
-          <input
-            type="file"
-            accept="image/*"
-            name="drinkThumb"
-            id="drinkThumb"
-            onChange={handleImageUpload}
-            // onChange={(e) => setFieldValue('drinkThumb', e.target.files[0])}
-          />
-
-          {/* <FormikImageUploader name="drinkThumb" func={setFieldValue} /> */}
-
-          {/* RecipeDescriptionFields */}
-          <div className={style.fieldsGroup}>
-            <FormikTextInput name="drink" label="Drink title" />
-
-            <FormikTextInput name="description" label="Description" />
-
-            <FormikSelect
-              name="category"
-              label="Category"
-              data={categories}
-              variant={variant}
-              placeHolder="Select a category"
-              isSearchable={false}
-            />
-
-            <FormikSelect
-              name="glass"
-              label="Glass"
-              data={glasses}
-              variant={variant}
-              placeHolder="Select glass type"
-              isSearchable={false}
-            />
-          </div>
+          {/*  */}
+          <RecipeDescriptionFields setFieldValue={setFieldValue} />
 
           <h3>Ingredients</h3>
 
@@ -254,5 +175,3 @@ const initialValues = {
   instructions: [],
   drinkThumb: '',
 };
-
-const drinkTypes = ['Ordinary Drink', 'Cocktail'];

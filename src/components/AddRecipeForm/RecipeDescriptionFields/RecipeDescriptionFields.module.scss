@@ -1,0 +1,42 @@
+@import '../../../styles/variables';
+
+.fieldsGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+input,
+textarea,
+select {
+  background-color: $dark-blue;
+  border: none;
+}
+
+.field::placeholder {
+  color: #f3f3f3;
+  font-size: $input-placeholder;
+  font-weight: $regular;
+  letter-spacing: -0.32px;
+}
+
+input[type='file'] {
+  height: 0;
+  padding: 0;
+  opacity: 0;
+}
+
+.dropdown {
+  // margin-bottom: 10px;
+  // margin-top: 10px;
+
+  background: $dark-blue;
+  color: #fff;
+  border: none;
+  padding: 14px;
+  border-radius: $drop-down-radius;
+}
+
+.error {
+  color: $error;
+}
