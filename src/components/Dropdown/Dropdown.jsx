@@ -1,5 +1,5 @@
 // eslint-disable-next-line no-unused-vars
-import React, { useState } from 'react';
+import React from 'react';
 import Select from 'react-select';
 import PropTypes from 'prop-types';
 
@@ -13,8 +13,9 @@ export const Dropdown = ({
   name,
   onChange,
 }) => {
-  const makeOptions = (strings) =>
-    strings.map((item) => ({ value: item, label: item }));
+  //
+  const makeOptions = (arrayOfObjects) =>
+    arrayOfObjects.map(({ name }) => ({ value: name, label: name }));
 
   const options = makeOptions(data);
 
@@ -32,7 +33,7 @@ export const Dropdown = ({
 };
 
 Dropdown.propTypes = {
-  data: PropTypes.array,
+  data: PropTypes.arrayOf(PropTypes.object),
   variant: PropTypes.oneOf(['drinks', 'addrecipe']),
   placeHolder: PropTypes.string,
   name: PropTypes.string,

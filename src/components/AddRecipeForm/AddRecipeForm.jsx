@@ -18,13 +18,16 @@ import {
   selectIngredients,
   selectPreparation,
 } from '../../redux/preparation/selectors';
-import { fetchIngredients } from '../../redux/preparation/operations';
+import {
+  fetchCategories,
+  fetchGlasses,
+  fetchIngredients,
+} from '../../redux/preparation/operations';
 
 // ###################################################
 
 export const AddRecipeForm = () => {
   //
-  // ****************** Lifecycle ********************
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -33,9 +36,25 @@ export const AddRecipeForm = () => {
       .catch((e) => console.log('error: ', e));
   }, [dispatch]);
 
+  useEffect(() => {
+    dispatch(fetchCategories())
+      .unwrap()
+      .catch((e) => console.log('error: ', e));
+  }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(fetchGlasses())
+      .unwrap()
+      .catch((e) => console.log('error: ', e));
+  }, [dispatch]);
+
   // ****************** Global State ********************
   const { ingredients, categories, glasses, isLoading, error, currentId } =
     useSelector(selectPreparation);
+
+  // console.clear();
+  // console.log('glasses: ', glasses);
+  // console.log('categories: ', categories);
 
   // ****************** Component State ********************
   const [objectURL, setObjectURL] = useState(null);
@@ -121,7 +140,7 @@ export const AddRecipeForm = () => {
             <FormikSelect
               name="category"
               label="Category"
-              data={drinkTypes}
+              data={categories}
               variant={variant}
               placeHolder="Select a category"
               isSearchable={false}
@@ -130,7 +149,7 @@ export const AddRecipeForm = () => {
             <FormikSelect
               name="glass"
               label="Glass"
-              data={drinkTypes}
+              data={glasses}
               variant={variant}
               placeHolder="Select glass type"
               isSearchable={false}
