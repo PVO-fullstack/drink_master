@@ -1,53 +1,95 @@
 .conteiner {
-    // max-width: $desktop;
-    display: flex;
-    justify-content: space-between;
-    // background: #0A0A11;
-    // overflow: hidden;
+    @media screen and (min-width: $mobile) {
+        background-image: url(/startBgTablet.jpg);
+        background-position: top -145px right -100px;
+        background-repeat: no-repeat;
+    }
+
+    @media screen and (min-width: $tablet) {
+        background-image: url(/startBgTablet.jpg);
+        background-position: right;
+        background-repeat: no-repeat;
+    }
+
+    @media screen and (min-width: $desktop) {
+        background-image: url(/startBg.jpg);
+        background-position: right;
+        background-repeat: no-repeat;
+    }
 }
 
 .title {
     color: #F3F3F3;
-    font-size: 40px;
-    font-weight: 600;
-    line-height: 1.1;
-    letter-spacing: -0.8px;
     margin-bottom: 28px;
+    font-weight: 600;
+
+
+    @media screen and (min-width: $mobile) {
+        font-size: 28px;
+        line-height: 1.14;
+        letter-spacing: -0.56px;
+    }
+
+    @media screen and (min-width: $tablet) {
+        font-size: 40px;
+        line-height: 1.1;
+        letter-spacing: -0.8px;
+    }
 }
+
 
 .form_conteiner {
-    // z-index: 1;
-    padding: 204px 0 172px 100px;
-    // background: linear-gradient(180deg, rgba(0, 0, 0, 0.60) 46.30%, rgba(0, 0, 0, 0.35) 72.75%, rgba(0, 0, 0, 0.00) 100%);
+    @media screen and (min-width: $mobile) {
+        padding: 240px 20px 207px 20px;
+    }
+
+    @media screen and (min-width: $tablet) {
+        padding: 331px 0 331px 64px;
+    }
+
+    @media screen and (min-width: $desktop) {
+        padding: 204px 0 172px 100px;
+    }
 }
 
-
-.glass {
-    width: 703px;
-    height: 770px;
-    // margin-left: 152px;
-    background: url(/startBg.jpg), lightgray 50% / cover no-repeat;
-}
 
 .form {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+
+    @media screen and (min-width: $mobile) {
+        width: 335px;
+    }
+
+    @media screen and (min-width: $tablet) {
+        width: 400px;
+    }
 }
 
 .field {
-    width: 400px;
-    height: 56px;
     margin-bottom: 14px;
     padding: 14px 0 15px 24px;
     border-radius: 200px;
     border: 1px solid rgba(243, 243, 243, 0.20);
     opacity: 0.8;
     color: #F3F3F3;
-    font-size: 17px;
     font-weight: 400;
-    line-height: 1.56;
     background-color: inherit;
+
+    @media screen and (min-width: $mobile) {
+        width: 335px;
+        height: 54px;
+        font-size: 14px;
+        line-height: 1.28;
+    }
+
+    @media screen and (min-width: $tablet) {
+        width: 400px;
+        height: 56px;
+        font-size: 17px;
+        line-height: 1.56;
+    }
 
     &.last_field {
         margin-bottom: 0;
@@ -71,60 +113,48 @@
 
 
 .btn {
-    width: 400px;
-    padding: 18px 160px;
     border-radius: 42px;
     margin-top: 40px;
     margin-bottom: 14px;
     background: #F3F3F3;
     color: #161F37;
-    font-size: 16px;
     font-weight: 600;
-    line-height: 1.12;
+
+    @media screen and (min-width: $mobile) {
+        width: 335px;
+        padding: 18px 140px;
+        font-size: 14px;
+        line-height: 1.28;
+    }
+
+    @media screen and (min-width: $tablet) {
+        width: 400px;
+        padding: 18px 169px;
+        font-size: 16px;
+        line-height: 1.12;
+    }
 }
 
 .link {
     margin-left: auto;
     margin-right: auto;
     color: #F3F3F3;
-    font-size: 14px;
     font-weight: 600;
-    line-height: 1.28;
     text-decoration-line: underline;
+
+    @media screen and (min-width: $mobile) {
+        font-size: 12px;
+        line-height: 1.33;
+    }
+
+    @media screen and (min-width: $tablet) {
+        font-size: 14px;
+        line-height: 1.28;
+    }
 }
 
-// .elips1 {
-//     position: absolute;
-//     left: -494px;
-//     top: -231px;
-//     width: 784px;
-//     height: 849px;
-//     flex-shrink: 0;
-//     border-radius: 849px;
-//     background: rgba(64, 112, 205, 0.50);
-//     filter: blur(104.8543701171875px);
-// }
-
-// .elips2 {
-//     position: absolute;
-//     left: 171px;
-//     top: -132px;
-//     width: 387px;
-//     height: 381px;
-//     flex-shrink: 0;
-//     border-radius: 387px;
-//     background: rgba(188, 230, 210, 0.40);
-//     filter: blur(104.8543701171875px);
-// }
-
-// .elips3 {
-//     position: absolute;
-//     left: 1181px;
-//     top: 458px;
-//     width: 549px;
-//     height: 543px;
-//     flex-shrink: 0;
-//     border-radius: 549px;
-//     background: rgba(64, 112, 205, 0.50);
-//     filter: blur(104.8543701171875px);
-// }
+.error {
+    margin-left: auto;
+    margin-right: auto;
+    color: red
+}
