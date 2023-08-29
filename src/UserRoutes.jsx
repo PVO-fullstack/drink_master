@@ -1,5 +1,5 @@
 import Home from "./pages/Home";
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import { Drinks } from "./pages/Drinks";
 import { AddRecipe } from "./pages/AddRecipe";
 import { MyRecipes } from "./pages/MyRecipes";
@@ -10,9 +10,15 @@ import { Welcome } from "./pages/AuthPages/Welcome";
 import { Registration } from "./pages/AuthPages/Registration";
 import { Login } from "./pages/AuthPages/Login";
 import { PrivatRoute } from "./components/Routes/PrivatRoute";
+import { useSelector } from "react-redux";
+import { selectIsRefresh } from "./redux/auth/authSelectors";
 
 export const UserRoutes = () => {
-  return (
+  const isRefresh = useSelector(selectIsRefresh);
+
+  return isRefresh ? (
+    "Refresh User"
+  ) : (
     <>
       <Routes>
         <Route
@@ -62,6 +68,7 @@ export const UserRoutes = () => {
           path="/signin"
           element={<RestrictedRoute redirectTo="/" component={<Login />} />}
         />
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </>
   );
