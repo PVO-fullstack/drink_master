@@ -23,7 +23,7 @@ export const AddRecipeForm = () => {
     return normalizedString.split('\n').filter((el) => el.trim());
   };
   // ******************** Handlers *************************
-  const handleSubmit = async (values, { setSubmitting }) => {
+  const handleSubmit = async (values, { resetForm }) => {
     values.instructions = convertTextAreaToArray(values.instructions);
 
     let formData = new FormData();
@@ -32,11 +32,14 @@ export const AddRecipeForm = () => {
     }
     // console.log('formData: ', formData);
     alert(JSON.stringify(values, null, 2));
-    setSubmitting(false);
+
+    // If onSubmit is async, then Formik will automatically set isSubmitting to false on your behalf once it has resolved
+    resetForm();
     // try {
     // } catch (error) {
     // } finally {setSubmitting(false);}
   };
+
   // ******************** End of handlers ******************
 
   return (
