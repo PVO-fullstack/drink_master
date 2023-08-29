@@ -103,6 +103,7 @@ export const RecipeIngredientsFields = ({ values }) => {
                   type="button"
                   onClick={() => {
                     values.ingredients.length > 1 && arrayHelpers.remove(index);
+                    setCounterValue((state) => state - 1);
                   }}
                   disabled={values.ingredients.length === 1}
                 >

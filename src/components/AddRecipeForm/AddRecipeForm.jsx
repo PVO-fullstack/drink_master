@@ -73,7 +73,11 @@ const initialValues = {
   description: '',
   category: '',
   glass: '',
-  ingredients: [{ title: '', measure: '' }],
+  ingredients: [
+    { title: '', measure: '' },
+    { title: '', measure: '' },
+    { title: '', measure: '' },
+  ],
   instructions: [],
   drinkThumb: '',
 };
