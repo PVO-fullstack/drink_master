@@ -1,0 +1,40 @@
+@import '../../../styles/variables';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+
+  width: 100%;
+
+  @media screen and (min-width: $tablet) {
+    width: 480px;
+  }
+}
+
+textarea {
+  resize: none;
+}
+
+.instructions {
+  height: 184px;
+  padding: 16px 18px;
+  border-radius: 14px;
+  border: 1px solid rgba($accent, 0.5);
+
+  background-color: transparent;
+
+  width: 100%;
+
+  &::placeholder {
+    color: rgba($accent, 0.5);
+    font-size: $input-placeholder;
+    font-weight: $regular;
+    letter-spacing: -0.32px;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: $accent;
+  }
+}

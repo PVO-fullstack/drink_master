@@ -1,13 +1,13 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 import {
   fetchFavoriteRecipesThunk,
   fetchMyRecipesThunk,
-} from "./cockteilsOperations";
+} from './cockteilsOperations';
 
 const initialState = { myRecipes: [], favRecipes: [], error: null };
 
 export const cockteilsSlise = createSlice({
-  name: "recipes",
+  name: 'recipes',
   initialState,
   reducers: {},
 
@@ -22,7 +22,7 @@ export const cockteilsSlise = createSlice({
         state.error = null;
       })
       .addMatcher(
-        (action) => action.type.endsWith("/rejected"),
+        (action) => action.type.endsWith('/rejected'),
         (state, { payload }) => {
           state.error = payload;
         }

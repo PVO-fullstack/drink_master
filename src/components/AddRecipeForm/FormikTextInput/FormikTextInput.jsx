@@ -6,12 +6,11 @@ import style from './FormikTextInput.module.scss';
 // ###################################################
 
 export const FormikTextInput = ({ label, ...props }) => {
-  //   const [field, meta] = useField({ ...props, placeholder: label });
+  //
   const [field, meta] = useField(props);
-  //   console.log('field: ', field);
 
   return (
-    <div className={style.wrapper}>
+    <div className={style.fieldWrapper}>
       <input
         className={style.field}
         placeholder={label}
@@ -31,7 +30,6 @@ export const FormikTextInput = ({ label, ...props }) => {
 };
 
 FormikTextInput.propTypes = {
-  // children: PropTypes.node,
   label: PropTypes.string,
   name: PropTypes.string,
   id: PropTypes.string,

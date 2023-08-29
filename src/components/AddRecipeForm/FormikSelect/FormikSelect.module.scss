@@ -1,27 +1,19 @@
 @import '../../../styles/variables';
 
-.fieldWrapper {
-  position: relative;
-}
+// .wrapper {}
 
-.field {
-  width: 100%;
+.embedded {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  align-items: start;
+
+  // width: 100%;
   height: calc($input-placeholder + $paragraph);
 
   padding-bottom: 0;
   border: none;
-  border-bottom: 1px solid rgba($accent, 0.5);
-
-  background-color: transparent;
-
-  &::placeholder {
-    color: rgba($accent, 0.5);
-    font-size: $input-placeholder;
-    font-weight: $regular;
-    letter-spacing: -0.32px;
-
-    color: transparent;
-  }
+  border-bottom: 1px solid $accent-faded-50;
 
   &:focus {
     outline: none;
@@ -31,7 +23,7 @@
 }
 
 .label {
-  color: rgba($accent, 0.5);
+  color: $accent-faded-50;
 
   font-size: $input-placeholder;
   font-weight: $regular;
@@ -49,12 +41,9 @@
   }
 
   .field:not(:placeholder-shown) + & {
+    // color: magenta;
     visibility: hidden;
   }
-
-  // .field:required + &::after {
-  //   content: '*';
-  // }
 }
 
 .error {
