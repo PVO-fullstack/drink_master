@@ -9,9 +9,7 @@ import {
 } from '../../../redux/preparation/operations';
 import { selectPreparation } from '../../../redux/preparation/selectors';
 
-import { ImageUploadBlock } from '../ImageUploadBlock/ImageUploadBlock';
-import { FormikTextInput } from '../FormikTextInput/FormikTextInput';
-import { FormikSelect } from '../FormikSelect/FormikSelect';
+import { ImageUploadBlock, FormikTextInput, FormikSelect } from '..';
 
 import style from './RecipeDescriptionFields.module.scss';
 
