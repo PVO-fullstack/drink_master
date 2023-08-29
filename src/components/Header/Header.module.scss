@@ -1,30 +1,54 @@
 .header {
     width: 100vw;
     position: fixed;
-    height: 84px;
+    height: 72px;
+    z-index: 100;
 
+    @media screen and (min-width: 768px) {
+        height: 84px;
+    }
 }
 
 .headerContainer {
+    position: relative;
     display: flex;
     align-items: center;
     flex-direction: row;
     justify-content: space-between;
-    padding: 20px 100px;
+    padding: 20px 20px;
+    z-index: 100;
 
-    @media screen and (min-width: 1199px) {
+    @media screen and (min-width: 768px) {
+        padding: 20px 32px;
+    }
+
+    @media screen and (min-width: 1440px) {
         justify-content: space-between;
+        padding: 20px 100px;
     }
 }
 
 .headerSideWrapper {
     display: flex;
-    gap: 24px;
+    gap: 14px;
+    align-items: center;
+
+    @media screen and (min-width: 768px) {
+        gap: 24px;
+    }
 }
 
 .headerBurgerMenuBTN {
     border: none;
     background-color: transparent;
+
+    width: 32px;
+    height: 32px;
+
+    @media screen and (min-width: 768px) {
+        width: 38px;
+        height: 38px;
+    }
 
     @media screen and (min-width: 1199px) {
         display: none;
@@ -32,13 +56,13 @@
 }
 
 .headerBurgerMenuIcon {
-    margin: 0;
+    display: none;
 }
 
 .headerBurgerBackdrop {
     position: absolute;
     width: 100vw;
-    height: calc(100vh - 84px);
+    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
