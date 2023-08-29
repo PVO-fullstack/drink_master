@@ -1,14 +1,14 @@
-import React from "react";
-import { RecipePageHero } from "../components/RecipePageHero/RecipePageHero";
-import { RecipeInngredientsList } from "../components/RecipeInngredientsList/RecipeInngredientsList";
-import { RecipePreparation } from "../components/RecipePreparation/RecipePreparation";
+// import React from "react";
+import { PageTitle } from "../components/Typography/PageTitle/PageTitle";
+// import { RecipePageHero} from "../components";
+
 
 export const RecipePage = () => {
     return (
         <div>
-            <RecipePageHero />
-            <RecipeInngredientsList />
-            <RecipePreparation/>
+            <PageTitle in>Recipes Page</PageTitle>
+            {/* <RecipePageHero /> */}
         </div>
     );
 };
+

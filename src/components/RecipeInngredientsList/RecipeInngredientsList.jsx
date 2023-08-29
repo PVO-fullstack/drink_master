@@ -7,8 +7,8 @@ export const RecipeInngredientsList = ({ingredients}) => {
         <div>
             <h3>Ingredients</h3>
             <ul>
-                {ingredients.map(({id, title, measure, thumb_small}) => {
-                    <li key={id}>
+                {ingredients.map(({title, measure, thumb_small}) => {
+                    <li>
                         <img src={thumb_small} alt="Coctail" />
                         <p>{title} {measure}</p>
                     </li>
@@ -18,4 +18,13 @@ export const RecipeInngredientsList = ({ingredients}) => {
             </ul>
         </div>
     )
+}
+
+RecipeInngredientsList.propTypes = {
+     array: PropTypes.arrayOf(
+        PropTypes.exact({
+            title: PropTypes.string.isRequired,
+            imeasure: PropTypes.number.isRequired,
+            thumb_small: PropTypes.number.isRequired,
+        }))
 }

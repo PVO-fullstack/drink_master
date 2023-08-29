@@ -38,3 +38,14 @@ export const fetchFavoriteRecipesThunk = createAsyncThunk(
     }
   }
 );
+
+// export const fetchRecipIdThunk = createAsyncThunk(
+//   "recipes/:recipeId",
+//   async (_, thunkAPI) => {
+//     try {
+//       return await fetchMyRecipes();
+//     } catch (error) {
+//       return thunkAPI.rejectWithValue(error.message);
+//     }
+//   }
+// );

@@ -13,6 +13,9 @@ export { FollowUs } from "./FollowUs/FollowUs";
 export { AddRecipeForm } from "./AddRecipeForm/AddRecipeForm";
 export { RecipesItem } from "./RecipesItem/RecipesItem";
 export { RecipesList } from "./RecipesList/RecipesList";
+export { RecipePageHero } from "./RecipePageHero/RecipePageHero";
+export { RecipeInngredientsList } from "./RecipeInngredientsList/RecipeInngredientsList";
+export { RecipePreparation } from "./RecipePreparation/RecipePreparation";
 
 // Icons
 export { AddIcon } from "./icons/AddIcon/AddIcon";

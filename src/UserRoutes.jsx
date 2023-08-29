@@ -4,6 +4,7 @@ import { Drinks } from "./pages/Drinks";
 import { AddRecipe } from "./pages/AddRecipe";
 import { MyRecipes } from "./pages/MyRecipes";
 import { Favorites } from "./pages/Favorites";
+import { RecipePage } from "./pages/RecipePage";
 import { Layout } from "./components/Layout/Layout";
 import { RestrictedRoute } from "./components/Routes/RestrictedRoute";
 import { Welcome } from "./pages/AuthPages/Welcome";
@@ -53,8 +54,14 @@ export const UserRoutes = () => {
               <PrivatRoute redirectTo="/welcome" component={<Favorites />} />
             }
           />
-        </Route>
-        <Route
+          </Route>
+          <Route
+            path="/recipe/:recipeId"
+            element={
+              <PrivatRoute redirectTo="/welcome" component={<RecipePage />} />
+            }
+          />
+          <Route
           path="/welcome"
           element={<RestrictedRoute redirectTo="/" component={<Welcome />} />}
         />
