@@ -20,7 +20,7 @@ export const AddRecipeForm = () => {
   //
   const convertTextAreaToArray = (string) => {
     const normalizedString = string.replace(/\r\n/g, '\n');
-    return normalizedString.split('\n').filter((el) => el.trim() !== '');
+    return normalizedString.split('\n').filter((el) => el.trim());
   };
   // ******************** Handlers *************************
   const handleSubmit = async (values, { setSubmitting }) => {
