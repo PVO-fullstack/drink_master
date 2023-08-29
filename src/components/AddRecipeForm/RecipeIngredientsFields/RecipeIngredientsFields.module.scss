@@ -1,0 +1,45 @@
+@import '../../../styles/variables';
+
+.error {
+  color: $error;
+}
+
+.counterWrapper {
+  display: flex;
+  gap: 5px;
+  align-items: start;
+}
+
+// .groupWrapper {
+//   display: flex;
+//   flex-direction: column;
+//   gap: 5px;
+//   align-items: start;
+// }
+
+// .itemWrapper {
+//   display: flex;
+//   gap: 10px;
+//   justify-content: space-between;
+// }
+
+.ingredientsItem {
+  display: flex;
+  gap: 10px;
+  // align-items: start;
+}
+
+.ingredient {
+  flex-grow: 1;
+}
+
+.measure {
+}
+
+.ingredientLabel {
+  display: flex;
+  flex-direction: column;
+
+  gap: 4px;
+  // justify-content: space-between;
+}

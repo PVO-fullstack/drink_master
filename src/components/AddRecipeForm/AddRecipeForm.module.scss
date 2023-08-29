@@ -26,56 +26,16 @@ textarea {
   letter-spacing: -0.32px;
 }
 
-.dropdown {
-  // margin-bottom: 10px;
-  // margin-top: 10px;
+// .dropdown {
+//   // margin-bottom: 10px;
+//   // margin-top: 10px;
 
-  background: $dark-blue;
-  color: #fff;
-  border: none;
-  padding: 14px;
-  border-radius: $drop-down-radius;
-}
-
-.counterWrapper {
-  display: flex;
-  gap: 5px;
-  align-items: start;
-}
-
-.groupWrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  align-items: start;
-}
-
-.itemWrapper {
-  display: flex;
-  gap: 10px;
-  justify-content: space-between;
-}
-
-.ingredientsItem {
-  display: flex;
-  gap: 10px;
-  // align-items: start;
-}
-
-.ingredient {
-  flex-grow: 1;
-}
-
-.quantity {
-}
-
-.ingredientLabel {
-  display: flex;
-  flex-direction: column;
-
-  gap: 4px;
-  // justify-content: space-between;
-}
+//   background: $dark-blue;
+//   color: #fff;
+//   border: none;
+//   padding: 14px;
+//   border-radius: $drop-down-radius;
+// }
 
 .error {
   color: $error;
