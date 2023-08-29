@@ -10,9 +10,9 @@ export const Header = () => {
   const [BurgerNavigation, setBurgerNavigation] = useState(false);
   const togleBurgerBackdrop = (e) => {
     setBurgerNavigation(!BurgerNavigation)
-    e.target.classList.toggle("active")
+    // e.target.classList.toggle("active")
   };
-  const burgerPosition = BurgerNavigation ? "84px" : "-100vh"
+  const burgerPosition = BurgerNavigation ? "0px" : "-100vh"
 
 
   return (
