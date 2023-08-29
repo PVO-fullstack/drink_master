@@ -1,0 +1,63 @@
+.nameCategory {
+  color: #f3f3f3;
+  font-family: Manrope;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 44px;
+  margin-top: 80px;
+  margin-bottom: 40px;
+  @media screen and (max-width: 375px) {
+    font-size: 28px;
+    line-height: 32px;
+    margin-top: 40px;
+    margin-bottom: 24px;
+  }
+}
+
+.cocktailList {
+  display: flex;
+  gap: 20px;
+}
+
+.imgCocktail {
+  width: 400px;
+  height: 400px;
+  @media screen and (max-width: 768px) {
+    width: 342px;
+    height: 360px;
+  }
+  @media screen and (max-width: 375px) {
+    width: 335px;
+    height: 360px;
+  }
+}
+.nameAndIngridients {
+  display: flex;
+  justify-content: space-between;
+}
+.nameCocktail {
+  color: #f3f3f3;
+  font-family: Manrope;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+  margin-top: 14px;
+  @media screen and (max-width: 375px) {
+    font-size: 16px;
+    line-height: 18px;
+  }
+}
+.ingredients {
+  color: rgba(243, 243, 243, 0.5);
+  font-family: Manrope;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 18px;
+  margin-top: 14px;
+  @media screen and (max-width: 375px) {
+    font-size: 14px;
+  }
+}

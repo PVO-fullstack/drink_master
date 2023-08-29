@@ -1,6 +1,6 @@
-import Home from "./pages/Home";
+import Home from "./pages/Home/Home";
 import { Route, Routes } from "react-router-dom";
-import { Drinks } from "./pages/Drinks";
+import Drinks from "./pages/Drinks/Drinks";
 import { AddRecipe } from "./pages/AddRecipe";
 import { MyRecipes } from "./pages/MyRecipes";
 import { Favorites } from "./pages/Favorites";

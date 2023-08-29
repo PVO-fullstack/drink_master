@@ -12,11 +12,12 @@ export const Button = ({
   disabled = false,
   onClick = null,
   type = "button",
+  className,
 }) => {
   return (
     <button
       disabled={disabled}
-      className={clsx(style.button, style[variant])}
+      className={clsx(style.button, style[variant], className)}
       onClick={onClick}
       type={type}
     >
@@ -31,4 +32,5 @@ Button.propTypes = {
   disabled: PropTypes.bool,
   onClick: PropTypes.func,
   type: PropTypes.string,
+  className: PropTypes.string,
 };
