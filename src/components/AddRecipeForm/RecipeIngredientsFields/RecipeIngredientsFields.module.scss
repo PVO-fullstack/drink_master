@@ -1,13 +1,20 @@
 @import '../../../styles/variables';
 
-.error {
-  color: $error;
-}
-
 .container {
   display: flex;
   flex-direction: column;
+
   gap: 40px;
+  width: 100%;
+
+  @media screen and (min-width: $tablet) {
+    gap: 40px;
+    width: $tablet;
+  }
+
+  @media screen and (min-width: $desktop) {
+    width: 540px;
+  }
 }
 
 .headingAndButtonsWrapper {
@@ -45,15 +52,34 @@
 
 .ingredientsItem {
   display: flex;
-  gap: 8px;
+  // align-items: center;
+  justify-content: space-between;
+}
+
+.ingredientFieldsWrapper {
+  display: flex;
   align-items: center;
+  gap: 14px;
 }
 
 .ingredient {
-  flex-grow: 1;
+  // height: 56px;
+  background-color: transparent;
+  // flex-grow: 1;
+  // display: flex;
+  // flex-direction: column;
+  // gap: 4px;
+  // justify-content: space-between;
 }
 
 .measure {
+  // height: 56px;
+  background-color: transparent;
+
+  // display: flex;
+  // flex-direction: column;
+  // gap: 4px;
+  // justify-content: space-between;
 }
 
 .removeIngredientButton {
@@ -64,12 +90,4 @@
   &::disabled {
     color: rgba($accent, 0.3);
   }
-}
-
-.ingredientLabel {
-  display: flex;
-  flex-direction: column;
-
-  gap: 4px;
-  // justify-content: space-between;
 }

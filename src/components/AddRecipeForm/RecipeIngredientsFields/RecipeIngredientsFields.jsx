@@ -26,7 +26,7 @@ export const RecipeIngredientsFields = ({ values }) => {
   }, [dispatch]);
 
   // ****************** Component State ********************
-  const [counterValue, setCounterValue] = useState(1);
+  const [counterValue, setCounterValue] = useState(3);
 
   // ******************** Handlers *************************
   const incrementIngredients = (arrayHelpers) => {
@@ -72,29 +72,31 @@ export const RecipeIngredientsFields = ({ values }) => {
           <div className={style.ingredientsWrapper}>
             {values.ingredients.map((item, index) => (
               <div className={style.ingredientsItem} key={index}>
-                <label className={style.ingredientLabel}>
-                  <Field name={`ingredients.${index}.title`} as="select">
-                    <option value="">Select ingredient</option>
-                    {ingredients.map(({ title, _id: id }) => (
-                      <option key={id} value={title}>
-                        {title}
-                      </option>
-                    ))}
-                  </Field>
-                  <ErrorMessage
-                    className={style.error}
-                    name={`ingredients.${index}.title`}
-                  />
-                </label>
+                <div className={style.ingredientFieldsWrapper}>
+                  <label className={style.ingredient}>
+                    <Field name={`ingredients.${index}.title`} as="select">
+                      <option value="">Select ingredient</option>
+                      {ingredients.map(({ title, _id: id }) => (
+                        <option key={id} value={title}>
+                          {title}
+                        </option>
+                      ))}
+                    </Field>
+                    <ErrorMessage
+                      className={style.error}
+                      name={`ingredients.${index}.title`}
+                    />
+                  </label>
 
-                <label className={style.ingredientLabel}>
-                  <Field name={`ingredients.${index}.measure`} as="select">
-                    <option value="">Select measure</option>
-                    <option value="1 cl">1 cl</option>
-                    <option value="2 cl">2 cl</option>
-                  </Field>
-                  <ErrorMessage name={`ingredients.${index}.measure`} />
-                </label>
+                  <label className={style.measure}>
+                    <Field name={`ingredients.${index}.measure`} as="select">
+                      <option value="">Select measure</option>
+                      <option value="1 cl">1 cl</option>
+                      <option value="2 cl">2 cl</option>
+                    </Field>
+                    <ErrorMessage name={`ingredients.${index}.measure`} />
+                  </label>
+                </div>
 
                 <button
                   className={style.removeIngredientButton}

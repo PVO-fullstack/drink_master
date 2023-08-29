@@ -8,22 +8,23 @@
   width: 100%;
 
   @media screen and (min-width: $tablet) {
-  }
-
-  @media screen and (min-width: $desktop) {
+    width: 480px;
   }
 }
 
+textarea {
+  resize: none;
+}
+
 .instructions {
-  width: 100%;
-  // height: calc($input-placeholder + $paragraph);
-  // opacity: 0.8;
   height: 184px;
   padding: 16px 18px;
   border-radius: 14px;
   border: 1px solid rgba($accent, 0.5);
 
   background-color: transparent;
+
+  width: 100%;
 
   &::placeholder {
     color: rgba($accent, 0.5);
