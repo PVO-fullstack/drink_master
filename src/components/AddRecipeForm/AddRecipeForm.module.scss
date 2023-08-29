@@ -1,11 +1,24 @@
 @import '../../styles/variables';
 
 .form {
+  margin-top: 70px; // remove
+  width: 375px; // remove
+  padding: 0 $container-padding; // remove
+  background-color: black; // remove
+
   display: flex;
   flex-direction: column;
-  gap: 5px;
+
   align-items: start;
   color: $accent;
+
+  gap: 80px;
+  @media screen and (min-width: $tablet) {
+  }
+
+  @media screen and (min-width: $desktop) {
+    gap: 5px;
+  }
 }
 
 input,

@@ -4,29 +4,35 @@
   color: $error;
 }
 
-.counterWrapper {
+.container {
   display: flex;
-  gap: 5px;
-  align-items: start;
+  flex-direction: column;
+  gap: 34px;
 }
 
-// .groupWrapper {
-//   display: flex;
-//   flex-direction: column;
-//   gap: 5px;
-//   align-items: start;
-// }
+.headingAndButtonsWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
-// .itemWrapper {
-//   display: flex;
-//   gap: 10px;
-//   justify-content: space-between;
-// }
+.counterWrapper {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+}
+
+.ingredientsWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
 
 .ingredientsItem {
   display: flex;
-  gap: 10px;
-  // align-items: start;
+  gap: 8px;
+  align-items: center;
 }
 
 .ingredient {

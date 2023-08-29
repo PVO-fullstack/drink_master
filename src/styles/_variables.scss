@@ -34,12 +34,14 @@ $bold: 600;
   --section-title: 1.75rem; //28px
   --sub-title: 1.125rem; // 18px
   --paragraph: 0.875rem; // 14px
+  --input-placeholder: var(--paragraph);
 
   @media screen and (min-width: $tablet) {
     --page-title: 3.5rem; // 56px
     --section-title: 2.5rem; //40px
     --sub-title: 1.5rem; // 24px
     --paragraph: 1rem;
+    --input-placeholder: var(--paragraph);
   }
 
   @media screen and (min-width: $desktop) {
@@ -52,7 +54,7 @@ $page-title: var(--page-title);
 $section-title: var(--section-title);
 $sub-title: var(--sub-title);
 $paragraph: var(--paragraph);
-$input-placeholder: var(--paragraph);
+$input-placeholder: var(--input-placeholder);
 
 // Container padding
 :root {

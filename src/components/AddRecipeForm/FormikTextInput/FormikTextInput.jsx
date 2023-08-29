@@ -10,7 +10,7 @@ export const FormikTextInput = ({ label, ...props }) => {
   const [field, meta] = useField(props);
 
   return (
-    <div className={style.wrapper}>
+    <div className={style.fieldWrapper}>
       <input
         className={style.field}
         placeholder={label}

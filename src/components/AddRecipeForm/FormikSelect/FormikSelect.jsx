@@ -20,16 +20,19 @@ export const FormikSelect = ({ label, ...props }) => {
 
   return (
     <div className={style.wrapper}>
-      <Dropdown
-        {...field}
-        {...props}
-        onChange={(selectedOption) => setFieldProps(selectedOption)}
-        // menuShouldScrollIntoView={true}
-      />
+      <div className={Object.hasOwn(props, 'unstyled') && style.embedded}>
+        <Dropdown
+          {...field}
+          {...props}
+          onChange={(selectedOption) => setFieldProps(selectedOption)}
+        />
 
-      <label htmlFor={props.id || props.name} className={style.label}>
-        {label}
-      </label>
+        {label && (
+          <label htmlFor={props.name} className={style.label}>
+            {label}
+          </label>
+        )}
+      </div>
 
       {meta.touched && meta.error ? (
         <div className={style.error}>{meta.error}</div>
@@ -43,7 +46,4 @@ FormikSelect.propTypes = {
   label: PropTypes.string,
   name: PropTypes.string,
   id: PropTypes.string,
-  variant: PropTypes.oneOf(['drinks', 'addrecipe']),
-  placeHolder: PropTypes.string,
-  isSearchable: PropTypes.bool,
 };

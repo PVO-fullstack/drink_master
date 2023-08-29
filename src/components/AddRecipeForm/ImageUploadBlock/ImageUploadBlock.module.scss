@@ -2,7 +2,12 @@
 
 .thumbnail {
   height: 320px;
-  width: 320px;
+  width: 335px;
+
+  @media screen and (min-width: $tablet) {
+    width: 320px;
+  }
+
   background-color: $dark-blue-faded;
   overflow: hidden;
   border-radius: $standard-radius;

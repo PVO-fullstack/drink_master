@@ -20,7 +20,7 @@ export const Dropdown = ({
     arrayOfObjects.map(({ name }) => ({ value: name, label: name }));
 
   const options = makeOptions(data);
-  const styles = makeStyles(variant);
+  const styles = makeStyles(variant, props);
   const menuHeight =
     itemsBeforeScroll * styles.container().fontSize +
     itemsBeforeScroll * styles.menuList().gap +
@@ -49,26 +49,51 @@ Dropdown.propTypes = {
   isSearchable: PropTypes.bool,
   onChange: PropTypes.func,
   itemsBeforeScroll: PropTypes.number,
+  width: PropTypes.number,
 };
 
 // ###############################################
 
-const makeStyles = (variant) => ({
-  control: (baseStyles) => ({
-    ...baseStyles,
-    backgroundColor: variant === 'addrecipe' ? 'transparent' : '#161f37',
-    borderRadius: 200,
-    border: 'none',
-    // width: 'auto',
-    width: variant === 'addrecipe' ? 195 : 250,
-    padding: variant === 'addrecipe' ? '0 14px' : '14px 24px',
-  }),
-  container: (baseStyles) => ({
-    ...baseStyles,
-    fontSize: variant === 'addrecipe' ? 14 : 17,
-    lineHeight: '100%',
-    width: 'auto',
-  }),
+const makeStyles = (variant, props) => ({
+  control: (baseStyles) => {
+    if (Object.hasOwn(props, 'unstyled')) {
+      return {
+        display: 'flex',
+        gap: 8,
+      };
+    }
+
+    return {
+      ...baseStyles,
+      backgroundColor: variant === 'addrecipe' ? 'transparent' : '#161f37',
+      borderRadius: props.style?.borderRadius || 'none',
+      border: 'none',
+      width: props.style?.width || 'auto',
+      padding:
+        props.style?.control?.padding || variant === 'addrecipe'
+          ? '0 14px'
+          : '14px 24px',
+    };
+  },
+
+  container: (baseStyles) => {
+    if (Object.hasOwn(props, 'unstyled')) {
+      return {
+        display: 'flex',
+        justifyContent: 'end',
+        fontSize: 14,
+        lineHeight: 1,
+      };
+    }
+
+    return {
+      ...baseStyles,
+      fontSize: variant === 'addrecipe' ? 14 : 17,
+      lineHeight: '100%',
+      width: 'auto',
+      justifyContent: 'end',
+    };
+  },
   dropdownIndicator: (baseStyles, state) => ({
     ...baseStyles,
     color: state.isFocused ? '#f3f3f3' : 'rgba(243, 243, 243, 0.40)',

@@ -1,16 +1,41 @@
 @import '../../../styles/variables';
 
+.test {
+  width: 100%;
+  height: calc($input-placeholder + $paragraph);
+
+  padding-bottom: 0;
+  border: none;
+  border-bottom: 1px solid $accent-faded-50;
+
+  background-color: transparent;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+.addImageGroup {
+  // display: flex;
+  // flex-direction: column;
+  // gap: 40px;
+}
+
 .fieldsGroup {
   display: flex;
   flex-direction: column;
-  gap: 40px;
-}
+  width: 100%;
 
-input,
-textarea,
-select {
-  background-color: $dark-blue;
-  border: none;
+  @media screen and (min-width: $mobile) {
+    max-width: $mobile;
+  }
+
+  gap: 34px;
+  @media screen and (min-width: $tablet) {
+    gap: 40px;
+  }
 }
 
 .field::placeholder {
@@ -18,6 +43,13 @@ select {
   font-size: $input-placeholder;
   font-weight: $regular;
   letter-spacing: -0.32px;
+}
+
+input,
+textarea,
+select {
+  background-color: $dark-blue;
+  border: none;
 }
 
 input[type='file'] {

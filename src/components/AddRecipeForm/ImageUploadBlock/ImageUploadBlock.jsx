@@ -17,7 +17,7 @@ export const ImageUploadBlock = ({ labelFor, imageURL, removeHandler }) => {
           <label
             htmlFor={labelFor}
             className={style.fileLabel}
-            aria-label="Upload a drink image"
+            aria-label="Upload an image for your recipe"
           >
             <AddIcon />
           </label>

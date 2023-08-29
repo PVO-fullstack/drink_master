@@ -10,16 +10,14 @@ import {
 import { selectPreparation } from '../../../redux/preparation/selectors';
 
 import { ImageUploadBlock, FormikTextInput, FormikSelect } from '..';
-
 import style from './RecipeDescriptionFields.module.scss';
 
 // ###################################################
 
 const variant = 'addrecipe';
 
-// ###################################################
-
 export const RecipeDescriptionFields = ({ setFieldValue }) => {
+  //
   // ****************** Global State ********************
   const { categories, glasses } = useSelector(selectPreparation);
 
@@ -32,13 +30,13 @@ export const RecipeDescriptionFields = ({ setFieldValue }) => {
   useEffect(() => {
     dispatch(fetchCategories())
       .unwrap()
-      .catch((e) => console.log('error: ', e));
+      .catch((e) => console.error('error: ', e));
   }, [dispatch]);
 
   useEffect(() => {
     dispatch(fetchGlasses())
       .unwrap()
-      .catch((e) => console.log('error: ', e));
+      .catch((e) => console.error('error: ', e));
   }, [dispatch]);
 
   // ******************** Handlers ************************
@@ -57,24 +55,26 @@ export const RecipeDescriptionFields = ({ setFieldValue }) => {
     URL.revokeObjectURL(objectURL);
     setObjectURL(null);
   };
-  // ******************** End of handlers ******************
+
+  // ****************** End of handlers *******************
 
   return (
-    <div>
-      <ImageUploadBlock
-        labelFor="drinkThumb" //must match FormikImageUploader
-        imageURL={objectURL}
-        removeHandler={handleRemoveThumbnail}
-      />
+    <div className={style.container}>
+      <div className={style.addImageGroup}>
+        <ImageUploadBlock
+          labelFor="drinkThumb" //must match FormikImageUploader
+          imageURL={objectURL}
+          removeHandler={handleRemoveThumbnail}
+        />
 
-      <input
-        type="file"
-        accept="image/*"
-        name="drinkThumb"
-        id="drinkThumb"
-        onChange={handleImageUpload}
-        // onChange={(e) => setFieldValue('drinkThumb', e.target.files[0])}
-      />
+        <input
+          type="file"
+          accept="image/*"
+          name="drinkThumb"
+          id="drinkThumb"
+          onChange={handleImageUpload}
+        />
+      </div>
 
       <div className={style.fieldsGroup}>
         <FormikTextInput name="drink" label="Drink title" />
@@ -89,6 +89,7 @@ export const RecipeDescriptionFields = ({ setFieldValue }) => {
           placeHolder="Select a category"
           isSearchable={false}
           itemsBeforeScroll={6}
+          unstyled
         />
 
         <FormikSelect
@@ -99,6 +100,7 @@ export const RecipeDescriptionFields = ({ setFieldValue }) => {
           placeHolder="Select glass type"
           isSearchable={false}
           itemsBeforeScroll={6}
+          unstyled
         />
       </div>
     </div>

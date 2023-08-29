@@ -8,6 +8,7 @@ import { selectPreparation } from '../../../redux/preparation/selectors';
 import { ErrorMessage, Field, FieldArray } from 'formik';
 
 import style from './RecipeIngredientsFields.module.scss';
+import { SectionTitle } from '../../Typography/SectionTitle/SectionTitle';
 
 // ###################################################
 
@@ -42,13 +43,13 @@ export const RecipeIngredientsFields = ({ values }) => {
   // ******************** End of handlers ******************
 
   return (
-    <>
-      <h3>Ingredients</h3>
+    <FieldArray
+      name="ingredients"
+      render={(arrayHelpers) => (
+        <div className={style.container}>
+          <div className={style.headingAndButtonsWrapper}>
+            <SectionTitle>Ingredients</SectionTitle>
 
-      <FieldArray
-        name="ingredients"
-        render={(arrayHelpers) => (
-          <div>
             {/* Button and counter */}
             <div className={style.counterWrapper}>
               <button
@@ -65,7 +66,9 @@ export const RecipeIngredientsFields = ({ values }) => {
                 +
               </button>
             </div>
+          </div>
 
+          <div className={style.ingredientsWrapper}>
             {values.ingredients.map((item, index) => (
               <div className={style.ingredientsItem} key={index}>
                 <label className={style.ingredientLabel}>
@@ -104,9 +107,9 @@ export const RecipeIngredientsFields = ({ values }) => {
               </div>
             ))}
           </div>
-        )}
-      />
-    </>
+        </div>
+      )}
+    />
   );
 };
 
