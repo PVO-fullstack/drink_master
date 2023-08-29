@@ -18,19 +18,23 @@ import style from './AddRecipeForm.module.scss';
 
 export const AddRecipeForm = () => {
   //
+  const convertTextAreaToArray = (string) => {
+    const normalizedString = string.replace(/\r\n/g, '\n');
+    return normalizedString.split('\n').filter((el) => el.trim() !== '');
+  };
   // ******************** Handlers *************************
   const handleSubmit = async (values, { setSubmitting }) => {
+    values.instructions = convertTextAreaToArray(values.instructions);
+
     let formData = new FormData();
     for (const key in values) {
       formData.append(key, values[key]);
     }
-    console.log('formData: ', formData);
+    // console.log('formData: ', formData);
     alert(JSON.stringify(values, null, 2));
     setSubmitting(false);
     // try {
-
     // } catch (error) {
-
     // } finally {setSubmitting(false);}
   };
   // ******************** End of handlers ******************
@@ -43,10 +47,8 @@ export const AddRecipeForm = () => {
     >
       {({ values, setFieldValue }) => (
         <Form className={style.form}>
-          {/*  */}
           <RecipeDescriptionFields setFieldValue={setFieldValue} />
           <RecipeIngredientsFields values={values} />
-
           <RecipePreparationFields />
 
           <button type="submit">Add</button>
