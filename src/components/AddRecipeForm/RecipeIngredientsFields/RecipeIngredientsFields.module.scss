@@ -7,7 +7,7 @@
 .container {
   display: flex;
   flex-direction: column;
-  gap: 34px;
+  gap: 40px;
 }
 
 .headingAndButtonsWrapper {
@@ -21,6 +21,20 @@
   gap: 16px;
   align-items: center;
   justify-content: center;
+
+  border: 1px solid rgba($accent, 0.5);
+  border-radius: 200px;
+  padding: 10px 16px;
+}
+
+.counterButton {
+  background-color: transparent;
+  border: none;
+  color: $accent;
+
+  &::disabled {
+    color: rgba($accent, 0.3);
+  }
 }
 
 .ingredientsWrapper {
@@ -40,6 +54,16 @@
 }
 
 .measure {
+}
+
+.removeIngredientButton {
+  background-color: transparent;
+  border: none;
+  color: $accent;
+
+  &::disabled {
+    color: rgba($accent, 0.3);
+  }
 }
 
 .ingredientLabel {

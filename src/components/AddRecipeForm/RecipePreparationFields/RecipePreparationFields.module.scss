@@ -1,5 +1,39 @@
 @import '../../../styles/variables';
 
-.error {
-  color: $error;
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+
+  width: 100%;
+
+  @media screen and (min-width: $tablet) {
+  }
+
+  @media screen and (min-width: $desktop) {
+  }
+}
+
+.instructions {
+  width: 100%;
+  // height: calc($input-placeholder + $paragraph);
+  // opacity: 0.8;
+  height: 184px;
+  padding: 16px 18px;
+  border-radius: 14px;
+  border: 1px solid rgba($accent, 0.5);
+
+  background-color: transparent;
+
+  &::placeholder {
+    color: rgba($accent, 0.5);
+    font-size: $input-placeholder;
+    font-weight: $regular;
+    letter-spacing: -0.32px;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: $accent;
+  }
 }

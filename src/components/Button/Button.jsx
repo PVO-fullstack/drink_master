@@ -1,8 +1,8 @@
 // import React from 'react';
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
-import clsx from "clsx";
-import style from "./Button.module.scss";
+import clsx from 'clsx';
+import style from './Button.module.scss';
 
 // ###################################################
 
@@ -11,7 +11,7 @@ export const Button = ({
   variant,
   disabled = false,
   onClick = null,
-  type = "button",
+  type = 'button',
 }) => {
   return (
     <button

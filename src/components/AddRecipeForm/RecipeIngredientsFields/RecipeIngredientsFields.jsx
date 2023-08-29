@@ -50,9 +50,9 @@ export const RecipeIngredientsFields = ({ values }) => {
           <div className={style.headingAndButtonsWrapper}>
             <SectionTitle>Ingredients</SectionTitle>
 
-            {/* Button and counter */}
             <div className={style.counterWrapper}>
               <button
+                className={style.counterButton}
                 type="button"
                 onClick={() => decrementIngredients(arrayHelpers)}
               >
@@ -60,6 +60,7 @@ export const RecipeIngredientsFields = ({ values }) => {
               </button>
               <div>{counterValue}</div>
               <button
+                className={style.counterButton}
                 type="button"
                 onClick={() => incrementIngredients(arrayHelpers)}
               >
@@ -96,13 +97,14 @@ export const RecipeIngredientsFields = ({ values }) => {
                 </label>
 
                 <button
+                  className={style.removeIngredientButton}
                   type="button"
                   onClick={() => {
                     values.ingredients.length > 1 && arrayHelpers.remove(index);
                   }}
                   disabled={values.ingredients.length === 1}
                 >
-                  -
+                  x
                 </button>
               </div>
             ))}

@@ -5,7 +5,9 @@
   width: 375px; // remove
   padding: 0 $container-padding; // remove
   background-color: black; // remove
+}
 
+.wrapper {
   display: flex;
   flex-direction: column;
 
@@ -19,6 +21,8 @@
   @media screen and (min-width: $desktop) {
     gap: 5px;
   }
+
+  margin-bottom: 20px;
 }
 
 input,

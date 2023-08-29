@@ -11,6 +11,7 @@ import {
 } from '.';
 
 import style from './AddRecipeForm.module.scss';
+import { Button } from '../Button/Button';
 
 // ###################################################
 
@@ -50,11 +51,15 @@ export const AddRecipeForm = () => {
     >
       {({ values, setFieldValue }) => (
         <Form className={style.form}>
-          <RecipeDescriptionFields setFieldValue={setFieldValue} />
-          <RecipeIngredientsFields values={values} />
-          <RecipePreparationFields />
+          <div className={style.wrapper}>
+            <RecipeDescriptionFields setFieldValue={setFieldValue} />
+            <RecipeIngredientsFields values={values} />
+            <RecipePreparationFields />
+          </div>
 
-          <button type="submit">Add</button>
+          <Button type="submit" variant="accented">
+            Add
+          </Button>
         </Form>
       )}
     </Formik>
