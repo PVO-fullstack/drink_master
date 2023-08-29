@@ -24,6 +24,7 @@ export const FormikSelect = ({ label, ...props }) => {
         {...field}
         {...props}
         onChange={(selectedOption) => setFieldProps(selectedOption)}
+        // menuShouldScrollIntoView={true}
       />
 
       <label htmlFor={props.id || props.name} className={style.label}>

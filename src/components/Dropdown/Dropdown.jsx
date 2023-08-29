@@ -12,38 +12,48 @@ export const Dropdown = ({
   isSearchable = true,
   name,
   onChange,
+  itemsBeforeScroll,
+  ...props
 }) => {
   //
   const makeOptions = (arrayOfObjects) =>
     arrayOfObjects.map(({ name }) => ({ value: name, label: name }));
 
   const options = makeOptions(data);
+  const styles = makeStyles(variant);
+  const menuHeight =
+    itemsBeforeScroll * styles.container().fontSize +
+    itemsBeforeScroll * styles.menuList().gap +
+    styles.menuList().paddingTop * 3;
 
   return (
     <Select
       components={{ IndicatorSeparator: null }}
-      styles={reactSelectStyles(variant)}
+      styles={styles}
       options={options}
       placeholder={placeHolder}
       isSearchable={isSearchable}
       name={name}
       onChange={onChange}
+      maxMenuHeight={menuHeight}
+      {...props}
     />
   );
 };
 
 Dropdown.propTypes = {
-  data: PropTypes.arrayOf(PropTypes.object),
+  data: PropTypes.arrayOf(PropTypes.object).isRequired,
   variant: PropTypes.oneOf(['drinks', 'addrecipe']),
   placeHolder: PropTypes.string,
-  name: PropTypes.string,
+  name: PropTypes.string.isRequired,
   isSearchable: PropTypes.bool,
   onChange: PropTypes.func,
+  itemsBeforeScroll: PropTypes.number,
 };
 
 // ###############################################
 
-const reactSelectStyles = (variant) => ({
+const makeStyles = (variant) => ({
   control: (baseStyles) => ({
     ...baseStyles,
     backgroundColor: variant === 'addrecipe' ? 'transparent' : '#161f37',
@@ -78,15 +88,17 @@ const reactSelectStyles = (variant) => ({
     ...baseStyles,
     backgroundColor: 'transparent',
     marginTop: 4,
-    // width: 'auto',
     width: 'max-content',
-    // minWidth: '100%',
   }),
   menuList: (baseStyles) => ({
     ...baseStyles,
     backgroundColor: '#161f37',
     borderRadius: 20,
-    padding: variant === 'addrecipe' ? 14 : '14px 23px',
+    // padding: variant === 'addrecipe' ? 14 : '14px 23px',
+    paddingTop: 14,
+    paddingBottom: 14,
+    paddingLeft: variant === 'addrecipe' ? 14 : 23,
+    paddingRight: variant === 'addrecipe' ? 14 : 23,
     display: 'flex',
     flexDirection: 'column',
     gap: 8,

@@ -88,6 +88,7 @@ export const RecipeDescriptionFields = ({ setFieldValue }) => {
           variant={variant}
           placeHolder="Select a category"
           isSearchable={false}
+          itemsBeforeScroll={6}
         />
 
         <FormikSelect
@@ -97,6 +98,7 @@ export const RecipeDescriptionFields = ({ setFieldValue }) => {
           variant={variant}
           placeHolder="Select glass type"
           isSearchable={false}
+          itemsBeforeScroll={6}
         />
       </div>
     </div>
