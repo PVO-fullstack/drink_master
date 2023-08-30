@@ -1,23 +1,25 @@
 @import '../../../styles/variables';
 
-.wrapper {
+.fieldWrapper {
   position: relative;
 }
 
 .field {
-  background-color: transparent;
-  border: none;
-  height: 36px;
-  border-bottom: 1px solid $accent-faded-50;
+  width: 100%;
+  height: calc($input-placeholder + $paragraph);
+
   padding-bottom: 0;
+  border: none;
+  border-bottom: 1px solid rgba($accent, 0.5);
+
+  background-color: transparent;
 
   &::placeholder {
-    color: $accent-faded-50;
+    color: rgba($accent, 0.5);
     font-size: $input-placeholder;
     font-weight: $regular;
     letter-spacing: -0.32px;
 
-    // visibility: hidden;
     color: transparent;
   }
 
@@ -29,8 +31,7 @@
 }
 
 .label {
-  color: $accent-faded-50;
-  // color: greenyellow;
+  color: rgba($accent, 0.5);
 
   font-size: $input-placeholder;
   font-weight: $regular;
@@ -48,11 +49,17 @@
   }
 
   .field:not(:placeholder-shown) + & {
-    // color: magenta;
     visibility: hidden;
   }
 
   // .field:required + &::after {
   //   content: '*';
   // }
+}
+
+.error {
+  color: $error;
+  margin-top: 4px;
+  font-size: 12px;
+  line-height: calc(14 / 12);
 }

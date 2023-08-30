@@ -1,0 +1,21 @@
+@import '../../styles/variables';
+
+.Navigation {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 30px
+}
+
+.NavigationLink {
+    padding: 8px 16px;
+    border-radius: 40px;
+    border: 1px solid rgba(243, 243, 243, 0.2);
+    color: $accent;
+    font-weight: $medium;
+    font-size: 14px;
+    text-align: center;
+    line-height: 20px;
+}
+
+;

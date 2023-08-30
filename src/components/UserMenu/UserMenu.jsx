@@ -1,29 +1,22 @@
 import { useSelector } from "react-redux";
 import css from "./UserMenu.module.scss";
-import { selectUserName } from "../../redux/auth/authSelectors";
+import { selectUser } from "../../redux/auth/authSelectors";
+import UserDefaultSVG from "../ComponentsSVG/UserDefaultSVG";
 
 const UserMenu = () => {
-  const userName = useSelector(selectUserName);
+  const { name, avatarURL } = useSelector(selectUser);
 
   return (
     <div className={css.userMenu}>
-      <img
-        src="/images/SVG/user2.svg"
-        alt=""
+      {avatarURL ? <img
+        src={avatarURL}
+        alt="Avatar image"
         className={css.userMenuImg}
         width={44}
         height={44}
-      ></img>
-      <p className={css.userMenuName}>{userName ? userName : "Name"}</p>
-      <button className={css.userMenuBtn}>
-        <img
-          src="/images/SVG/align-justify.svg"
-          alt=""
-          className={css.userMenuImg}
-          width={32}
-          height={32}
-        ></img>
-      </button>
+      ></img> : <UserDefaultSVG className={`userMenuImg`} fill={"#F3F3F3"} />}
+
+      <p className={css.userMenuName}>{name ? name : "Name"}</p>
     </div>
   );
 };

@@ -1,4 +1,3 @@
-import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import style from "./SignUp.module.scss";
@@ -13,12 +12,15 @@ export const SignUp = () => {
   const passwordRules = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,16}$/;
   // min 6 characters, 1 upper case letter, 1 lower case letter, 1 numeric digit.
 
+  const emailRegexp = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+
   const SignupSchema = Yup.object({
     // name: Yup.string()
     //   .max(15, "Must be 15 characters or less")
     //   .required("Required"),
     email: Yup.string()
-      .email("Invalid email address")
+      // .email("Invalid email address")
+      .matches(emailRegexp, { message: "Invalid email address" })
       .required("Email required"),
     password: Yup.string()
       .matches(passwordRules, {
@@ -42,7 +44,7 @@ export const SignUp = () => {
           }}
         >
           {(formik) => {
-            const { errors, touched, isValid, dirty } = formik;
+            const { isValid, dirty } = formik;
             return (
               <Form className={style.form}>
                 <Field
@@ -91,7 +93,6 @@ export const SignUp = () => {
           }}
         </Formik>
       </div>
-      <div className={style.glass}></div>
     </div>
   );
 };

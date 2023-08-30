@@ -1,121 +1,14 @@
 @import '../../styles/variables';
 
 .form {
+}
+
+.wrapper {
   display: flex;
   flex-direction: column;
-  gap: 5px;
   align-items: start;
+  gap: 80px;
+
   color: $accent;
-}
-
-.fieldsGroup {
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
-}
-
-input,
-textarea,
-select {
-  background-color: $dark-blue;
-  border: none;
-}
-
-textarea {
-  resize: none;
-}
-
-.field::placeholder {
-  color: #f3f3f3;
-  font-size: $input-placeholder;
-  font-weight: $regular;
-  letter-spacing: -0.32px;
-}
-
-input[type='file'] {
-  height: 0;
-  padding: 0;
-  opacity: 0;
-}
-
-.image {
-  height: 320px;
-  width: 320px;
-  background-color: $dark-blue-faded;
-  // border: none;
-  overflow: hidden;
-  border-radius: $standard-radius;
-  display: flex;
-  // flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.labelWrapper {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 18px;
-  // background-color: beige;
-}
-
-label[for='drinkThumb'] {
-  background-color: white;
-  padding: 11px;
-  border-radius: $standard-radius;
-  color: $dark-blue;
-}
-
-label[for='drinkThumb']:hover {
-  background: linear-gradient(to right, $dark-blue, $blue-faded);
-  color: $accent;
-  box-shadow: 1px 1px 5px 3px rgba($black, 0.2);
-}
-
-label[for='drinkThumb']:active {
-  box-shadow: inset 1px 1px 5px 1px #39393f;
-}
-
-.dropdown {
-  // margin-bottom: 10px;
-  // margin-top: 10px;
-
-  background: $dark-blue;
-  color: #fff;
-  border: none;
-  padding: 14px;
-  border-radius: $drop-down-radius;
-}
-
-.counterWrapper {
-  display: flex;
-  gap: 5px;
-  align-items: start;
-}
-
-.groupWrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  align-items: start;
-}
-
-.itemWrapper {
-  display: flex;
-  gap: 10px;
-  justify-content: space-between;
-}
-
-.item {
-  display: flex;
-  gap: 10px;
-  align-items: start;
-}
-
-.ingredient {
-  flex-grow: 1;
-}
-
-.quantity {
+  margin-bottom: 20px;
 }

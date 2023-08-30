@@ -1,9 +1,13 @@
 @import '../../styles/variables';
 
 .button {
-  padding: 18px 44px;
+  padding: 14px 40px;
 
-  font-size: 1rem;
+  @media screen and (min-width: $tablet) {
+    padding: 18px 44px;
+  }
+
+  font-size: $paragraph;
   font-weight: 600;
 
   border-radius: $button-radius;

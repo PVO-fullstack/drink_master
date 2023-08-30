@@ -1,4 +1,3 @@
-import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import style from "./SignIn.module.scss";
@@ -13,12 +12,15 @@ export const SignIn = () => {
   // min 6 characters, 1 upper case letter, 1 lower case letter, 1 numeric digit.
 
   const SignupSchema = Yup.object({
-    email: Yup.string().email("Invalid email address").required("Required"),
+    email: Yup.string()
+      .email("Invalid email address")
+      .required("Email required"),
     password: Yup.string()
       .matches(passwordRules, {
-        message: "Please create a stronger password",
+        message:
+          "Password must contain min 6 characters, max 16 characters, 1 upper case letter, 1 lower case letter, 1 numeric digit",
       })
-      .required("Required"),
+      .required("Password required"),
   });
 
   return (
@@ -34,31 +36,49 @@ export const SignIn = () => {
             resetForm();
           }}
         >
-          <Form className={style.form}>
-            <Field
-              className={style.field}
-              type="email"
-              name="email"
-              placeholder="Email"
-            />
+          {(formik) => {
+            const { isValid, dirty } = formik;
+            return (
+              <Form className={style.form}>
+                <Field
+                  className={style.field}
+                  type="email"
+                  name="email"
+                  placeholder="Email"
+                />
+                <ErrorMessage
+                  name="email"
+                  component="span"
+                  className={style.error}
+                />
 
-            <Field
-              className={style.field + " " + style.last_field}
-              type="password"
-              name="password"
-              placeholder="Password"
-            />
+                <Field
+                  className={style.field + " " + style.last_field}
+                  type="password"
+                  name="password"
+                  placeholder="Password"
+                />
+                <ErrorMessage
+                  name="password"
+                  component="span"
+                  className={style.error}
+                />
 
-            <button className={style.btn} type="submit">
-              Sign In
-            </button>
-            <NavLink className={style.link} to="/signup">
-              Registration
-            </NavLink>
-          </Form>
+                <button
+                  disabled={!(dirty && isValid)}
+                  className={style.btn}
+                  type="submit"
+                >
+                  Sign In
+                </button>
+                <NavLink className={style.link} to="/signup">
+                  Registration
+                </NavLink>
+              </Form>
+            );
+          }}
         </Formik>
       </div>
-      <div className={style.glass}></div>
     </div>
   );
 };

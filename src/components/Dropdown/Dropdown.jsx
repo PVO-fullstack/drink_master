@@ -1,5 +1,5 @@
 // eslint-disable-next-line no-unused-vars
-import React, { useState } from 'react';
+import React from 'react';
 import Select from 'react-select';
 import PropTypes from 'prop-types';
 
@@ -11,54 +11,89 @@ export const Dropdown = ({
   placeHolder = 'Please select',
   isSearchable = true,
   name,
+  onChange,
+  itemsBeforeScroll,
+  ...props
 }) => {
-  const [value, setValue] = useState(null);
-
-  const makeOptions = (strings) =>
-    strings.map((item) => ({ value: item, label: item }));
+  //
+  const makeOptions = (arrayOfObjects) =>
+    arrayOfObjects.map(({ name }) => ({ value: name, label: name }));
 
   const options = makeOptions(data);
+  const styles = makeStyles(variant, props);
+  const menuHeight =
+    itemsBeforeScroll * styles.container().fontSize +
+    itemsBeforeScroll * styles.menuList().gap +
+    styles.menuList().paddingTop * 3;
 
   return (
     <Select
-      options={options}
       components={{ IndicatorSeparator: null }}
-      styles={reactSelectStyles(variant)}
+      styles={styles}
+      options={options}
       placeholder={placeHolder}
       isSearchable={isSearchable}
       name={name}
-      value={value}
-      onChange={(newValue) => setValue(newValue)}
+      onChange={onChange}
+      maxMenuHeight={menuHeight}
+      {...props}
     />
   );
 };
 
 Dropdown.propTypes = {
-  data: PropTypes.array,
+  data: PropTypes.arrayOf(PropTypes.object).isRequired,
   variant: PropTypes.oneOf(['drinks', 'addrecipe']),
   placeHolder: PropTypes.string,
-  name: PropTypes.string,
+  name: PropTypes.string.isRequired,
   isSearchable: PropTypes.bool,
+  onChange: PropTypes.func,
+  itemsBeforeScroll: PropTypes.number,
+  width: PropTypes.number,
 };
 
 // ###############################################
 
-const reactSelectStyles = (variant) => ({
-  control: (baseStyles) => ({
-    ...baseStyles,
-    backgroundColor: variant === 'addrecipe' ? 'transparent' : '#161f37',
-    borderRadius: 200,
-    border: 'none',
-    // width: 'auto',
-    width: variant === 'addrecipe' ? 195 : 250,
-    padding: variant === 'addrecipe' ? '0 14px' : '14px 24px',
-  }),
-  container: (baseStyles) => ({
-    ...baseStyles,
-    fontSize: variant === 'addrecipe' ? 14 : 17,
-    lineHeight: '100%',
-    width: 'auto',
-  }),
+const makeStyles = (variant, props) => ({
+  control: (baseStyles) => {
+    if (Object.hasOwn(props, 'unstyled')) {
+      return {
+        display: 'flex',
+        gap: 8,
+      };
+    }
+
+    return {
+      ...baseStyles,
+      backgroundColor: variant === 'addrecipe' ? 'transparent' : '#161f37',
+      borderRadius: props.style?.borderRadius || 'none',
+      border: 'none',
+      width: props.style?.width || 'auto',
+      padding:
+        props.style?.control?.padding || variant === 'addrecipe'
+          ? '0 14px'
+          : '14px 24px',
+    };
+  },
+
+  container: (baseStyles) => {
+    if (Object.hasOwn(props, 'unstyled')) {
+      return {
+        display: 'flex',
+        justifyContent: 'end',
+        fontSize: 14,
+        lineHeight: 1,
+      };
+    }
+
+    return {
+      ...baseStyles,
+      fontSize: variant === 'addrecipe' ? 14 : 17,
+      lineHeight: '100%',
+      width: 'auto',
+      justifyContent: 'end',
+    };
+  },
   dropdownIndicator: (baseStyles, state) => ({
     ...baseStyles,
     color: state.isFocused ? '#f3f3f3' : 'rgba(243, 243, 243, 0.40)',
@@ -78,15 +113,17 @@ const reactSelectStyles = (variant) => ({
     ...baseStyles,
     backgroundColor: 'transparent',
     marginTop: 4,
-    // width: 'auto',
     width: 'max-content',
-    // minWidth: '100%',
   }),
   menuList: (baseStyles) => ({
     ...baseStyles,
     backgroundColor: '#161f37',
     borderRadius: 20,
-    padding: variant === 'addrecipe' ? 14 : '14px 23px',
+    // padding: variant === 'addrecipe' ? 14 : '14px 23px',
+    paddingTop: 14,
+    paddingBottom: 14,
+    paddingLeft: variant === 'addrecipe' ? 14 : 23,
+    paddingRight: variant === 'addrecipe' ? 14 : 23,
     display: 'flex',
     flexDirection: 'column',
     gap: 8,
