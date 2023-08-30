@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://PVO-fullstack.github.io/drink_master/",
+  "homepage": "https://PVO-fullstack.github.io/drink_master",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
