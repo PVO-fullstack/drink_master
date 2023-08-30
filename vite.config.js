@@ -4,7 +4,7 @@ import path from "path";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: "/drink_master/",
+  // base: "/drink_master/",
   plugins: [react()],
   css: {
     preprocessorOptions: {
