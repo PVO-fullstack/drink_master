@@ -27,8 +27,9 @@ export const AddRecipeForm = () => {
   };
 
   const handleSubmit = async (values, { resetForm }) => {
-    values.instructions = convertTextAreaToArray(values.instructions);
-
+    if (typeof values.instructions === 'string') {
+      values.instructions = convertTextAreaToArray(values.instructions);
+    }
     let formData = new FormData();
     for (const key in values) {
       formData.append(key, values[key]);
@@ -36,11 +37,12 @@ export const AddRecipeForm = () => {
     // console.log('formData: ', formData);
     alert(JSON.stringify(values, null, 2));
 
-    // If onSubmit is async, then Formik will automatically set isSubmitting to false on your behalf once it has resolved
-    resetForm();
     // try {
     // } catch (error) {
     // } finally {setSubmitting(false);}
+
+    // If onSubmit is async, then Formik will automatically set isSubmitting to false on your behalf once it has resolved
+    resetForm();
   };
 
   // ******************** End of handlers ******************
@@ -48,7 +50,7 @@ export const AddRecipeForm = () => {
   return (
     <Formik
       initialValues={initialValues}
-      validationSchema={yupSchema}
+      // validationSchema={yupSchema}
       onSubmit={handleSubmit}
     >
       {({ values, setFieldValue }) => (
