@@ -55,12 +55,7 @@ export const UserRoutes = () => {
             }
           />
           </Route>
-          <Route
-            path="/recipes/:id"
-            element={
-              <PrivatRoute redirectTo="/welcome" component={<RecipePage />} />
-            }
-          />
+          
           <Route
           path="/welcome"
           element={<RestrictedRoute redirectTo="/" component={<Welcome />} />}
