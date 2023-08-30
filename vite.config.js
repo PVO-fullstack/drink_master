@@ -6,11 +6,6 @@ import path from "path";
 export default defineConfig({
   base: "/drink_master/",
   plugins: [react()],
-  resolve: {
-    alias: {
-      "@": path.resolve(__dirname, "./src"),
-    },
-  },
   css: {
     preprocessorOptions: {
       scss: {
