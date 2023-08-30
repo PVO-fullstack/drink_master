@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 // import css from "/RecipeInngredientsList.module.scss";
 
 export const RecipeInngredientsList = ({ingredients}) => {
@@ -20,7 +21,7 @@ export const RecipeInngredientsList = ({ingredients}) => {
     )
 }
 
-RecipeInngredientsList.propTypes = {
+RecipeInngredientsList.PropTypes = {
      array: PropTypes.arrayOf(
         PropTypes.exact({
             title: PropTypes.string.isRequired,
