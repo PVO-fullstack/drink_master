@@ -30,25 +30,25 @@ export const UserRoutes = () => {
             element={<PrivatRoute redirectTo="/welcome" component={<Home />} />}
           />
           <Route
-            path="/drinks"
+            path="drinks"
             element={
               <PrivatRoute redirectTo="/welcome" component={<Drinks />} />
             }
           />
           <Route
-            path="/addrecipe"
+            path="addrecipe"
             element={
               <PrivatRoute redirectTo="/welcome" component={<AddRecipe />} />
             }
           />
           <Route
-            path="/myrecipes"
+            path="myrecipes"
             element={
               <PrivatRoute redirectTo="/welcome" component={<MyRecipes />} />
             }
           />
           <Route
-            path="/favorites"
+            path="favorites"
             element={
               <PrivatRoute redirectTo="/welcome" component={<Favorites />} />
             }

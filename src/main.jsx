@@ -12,12 +12,15 @@ import { Provider } from "react-redux";
 import { persistor, store } from "./redux/store";
 import { PersistGate } from "redux-persist/integration/react";
 
-const router = createBrowserRouter([
-  {
-    path: "/*",
-    element: <App />,
-  },
-]);
+const router = createBrowserRouter(
+  [
+    {
+      path: "/*",
+      element: <App />,
+    },
+  ],
+  { basename: "/drink_master" }
+);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
