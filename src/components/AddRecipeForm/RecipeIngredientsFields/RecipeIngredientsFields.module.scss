@@ -23,7 +23,7 @@
   align-items: center;
 }
 
-.counterWrapper {
+.counter {
   display: flex;
   gap: 16px;
   align-items: center;
@@ -48,46 +48,4 @@
   display: flex;
   flex-direction: column;
   gap: 18px;
-}
-
-.ingredientsItem {
-  display: flex;
-  // align-items: center;
-  justify-content: space-between;
-}
-
-.ingredientFieldsWrapper {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
-
-.ingredient {
-  // height: 56px;
-  background-color: transparent;
-  // flex-grow: 1;
-  // display: flex;
-  // flex-direction: column;
-  // gap: 4px;
-  // justify-content: space-between;
-}
-
-.measure {
-  // height: 56px;
-  background-color: transparent;
-
-  // display: flex;
-  // flex-direction: column;
-  // gap: 4px;
-  // justify-content: space-between;
-}
-
-.removeIngredientButton {
-  background-color: transparent;
-  border: none;
-  color: $accent;
-
-  &::disabled {
-    color: rgba($accent, 0.3);
-  }
 }

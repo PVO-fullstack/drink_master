@@ -25,8 +25,11 @@
 
   &:focus {
     outline: none;
-    outline-offset: 1px;
     border-color: $accent;
+  }
+
+  &:required:invalid {
+    border-color: maroon;
   }
 }
 

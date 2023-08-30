@@ -19,11 +19,13 @@ import { Button } from '../Button/Button';
 
 export const AddRecipeForm = () => {
   //
+  // ******************** Handlers *************************
+
   const convertTextAreaToArray = (string) => {
     const normalizedString = string.replace(/\r\n/g, '\n');
     return normalizedString.split('\n').filter((el) => el.trim());
   };
-  // ******************** Handlers *************************
+
   const handleSubmit = async (values, { resetForm }) => {
     values.instructions = convertTextAreaToArray(values.instructions);
 
@@ -46,7 +48,7 @@ export const AddRecipeForm = () => {
   return (
     <Formik
       initialValues={initialValues}
-      // validationSchema={yupSchema}
+      validationSchema={yupSchema}
       onSubmit={handleSubmit}
     >
       {({ values, setFieldValue }) => (

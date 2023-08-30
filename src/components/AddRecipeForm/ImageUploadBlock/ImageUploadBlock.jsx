@@ -31,6 +31,7 @@ export const ImageUploadBlock = ({ labelFor, imageURL, removeHandler }) => {
             alt="Drink image preview"
             className={style.image}
           />
+
           <button
             className={style.closeButton}
             aria-label="Remove image preview"
