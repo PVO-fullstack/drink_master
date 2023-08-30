@@ -1,31 +1,46 @@
-import { useEffect } from "react";
+import PropTypes from "prop-types";
+import css from "./RecipesList.module.scss";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { RecipesItem } from "../RecipesItem/RecipesItem";
 import {
-  fetchFavoriteRecipesThunk,
-  fetchMyRecipesThunk,
-} from "../../redux/cockteil/cockteilsOperations";
-import {
+  selectError,
   selectFavRecipes,
   selectMyRecipes,
 } from "../../redux/cockteil/cockteilsSelectors";
-import { RecipesItem } from "../RecipesItem/RecipesItem";
-import PropTypes from "prop-types";
-import css from "./RecipesList.module.scss";
+import { fetchRecipesThunk } from "../../redux/cockteil/cockteilsOperations";
+import Paginator from "../Paginator/Paginator";
+
+const determineRecipesPerPage = () => {
+  if (window.innerWidth <= 768) {
+    return 10; // Для мобільного
+  } else if (window.innerWidth <= 1024) {
+    return 8; // Для планшета
+  } else {
+    return 9; // Для десктопу
+  }
+};
 
 export const RecipesList = ({ type }) => {
   const dispatch = useDispatch();
-  const recipes = useSelector(
-    type === "myRecipes" ? selectMyRecipes : selectFavRecipes
+  const [currentPage, setCurrentPage] = useState(1);
+  const recipesPerPage = determineRecipesPerPage();
+  const { recipes, totalRecipes } = useSelector(
+    type === "recipes" ? selectMyRecipes : selectFavRecipes
   );
-  const error = useSelector((state) => state.cockteil.error);
+  /* змінити type на own */
+  const error = useSelector(selectError);
 
   useEffect(() => {
-    if (type === "myRecipes") {
-      dispatch(fetchMyRecipesThunk());
-    } else if (type === "favoriteRecipes") {
-      dispatch(fetchFavoriteRecipesThunk());
-    }
-  }, [dispatch, type]);
+    dispatch(
+      fetchRecipesThunk({ type, page: currentPage, limit: recipesPerPage })
+    );
+  }, [dispatch, currentPage, recipesPerPage, type]);
+
+  const calculateTotalPages = (totalRecipes, recipesPerPage) => {
+    return Math.ceil(totalRecipes / recipesPerPage);
+  };
+  // const memoizedRecipes = useMemo(() => recipes, [recipes]);
 
   return (
     <>
@@ -33,15 +48,16 @@ export const RecipesList = ({ type }) => {
         <p>Error: {error}</p>
       ) : (
         <>
-          {recipes.length > 0 ? (
-            <ul className={css.recipes_list}>
-              {recipes.map((recipe) => (
-                <RecipesItem key={recipe._id} recipe={recipe} />
-              ))}
-            </ul>
-          ) : (
-            <p>No recipes available.</p>
-          )}
+          <ul className={css.recipes_list}>
+            {recipes.map((recipe) => (
+              <RecipesItem key={recipe._id} recipe={recipe} />
+            ))}
+          </ul>
+          <Paginator
+            currentPage={currentPage}
+            totalPages={calculateTotalPages(totalRecipes, recipesPerPage)}
+            onPageChange={setCurrentPage}
+          />
         </>
       )}
     </>
@@ -49,5 +65,6 @@ export const RecipesList = ({ type }) => {
 };
 
 RecipesList.propTypes = {
-  type: PropTypes.oneOf(["myRecipes", "favoriteRecipes"]).isRequired,
+  type: PropTypes.oneOf(["recipes", "favorite"]).isRequired,
 };
+/* змінити type на own */
