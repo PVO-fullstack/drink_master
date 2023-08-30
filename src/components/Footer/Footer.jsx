@@ -1,5 +1,5 @@
-import React from 'react'
-import css from './Footer.module.scss'
+import React from 'react';
+import css from './Footer.module.scss';
 import Logo from '../Logo/Logo.jsx';
 import { FollowUs } from '../FollowUs/FollowUs';
 import { Navigation } from '../Navigation/Navigation';
@@ -29,9 +29,8 @@ const Footer = () => {
           </div>
         </div>
       </div>
-
     </footer>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

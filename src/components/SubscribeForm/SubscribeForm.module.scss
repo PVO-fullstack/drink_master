@@ -3,11 +3,15 @@
     flex-direction: column;
     align-items: center;
     gap: 24px;
-    width: 304px;
     margin: 0;
+
+    @media screen and (min-width: 748px) {
+        width: 309px;
+    }
 }
 
 .SubscribeFormText {
+    text-align: center;
     color: $accent;
     font-weight: 400;
     font-size: 18px;
@@ -17,13 +21,21 @@
     color: $accent;
     font-weight: 400;
     font-size: 14px;
-    width: 309px;
     height: 56px;
     border-style: none;
     border: 1px solid rgba(243, 243, 243, 1);
     border-radius: 40px;
     background-color: transparent;
     padding: 14px 24px;
+
+    @media screen and (max-width: 747px) {
+        width: calc(100% - 28px);
+        text-align: center;
+    }
+
+    @media screen and (min-width: 748px) {
+        width: 304px;
+    }
 }
 
 .SubscribeFormSubmit {
@@ -37,4 +49,12 @@
     border: 1px solid rgba(243, 243, 243, 1);
     border-radius: 40px;
     background-color: transparent;
+
+    @media screen and (max-width: 747px) {
+        width: calc(100% - 28px);
+    }
+
+    @media screen and (min-width: 748px) {
+        width: 304px;
+    }
 }

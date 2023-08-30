@@ -1,4 +1,4 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore } from '@reduxjs/toolkit';
 import {
   persistStore,
   persistReducer,
@@ -8,21 +8,23 @@ import {
   PERSIST,
   PURGE,
   REGISTER,
-} from "redux-persist";
-import storage from "redux-persist/lib/storage";
-import { authSlice } from "./auth/authSlice";
-import { cockteilsSlise } from "./cockteil/cockteilsSlice";
+} from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+import { authSlice } from './auth/authSlice';
+import { cockteilsSlise } from './cockteil/cockteilsSlice';
+import { preparationSlice } from './preparation/slice';
 
 const persistConfig = {
-  key: "auth",
+  key: 'auth',
   storage,
-  whitelist: ["token"],
+  whitelist: ['token'],
 };
 
 export const store = configureStore({
   reducer: {
     auth: persistReducer(persistConfig, authSlice.reducer),
     cockteil: cockteilsSlise.reducer,
+    preparation: preparationSlice.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

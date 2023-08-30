@@ -7,32 +7,17 @@ import instance from "../../shared/api/instance";
 //   },
 // };
 
-export const fetchMyRecipes = async () => {
-  const { data } = await instance.get("/recipes");
+export const fetchRecipesForPage = async ({ type, page, limit }) => {
+  const { data } = await instance.get(`/${type}?page=${page}&limit=${limit}`);
   return data;
 };
 
-export const fetchFavoriteRecipes = async () => {
-  const { data } = await instance.get("/favorite");
-  return data;
-};
-
-export const fetchMyRecipesThunk = createAsyncThunk(
-  "recipes/fetchMyRecipes",
-  async (_, thunkAPI) => {
+export const fetchRecipesThunk = createAsyncThunk(
+  "recipes/fetchRecipes",
+  async ({ page, limit, type }, thunkAPI) => {
     try {
-      return await fetchMyRecipes();
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  }
-);
-
-export const fetchFavoriteRecipesThunk = createAsyncThunk(
-  "recipes/fetchFavoriteRecipes",
-  async (_, thunkAPI) => {
-    try {
-      return await fetchFavoriteRecipes();
+      const data = await fetchRecipesForPage({ page, limit, type });
+      return { recipes: data.recipes, totalRecipes: data.totalRecipes, type };
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
