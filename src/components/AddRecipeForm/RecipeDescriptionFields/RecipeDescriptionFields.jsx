@@ -73,7 +73,7 @@ export const RecipeDescriptionFields = ({ setFieldValue }) => {
           name="drinkThumb"
           id="drinkThumb"
           onChange={handleImageUpload}
-          required
+          // required
         />
       </div>
 

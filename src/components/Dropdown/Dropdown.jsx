@@ -17,9 +17,12 @@ export const Dropdown = ({
 }) => {
   //
   const makeOptions = (arrayOfObjects) =>
-    arrayOfObjects.map(({ name }) => ({ value: name, label: name }));
-
+    arrayOfObjects.map(({ name = null, title = null }) => ({
+      value: name || title,
+      label: name || title,
+    }));
   const options = makeOptions(data);
+
   const styles = makeStyles(variant, props);
   const menuHeight =
     itemsBeforeScroll * styles.container().fontSize +

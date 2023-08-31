@@ -4,9 +4,9 @@ import { useSelector } from 'react-redux';
 import { selectIngredients } from '../../../redux/preparation/selectors';
 
 import PropTypes from 'prop-types';
-import { ErrorMessage, Field } from 'formik';
 
 import style from './IngredientItem.module.scss';
+import { SearchDropdown } from '../../searchDropdown/searchDropdown';
 
 // ###################################################
 
@@ -17,7 +17,7 @@ export const IngredientItem = ({ index, length, arrayHelpers }) => {
   return (
     <div className={style.item} key={index}>
       <div className={style.inputsWrapper}>
-        <label className={style.label}>
+        {/* <label className={style.label}>
           <Field name={`ingredients.${index}.title`} as="select">
             <option value="">Select ingredient</option>
             {ingredients.map(({ title, _id: id }) => (
@@ -31,23 +31,26 @@ export const IngredientItem = ({ index, length, arrayHelpers }) => {
             render={(msg) => <p className={style.error}>{msg}</p>}
             name={`ingredients.${index}.title`}
           />
-        </label>
+        </label> */}
 
-        <label className={style.label}>
-          <Field name={`ingredients.${index}.measure`} as="select">
-            <option value="">Select measure</option>
-            <option value="1 cl">1 cl</option>
-            <option value="2 cl">2 cl</option>
-            <option value="2 cl">3 cl</option>
-            <option value="2 cl">4 cl</option>
-            <option value="2 cl">5 cl</option>
-          </Field>
+        <SearchDropdown
+          name={`ingredients.${index}.title`}
+          data={ingredients}
+          style={{ control: { padding: '14px 24px' } }}
+          placeholder="Ingredient"
+          itemsBeforeScroll={6}
+        />
 
-          <ErrorMessage
-            render={(msg) => <p className={style.error}>{msg}</p>}
-            name={`ingredients.${index}.measure`}
-          />
-        </label>
+        <SearchDropdown
+          name={`ingredients.${index}.measure`}
+          data={measures}
+          style={{
+            control: { padding: '14px 24px' },
+            menu: { maxWidth: 80 },
+          }}
+          placeholder="Measure"
+          itemsBeforeScroll={6}
+        />
       </div>
 
       <button
@@ -68,3 +71,15 @@ IngredientItem.propTypes = {
   arrayHelpers: PropTypes.object.isRequired,
   ingredients: PropTypes.array.isRequired,
 };
+
+// const measures = [{ name: '1 cl' } { name: '2 cl' }];
+
+const makeMeasures = (length) => {
+  const array = [];
+  for (let index = 1; index < length; index++) {
+    array.push({ name: `${index} cl` }, { name: `${index} oz` });
+  }
+  return array;
+};
+
+const measures = makeMeasures(10);

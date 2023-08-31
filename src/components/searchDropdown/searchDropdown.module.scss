@@ -1,0 +1,54 @@
+@import '../../styles/variables';
+
+// .wrapper {}
+
+.embedded {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  align-items: start;
+
+  // width: 100%;
+  height: calc($input-placeholder + $paragraph);
+
+  padding-bottom: 0;
+  border: none;
+  border-bottom: 1px solid $accent-faded-50;
+
+  &:focus {
+    outline: none;
+    outline-offset: 1px;
+    border-color: $accent;
+  }
+}
+
+.label {
+  color: $accent-faded-50;
+
+  font-size: $input-placeholder;
+  font-weight: $regular;
+  letter-spacing: -0.32px;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  transition: color $transition-duration $transition-timing-function,
+    transform $transition-duration $transition-timing-function;
+
+  .field:focus + & {
+    color: $accent;
+  }
+
+  .field:not(:placeholder-shown) + & {
+    // color: magenta;
+    visibility: hidden;
+  }
+}
+
+.error {
+  color: $error;
+  margin-top: 4px;
+  font-size: 12px;
+  line-height: calc(14 / 12);
+}
