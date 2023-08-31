@@ -4,9 +4,11 @@ import css from "./RecipesItem.module.scss";
 import cssButton from "../Button/Button.module.scss";
 import { NavLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { deleteRecipeThunk } from "../../redux/cockteil/cockteilsOperations";
+import {
+  deleteRecipeThunk,
+  updateFavRecipeThunk,
+} from "../../redux/cockteil/cockteilsOperations";
 import { useState } from "react";
-
 
 export const RecipesItem = ({ recipe, type }) => {
   const dispatch = useDispatch();
@@ -14,14 +16,23 @@ export const RecipesItem = ({ recipe, type }) => {
 
   const [isDeleted, setIsDeleted] = useState(false);
 
+  // const deleteRecipe = async () => {
+  //   await dispatch(deleteRecipeThunk({ _id, type }));
+  //   setIsDeleted(true);
+  // };
+
   const deleteRecipe = async () => {
-    await dispatch(deleteRecipeThunk({ _id, type }));
+    await dispatch(
+      type === "own"
+        ? deleteRecipeThunk({ _id, type })
+        : updateFavRecipeThunk({ _id, type })
+    );
     setIsDeleted(true);
   };
+
   if (isDeleted) {
     return null;
   }
-
 
   return (
     <li className={css.recipes_item}>
@@ -37,7 +48,7 @@ export const RecipesItem = ({ recipe, type }) => {
         >
           See recipe
         </NavLink>
-       <button
+        <button
           onClick={() => dispatch(deleteRecipe)}
           className={`${cssButton.button} ${cssButton.icon}`}
         >
