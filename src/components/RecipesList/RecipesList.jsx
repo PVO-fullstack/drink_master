@@ -26,16 +26,27 @@ export const RecipesList = ({ type }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const recipesPerPage = determineRecipesPerPage();
   const { recipes, totalRecipes } = useSelector(
-    type === "recipes" ? selectMyRecipes : selectFavRecipes
+    type === "own" ? selectMyRecipes : selectFavRecipes
   );
   /* змінити type на own */
   const error = useSelector(selectError);
 
   useEffect(() => {
-    dispatch(
-      fetchRecipesThunk({ type, page: currentPage, limit: recipesPerPage })
-    );
+    if (type === "own") {
+      dispatch(
+        fetchRecipesThunk({ type, page: currentPage, limit: recipesPerPage })
+      );
+    } else if (type === "favorite") {
+      // dispatch();
+      console.log("fav");
+    }
   }, [dispatch, currentPage, recipesPerPage, type]);
+
+  // useEffect(() => {
+  //   dispatch(
+  //     fetchRecipesThunk({ type, page: currentPage, limit: recipesPerPage })
+  //   );
+  // }, [dispatch, currentPage, recipesPerPage, type]);
 
   const calculateTotalPages = (totalRecipes, recipesPerPage) => {
     return Math.ceil(totalRecipes / recipesPerPage);
@@ -50,14 +61,16 @@ export const RecipesList = ({ type }) => {
         <>
           <ul className={css.recipes_list}>
             {recipes.map((recipe) => (
-              <RecipesItem key={recipe._id} recipe={recipe} />
+              <RecipesItem key={recipe._id} recipe={recipe} type={type} />
             ))}
           </ul>
-          <Paginator
-            currentPage={currentPage}
-            totalPages={calculateTotalPages(totalRecipes, recipesPerPage)}
-            onPageChange={setCurrentPage}
-          />
+          {totalRecipes > 9 && (
+            <Paginator
+              currentPage={currentPage}
+              totalPages={calculateTotalPages(totalRecipes, recipesPerPage)}
+              onPageChange={setCurrentPage}
+            />
+          )}
         </>
       )}
     </>
@@ -65,6 +78,6 @@ export const RecipesList = ({ type }) => {
 };
 
 RecipesList.propTypes = {
-  type: PropTypes.oneOf(["recipes", "favorite"]).isRequired,
+  type: PropTypes.oneOf(["own", "favorite"]).isRequired,
 };
 /* змінити type на own */

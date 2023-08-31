@@ -10,7 +10,7 @@ const initialState = {
 };
 
 export const cockteilsSlise = createSlice({
-  name: 'recipes',
+  name: "recipes",
   initialState,
   reducers: {},
 
@@ -24,12 +24,12 @@ export const cockteilsSlise = createSlice({
         state.error = null;
       })
       .addMatcher(
-        (action) => action.type.endsWith('/rejected'),
+        (action) => action.type.endsWith("/rejected"),
         (state, { payload }) => {
           state.error = payload;
         }
       );
   },
 });
-
+export const { deleteRecipeType } = cockteilsSlise.actions;
 export default cockteilsSlise.reducer;
