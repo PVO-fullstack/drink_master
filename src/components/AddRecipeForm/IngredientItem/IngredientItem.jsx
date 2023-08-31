@@ -7,6 +7,7 @@ import PropTypes from 'prop-types';
 
 import style from './IngredientItem.module.scss';
 import { SearchDropdown } from '../SearchDropdown/SearchDropdown';
+import { RemoveIcon } from '../../icons';
 
 // ###################################################
 
@@ -17,22 +18,6 @@ export const IngredientItem = ({ index, length, arrayHelpers }) => {
   return (
     <div className={style.item} key={index}>
       <div className={style.inputsWrapper}>
-        {/* <label className={style.label}>
-          <Field name={`ingredients.${index}.title`} as="select">
-            <option value="">Select ingredient</option>
-            {ingredients.map(({ title, _id: id }) => (
-              <option key={id} value={title}>
-                {title}
-              </option>
-            ))}
-          </Field>
-
-          <ErrorMessage
-            render={(msg) => <p className={style.error}>{msg}</p>}
-            name={`ingredients.${index}.title`}
-          />
-        </label> */}
-
         <SearchDropdown
           name={`ingredients.${index}.title`}
           data={ingredients}
@@ -59,7 +44,7 @@ export const IngredientItem = ({ index, length, arrayHelpers }) => {
         onClick={() => length > 1 && arrayHelpers.remove(index)}
         disabled={length === 1}
       >
-        x
+        <RemoveIcon width={20} height={20} />
       </button>
     </div>
   );

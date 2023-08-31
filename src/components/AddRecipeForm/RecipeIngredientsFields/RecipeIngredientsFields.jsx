@@ -10,6 +10,7 @@ import { FieldArray } from 'formik';
 import style from './RecipeIngredientsFields.module.scss';
 import { SectionTitle } from '../../Typography/SectionTitle/SectionTitle';
 import { IngredientItem } from '../IngredientItem/IngredientItem';
+import { AddIcon, MinusIcon } from '../../icons';
 
 // ###################################################
 
@@ -50,15 +51,17 @@ export const RecipeIngredientsFields = ({ values }) => {
                 type="button"
                 onClick={() => removeItem(arrayHelpers)}
               >
-                -
+                <MinusIcon width={16} height={16} />
               </button>
+
               <div>{length}</div>
+
               <button
                 className={style.counterButton}
                 type="button"
                 onClick={() => addItem(arrayHelpers)}
               >
-                +
+                <AddIcon width={16} height={16} />
               </button>
             </div>
           </div>
