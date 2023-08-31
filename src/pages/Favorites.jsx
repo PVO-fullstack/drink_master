@@ -1,5 +1,11 @@
-import React from "react";
+import { RecipesList } from "../components";
+import { PageTitle } from "../components/Typography/PageTitle/PageTitle";
 
 export const Favorites = () => {
-  return <div>Favorites</div>;
+  return (
+    <div>
+      <PageTitle>Favorites</PageTitle>
+      <RecipesList type="favorite" />
+    </div>
+  );
 };
