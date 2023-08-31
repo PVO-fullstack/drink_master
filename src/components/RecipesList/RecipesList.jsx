@@ -8,7 +8,10 @@ import {
   selectFavRecipes,
   selectMyRecipes,
 } from "../../redux/cockteil/cockteilsSelectors";
-import { fetchRecipesThunk } from "../../redux/cockteil/cockteilsOperations";
+import {
+  fetchFavRecipesThunk,
+  fetchRecipesThunk,
+} from "../../redux/cockteil/cockteilsOperations";
 import Paginator from "../Paginator/Paginator";
 
 const determineRecipesPerPage = () => {
@@ -28,7 +31,7 @@ export const RecipesList = ({ type }) => {
   const { recipes, totalRecipes } = useSelector(
     type === "own" ? selectMyRecipes : selectFavRecipes
   );
-  /* змінити type на own */
+
   const error = useSelector(selectError);
 
   useEffect(() => {
@@ -37,8 +40,9 @@ export const RecipesList = ({ type }) => {
         fetchRecipesThunk({ type, page: currentPage, limit: recipesPerPage })
       );
     } else if (type === "favorite") {
-      // dispatch();
-      console.log("fav");
+      dispatch(
+        fetchFavRecipesThunk({ type, page: currentPage, limit: recipesPerPage })
+      );
     }
   }, [dispatch, currentPage, recipesPerPage, type]);
 
@@ -51,7 +55,6 @@ export const RecipesList = ({ type }) => {
   const calculateTotalPages = (totalRecipes, recipesPerPage) => {
     return Math.ceil(totalRecipes / recipesPerPage);
   };
-  // const memoizedRecipes = useMemo(() => recipes, [recipes]);
 
   return (
     <>
@@ -64,7 +67,7 @@ export const RecipesList = ({ type }) => {
               <RecipesItem key={recipe._id} recipe={recipe} type={type} />
             ))}
           </ul>
-          {totalRecipes > 9 && (
+          {totalRecipes > 0 && (
             <Paginator
               currentPage={currentPage}
               totalPages={calculateTotalPages(totalRecipes, recipesPerPage)}
@@ -80,4 +83,3 @@ export const RecipesList = ({ type }) => {
 RecipesList.propTypes = {
   type: PropTypes.oneOf(["own", "favorite"]).isRequired,
 };
-/* змінити type на own */
