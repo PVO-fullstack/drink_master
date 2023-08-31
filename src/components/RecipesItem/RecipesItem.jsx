@@ -8,18 +8,10 @@ import {
   deleteRecipeThunk,
   updateFavRecipeThunk,
 } from "../../redux/cockteil/cockteilsOperations";
-import { useState } from "react";
 
 export const RecipesItem = ({ recipe, type }) => {
   const dispatch = useDispatch();
   const { _id, drinkThumb, drink, instructions } = recipe;
-
-  const [isDeleted, setIsDeleted] = useState(false);
-
-  // const deleteRecipe = async () => {
-  //   await dispatch(deleteRecipeThunk({ _id, type }));
-  //   setIsDeleted(true);
-  // };
 
   const deleteRecipe = async () => {
     await dispatch(
@@ -27,12 +19,7 @@ export const RecipesItem = ({ recipe, type }) => {
         ? deleteRecipeThunk({ _id, type })
         : updateFavRecipeThunk({ _id, type })
     );
-    setIsDeleted(true);
   };
-
-  if (isDeleted) {
-    return null;
-  }
 
   return (
     <li className={css.recipes_item}>
@@ -64,7 +51,7 @@ RecipesItem.propTypes = {
     _id: PropTypes.string.isRequired,
     drinkThumb: PropTypes.string.isRequired,
     drink: PropTypes.string.isRequired,
-    instructions: PropTypes.string.isRequired,
+    instructions: PropTypes.array.isRequired,
   }).isRequired,
   type: PropTypes.string.isRequired,
 };

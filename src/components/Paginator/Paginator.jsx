@@ -32,13 +32,6 @@ export const Paginator = ({ currentPage, totalPages, onPageChange }) => {
           </button>
         ))}
       </div>
-
-      <button
-        //   className={page === currentPage ? css.active : ""}
-        onClick={() => onPageChange(totalPages)}
-      >
-        {totalPages}
-      </button>
       <button
         disabled={currentPage === totalPages}
         onClick={() => onPageChange(currentPage + 1)}

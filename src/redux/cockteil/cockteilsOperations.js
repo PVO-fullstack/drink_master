@@ -45,7 +45,8 @@ export const updateFavRecipeThunk = createAsyncThunk(
   "recipes/updateFavRecipe",
   async ({ _id, type }, thunkAPI) => {
     try {
-      return await updateFavRecipe({ _id, type });
+      await updateFavRecipe({ _id, type });
+      return { _id, type };
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
