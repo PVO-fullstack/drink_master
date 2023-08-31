@@ -6,7 +6,7 @@ import { selectIngredients } from '../../../redux/preparation/selectors';
 import PropTypes from 'prop-types';
 
 import style from './IngredientItem.module.scss';
-import { SearchDropdown } from '../../searchDropdown/searchDropdown';
+import { SearchDropdown } from '../SearchDropdown/SearchDropdown';
 
 // ###################################################
 

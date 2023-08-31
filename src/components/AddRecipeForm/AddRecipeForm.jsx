@@ -15,8 +15,6 @@ import { Button } from '../Button/Button';
 
 // ###################################################
 
-// const variant = 'addrecipe';
-
 export const AddRecipeForm = () => {
   //
   // ******************** Handlers *************************
@@ -50,10 +48,10 @@ export const AddRecipeForm = () => {
   return (
     <Formik
       initialValues={initialValues}
-      // validationSchema={yupSchema}
+      validationSchema={yupSchema}
       onSubmit={handleSubmit}
     >
-      {({ values, setFieldValue }) => (
+      {({ values, setFieldValue, isSubmitting }) => (
         <Form className={style.form}>
           <div className={style.wrapper}>
             <RecipeDescriptionFields setFieldValue={setFieldValue} />
@@ -61,7 +59,7 @@ export const AddRecipeForm = () => {
             <RecipePreparationFields />
           </div>
 
-          <Button type="submit" variant="accented">
+          <Button type="submit" variant="accented" disabled={isSubmitting}>
             Add
           </Button>
         </Form>

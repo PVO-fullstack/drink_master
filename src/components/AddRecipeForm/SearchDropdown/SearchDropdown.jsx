@@ -9,8 +9,9 @@ import { makeStyles } from './styles';
 // ###################################################
 
 export const SearchDropdown = (props) => {
-  const { name, label, data } = props;
+  const { name, label, data, hasFakeField = false } = props;
   //
+  // eslint-disable-next-line no-unused-vars
   const [field, meta, helpers] = useField(props);
   const { setValue, setTouched, setError } = helpers;
 
@@ -33,25 +34,35 @@ export const SearchDropdown = (props) => {
 
     menuHeight = number * 14 + number * 8 + 14 * 3;
   } // fontSize + itemsBeforeScroll * gap * vertical padding * 3
-  console.log('menuHeight: ', menuHeight);
+  // console.log('menuHeight: ', menuHeight);
+
+  const capitalizedName =
+    props.name.charAt(0).toUpperCase() + props.name.slice(1);
 
   const styles = makeStyles(props);
 
   return (
-    <div className={style.fieldWrapper}>
-      <Select
-        name={props.name}
-        options={options}
-        styles={styles}
-        onChange={(selectedOption) => setFieldProps(selectedOption)}
-        unstyled
-        maxMenuHeight={menuHeight}
-        {...props}
-      />
+    <div className={style.wrapper}>
+      <div
+        className={hasFakeField ? style.fakeFieldWrapper : style.fieldWrapper}
+      >
+        <Select
+          name={props.name}
+          options={options}
+          styles={styles}
+          onChange={(selectedOption) => setFieldProps(selectedOption)}
+          unstyled
+          maxMenuHeight={menuHeight}
+          {...props}
+        />
 
-      <label htmlFor={label || name} className={style.label}>
-        {label || name}
-      </label>
+        <label
+          htmlFor={label || name}
+          className={hasFakeField ? style.fakeFieldLabel : style.label}
+        >
+          {hasFakeField ? capitalizedName : label || name}
+        </label>
+      </div>
 
       {meta.touched && meta.error ? (
         <div className={style.error}>{meta.error}</div>
@@ -62,4 +73,5 @@ export const SearchDropdown = (props) => {
 
 SearchDropdown.propTypes = {
   label: PropTypes.string,
+  hasFakeField: PropTypes.bool,
 };
