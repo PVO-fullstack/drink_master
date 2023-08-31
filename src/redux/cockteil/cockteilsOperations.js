@@ -1,5 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import instance from "../../shared/api/instance";
+import { deleteRecipeType, fetchRecipesForPage } from "../../services/api";
+// import instance from "../../shared/api/instance";
 
 // const token = {
 //   set(token) {
@@ -7,32 +8,24 @@ import instance from "../../shared/api/instance";
 //   },
 // };
 
-export const fetchMyRecipes = async () => {
-  const { data } = await instance.get("/recipes");
-  return data;
-};
-
-export const fetchFavoriteRecipes = async () => {
-  const { data } = await instance.get("/favorite");
-  return data;
-};
-
-export const fetchMyRecipesThunk = createAsyncThunk(
-  "recipes/fetchMyRecipes",
-  async (_, thunkAPI) => {
+export const fetchRecipesThunk = createAsyncThunk(
+  "recipes/fetchRecipes",
+  async ({ page, limit, type }, thunkAPI) => {
     try {
-      return await fetchMyRecipes();
+      const data = await fetchRecipesForPage({ page, limit, type });
+      return { recipes: data.recipes, totalRecipes: data.totalRecipes, type };
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
 
-export const fetchFavoriteRecipesThunk = createAsyncThunk(
-  "recipes/fetchFavoriteRecipes",
-  async (_, thunkAPI) => {
+export const deleteRecipeThunk = createAsyncThunk(
+  "recipes/deleteRecipe",
+  async ({ _id, type }, thunkAPI) => {
     try {
-      return await fetchFavoriteRecipes();
+      await deleteRecipeType({ _id, type });
+      return { _id, type };
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

@@ -1,5 +1,6 @@
 .recipes_item {
   flex-basis: calc(100% / 3 - 20px);
+  height: 676px;
 }
 
 .recipes_item__img {
@@ -9,7 +10,6 @@
 
   border-radius: 8px;
   border: 1px solid #000;
-  // background: linear-gradient(180deg, rgba(10, 10, 17, 0.02) 2.37%, rgba(10, 10, 17, 0.77) 95.31%), url(<path-to-image>), lightgray 50% / cover no-repeat;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
@@ -24,7 +24,7 @@
 
 .recipes_item__description {
   width: 400px;
-  height: 96px;
+  // height: 96px;
   margin-bottom: 24px;
   color: #f3f3f3;
   display: -webkit-box;

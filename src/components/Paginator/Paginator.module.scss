@@ -1,0 +1,24 @@
+.button {
+  display: inline-block;
+  width: 14px;
+  height: 16px;
+  flex-direction: column;
+  justify-content: flex-end;
+
+  text-align: center;
+  font-feature-settings: "ss04" on;
+  font-family: Manrope;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.button__wrapper {
+  display: flex;
+  width: 436px;
+  padding: 14px 24px;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+}
