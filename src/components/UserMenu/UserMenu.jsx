@@ -10,7 +10,7 @@ const UserMenu = () => {
   const { name, avatarURL } = useSelector(selectUser);
   const [showModal, setShowModal] = useState(false);
 
-  const closeModal = (data) => setShowModal(data);
+  const closeModal = () => setShowModal(false);
 
   return (
     <div className={css.userMenu} onClick={() => setShowModal(true)}>
@@ -27,7 +27,7 @@ const UserMenu = () => {
       )}
 
       <p className={css.userMenuName}>{name ? name : "Name"}</p>
-      {showModal ? <Modal close={closeModal} /> : ""}
+      {showModal ? <UserLogoModal closeUserMenu={closeModal} /> : ""}
     </div>
   );
 };
