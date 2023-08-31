@@ -13,6 +13,7 @@ import { Login } from "./pages/AuthPages/Login";
 import { PrivatRoute } from "./components/Routes/PrivatRoute";
 import { useSelector } from "react-redux";
 import { selectIsRefresh } from "./redux/auth/authSelectors";
+import { Recipe } from "./pages/Recipe";
 
 export const UserRoutes = () => {
   const isRefresh = useSelector(selectIsRefresh);
@@ -31,25 +32,26 @@ export const UserRoutes = () => {
             element={<PrivatRoute redirectTo="/welcome" component={<Home />} />}
           />
           <Route
-            path="/drinks"
+            path="drinks"
             element={
               <PrivatRoute redirectTo="/welcome" component={<Drinks />} />
             }
           />
           <Route
-            path="/addrecipe"
+            path="addrecipe"
             element={
               <PrivatRoute redirectTo="/welcome" component={<AddRecipe />} />
             }
           />
           <Route
-            path="/myrecipes"
+            path="myrecipes"
             element={
               <PrivatRoute redirectTo="/welcome" component={<MyRecipes />} />
             }
           />
+          <Route path="myrecipes/:recipesId" element={<Recipe />} />
           <Route
-            path="/favorites"
+            path="favorites"
             element={
               <PrivatRoute redirectTo="/welcome" component={<Favorites />} />
             }
