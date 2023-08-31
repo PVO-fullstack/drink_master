@@ -4,18 +4,29 @@ import { useSelector } from "react-redux";
 import { selectUser } from "../../redux/auth/authSelectors";
 import addPhoto from "/images/SVG/add_photo.svg";
 import { Field, Form, Formik } from "formik";
+import { Modal } from "../Modal/Modal";
+import { useEffect } from "react";
 
-export const UserInfoModal = ({ close }) => {
+export const UserInfoModal = ({ close, closeUser, isEdit }) => {
   const { name, avatarURL } = useSelector(selectUser);
 
-  console.log("user", close);
+  // console.log("user", close);
+
+  // useEffect(() => {
+  //   console.log("first");
+
+  //   return () => {
+  //     console.log("edit", isEdit);
+  //     // closeUser();
+  //   };
+  // }, [isEdit]);
 
   const handleCloseModal = () => {
     close();
   };
 
   return (
-    <>
+    <Modal>
       <img
         onClick={handleCloseModal}
         className={style.closeModal}
@@ -62,6 +73,6 @@ export const UserInfoModal = ({ close }) => {
           );
         }}
       </Formik>
-    </>
+    </Modal>
   );
 };

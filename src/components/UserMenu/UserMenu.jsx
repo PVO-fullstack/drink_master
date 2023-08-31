@@ -4,6 +4,7 @@ import { selectUser } from "../../redux/auth/authSelectors";
 import UserDefaultSVG from "../ComponentsSVG/UserDefaultSVG";
 import { UserLogoModal } from "../UserLogoModal/UserLogoModal";
 import { useState } from "react";
+import { Modal } from "../Modal/Modal";
 
 const UserMenu = () => {
   const { name, avatarURL } = useSelector(selectUser);
@@ -26,7 +27,7 @@ const UserMenu = () => {
       )}
 
       <p className={css.userMenuName}>{name ? name : "Name"}</p>
-      {showModal && <UserLogoModal close={closeModal} />}
+      {showModal ? <UserLogoModal closeUserMenu={closeModal} /> : ""}
     </div>
   );
 };
