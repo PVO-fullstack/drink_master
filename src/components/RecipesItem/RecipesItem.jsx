@@ -2,9 +2,11 @@ import { SectionTitle } from "../Typography/SectionTitle/SectionTitle";
 import PropTypes from "prop-types";
 import css from "./RecipesItem.module.scss";
 import cssButton from "../Button/Button.module.scss";
+import { NavLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { deleteRecipeThunk } from "../../redux/cockteil/cockteilsOperations";
 import { useState } from "react";
+
 
 export const RecipesItem = ({ recipe, type }) => {
   const dispatch = useDispatch();
@@ -20,6 +22,7 @@ export const RecipesItem = ({ recipe, type }) => {
     return null;
   }
 
+
   return (
     <li className={css.recipes_item}>
       <img className={css.recipes_item__img} src={drinkThumb} alt="Coctail" />
@@ -27,10 +30,14 @@ export const RecipesItem = ({ recipe, type }) => {
         <SectionTitle>{drink}</SectionTitle>
         <p className={css.recipes_item__ingredients}>Ingredients</p>
         <p className={css.recipes_item__description}>{instructions}</p>
-        <a className={`${cssButton.button} ${css.recipes_item__button}`}>
+
+        <NavLink
+          className={`${cssButton.button} ${css.recipes_item__button}`}
+          to={`${_id}`}
+        >
           See recipe
-        </a>
-        <button
+        </NavLink>
+       <button
           onClick={() => dispatch(deleteRecipe)}
           className={`${cssButton.button} ${cssButton.icon}`}
         >
