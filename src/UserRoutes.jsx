@@ -12,6 +12,7 @@ import { Login } from "./pages/AuthPages/Login";
 import { PrivatRoute } from "./components/Routes/PrivatRoute";
 import { useSelector } from "react-redux";
 import { selectIsRefresh } from "./redux/auth/authSelectors";
+import { Recipe } from "./pages/Recipe";
 
 export const UserRoutes = () => {
   const isRefresh = useSelector(selectIsRefresh);
@@ -47,6 +48,7 @@ export const UserRoutes = () => {
               <PrivatRoute redirectTo="/welcome" component={<MyRecipes />} />
             }
           />
+          <Route path="myrecipes/:recipesId" element={<Recipe />} />
           <Route
             path="favorites"
             element={
