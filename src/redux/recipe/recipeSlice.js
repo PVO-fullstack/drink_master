@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { fetchRecipIdThunk } from "./recipeOperations";
 
 const initialState = {
-  recipeId: {},
+  recipeId: { drink: null, glass: null, ingredients: []},
   error: null,
 };
 
@@ -13,7 +13,7 @@ export const recipeSlice = createSlice({
     extraReducers: (builder) =>
         builder
             .addCase(fetchRecipIdThunk.fulfilled, (state, {payload}) => {
-                state.recipeId = payload.recipeById;
+                state.recipeId = payload;
                 state.error = null;
             })
 }
@@ -21,3 +21,6 @@ export const recipeSlice = createSlice({
 )
 console.log(recipeSlice);
 export default recipeSlice.reducer;
+
+
+
