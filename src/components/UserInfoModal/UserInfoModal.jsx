@@ -5,13 +5,13 @@ import { selectUser } from "../../redux/auth/authSelectors";
 import addPhoto from "/images/SVG/add_photo.svg";
 import { Field, Form, Formik } from "formik";
 
-export const UserInfoModal = ({ close }) => {
+export const UserInfoModal = ({ closeModal }) => {
   const { name, avatarURL } = useSelector(selectUser);
 
   console.log("user", close);
 
   const handleCloseModal = () => {
-    close();
+    closeModal();
   };
 
   return (
