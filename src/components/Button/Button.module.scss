@@ -1,4 +1,4 @@
-@import '../../styles/variables';
+@import "../../styles/variables";
 
 .button {
   padding: 14px 40px;
@@ -103,4 +103,25 @@
 .button.icon {
   border-radius: 50%;
   padding: 15px;
+}
+
+.heroBtn {
+  margin-top: 32px;
+  margin-bottom: 358px;
+  @media screen and (min-width: $tablet) {
+    margin-top: 40px;
+    margin-bottom: 379px;
+  }
+  @media screen and (min-width: $desktop) {
+    margin-bottom: 236px;
+  }
+}
+
+.otherDrinksBtn {
+  margin-top: 60px;
+  margin-bottom: 80px;
+  @media screen and (min-width: $tablet) {
+    margin-top: 80px;
+    margin-bottom: 140px;
+  }
 }
