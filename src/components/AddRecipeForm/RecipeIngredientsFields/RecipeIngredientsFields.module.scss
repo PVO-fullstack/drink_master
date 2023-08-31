@@ -39,7 +39,7 @@
   border: none;
   color: $accent;
 
-  &::disabled {
+  &:disabled {
     color: rgba($accent, 0.3);
   }
 }

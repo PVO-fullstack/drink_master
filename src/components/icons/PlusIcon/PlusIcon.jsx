@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 // ###################################################
 
-export const MinusIcon = ({ width, height }) => {
+export const PlusIcon = ({ width, height }) => {
   return (
     <svg
       width={width}
@@ -14,12 +14,19 @@ export const MinusIcon = ({ width, height }) => {
       xmlns="http://www.w3.org/2000/svg"
       style={{ stroke: 'currentcolor' }}
     >
-      <g id="Minus">
+      <g id="Plus">
         <path
           id="Vector"
           d="M2.5 8H13.5"
-          // stroke="#F3F3F3"
-          // strokeOpacity="0.3"
+          //   stroke="#F3F3F3"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          id="Vector_2"
+          d="M8 2.5V13.5"
+          //   stroke="#F3F3F3"
           strokeWidth="1.5"
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -29,7 +36,7 @@ export const MinusIcon = ({ width, height }) => {
   );
 };
 
-MinusIcon.propTypes = {
+PlusIcon.propTypes = {
   width: PropTypes.number,
   height: PropTypes.number,
 };

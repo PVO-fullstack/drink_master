@@ -22,7 +22,7 @@ export const IngredientItem = ({ index, length, arrayHelpers }) => {
           name={`ingredients.${index}.title`}
           data={ingredients}
           style={{ control: { padding: '14px 24px' } }}
-          placeholder="Ingredient"
+          placeholder="Ingredient name"
           itemsBeforeScroll={6}
         />
 
