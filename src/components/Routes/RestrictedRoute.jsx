@@ -9,7 +9,7 @@ import {
 export const RestrictedRoute = ({ component: Component, redirectTo = "/" }) => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const isRefresh = useSelector(selectIsRefresh);
-  const userIn = isLoggedIn && !isRefresh;
+  const userIn = isLoggedIn;
   return userIn ? <Navigate to={redirectTo} /> : Component;
 };
 
