@@ -69,3 +69,15 @@ export const logOutUser = createAsyncThunk(
     }
   }
 );
+
+export const subscribeUser = createAsyncThunk(
+  "user/subscribe",
+  async (credentials, thunkAPI) => {
+    try {
+      const emailAdd = await instance.post("/subscribe", credentials);
+      return emailAdd.data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
+    }
+  }
+);
