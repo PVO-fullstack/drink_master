@@ -21,9 +21,9 @@ export const RecipePageHero = () => {
     useEffect(() => {
         dispatch(fetchRecipIdThunk(recipeId));
     }, [dispatch])
-        console.log(recipe.drinkThumb);
-    console.log(recipe.instructions);
-    console.log(recipe.isFavorite);
+    //     console.log(recipe.drinkThumb);
+    // console.log(recipe.instructions);
+    // console.log(recipe.isFavorite);
     return (
         <div className={css.page}>
             <p className={css.glass}>{recipe.glass}</p>

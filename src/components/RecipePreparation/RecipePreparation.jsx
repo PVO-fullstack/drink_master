@@ -26,6 +26,6 @@ export const RecipePreparation = ({instructions}) => {
 
 }
 
-RecipeInngredientsList.PropTypes = {
+RecipePreparation.PropTypes = {
     instructions: PropTypes.array.isRequired
 }
