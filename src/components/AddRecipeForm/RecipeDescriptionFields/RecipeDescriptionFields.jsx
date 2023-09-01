@@ -16,13 +16,10 @@ import style from './RecipeDescriptionFields.module.scss';
 
 export const RecipeDescriptionFields = ({ setFieldValue }) => {
   //
-  // ****************** Global State ********************
   const { categories, glasses } = useSelector(selectPreparation);
 
-  // ****************** Component State ********************
   const [objectURL, setObjectURL] = useState(null);
 
-  // ******************** Lifecycle ************************
   const dispatch = useDispatch();
 
   useEffect(() => {

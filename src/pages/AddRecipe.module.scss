@@ -1,0 +1,25 @@
+@import '../styles/variables';
+
+.tierOne {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+
+  @media screen and (min-width: $desktop) {
+    flex-direction: row;
+    // justify-content: space-between;
+  }
+}
+
+.tierTwo {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+
+  @media screen and (min-width: $tablet) {
+    gap: 80px;
+  }
+
+  @media screen and (min-width: $desktop) {
+  }
+}

@@ -7,6 +7,11 @@ export const fetchRecipes = async () => {
   return data;
 };
 
+export const fetchPopularRecipes = async () => {
+  const { data } = await instance.get('/popular-recipes');
+  return data;
+};
+
 export const addRecipe = async (recipe) => {
   const { data } = await instance.post('/own', recipe);
   return data;

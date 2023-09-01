@@ -1,0 +1,40 @@
+@import '../../../styles/variables';
+
+.card {
+  display: flex;
+  gap: 14px;
+}
+
+.thumb {
+  width: 90px;
+  height: 90px;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.image {
+}
+
+.meta {
+  color: $accent;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.title {
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 137.5%;
+}
+
+.text {
+  color: rgba($accent, 0.5);
+
+  font-size: 14px;
+  line-height: 20px; /* 142.857% */
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

@@ -47,3 +47,14 @@ const addRecipePayload = payloadCreator(api.addRecipe);
 
 // Operation
 export const addRecipe = createAsyncThunk('own', addRecipePayload);
+
+// --------------* AddRecipe *----------------------------
+
+// Payload
+const fetchPopularRecipesPayload = payloadCreator(api.fetchPopularRecipes);
+
+// Operation
+export const fetchPopularRecipes = createAsyncThunk(
+  'popular-recipes',
+  fetchPopularRecipesPayload
+);
