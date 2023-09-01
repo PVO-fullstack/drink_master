@@ -32,7 +32,7 @@ export const RecipeIngredientsFields = ({ values }) => {
       render={(arrayHelpers) => (
         <div className={style.container}>
           {/*  */}
-          <div className={style.headingAndButtonsWrapper}>
+          <div className={style.titleAndCounter}>
             <SectionTitle>Ingredients</SectionTitle>
 
             <Counter length={length} arrayHelpers={arrayHelpers} />

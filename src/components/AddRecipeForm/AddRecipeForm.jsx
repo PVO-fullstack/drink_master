@@ -32,16 +32,17 @@ export const AddRecipeForm = () => {
     return normalizedString.split('\n').filter((el) => el.trim());
   };
 
-  const handleSubmit = (values, { resetForm }) => {
+  const handleSubmit = async (values, { resetForm }) => {
     toast.success(`Submitting`);
 
-    if (typeof values.instructions === 'string') {
-      values.instructions = convertTextAreaToArray(values.instructions);
-    }
-    let formData = new FormData();
-    for (const key in values) {
-      formData.append(key, values[key]);
-    }
+    // if (typeof values.instructions === 'string') {
+    //   values.instructions = convertTextAreaToArray(values.instructions);
+    // }
+    // let formData = new FormData();
+    // for (const key in values) {
+    //   formData.append(key, values[key]);
+    // }
+
     // console.log('formData: ', formData);
     // alert(JSON.stringify(values, null, 2));
 
@@ -57,9 +58,9 @@ export const AddRecipeForm = () => {
     // If onSubmit is async, then Formik will automatically set isSubmitting to false on your behalf once it has resolved
     // resetForm();
 
-    dispatch(addRecipe(formData))
-      .then(toast.success(`Recipe has been added`))
-      .catch((error) => toast.error(error.message));
+    // await dispatch(addRecipe(values))
+    //   .then(toast.success(`Recipe has been added`))
+    //   .catch((error) => toast.error(error.message));
 
     // setSubmitting(false);
     // If onSubmit is async, then Formik will automatically set isSubmitting to false on your behalf once it has resolved
