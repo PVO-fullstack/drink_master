@@ -4,16 +4,27 @@ import { selectUser } from "../../redux/auth/authSelectors";
 import UserDefaultSVG from "../ComponentsSVG/UserDefaultSVG";
 import { UserLogoModal } from "../UserLogoModal/UserLogoModal";
 import { useState } from "react";
-import { Modal } from "../Modal/Modal";
+import { UserInfoModal } from "../UserInfoModal/UserInfoModal";
 
 const UserMenu = () => {
   const { name, avatarURL } = useSelector(selectUser);
-  const [showModal, setShowModal] = useState(false);
+  const [showLogoModal, setShowLogoModal] = useState(false);
+  const [showUserInfoModal, setShowUserInfoModal] = useState(false);
 
-  const closeModal = () => setShowModal(false);
+  const handleShowUserInfo = () => {
+    setShowUserInfoModal(true);
+  };
+
+  const handleCloseLogoModal = () => {
+    setShowLogoModal(false);
+  };
+
+  const handleCloseUserInfoModal = () => {
+    setShowUserInfoModal(false);
+  };
 
   return (
-    <div className={css.userMenu} onClick={() => setShowModal(true)}>
+    <div className={css.userMenu} onClick={() => setShowLogoModal(true)}>
       {avatarURL ? (
         <img
           src={avatarURL}
@@ -27,7 +38,19 @@ const UserMenu = () => {
       )}
 
       <p className={css.userMenuName}>{name ? name : "Name"}</p>
-      {showModal ? <UserLogoModal closeUserMenu={closeModal} /> : ""}
+
+      {showLogoModal && (
+        <UserLogoModal
+          close={handleCloseLogoModal}
+          showUserInfo={handleShowUserInfo}
+        />
+      )}
+      {showUserInfoModal && (
+        <UserInfoModal
+          closeModal={handleCloseUserInfoModal}
+          close={handleCloseLogoModal}
+        />
+      )}
     </div>
   );
 };
