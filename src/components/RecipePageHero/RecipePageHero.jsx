@@ -1,5 +1,5 @@
 import React, { useEffect} from "react";
-// import css from "./RecipePageHero.module.scss";
+import css from "./RecipePageHero.module.scss";
 import { PageTitle, Button } from "../index.js";
 import { RecipeInngredientsList, RecipePreparation } from "../index.js";
 import { useDispatch, useSelector } from "react-redux";
@@ -10,7 +10,7 @@ import { fetchRecipIdThunk } from "../../redux/recipe/recipeOperations.js";
 export const RecipePageHero = () => {
     const dispatch = useDispatch();
     const recipe = useSelector(selectRecipe);
-    // console.log(recipe);
+    console.log(recipe);
    
     
     const currentURL = window.location.href;
@@ -24,13 +24,19 @@ export const RecipePageHero = () => {
      
         console.log(recipe.ingredients);
     return (
-        <div>
-            <p>{recipe.glass}</p>
-            <PageTitle>{recipe.drink}</PageTitle>
-            <p>{recipe.description}</p>
-            <Button>Add to favorite recipe</Button>
-            <img src={recipe.drinkThumb} alt={recipe.drink} />
-             <RecipeInngredientsList ingredients={ recipe.ingredients} />
+        <div className={css.page}>
+            <p className={css.glass}>{recipe.glass}</p>
+            <div className={css.recipe_page}>
+                
+                <div className={css.recipe}>
+                    <PageTitle className={css.heading}>{recipe.drink}</PageTitle>
+                    {recipe.description !== '' && (<p className={css.descrip}>{recipe.description}</p>)}
+                    <button className={css.recipe_btn} type="button">Add to favorite recipe</button>
+                    {/* <Button className={css.btn_recipe}>Add to favorite recipe</Button> */}
+                </div>
+                <img className={css.img} src={recipe.drinkThumb} alt={recipe.drink} />
+            </div>
+            <RecipeInngredientsList ingredients={ recipe.ingredients} />
             <RecipePreparation instructions={ recipe.instructions} />
         </div>
         
@@ -38,8 +44,4 @@ export const RecipePageHero = () => {
 
 };
 
- // const [searchParams, setSearchParams] = useSearchParams();
-    // const recipeId = searchParams.get('recipesId') ?? '';
-    // const params = useParams(); 
-    // const recipeId = params._id;
-    // console.log(recipeId)
+

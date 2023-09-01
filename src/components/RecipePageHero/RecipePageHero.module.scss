@@ -1,0 +1,69 @@
+@import "../../styles/variables";
+
+
+.page {
+    
+    padding: $container-padding;
+    padding-top: 132px;
+    padding-top: 140px;
+}
+
+.recipe_page {
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+
+.glass {
+    margin-bottom: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.25;
+
+    color: $accent-faded-50;
+
+}
+
+.descrip {
+        margin-bottom: 40px;
+        width: 593px;
+        font-size: 16px;
+        line-height: 1.38;
+        
+        color: $accent;
+
+}
+
+.recipe_btn {
+    margin-top: 40px;
+    padding: 14px 40px;
+    
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.13;
+
+    color: $dark-blue;
+    background-color: $accent;
+    border: 0px;
+    border-radius: $button-radius;
+
+    &:hover,
+    &:focus {
+            color: $accent ;
+            background-color: $dark-blue;
+        }
+
+    &:active {
+        background-color: $dark-blue;
+    }
+
+    &:disabled {
+        color: $accent-faded-20;
+        background-color: $slate-blue;
+    }
+}
+.img {
+    width: 400px;
+    height: 400px;
+}
