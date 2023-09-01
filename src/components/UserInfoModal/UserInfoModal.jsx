@@ -7,33 +7,32 @@ import { Field, Form, Formik } from "formik";
 import { Modal } from "../Modal/Modal";
 import { useEffect } from "react";
 
-export const UserInfoModal = ({ close, closeUser, isEdit }) => {
+export const UserInfoModal = ({ close, closeModal }) => {
   const { name, avatarURL } = useSelector(selectUser);
 
-  // console.log("user", close);
-
-  // useEffect(() => {
-  //   console.log("first");
-
-  //   return () => {
-  //     console.log("edit", isEdit);
-  //     // closeUser();
-  //   };
-  // }, [isEdit]);
-
-  const handleCloseModal = () => {
-    close();
+  const closeInfo = () => {
+    closeModal();
   };
+
+  const handleChangeAvatar = () => {
+    console.log("first");
+  };
+
+  useEffect(() => {
+    close();
+    return () => close();
+  }, [close]);
 
   return (
     <Modal>
       <img
-        onClick={handleCloseModal}
+        onClick={closeInfo}
         className={style.closeModal}
         src={closeSVG}
         alt="close"
       />
-      <div className={style.avatarConteiner}>
+
+      <div onClick={handleChangeAvatar} className={style.avatarConteiner}>
         <img
           className={style.avatar}
           src={avatarURL}
@@ -56,6 +55,15 @@ export const UserInfoModal = ({ close, closeUser, isEdit }) => {
           const { isValid, dirty } = formik;
           return (
             <Form className={style.form}>
+              <label className={style.img}>
+                <input
+                  type="file"
+                  name="avatar"
+                  // onChange={(event) => {
+                  //   setFieldValue("avatar", event.currentTarget.files[0]);
+                  // }}
+                />
+              </label>
               <Field
                 className={style.field}
                 type="text"
@@ -63,9 +71,10 @@ export const UserInfoModal = ({ close, closeUser, isEdit }) => {
                 placeholder="Name"
               />
               <button
-                disabled={!(dirty && isValid)}
+                // disabled={!(dirty && isValid)}
                 className={style.btn}
                 type="submit"
+                onClick={() => logOut()}
               >
                 Sign In
               </button>
