@@ -57,9 +57,9 @@
     padding-right: 18px;
 }
 
-.avatarConteiner {
-    position: relative;
-}
+// .avatarConteiner {
+//     position: relative;
+// }
 
 .avatar {
     margin-left: auto;
@@ -77,18 +77,44 @@
 .form {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    margin-top: 60px;
 }
 
 .field {
-    margin-bottom: 14px;
+    width: 400px;
     padding: 14px 0 15px 24px;
     border-radius: 200px;
     border: 1px solid rgba(243, 243, 243, 0.20);
     opacity: 0.8;
     color: #F3F3F3;
+    font-size: 17px;
     font-weight: 400;
     background-color: inherit;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+input.img {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+
+    //     &::-webkit-file-upload-button {
+    //         width: 100px;
+    //         height: 100px;
+    //         padding: 14px 0 15px 24px;
+    //         border-radius: 200px;
+    //         border: 1px solid rgba(243, 243, 243, 0.20);
+    //         opacity: 0.8;
+    //         color: #F3F3F3;
+    //         font-size: 17px;
+    //         font-weight: 400;
+    //         background: inherit;
+    //     }
 }
 
 .btn {

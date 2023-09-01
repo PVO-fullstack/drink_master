@@ -1,0 +1,10 @@
+@import "../../../styles/variables";
+
+.heroTitle {
+  color: $accent;
+  font-size: $page-title;
+  font-weight: $bold;
+  line-height: $line-height-hero-title;
+  width: $width-hero-title;
+  padding-top: $pudding-top-hero-title;
+}

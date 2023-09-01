@@ -4,24 +4,35 @@ import css from "./RecipesItem.module.scss";
 import cssButton from "../Button/Button.module.scss";
 import { NavLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { deleteRecipeThunk } from "../../redux/cockteil/cockteilsOperations";
-import { useState } from "react";
+import {
+  deleteRecipeThunk,
+  fetchFavRecipesThunk,
+  fetchRecipesThunk,
+  updateFavRecipeThunk,
+} from "../../redux/cockteil/cockteilsOperations";
 
-
-export const RecipesItem = ({ recipe, type }) => {
+export const RecipesItem = ({
+  recipe,
+  type,
+  page,
+  limit,
+  totalPages,
+  recipes,
+}) => {
   const dispatch = useDispatch();
   const { _id, drinkThumb, drink, instructions } = recipe;
 
-  const [isDeleted, setIsDeleted] = useState(false);
-
   const deleteRecipe = async () => {
-    await dispatch(deleteRecipeThunk({ _id, type }));
-    setIsDeleted(true);
+    let newPage = page;
+    if (totalPages > 1 && newPage === totalPages && recipes === 1) newPage -= 1;
+    if (type === "own") {
+      await dispatch(deleteRecipeThunk({ _id, type }));
+      await dispatch(fetchRecipesThunk({ type, page: newPage, limit }));
+    } else if (type === "favorite") {
+      await dispatch(updateFavRecipeThunk({ _id, type }));
+      await dispatch(fetchFavRecipesThunk({ type, page: newPage, limit }));
+    }
   };
-  if (isDeleted) {
-    return null;
-  }
-
 
   return (
     <li className={css.recipes_item}>
@@ -37,7 +48,7 @@ export const RecipesItem = ({ recipe, type }) => {
         >
           See recipe
         </NavLink>
-       <button
+        <button
           onClick={() => dispatch(deleteRecipe)}
           className={`${cssButton.button} ${cssButton.icon}`}
         >
@@ -53,7 +64,11 @@ RecipesItem.propTypes = {
     _id: PropTypes.string.isRequired,
     drinkThumb: PropTypes.string.isRequired,
     drink: PropTypes.string.isRequired,
-    instructions: PropTypes.string.isRequired,
+    instructions: PropTypes.array.isRequired,
   }).isRequired,
-  type: PropTypes.string.isRequired,
+  type: PropTypes.oneOf(["own", "favorite"]).isRequired,
+  page: PropTypes.number.isRequired,
+  limit: PropTypes.number.isRequired,
+  totalPages: PropTypes.number.isRequired,
+  recipes: PropTypes.number.isRequired,
 };

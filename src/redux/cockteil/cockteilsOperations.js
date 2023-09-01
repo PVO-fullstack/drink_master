@@ -1,15 +1,24 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { deleteRecipeType, fetchRecipesForPage } from "../../services/api";
-// import instance from "../../shared/api/instance";
-
-// const token = {
-//   set(token) {
-//     instance.defaults.headers.common.Authorization = `Bearer ${token}`;
-//   },
-// };
+import {
+  deleteRecipeType,
+  fetchRecipesForPage,
+  updateFavRecipe,
+} from "../../services/api";
 
 export const fetchRecipesThunk = createAsyncThunk(
   "recipes/fetchRecipes",
+  async ({ page, limit, type }, thunkAPI) => {
+    try {
+      const data = await fetchRecipesForPage({ page, limit, type });
+      return { recipes: data.recipes, totalRecipes: data.totalRecipes, type };
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const fetchFavRecipesThunk = createAsyncThunk(
+  "recipes/fetchFavRecipes",
   async ({ page, limit, type }, thunkAPI) => {
     try {
       const data = await fetchRecipesForPage({ page, limit, type });
@@ -25,6 +34,18 @@ export const deleteRecipeThunk = createAsyncThunk(
   async ({ _id, type }, thunkAPI) => {
     try {
       await deleteRecipeType({ _id, type });
+      return { _id, type };
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const updateFavRecipeThunk = createAsyncThunk(
+  "recipes/updateFavRecipe",
+  async ({ _id, type }, thunkAPI) => {
+    try {
+      await updateFavRecipe({ _id, type });
       return { _id, type };
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

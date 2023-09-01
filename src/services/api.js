@@ -27,6 +27,11 @@ export const deleteRecipeType = async ({ _id, type }) => {
   return data;
 };
 
+export const updateFavRecipe = async ({ _id, type }) => {
+  const { data } = await instance.patch(`/${type}/${_id}`);
+  return data;
+};
+
 // ############### Preparation #######################
 
 export const fetchIngredients = async () => {

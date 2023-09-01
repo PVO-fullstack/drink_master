@@ -56,6 +56,22 @@ $sub-title: var(--sub-title);
 $paragraph: var(--paragraph);
 $input-placeholder: var(--input-placeholder);
 
+// image size
+:root {
+  --img-width: 335px;
+  --img-height: 360px;
+  @media screen and (min-width: $tablet) {
+    --img-width: 342px;
+  }
+  @media screen and (min-width: $desktop) {
+    --img-width: 400px;
+    --img-height: 400px;
+  }
+}
+
+$img-width: var(--img-width);
+$img-height: var(--img-height);
+
 // Container padding
 :root {
   --container-padding: 20px;
@@ -73,3 +89,44 @@ $container-padding: var(--container-padding);
 // Transitions (standard)
 $transition-duration: 200ms;
 $transition-timing-function: ease-out;
+
+// HeroTitle
+:root {
+  --line-height-hero-title: 1.19;
+  --width-hero-title: 279px;
+  --pudding-top-hero-title: 128px;
+  @media screen and (min-width: $tablet) {
+    --line-height-hero-title: 1.07;
+    --width-hero-title: 483px;
+    --pudding-top-hero-title: 184px;
+  }
+  @media screen and (min-width: $desktop) {
+    --line-height-hero-title: 1.06;
+    --width-hero-title: 715px;
+    --pudding-top-hero-title: 160px;
+  }
+}
+
+$line-height-hero-title: var(--line-height-hero-title);
+$width-hero-title: var(--width-hero-title);
+$pudding-top-hero-title: var(--pudding-top-hero-title);
+
+// HeroInfo
+:root {
+  --line-height-hero-info: 1.43;
+  --width-hero-info: 266px;
+  --pudding-top-hero-info: 16px;
+  @media screen and (min-width: $tablet) {
+    --line-height-hero-info: 1.33;
+    --width-hero-info: 400px;
+    --pudding-top-hero-info: 28px;
+  }
+  @media screen and (min-width: $desktop) {
+    --width-hero-info: 500px;
+    --pudding-top-hero-info: 40px;
+  }
+}
+
+$line-height-hero-info: var(--line-height-hero-info);
+$width-hero-info: var(--width-hero-info);
+$pudding-top-hero-info: var(--pudding-top-hero-info);
