@@ -1,0 +1,162 @@
+.modal {
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.8);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: 0.5s;
+    pointer-events: none;
+    z-index: 20;
+    transition: all 300ms ease-in-out;
+
+
+}
+
+.modalActive {
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.8);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+    /* transition: 0.5s; */
+    z-index: 100000000;
+    transition: all 300ms ease-in-out;
+
+}
+
+.modal__content {
+    padding: 50px 50px 70px 50px;
+    border-radius: 12px;
+    background-color: #161F37;
+    /* max-height: 426px; */
+    max-width: 500px;
+    position: relative;
+    overflow: hidden;
+    transform: scale(0.5);
+    transition: all 200ms ease-in-out;
+}
+
+.modal__contentActive {
+    padding: 50px 50px 70px 50px;
+    border-radius: 12px;
+    background-color: #161F37;
+    /* max-height: 426px; */
+    max-width: 500px;
+    position: relative;
+    overflow: hidden;
+    transform: scale(1);
+    transition: all 200ms ease-in-out;
+}
+
+.closeBtn {
+    width: 32px;
+    height: 32px;
+    color: #F3F3F3;
+    position: absolute;
+    right: 18px;
+    top: 18px;
+    cursor: pointer;
+}
+
+.modal__content__colorEffect1 {
+    background-color: rgba(188, 230, 210, 0.3);
+    height: 306px;
+    width: 283px;
+    position: absolute;
+    top: -153px;
+    left: -84px;
+    border-radius: 50%;
+    filter: blur(6.5rem);
+}
+
+.modal__content__colorEffect2 {
+    background-color: rgba(64, 112, 205, 0.4);
+    height: 358px;
+    width: 362px;
+    position: absolute;
+    top: 258px;
+    left: 367px;
+    border-radius: 50%;
+    filter: blur(3.5rem);
+}
+
+.loginContainer {
+    height: 301px;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.avatarContainer {
+    position: relative;
+    padding: 0;
+    margin: 0;
+
+}
+
+.avatar {
+    height: 100px;
+    width: 100px;
+    background: #F3F3F3;
+    border-radius: 50%;
+    margin-bottom: 66px;
+    position: relative;
+    background: rgb(24, 31, 53)
+}
+
+.addAvatar {
+    height: 32px;
+    width: 32px;
+    position: absolute;
+    background-color: rgba(84, 96, 129, 1);
+    border-radius: 50%;
+    bottom: -16px;
+    left: 34px;
+    color: white;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    justify-content: center;
+    font-size: 30px;
+    padding: 0;
+    margin: 0;
+    border: none;
+}
+
+.addAvatarIcon {
+    width: 20px;
+    height: 20px;
+}
+
+.input {
+    height: 56px;
+    width: 400px;
+    border: 1px solid rgba(243, 243, 243, 0.5);
+    background-color: inherit;
+    border-radius: 200px;
+    color: white;
+    margin-bottom: 25px;
+    box-sizing: border-box;
+    padding: 14px 24px;
+}
+
+.loginBtn {
+    height: 56px;
+    width: 400px;
+    border: 1px solid rgba(243, 243, 243, 0.5);
+    background-color: rgba(243, 243, 243, 1);
+    border-radius: 200px;
+    color: black;
+    cursor: pointer
+}

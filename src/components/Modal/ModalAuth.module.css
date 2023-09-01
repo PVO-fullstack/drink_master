@@ -1,0 +1,53 @@
+.modalAuthContainer {
+    box-sizing: border-box;
+    padding: 18px;
+    width: 177px;
+    height: 134px;
+    background-color: #161f37;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+    top: 85px;
+    right: 85px;
+    z-index: 15;
+    border-radius: 8px;
+
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+.visible {
+    opacity: 1;
+}
+
+.editProfileLink {
+    width: 141px;
+    height: 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 38px;
+    cursor: pointer;
+}
+
+.editProfileLink_text {
+    font-size: 14px;
+    color: #f3f3f3;
+}
+
+.editProfileLink_icon {
+    width: 12px;
+    height: 12px;
+}
+
+.logoutBtn {
+    width: 141px;
+    height: 42px;
+    border: none;
+    border-radius: 42px;
+    background-color: #f3f3f3;
+    color: #161f37;
+    cursor: pointer;
+}
