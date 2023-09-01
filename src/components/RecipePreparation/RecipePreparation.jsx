@@ -1,7 +1,6 @@
 import React from "react";
+import PropTypes from "prop-types";
 import css from "./RecipePreparation.module.scss"
-
-
 
 export const RecipePreparation = ({instructions}) => {
 
@@ -25,4 +24,8 @@ export const RecipePreparation = ({instructions}) => {
         
     )
 
+}
+
+RecipeInngredientsList.PropTypes = {
+    instructions: PropTypes.array.isRequired
 }
