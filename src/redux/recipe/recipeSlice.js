@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { fetchRecipIdThunk } from "./recipeOperations";
 
 const initialState = {
-  recipeId: { drink: null, glass: null, ingredients: []},
+  recipeId: { drink: null, glass: null, ingredients: [], instructions: []},
   error: null,
 };
 
