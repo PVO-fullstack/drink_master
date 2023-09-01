@@ -25,7 +25,9 @@
 
 .ingr_text {
     display: flex;
-    // margin-top: 46px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 14px;
     margin-left: auto;
     width: 220px;
     
@@ -49,6 +51,6 @@
     color: $accent-faded-50;
         
 }
-.img {
-    margin-bottom: 46px;
-}
+// .img {
+//     margin-bottom: 46px;
+// }
