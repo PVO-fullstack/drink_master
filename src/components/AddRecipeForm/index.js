@@ -7,3 +7,6 @@ export { FormikImageUploader } from './FormikImageUploader/FormikImageUploader';
 export { FormikTextInput } from './FormikTextInput/FormikTextInput';
 export { ImageUploadBlock } from './ImageUploadBlock/ImageUploadBlock';
 export { SearchDropdown } from './SearchDropdown/SearchDropdown';
+
+export { IngredientItem } from './IngredientItem/IngredientItem';
+export { Counter } from './Counter/Counter';

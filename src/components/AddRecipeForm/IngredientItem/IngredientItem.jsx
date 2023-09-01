@@ -47,6 +47,7 @@ export const IngredientItem = ({ index, length, arrayHelpers }) => {
         type="button"
         onClick={() => length > 1 && arrayHelpers.remove(index)}
         disabled={length === 1}
+        aria-label="Remove ingredient"
       >
         <RemoveIcon width={20} height={20} />
       </button>
@@ -60,7 +61,7 @@ IngredientItem.propTypes = {
   arrayHelpers: PropTypes.object.isRequired,
 };
 
-// const measures = [{ name: '1 cl' } { name: '2 cl' }];
+// *********************************************
 
 const makeMeasures = (length) => {
   const array = [];
@@ -73,6 +74,7 @@ const makeMeasures = (length) => {
 const measures = makeMeasures(10);
 
 // *********************************************
+
 const tablet = `@media screen and (min-width: ${sizes.tablet})`;
 const desktop = `@media screen and (min-width: ${sizes.desktop})`;
 

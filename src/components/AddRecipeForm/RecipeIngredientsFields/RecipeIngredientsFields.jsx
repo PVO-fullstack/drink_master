@@ -7,64 +7,35 @@ import { fetchIngredients } from '../../../redux/preparation/operations';
 
 import { FieldArray } from 'formik';
 
+import { SectionTitle } from '../../Typography';
+import { IngredientItem, Counter } from '..';
+
 import style from './RecipeIngredientsFields.module.scss';
-import { SectionTitle } from '../../Typography/SectionTitle/SectionTitle';
-import { IngredientItem } from '../IngredientItem/IngredientItem';
-import { PlusIcon, MinusIcon } from '../../icons';
 
 // ###################################################
 
 export const RecipeIngredientsFields = ({ values }) => {
   //
-  const length = values.ingredients.length;
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchIngredients())
       .unwrap()
-      .catch((e) => console.log('error: ', e));
+      .catch((error) => console.log('error: ', error));
   }, [dispatch]);
 
-  // ******************** Handlers *************************
-
-  const addItem = (arrayHelpers) => {
-    arrayHelpers.push({ title: '', measure: '' });
-  };
-
-  const removeItem = (arrayHelpers) => {
-    if (length === 1) throw new Error("Can't make a cocktail out of nothing");
-    arrayHelpers.pop();
-  };
-  // ******************** End of handlers ******************
+  const length = values.ingredients.length;
 
   return (
     <FieldArray
       name="ingredients"
       render={(arrayHelpers) => (
         <div className={style.container}>
+          {/*  */}
           <div className={style.headingAndButtonsWrapper}>
             <SectionTitle>Ingredients</SectionTitle>
 
-            <div className={style.counterWrapper}>
-              <button
-                className={style.counterButton}
-                type="button"
-                onClick={() => removeItem(arrayHelpers)}
-                disabled={length === 1}
-              >
-                <MinusIcon width={16} height={16} />
-              </button>
-
-              <div className={style.counter}>{length}</div>
-
-              <button
-                className={style.counterButton}
-                type="button"
-                onClick={() => addItem(arrayHelpers)}
-              >
-                <PlusIcon width={16} height={16} />
-              </button>
-            </div>
+            <Counter length={length} arrayHelpers={arrayHelpers} />
           </div>
 
           <div className={style.ingredientsWrapper} role="group">
