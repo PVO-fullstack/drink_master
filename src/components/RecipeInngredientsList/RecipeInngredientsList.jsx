@@ -8,18 +8,20 @@ export const RecipeInngredientsList = ({ingredients}) => {
         <div>
             <h3 className={css.indr_title}>Ingredients</h3>
             <ul className={css.indr_list}>
-                {ingredients.map(({title, measure, ingredientThumb}) => (
+                {ingredients.map(({ title, measure, ingredientThumb }) => (
                     <li className={css.ingr_item}>
-                        {ingredientThumb  === '' ?
+                            
+                            {ingredientThumb  === '' ?
                             (<img className={css.img} src="../public/images/placeholders/placeholder400.jpg" alt="placeholder" />)
                             : (<img className={css.img} src={ingredientThumb} alt="Coctail" />)}
-                    <div className={css.ingr_text}>
-                            <p className={css.ingr_name}>{title}</p>
-                            <p className={css.ingr_measure}>{measure}</p>
-                    </div>
+                               
+                            <div className={css.ingr_text}>
+                                    <p className={css.ingr_name}>{title}</p>
+                                    <p className={css.ingr_measure}>{measure}</p>
+                                </div>
+                            
                     </li>
-                    
-                ))
+                    ))
                 }
             </ul>
         </div>
