@@ -87,6 +87,7 @@ export const RecipeDescriptionFields = ({ setFieldValue }) => {
           placeholder={fakeInputPlaceholder}
           itemsBeforeScroll={6}
           hasFakeField={true}
+          isSearchable={false}
         />
 
         <SearchDropdown
@@ -96,6 +97,7 @@ export const RecipeDescriptionFields = ({ setFieldValue }) => {
           placeholder={fakeInputPlaceholder}
           itemsBeforeScroll={6}
           hasFakeField={true}
+          isSearchable={false}
         />
       </div>
     </div>
@@ -109,10 +111,17 @@ RecipeDescriptionFields.propTypes = {
 // ##########################################
 
 const fakeInputStyleOverride = {
-  control: { padding: 0 },
-  border: 'none',
-  borderRadius: 'none',
-  marginTop: -4,
+  control: {
+    padding: 0,
+    marginTop: -4,
+    border: 'none',
+    borderRadius: 'none',
+    // backgroundColor: 'blueViolet',
+    width: 'max-content',
+  },
+
+  menu: { width: 'max-content' },
+  // container: { width: '100%' },
 };
 
 const fakeInputPlaceholder = 'Please select';

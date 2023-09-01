@@ -1,34 +1,38 @@
-// const screenWidth = window.screen.width;
+// import sizes from '../../../constants/breakpoints';
 
-// if
+// const tablet = `@media screen and (min-width: ${sizes.tablet})`;
+// const desktop = `@media screen and (min-width: ${sizes.desktop})`;
 
-export const makeStyles = (props) => ({
+export const makeStyles = ({ style }) => ({
   //
   control: (baseStyles, state) => ({
     ...baseStyles,
-    backgroundColor: props.style?.backgroundColor || 'transparent',
-    border: props.style?.border || '1px solid rgba(243, 243, 243, 0.50)',
-    borderRadius: props.style?.borderRadius || 200,
-    padding: props.style?.control?.padding,
+    backgroundColor: 'transparent',
+    border: '1px solid rgba(243, 243, 243, 0.50)',
+    borderRadius: 200,
     color: state.isFocused ? '#f3f3f3' : 'rgba(243, 243, 243, 0.50)',
     width: '100%',
-    display: 'flex',
-    marginTop: props.style?.marginTop || 0,
+    marginTop: 0,
     gap: 8,
-    minHeight: props.style?.minHeight || 'auto',
+    minHeight: 'auto',
     verticalAlign: 'text-top',
+    cursor: 'pointer',
+    display: 'flex',
+    ...style.control,
   }),
 
   container: (baseStyles) => ({
     ...baseStyles,
-    fontSize: props.style?.fontSize || 'inherit',
-    lineHeight: props.style?.lineHeight || '100%',
+    fontSize: 'inherit',
+    lineHeight: '100%',
     display: 'flex',
-    justifyContent: 'end',
-    width: props.style?.width || 'auto',
-    // width: '100%',
-    flexGrow: props.style?.flexGrow,
+    justifyContent: 'center',
+    width: 'auto',
+    ...style.container,
     // backgroundColor: 'blueViolet',
+    // [tablet]: {
+    //   backgroundColor: 'yellow',
+    // },
   }),
 
   singleValue: (baseStyles) => ({
@@ -36,20 +40,23 @@ export const makeStyles = (props) => ({
     color: 'currentColor',
     width: '100%',
     // maxWidth: 300,
+    ...style.singleValue,
   }),
 
   dropdownIndicator: (baseStyles, state) => ({
     ...baseStyles,
     color: '#f3f3f3',
     transform: state.selectProps.menuIsOpen ? 'rotate(0.5turn)' : 'unset',
-    cursor: 'pointer',
+    // cursor: 'pointer',
+    ...style.dropdownIndicator,
   }),
 
-  //   input: (baseStyles) => ({
-  //     ...baseStyles,
-  //     color: 'inherit',
-  //     padding: 0,
-  //   }),
+  // input: (baseStyles) => ({
+  //   ...baseStyles,
+  //   color: 'red',
+  //   padding: 0,
+  //   ...style.input,
+  // }),
   //   // loadingIndicator: (baseStyles) => ({...baseStyles}),
   //   // loadingMessage: (baseStyles) => ({...baseStyles}),
 
@@ -57,18 +64,19 @@ export const makeStyles = (props) => ({
     ...baseStyles,
     backgroundColor: 'transparent',
     marginTop: 4,
-    width: props.style?.menu?.width || '100%', // 'max-content'
-    maxWidth: props.style?.menu?.maxWidth,
+    width: '100%', // 'max-content'
+    ...style.menu,
   }),
 
   menuList: (baseStyles) => ({
     ...baseStyles,
     backgroundColor: '#161f37',
     borderRadius: 20,
-    padding: props.style?.menuList?.padding || 14,
+    padding: 14,
     display: 'flex',
     flexDirection: 'column',
     gap: 8,
+    ...style.menuList,
   }),
 
   //   // noOptionsMessage: (baseStyles) => ({...baseStyles}),
@@ -81,6 +89,7 @@ export const makeStyles = (props) => ({
     //   fontSize: variant === 'addrecipe' ? 14 : 17,
     //   lineHeight: variant === 'addrecipe' ? '128%' : '156%',
     whiteSpace: 'nowrap',
+    ...style.option,
   }),
 
   //   placeholder: (baseStyles) => ({

@@ -5,9 +5,13 @@ import { selectIngredients } from '../../../redux/preparation/selectors';
 
 import PropTypes from 'prop-types';
 
-import style from './IngredientItem.module.scss';
 import { SearchDropdown } from '../SearchDropdown/SearchDropdown';
 import { RemoveIcon } from '../../icons';
+
+// import { mobile, tablet, desktop } from '../../../constants/breakpoints';
+import sizes from '../../../constants/breakpoints';
+
+import style from './IngredientItem.module.scss';
 
 // ###################################################
 
@@ -18,21 +22,21 @@ export const IngredientItem = ({ index, length, arrayHelpers }) => {
   return (
     <div className={style.item} key={index}>
       <div className={style.inputsWrapper}>
-        <SearchDropdown
-          name={`ingredients.${index}.title`}
-          data={ingredients}
-          style={{ control: { padding: '14px 24px' } }}
-          placeholder="Ingredient name"
-          itemsBeforeScroll={6}
-        />
+        <div>
+          <SearchDropdown
+            name={`ingredients.${index}.title`}
+            data={ingredients}
+            style={ingredientStyleOverride}
+            placeholder="Ingredient name"
+            itemsBeforeScroll={6}
+            flexGrow={1}
+          />
+        </div>
 
         <SearchDropdown
           name={`ingredients.${index}.measure`}
           data={measures}
-          style={{
-            control: { padding: '14px 24px' },
-            menu: { maxWidth: 80 },
-          }}
+          style={measureStyleOverride}
           placeholder="Measure"
           itemsBeforeScroll={6}
         />
@@ -54,7 +58,6 @@ IngredientItem.propTypes = {
   index: PropTypes.number.isRequired,
   length: PropTypes.number.isRequired,
   arrayHelpers: PropTypes.object.isRequired,
-  ingredients: PropTypes.array.isRequired,
 };
 
 // const measures = [{ name: '1 cl' } { name: '2 cl' }];
@@ -68,3 +71,31 @@ const makeMeasures = (length) => {
 };
 
 const measures = makeMeasures(10);
+
+// *********************************************
+const tablet = `@media screen and (min-width: ${sizes.tablet})`;
+const desktop = `@media screen and (min-width: ${sizes.desktop})`;
+
+const ingredientStyleOverride = {
+  control: {
+    padding: '16px 18px',
+    [tablet]: { padding: '14px 24px' },
+  },
+  container: {
+    minWidth: 101,
+    [tablet]: { width: 316 },
+    [desktop]: { width: 332 },
+  },
+};
+
+const measureStyleOverride = {
+  control: {
+    padding: '16px 18px',
+    [tablet]: { padding: '14px 24px' },
+  },
+  container: {
+    minWidth: 101,
+    [tablet]: { width: 150 },
+  },
+  menu: { maxWidth: 80 },
+};

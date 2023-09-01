@@ -1,5 +1,5 @@
-import { RecipesList } from "../components";
-import { PageTitle } from "../components/Typography/PageTitle/PageTitle";
+import { RecipesList } from '../components';
+import { PageTitle } from '../components/Typography/PageTitle/PageTitle';
 
 export const MyRecipes = () => {
   const width = window.screen.width;
@@ -7,7 +7,7 @@ export const MyRecipes = () => {
 
   return (
     <div>
-      <PageTitle>MyRecipes</PageTitle>
+      <PageTitle margin="large">MyRecipes</PageTitle>
       <RecipesList type="own" />
       {/* змінити type на recipes  */}
     </div>

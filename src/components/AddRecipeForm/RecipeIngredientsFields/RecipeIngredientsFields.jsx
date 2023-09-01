@@ -45,7 +45,7 @@ export const RecipeIngredientsFields = ({ values }) => {
           <div className={style.headingAndButtonsWrapper}>
             <SectionTitle>Ingredients</SectionTitle>
 
-            <div className={style.counter}>
+            <div className={style.counterWrapper}>
               <button
                 className={style.counterButton}
                 type="button"
@@ -55,7 +55,7 @@ export const RecipeIngredientsFields = ({ values }) => {
                 <MinusIcon width={16} height={16} />
               </button>
 
-              <div>{length}</div>
+              <div className={style.counter}>{length}</div>
 
               <button
                 className={style.counterButton}

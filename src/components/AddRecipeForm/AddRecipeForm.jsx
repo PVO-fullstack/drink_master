@@ -12,11 +12,17 @@ import {
 
 import style from './AddRecipeForm.module.scss';
 import { Button } from '../Button/Button';
+import axios from 'axios';
+import { toast } from 'react-hot-toast';
+import { addRecipe } from '../../redux/preparation/operations';
+import { useDispatch } from 'react-redux';
 
 // ###################################################
 
 export const AddRecipeForm = () => {
   //
+  const dispatch = useDispatch();
+
   // ******************** Handlers *************************
 
   const convertTextAreaToArray = (string) => {
@@ -32,23 +38,29 @@ export const AddRecipeForm = () => {
     for (const key in values) {
       formData.append(key, values[key]);
     }
-    // console.log('formData: ', formData);
+    console.log('formData: ', formData);
     alert(JSON.stringify(values, null, 2));
 
     // try {
+    //   // axios.post('/own', formData);
+    //   await dispatch(addRecipe(formData));
+    //   toast.success(`Congratulations, your recipe has been added`);
     // } catch (error) {
-    // } finally {setSubmitting(false);}
+    //   toast.error(error.message);
+    // } finally {
+    //   // setSubmitting(false);
+    //   // If onSubmit is async, then Formik will automatically set isSubmitting to false on your behalf once it has resolved
+    //   // resetForm();
+    // }
 
-    // If onSubmit is async, then Formik will automatically set isSubmitting to false on your behalf once it has resolved
-    resetForm();
+    axios.post('/own', formData);
   };
-
   // ******************** End of handlers ******************
 
   return (
     <Formik
       initialValues={initialValues}
-      validationSchema={yupSchema}
+      // validationSchema={yupSchema}
       onSubmit={handleSubmit}
     >
       {({ values, setFieldValue, isSubmitting }) => (
@@ -59,7 +71,11 @@ export const AddRecipeForm = () => {
             <RecipePreparationFields />
           </div>
 
-          <Button type="submit" variant="accented" disabled={isSubmitting}>
+          <Button
+            type="submit"
+            variant="accented"
+            // disabled={isSubmitting}
+          >
             Add
           </Button>
         </Form>
