@@ -6,19 +6,32 @@ import { NavLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import {
   deleteRecipeThunk,
+  fetchFavRecipesThunk,
+  fetchRecipesThunk,
   updateFavRecipeThunk,
 } from "../../redux/cockteil/cockteilsOperations";
 
-export const RecipesItem = ({ recipe, type }) => {
+export const RecipesItem = ({
+  recipe,
+  type,
+  page,
+  limit,
+  totalPages,
+  recipes,
+}) => {
   const dispatch = useDispatch();
   const { _id, drinkThumb, drink, instructions } = recipe;
 
   const deleteRecipe = async () => {
-    await dispatch(
-      type === "own"
-        ? deleteRecipeThunk({ _id, type })
-        : updateFavRecipeThunk({ _id, type })
-    );
+    let newPage = page;
+    if (totalPages > 1 && newPage === totalPages && recipes === 1) newPage -= 1;
+    if (type === "own") {
+      await dispatch(deleteRecipeThunk({ _id, type }));
+      await dispatch(fetchRecipesThunk({ type, page: newPage, limit }));
+    } else if (type === "favorite") {
+      await dispatch(updateFavRecipeThunk({ _id, type }));
+      await dispatch(fetchFavRecipesThunk({ type, page: newPage, limit }));
+    }
   };
 
   return (
@@ -53,5 +66,9 @@ RecipesItem.propTypes = {
     drink: PropTypes.string.isRequired,
     instructions: PropTypes.array.isRequired,
   }).isRequired,
-  type: PropTypes.string.isRequired,
+  type: PropTypes.oneOf(["own", "favorite"]).isRequired,
+  page: PropTypes.number.isRequired,
+  limit: PropTypes.number.isRequired,
+  totalPages: PropTypes.number.isRequired,
+  recipes: PropTypes.number.isRequired,
 };

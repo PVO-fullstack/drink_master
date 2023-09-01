@@ -32,6 +32,8 @@ export const RecipesList = ({ type }) => {
     type === "own" ? selectMyRecipes : selectFavRecipes
   );
 
+  const recipesLength = recipes.length;
+
   const error = useSelector(selectError);
 
   useEffect(() => {
@@ -64,7 +66,15 @@ export const RecipesList = ({ type }) => {
         <>
           <ul className={css.recipes_list}>
             {recipes.map((recipe) => (
-              <RecipesItem key={recipe._id} recipe={recipe} type={type} />
+              <RecipesItem
+                key={recipe._id}
+                recipe={recipe}
+                type={type}
+                page={currentPage}
+                limit={recipesPerPage}
+                totalPages={calculateTotalPages(totalRecipes, recipesPerPage)}
+                recipes={recipesLength}
+              />
             ))}
           </ul>
           {totalRecipes > 0 && (
