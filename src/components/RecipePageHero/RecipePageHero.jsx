@@ -21,8 +21,9 @@ export const RecipePageHero = () => {
     useEffect(() => {
         dispatch(fetchRecipIdThunk(recipeId));
     }, [dispatch])
-     
-        console.log(recipe.ingredients);
+        console.log(recipe.drinkThumb);
+    console.log(recipe.instructions);
+    console.log(recipe.isFavorite);
     return (
         <div className={css.page}>
             <p className={css.glass}>{recipe.glass}</p>
@@ -31,10 +32,10 @@ export const RecipePageHero = () => {
                 <div className={css.recipe}>
                     <PageTitle className={css.heading}>{recipe.drink}</PageTitle>
                     {recipe.description !== '' && (<p className={css.descrip}>{recipe.description}</p>)}
-                    <button className={css.recipe_btn} type="button">Add to favorite recipe</button>
-                    {/* <Button className={css.btn_recipe}>Add to favorite recipe</Button> */}
+                    {recipe.isFavorite === false ? (<button className={css.btn_add} type="button">Add to favorite recipe</button>):(<button className={css.btn_delete} type="button">Remove from favorite</button>)}
+                                   
                 </div>
-                <img className={css.img} src={recipe.drinkThumb} alt={recipe.drink} />
+                {recipe.drinkThumb === '' ? ( <img src="public/images/placeholders/placeholder400.jpg" alt="" /> ) : ( <img className={css.img} src={recipe.drinkThumb} alt={recipe.drink} />)}
             </div>
             <RecipeInngredientsList ingredients={ recipe.ingredients} />
             <RecipePreparation instructions={ recipe.instructions} />
