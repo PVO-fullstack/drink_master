@@ -35,7 +35,7 @@
 
 }
 
-.recipe_btn {
+.btn_add {
     margin-top: 40px;
     padding: 14px 40px;
     
@@ -62,6 +62,34 @@
         color: $accent-faded-20;
         background-color: $slate-blue;
     }
+}
+.btn_added {
+        margin-top: 40px;
+            padding: 14px 40px;
+        
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 1.13;
+        
+            color: $dark-blue;
+            background-color: $accent;
+            border: 0px;
+            border-radius: $button-radius;
+        
+            &:hover,
+            &:focus {
+                color: $accent ;
+                background-color: $dark-blue;
+            }
+        
+            &:active {
+                background-color: $dark-blue;
+            }
+        
+            &:disabled {
+                color: $accent-faded-20;
+                background-color: $slate-blue;
+            }
 }
 .img {
     width: 400px;
