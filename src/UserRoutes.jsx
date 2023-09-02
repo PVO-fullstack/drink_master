@@ -52,7 +52,7 @@ export const UserRoutes = () => {
               <PrivatRoute redirectTo="/welcome" component={<MyRecipes />} />
             }
           />
-          <Route path="myrecipes/:recipesId" element={<Recipe />} />
+          <Route path="recipes/:id" element={<Recipe />} />
           <Route
             path="favorites"
             element={
