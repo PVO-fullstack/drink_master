@@ -2,33 +2,51 @@
 
 
 .page {
-    
+    width: 100vw;
+    padding-top: 58px;
+    padding-top: 80px;
     padding: $container-padding;
-    padding-top: 132px;
-    padding-top: 140px;
+
+    justify-content: center;
+
+    @media screen and (min-width: 1440px) {
+        padding-top: 132px;
+        padding-top: 140px;
+    }
 }
 .page_recipe {
     margin-bottom: 100px;
+
+    @media screen and (min-width: 1440px) {
+            margin-bottom: 100px;
+    }
 }
 .recipe_title {
     margin: 0;
 }
 
 .recipe_list {
+
+    @media screen and (min-width: 1440px) {
     display: flex;
     justify-content: space-between;
-    
+    } 
 }
 
 
 .glass {
     margin-bottom: 8px;
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 1.25;
-
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.17;
+    
     color: $accent-faded-50;
 
+    @media screen and (min-width: 1440px) {
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 1.25;
+    }
 }
 
 .descrip {
@@ -43,11 +61,12 @@
 
 .btn_add {
     margin-top: 40px;
+    margin-bottom: 40px;
     padding: 14px 40px;
     
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 600;
-    line-height: 1.13;
+    line-height: 1.29;
 
     color: $dark-blue;
     background-color: $accent;
@@ -68,14 +87,21 @@
         color: $accent-faded-20;
         background-color: $slate-blue;
     }
+
+        @media screen and (min-width: 1440px) {
+            margin-bottom: 0;
+            font-size: 16px;
+            line-height: 1.13;
+        }
 }
 .btn_remove {
         margin-top: 40px;
-            padding: 14px 40px;
+        margin-bottom: 40px;
+        padding: 14px 40px;
         
-            font-size: 16px;
-            font-weight: 600;
-            line-height: 1.13;
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 1.29;
         
             color: $accent;
             background-color: $dark-blue;
@@ -96,8 +122,19 @@
                 color: $accent-faded-20;
                 background-color: $slate-blue;
             }
+    @media screen and (min-width: 1440px) {
+        margin-bottom: 0;
+        font-size: 16px;
+        line-height: 1.13;
+    }
 }
 .img {
-    width: 400px;
+    width: 335px;
     height: 400px;
+
+    @media screen and (min-width: 1440px) {
+        width: 400px;
+        height: 400px;
+    }
 }
+
