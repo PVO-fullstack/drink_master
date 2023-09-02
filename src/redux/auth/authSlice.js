@@ -47,6 +47,9 @@ export const authSlice = createSlice({
         state.token = null;
         state.isLoggedIn = false;
       }),
+  // .addCase(changeAvatar.fulfilled, (state, action) => {
+  //   state.user.avatarUrl = action.payload;
+  // }),
 });
 
 export default authSlice.reducer;

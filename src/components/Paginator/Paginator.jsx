@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import css from "./Paginator.module.scss";
+import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 
 export const Paginator = ({ currentPage, totalPages, onPageChange }) => {
   const pagesToShow = [];
@@ -15,28 +16,37 @@ export const Paginator = ({ currentPage, totalPages, onPageChange }) => {
   return (
     <div className={css.button__wrapper}>
       <button
+        type="button"
+        className={css.paginator_Btn}
         disabled={currentPage === 1}
         onClick={() => onPageChange(currentPage - 1)}
       >
-        Previous
+        <FiChevronLeft className={css.svg_Btn} size={27} />
       </button>
-      <div className={css.button__wrapper}>
+
+      <ul className={css.button_number__wrapper}>
         {pagesToShow.map((page) => (
-          <button
-            key={page}
-            className={css.button}
-            //   className={page === currentPage ? css.active : ""}
-            onClick={() => onPageChange(page)}
-          >
-            {page}
-          </button>
+          <li key={page}>
+            <button
+              type="button"
+              className={`${css.paginator_Btn} ${
+                page === currentPage ? css.active : ""
+              }`}
+              onClick={() => onPageChange(page)}
+            >
+              {page}
+            </button>
+          </li>
         ))}
-      </div>
+      </ul>
+
       <button
+        type="button"
         disabled={currentPage === totalPages}
         onClick={() => onPageChange(currentPage + 1)}
+        className={css.paginator_Btn}
       >
-        Next
+        <FiChevronRight className={css.svg_Btn} size={27} />
       </button>
     </div>
   );

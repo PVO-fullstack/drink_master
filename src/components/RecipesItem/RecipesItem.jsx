@@ -1,4 +1,3 @@
-import { SectionTitle } from "../Typography/SectionTitle/SectionTitle";
 import PropTypes from "prop-types";
 import { RiDeleteBinLine } from "react-icons/ri";
 import css from "./RecipesItem.module.scss";
@@ -24,14 +23,19 @@ export const RecipesItem = ({
   const { _id, drinkThumb, drink, instructions } = recipe;
 
   const deleteRecipe = async () => {
-    let newPage = page;
-    if (totalPages > 1 && newPage === totalPages && recipes === 1) newPage -= 1;
-    if (type === "own") {
-      await dispatch(deleteRecipeThunk({ _id, type }));
-      await dispatch(fetchRecipesThunk({ type, page: newPage, limit }));
-    } else if (type === "favorite") {
-      await dispatch(updateFavRecipeThunk({ _id, type }));
-      await dispatch(fetchFavRecipesThunk({ type, page: newPage, limit }));
+    try {
+      let newPage = page;
+      if (totalPages > 1 && newPage === totalPages && recipes === 1)
+        newPage -= 1;
+      if (type === "own") {
+        await dispatch(deleteRecipeThunk({ _id, type }));
+        await dispatch(fetchRecipesThunk({ type, page: newPage, limit }));
+      } else if (type === "favorite") {
+        await dispatch(updateFavRecipeThunk({ _id, type }));
+        await dispatch(fetchFavRecipesThunk({ type, page: newPage, limit }));
+      }
+    } catch (error) {
+      alert("Something went wrong:", error.message);
     }
   };
 
@@ -43,16 +47,21 @@ export const RecipesItem = ({
 
       <div className={css.recipes_item__info_wrapper}>
         <div>
-          <SectionTitle>{drink}</SectionTitle>
+          <h2 className={css.recipes_item_title}>{drink}</h2>
           <p className={css.recipes_item__ingredients}>Ingredients</p>
         </div>
 
         <p className={css.recipes_item__description}>{instructions}</p>
+
         <div className={css.recipes_item__button_wrapper}>
-          <NavLink className={cssButton.button} to={`${_id}`}>
+          <NavLink
+            className={`${cssButton.button} ${css.nav_link}`}
+            to={`${_id}`}
+          >
             See recipe
           </NavLink>
           <button
+            type="button"
             onClick={() => dispatch(deleteRecipe)}
             className={`${cssButton.button} ${cssButton.icon}`}
           >
