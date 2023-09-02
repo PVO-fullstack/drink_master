@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {
-  changeAvatar,
   logInUser,
   logOutUser,
   refreshUser,
