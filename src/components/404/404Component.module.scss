@@ -1,13 +1,25 @@
 .img {
-    height: 500px;
+    height: 476px;
+    @media screen and (min-width: $tablet){
+        height: 517px;
+    }
 }
 
 .container {
     display: flex;
     justify-content: center;
-    padding-top: 84px;
-    padding-bottom: 140px;
+    padding-top: 137px;
+    padding-bottom: 80px;
     margin: 0 auto;
+
+    @media screen and (min-width: $tablet){
+        padding-top: 191px;
+        padding-bottom: 140px;
+    }
+
+    @media screen and (min-width: $desktop){
+        padding-top: 83px;
+    }
   }
   
 .thumb {
@@ -17,11 +29,16 @@
 
 .thumb > .label {
     display:flex;
-    gap:120px;
+    gap:100px;
     position: absolute;
-    top:25%;
+    top:27%;
     right: 17%;
-    font-size: 150px;
+    font-size: 120px;
     font-weight: bold;
     color: rgba(243, 243, 243, 10%);
+
+    @media screen and (min-width: $tablet){
+        gap:120px;
+        font-size: 150px;
+    }
 }

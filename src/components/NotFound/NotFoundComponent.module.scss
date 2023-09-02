@@ -1,7 +1,17 @@
 .container {
     display: flex;
     justify-content: center;
-    padding-top: 84px;
+    padding-top: 137px;
+    padding-bottom: 140px;
+
+    @media screen and (min-width: $tablet){
+        padding-top: 228px;
+        padding-bottom: 140px;
+    }
+
+    @media screen and (min-width: $desktop){
+        padding-top: 83px;
+    }
 }
 
 .containerWrap {
@@ -25,5 +35,4 @@
    color: #F3F3F3;
    font-size: 16px;
    line-height: 24px;
-   padding-bottom: 140px;
 }
