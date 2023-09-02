@@ -10,6 +10,9 @@
 .page_recipe {
     margin-bottom: 100px;
 }
+.recipe_title {
+    margin: 0;
+}
 
 .recipe_list {
     display: flex;
@@ -66,7 +69,7 @@
         background-color: $slate-blue;
     }
 }
-.btn_added {
+.btn_remove {
         margin-top: 40px;
             padding: 14px 40px;
         
@@ -74,15 +77,15 @@
             font-weight: 600;
             line-height: 1.13;
         
-            color: $dark-blue;
-            background-color: $accent;
+            color: $accent;
+            background-color: $dark-blue;
             border: 0px;
             border-radius: $button-radius;
         
             &:hover,
             &:focus {
-                color: $accent ;
-                background-color: $dark-blue;
+                color: $dark-blue;
+                background-color: $accent;
             }
         
             &:active {
