@@ -26,9 +26,6 @@ export const SignIn = () => {
 
   return (
     <div className={style.conteiner}>
-      <div>
-        <Toaster />
-      </div>
       <div className={style.form_conteiner}>
         <h1 className={style.title}>Sign In</h1>
         <Formik
