@@ -34,7 +34,7 @@
   // min-height: 50px;
   // background-color: blueviolet;
 
-  &::disabled {
+  &:disabled {
     color: rgba($accent, 0.3);
   }
 }
