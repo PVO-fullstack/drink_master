@@ -1,5 +1,6 @@
 import { SectionTitle } from "../Typography/SectionTitle/SectionTitle";
 import PropTypes from "prop-types";
+import { RiDeleteBinLine } from "react-icons/ri";
 import css from "./RecipesItem.module.scss";
 import cssButton from "../Button/Button.module.scss";
 import { NavLink } from "react-router-dom";
@@ -36,24 +37,28 @@ export const RecipesItem = ({
 
   return (
     <li className={css.recipes_item}>
-      <img className={css.recipes_item__img} src={drinkThumb} alt="Coctail" />
-      <div>
-        <SectionTitle>{drink}</SectionTitle>
-        <p className={css.recipes_item__ingredients}>Ingredients</p>
-        <p className={css.recipes_item__description}>{instructions}</p>
+      <div className={css.recipes_item__img_wrapper}>
+        <img className={css.recipes_item__img} src={drinkThumb} alt="Coctail" />
+      </div>
 
-        <NavLink
-          className={`${cssButton.button} ${css.recipes_item__button}`}
-          to={`${_id}`}
-        >
-          See recipe
-        </NavLink>
-        <button
-          onClick={() => dispatch(deleteRecipe)}
-          className={`${cssButton.button} ${cssButton.icon}`}
-        >
-          Delete
-        </button>
+      <div className={css.recipes_item__info_wrapper}>
+        <div>
+          <SectionTitle>{drink}</SectionTitle>
+          <p className={css.recipes_item__ingredients}>Ingredients</p>
+        </div>
+
+        <p className={css.recipes_item__description}>{instructions}</p>
+        <div className={css.recipes_item__button_wrapper}>
+          <NavLink className={cssButton.button} to={`${_id}`}>
+            See recipe
+          </NavLink>
+          <button
+            onClick={() => dispatch(deleteRecipe)}
+            className={`${cssButton.button} ${cssButton.icon}`}
+          >
+            <RiDeleteBinLine style={{ width: "24px", height: "24px" }} />
+          </button>
+        </div>
       </div>
     </li>
   );
