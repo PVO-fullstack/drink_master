@@ -7,11 +7,11 @@ import { useState } from 'react';
 export const App = () => {
   const dispatch = useDispatch();
 
-  const [isLogin, setШsLogin] = useState(false);
+  const [isLogin, setIsLogin] = useState(false);
 
   useEffect(() => {
     dispatch(refreshUser());
-    setШsLogin(true);
+    setIsLogin(true);
   }, [dispatch]);
 
   return <div>{isLogin && <UserRoutes />}</div>;
