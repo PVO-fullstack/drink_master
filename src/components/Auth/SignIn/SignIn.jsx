@@ -4,6 +4,7 @@ import style from "./SignIn.module.scss";
 import { NavLink } from "react-router-dom";
 import { logInUser } from "../../../redux/auth/authOperations";
 import { useDispatch } from "react-redux";
+import { Toaster, toast } from "react-hot-toast";
 
 export const SignIn = () => {
   const dispatch = useDispatch();
@@ -25,15 +26,24 @@ export const SignIn = () => {
 
   return (
     <div className={style.conteiner}>
+      <div>
+        <Toaster />
+      </div>
       <div className={style.form_conteiner}>
         <h1 className={style.title}>Sign In</h1>
         <Formik
           initialValues={{ email: "", password: "" }}
           validationSchema={SignupSchema}
-          onSubmit={async (values, { resetForm }) => {
+          onSubmit={(values, { resetForm }) => {
             console.log(values);
-            dispatch(logInUser(values));
-            resetForm();
+            dispatch(logInUser(values)).then((result) => {
+              if (result.error) {
+                console.log("first", result);
+                toast.error(result.payload);
+                return;
+              }
+              resetForm();
+            });
           }}
         >
           {(formik) => {
