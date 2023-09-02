@@ -10,6 +10,7 @@ import {
   fetchRecipesThunk,
   updateFavRecipeThunk,
 } from "../../redux/cockteil/cockteilsOperations";
+import image from "../../images/coctail_placeholder.jpg";
 
 export const RecipesItem = ({
   recipe,
@@ -42,7 +43,11 @@ export const RecipesItem = ({
   return (
     <li className={css.recipes_item}>
       <div className={css.recipes_item__img_wrapper}>
-        <img className={css.recipes_item__img} src={drinkThumb} alt="Coctail" />
+        <img
+          className={css.recipes_item__img}
+          src={drinkThumb || image}
+          alt="Coctail"
+        />
       </div>
 
       <div className={css.recipes_item__info_wrapper}>
