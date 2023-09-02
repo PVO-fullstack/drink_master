@@ -8,7 +8,7 @@
     background-color: rgba(17, 17, 17, 0.4);
 
     opacity: 1;
-    cursor: pointer;
+    // cursor: pointer;
     z-index: 20000;
     padding: 94px 15px;
     // overflow-y: scroll;
@@ -57,28 +57,84 @@
     padding-right: 18px;
 }
 
-// .avatarConteiner {
-//     position: relative;
-// }
+.avatarConteiner {
+    position: relative;
+}
 
-.avatar {
+input[type='file'].avatar {
+    color: transparent;
+    opacity: 1;
+
+    &::-webkit-file-upload-button {
+        visibility: hidden;
+    }
+
+    &:before {
+        content: '';
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        top: -145px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-image: url("/images/SVG/user2.svg");
+        color: white;
+        display: inline-block;
+        // background: -webkit-linear-gradient(top, #f9f9f9, #e3e3e3);
+        // border: 1px solid #999;
+        // border-radius: 3px;
+        // padding: 5px 8px;
+        outline: none;
+        white-space: nowrap;
+        -webkit-user-select: none;
+        cursor: pointer;
+        text-shadow: 1px 1px #fff;
+        font-weight: 700;
+        font-size: 10pt;
+    }
+
+
+    &:hover::before {
+        border-color: black;
+    }
+
+    &:active {
+        outline: 0;
+    }
+
+    &:active::before {
+        background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+    }
+}
+
+.avatarImg {
     margin-left: auto;
     margin-right: auto;
     border-radius: 50%;
+    height: 100px;
+    margin-bottom: 40px;
 }
 
 .addPhoto {
     position: absolute;
     left: 50%;
-
+    top: -45px;
     transform: translate(-50%, -50%);
 }
 
 .form {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 60px;
+    margin-top: 145px;
+}
+
+.foto {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .field {
@@ -93,15 +149,11 @@
     background-color: inherit;
 }
 
-input[type="file"] {
-    display: none;
-}
-
 input.img {
     border: 1px solid #ccc;
     display: inline-block;
     padding: 6px 12px;
-    cursor: pointer;
+    // cursor: pointer;
 
     //     &::-webkit-file-upload-button {
     //         width: 100px;
@@ -134,7 +186,7 @@ input.img {
 
     @media screen and (min-width: $tablet) {
         width: 400px;
-        padding: 18px 169px;
+        padding: 18px 145px;
         font-size: 16px;
         line-height: 1.12;
     }
