@@ -70,6 +70,31 @@ export const logOutUser = createAsyncThunk(
   }
 );
 
+export const changeAvatar = createAsyncThunk(
+  "user/refresh",
+  async (data, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const tokenSt = state.auth.token;
+
+    if (tokenSt === null) {
+      return thunkAPI.rejectWithValue();
+    }
+
+    token.set(tokenSt);
+
+    try {
+      const user = await instance.patch("/auth/update", data, {
+        headers: {
+          "Content-type": "multipart/form-data",
+        },
+      });
+      return user.data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
+    }
+  }
+);
+
 export const subscribeUser = createAsyncThunk(
   "user/subscribe",
   async (credentials, thunkAPI) => {
