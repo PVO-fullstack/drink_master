@@ -10,14 +10,14 @@ import { fetchRecipIdThunk } from "../../redux/recipe/recipeOperations.js";
 export const RecipePageHero = () => {
     const dispatch = useDispatch();
     const recipe = useSelector(selectRecipe);
-    console.log(recipe._id);
+    // console.log(recipe._id);
     
-    // const currentURL = window.location.href;
-    // const parts = currentURL.split('/');
-    // const recipeId = parts[parts.length - 1];
+    const currentURL = window.location.href;
+    const parts = currentURL.split('/');
+    const recipeId = parts[parts.length - 1];
 
     useEffect(() => {
-        dispatch(fetchRecipIdThunk(recipe._id));
+        dispatch(fetchRecipIdThunk(recipeId));
     }, [dispatch])
 
     return (
