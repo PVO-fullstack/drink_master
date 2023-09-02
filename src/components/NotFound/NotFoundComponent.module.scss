@@ -1,0 +1,29 @@
+.container {
+    display: flex;
+    justify-content: center;
+    padding-top: 84px;
+}
+
+.containerWrap {
+    display: flex;
+    flex-wrap: wrap;
+    width: 465px;
+    justify-content: center;
+    text-align: center;
+}
+
+.textContainer {
+    padding-top: 18px;
+    width: 236px;
+}
+
+.img {
+    height: 500px;
+}
+
+.text {
+   color: #F3F3F3;
+   font-size: 16px;
+   line-height: 24px;
+   padding-bottom: 140px;
+}

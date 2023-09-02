@@ -1,0 +1,27 @@
+.img {
+    height: 500px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    padding-top: 84px;
+    padding-bottom: 140px;
+    margin: 0 auto;
+  }
+  
+.thumb {
+    position: relative;
+    overflow: hidden;
+}
+
+.thumb > .label {
+    display:flex;
+    gap:120px;
+    position: absolute;
+    top:25%;
+    right: 17%;
+    font-size: 150px;
+    font-weight: bold;
+    color: rgba(243, 243, 243, 10%);
+}
