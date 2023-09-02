@@ -1,0 +1,27 @@
+.counterWrapper {
+  display: flex;
+  // gap: 16px;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid rgba($accent, 0.5);
+  border-radius: 200px;
+  // padding: 10px 16px;
+  padding: 0 5px;
+}
+
+.counter {
+  text-align: center;
+  width: 1.125rem; // 18px
+}
+
+.counterButton {
+  background-color: transparent;
+  border: none;
+  color: $accent;
+  padding: 11px;
+
+  &:disabled {
+    color: rgba($accent, 0.3);
+  }
+}

@@ -28,3 +28,8 @@ export const handleFetchCategoriesFulfilled = (state, { payload }) => {
 export const handleFetchGlassesFulfilled = (state, { payload }) => {
   state.glasses = payload;
 };
+
+// Fetch popular recipes
+export const handleFetchPopularRecipesFulfilled = (state, { payload }) => {
+  state.popular = payload;
+};

@@ -1,44 +1,36 @@
 import style from "./UserLogoModal.module.scss";
-import { Modal } from "../Modal/Modal";
+import { createPortal } from "react-dom";
+import editSVG from "/images/SVG/edit.svg";
 import { useDispatch } from "react-redux";
 import { logOutUser } from "../../redux/auth/authOperations";
-import { UserInfoModal } from "../UserInfoModal/UserInfoModal";
-import { useState } from "react";
 
-export const UserLogoModal = ({ close }) => {
-  const [profile, setProfile] = useState(false);
-
+export const UserLogoModal = ({ close, showUserInfo }) => {
   const dispatch = useDispatch();
 
-  const handleLogout = () => {
+  const showUser = () => {
+    showUserInfo();
+    close();
+  };
+
+  const logqOut = () => {
     dispatch(logOutUser());
   };
 
-  const handleClikBackdrop = (e) => {
-    console.log("CT", e.currentTarget);
-    console.log("T", e.target);
-  };
-
-  const handleEditClick = () => {
-    setProfile(true);
-  };
-
-  console.log("qqq", close);
-
   return (
-    <Modal>
-      {!profile ? (
-        <div onClick={handleClikBackdrop} className={style.btnConteiner}>
-          <button onClick={handleEditClick} className={style.btn} type="button">
-            Edit profile
-          </button>
-          <button onClick={handleLogout} className={style.btn} type="button">
-            Log out
-          </button>
+    <>
+      <div className={style.backdrop}>
+        <div className={style.modal}>
+          <div className={style.btnConteiner}>
+            <button onClick={showUser} className={style.edit} type="button">
+              Edit profile
+              <img className={style.edit_swg} src={editSVG} alt="edit" />
+            </button>
+            <button onClick={logqOut} className={style.btn} type="button">
+              Log out
+            </button>
+          </div>
         </div>
-      ) : (
-        <UserInfoModal close={close} />
-      )}
-    </Modal>
+      </div>
+    </>
   );
 };

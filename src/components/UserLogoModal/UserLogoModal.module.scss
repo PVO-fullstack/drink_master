@@ -7,9 +7,9 @@
     height: 100%;
     background-color: rgba(17, 17, 17, 0.4);
 
-    opacity: 1;
-    cursor: pointer;
-    z-index: 20000;
+    // opacity: 1;
+    // cursor: pointer;
+    // z-index: 20000;
     padding: 94px 15px;
     // overflow-y: scroll;
     // overscroll-behavior: none;
@@ -25,15 +25,10 @@
 
 .modal {
     position: absolute;
-    top: 50%;
-    left: 50%;
-
-    transform: translate(-50%, -50%) scale(1);
-
-    // padding: 40px 24px;
-
-    width: 500px;
-    height: 416px;
+    top: 0;
+    right: 50px;
+    width: 177px;
+    height: 134px;
     overflow-y: auto;
     overflow-x: hidden;
     background-color: #161F37;
@@ -41,6 +36,25 @@
     // color: var(--text-color);
     // border: 2px solid var(--modal-border-color);
     border-radius: 16px;
+
+    animation: dropDown 1s linear 250ms 1 normal forwards;
+
+    // animation: normal 3s linear forwards 1 reverse both paused dropDown;
+
+    @keyframes dropDown {
+        from {
+            opacity: 0;
+            transform: translateY(0);
+        }
+
+        to {
+            transform: translateY(84px);
+            opacity: 1;
+        }
+    }
+
+    // transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+
 
     // @media screen and (min-width: $tablet) {
     //     max-width: 579px;
@@ -50,6 +64,8 @@
     //$desktop
 
 }
+
+
 
 .closeModal {
     margin-left: auto;
@@ -61,11 +77,11 @@
     position: relative;
 }
 
-.avatar {
-    margin-left: auto;
-    margin-right: auto;
-    border-radius: 50%;
-}
+// .avatar {
+//     margin-left: auto;
+//     margin-right: auto;
+//     border-radius: 50%;
+// }
 
 .addPhoto {
     position: absolute;
@@ -94,8 +110,30 @@
 .btnConteiner {
     display: flex;
     flex-direction: column;
-    gap: 40px;
-    transform: translateY(75%);
+}
+
+.edit {
+    position: relative;
+    height: 14px;
+    margin: 18px 18px 38px 18px;
+    background-color: inherit;
+    border-width: 0;
+    color: #F3F3F3;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.28;
+
+    &:hover .edit_swg {
+        transform: translateX(127px);
+    }
+}
+
+.edit_swg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    transition: transform 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+
 }
 
 .btn {
@@ -107,19 +145,20 @@
     background: #F3F3F3;
     color: #161F37;
     font-weight: 600;
+    border-width: 0;
 
     @media screen and (min-width: $mobile) {
-        width: 335px;
-        padding: 18px 140px;
+        width: 141px;
+        padding: 12px 45px;
         font-size: 14px;
         line-height: 1.28;
     }
 
     @media screen and (min-width: $tablet) {
-        width: 400px;
-        padding: 18px 100px;
-        font-size: 16px;
-        line-height: 1.12;
+        width: 141px;
+        padding: 12px 45px;
+        font-size: 14px;
+        line-height: 1.28;
     }
 }
 

@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchRecipesThunk } from "./cockteilsOperations";
+import { fetchFavRecipesThunk, fetchRecipesThunk } from "./cockteilsOperations";
 
 const initialState = {
   myRecipes: [],
@@ -10,7 +10,7 @@ const initialState = {
 };
 
 export const cockteilsSlise = createSlice({
-  name: 'recipes',
+  name: "recipes",
   initialState,
   reducers: {},
 
@@ -19,17 +19,20 @@ export const cockteilsSlise = createSlice({
       .addCase(fetchRecipesThunk.fulfilled, (state, { payload }) => {
         state.myRecipes = payload.recipes;
         state.totalMyRecipes = payload.totalRecipes;
-        // state[payload.type] = payload.recipes;
-        // state[`total${payload.type}`] = payload.totalRecipes;
+        state.error = null;
+      })
+      .addCase(fetchFavRecipesThunk.fulfilled, (state, { payload }) => {
+        state.favRecipes = payload.recipes;
+        state.totalFavRecipes = payload.totalRecipes;
         state.error = null;
       })
       .addMatcher(
-        (action) => action.type.endsWith('/rejected'),
+        (action) => action.type.endsWith("/rejected"),
         (state, { payload }) => {
           state.error = payload;
         }
       );
   },
 });
-
+export const { deleteRecipeType, updateFavRecipe } = cockteilsSlise.actions;
 export default cockteilsSlise.reducer;

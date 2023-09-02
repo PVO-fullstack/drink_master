@@ -1,0 +1,9 @@
+@import "../../../styles/variables";
+
+.heroInfo {
+  color: $accent;
+  font-size: $paragraph;
+  line-height: $line-height-hero-info;
+  width: $width-hero-info;
+  padding-top: $pudding-top-hero-info;
+}

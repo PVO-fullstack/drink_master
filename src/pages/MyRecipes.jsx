@@ -1,12 +1,12 @@
 import { RecipesList } from "../components";
 import { PageTitle } from "../components/Typography/PageTitle/PageTitle";
+import css from "../components/RecipesList/RecipesList.module.scss";
 
 export const MyRecipes = () => {
   return (
-    <div>
+    <div className={css.container}>
       <PageTitle>MyRecipes</PageTitle>
-      <RecipesList type="recipes" />
-      {/* змінити type на own */}
+      <RecipesList type="own" />
     </div>
   );
 };
