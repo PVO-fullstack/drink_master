@@ -13,14 +13,14 @@ export const fetchPopularRecipes = async () => {
 };
 
 export const addRecipe = async (recipe) => {
-  // const { data } = await instance.post('/own', recipe);
+  const { data } = await instance.post('/own', recipe);
   // const { data } = await instance.postForm('/own', recipe);
 
-  const { data } = await instance.post('/own', recipe, {
-    headers: {
-      'Content-Type': 'multipart/form-data',
-    },
-  });
+  // const { data } = await instance.post('/own', recipe, {
+  //   headers: {
+  //     'Content-Type': 'multipart/form-data',
+  //   },
+  // });
 
   return data;
 };

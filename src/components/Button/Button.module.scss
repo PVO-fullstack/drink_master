@@ -1,4 +1,4 @@
-@import "../../styles/variables";
+@import '../../styles/variables';
 
 .button {
   padding: 14px 40px;
@@ -51,12 +51,14 @@
   }
 
   &:active {
+    background-color: $bg;
     border-color: $blue-faded;
   }
 
   &:disabled {
-    color: $accent-faded-50;
-    background-color: $accent-faded-20;
+    color: $accent-faded-20;
+    background-color: rgba(silver, 0.2);
+    border-color: $accent-faded-50;
   }
 }
 

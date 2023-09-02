@@ -15,9 +15,9 @@ import {
 import Paginator from "../Paginator/Paginator";
 
 const determineRecipesPerPage = () => {
-  if (window.innerWidth <= 768) {
+  if (window.innerWidth < 768) {
     return 10; // Для мобільного
-  } else if (window.innerWidth <= 1024) {
+  } else if (window.innerWidth >= 768 && window.innerWidth <= 1440) {
     return 8; // Для планшета
   } else {
     return 9; // Для десктопу
@@ -55,7 +55,7 @@ export const RecipesList = ({ type }) => {
   return (
     <>
       {error ? (
-        <p>Error: {error}</p>
+        <p className={css.error}>Error: {error}</p>
       ) : (
         <>
           <ul className={css.recipes_list}>
@@ -71,7 +71,7 @@ export const RecipesList = ({ type }) => {
               />
             ))}
           </ul>
-          {totalRecipes > 0 && (
+          {calculateTotalPages(totalRecipes, recipesPerPage) > 1 && (
             <Paginator
               currentPage={currentPage}
               totalPages={calculateTotalPages(totalRecipes, recipesPerPage)}
