@@ -8,44 +8,45 @@ import PropTypes from 'prop-types';
 import { SearchDropdown } from '../SearchDropdown/SearchDropdown';
 import { RemoveIcon } from '../../icons';
 
-// import { mobile, tablet, desktop } from '../../../constants/breakpoints';
 import sizes from '../../../constants/breakpoints';
+import itemsBeforeScroll from '../../../constants/select';
 
 import style from './IngredientItem.module.scss';
 
 // ###################################################
 
-export const IngredientItem = ({ index, length, arrayHelpers }) => {
+export const IngredientItem = ({ index, length, onClick }) => {
   //
-  const ingredients = useSelector(selectIngredients);
+  const unsortedIngredients = useSelector(selectIngredients);
+
+  const ingredients = [...unsortedIngredients].sort((a, b) =>
+    a.title.localeCompare(b.title)
+  );
 
   return (
-    <div className={style.item} key={index}>
+    <div className={style.item}>
       <div className={style.inputsWrapper}>
-        <div>
-          <SearchDropdown
-            name={`ingredients.${index}.title`}
-            data={ingredients}
-            style={ingredientStyleOverride}
-            placeholder="Ingredient name"
-            itemsBeforeScroll={6}
-            flexGrow={1}
-          />
-        </div>
+        <SearchDropdown
+          name={`ingredients.${index}.title`}
+          data={ingredients}
+          style={ingredientStyleOverride}
+          placeholder="Ingredient name"
+          itemsBeforeScroll={itemsBeforeScroll}
+        />
 
         <SearchDropdown
           name={`ingredients.${index}.measure`}
           data={measures}
           style={measureStyleOverride}
           placeholder="Measure"
-          itemsBeforeScroll={6}
+          itemsBeforeScroll={itemsBeforeScroll}
         />
       </div>
 
       <button
         className={style.removeButton}
         type="button"
-        onClick={() => length > 1 && arrayHelpers.remove(index)}
+        onClick={onClick}
         disabled={length === 1}
         aria-label="Remove ingredient"
       >
@@ -58,7 +59,7 @@ export const IngredientItem = ({ index, length, arrayHelpers }) => {
 IngredientItem.propTypes = {
   index: PropTypes.number.isRequired,
   length: PropTypes.number.isRequired,
-  arrayHelpers: PropTypes.object.isRequired,
+  onClick: PropTypes.func,
 };
 
 // *********************************************

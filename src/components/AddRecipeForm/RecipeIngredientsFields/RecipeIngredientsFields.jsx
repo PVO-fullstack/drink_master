@@ -1,9 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+// import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
-
-import { fetchIngredients } from '../../../redux/preparation/operations';
 
 import { FieldArray } from 'formik';
 
@@ -14,17 +12,20 @@ import style from './RecipeIngredientsFields.module.scss';
 
 // ###################################################
 
-export const RecipeIngredientsFields = ({ values }) => {
+export const RecipeIngredientsFields = ({ items }) => {
   //
-  const dispatch = useDispatch();
+  const length = items.length;
 
-  useEffect(() => {
-    dispatch(fetchIngredients())
-      .unwrap()
-      .catch((error) => console.log('error: ', error));
-  }, [dispatch]);
+  // useEffect(() => {
+  //   console.log('useEffect fired');
+  //   console.log('items in useEffect', items);
+  // }, [items]);
 
-  const length = values.ingredients.length;
+  const handleRemove = (arrayHelpers, index) => {
+    // console.log('deleted item: ', arrayHelpers.remove(index));
+    arrayHelpers.remove(index);
+    console.log('items in onClick: ', arrayHelpers.form.values.ingredients);
+  };
 
   return (
     <FieldArray
@@ -38,16 +39,18 @@ export const RecipeIngredientsFields = ({ values }) => {
             <Counter length={length} arrayHelpers={arrayHelpers} />
           </div>
 
-          <div className={style.ingredientsWrapper} role="group">
-            {values.ingredients.map((item, index) => (
-              <IngredientItem
-                key={index}
-                index={index}
-                length={length}
-                arrayHelpers={arrayHelpers}
-              />
+          <ul className={style.ingredientsWrapper}>
+            {items.map((item, index) => (
+              <li key={index}>
+                <IngredientItem
+                  index={index}
+                  length={length}
+                  // onClick={() => arrayHelpers.remove(index)}
+                  onClick={() => handleRemove(arrayHelpers, index)}
+                />
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       )}
     />
@@ -55,5 +58,5 @@ export const RecipeIngredientsFields = ({ values }) => {
 };
 
 RecipeIngredientsFields.propTypes = {
-  values: PropTypes.object.isRequired,
+  items: PropTypes.array.isRequired,
 };

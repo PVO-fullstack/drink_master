@@ -53,8 +53,13 @@ export const fetchPopularRecipes = createAsyncThunk(
 
 // --------------* AddRecipe *----------------------------
 
-// Payload
-const addRecipePayload = payloadCreator(api.addRecipe);
-
-// Operation
-export const addRecipe = createAsyncThunk('own', addRecipePayload);
+export const addRecipe = createAsyncThunk(
+  'own',
+  async (recipe, { rejectWithValue }) => {
+    try {
+      return await api.addRecipe(recipe);
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);

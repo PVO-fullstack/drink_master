@@ -21,6 +21,7 @@ export const SearchDropdown = (props) => {
   //
   // eslint-disable-next-line no-unused-vars
   const [field, meta, helpers] = useField(props);
+
   const { setValue, setTouched, setError } = helpers;
 
   const setFieldProps = (selectedOption) => {

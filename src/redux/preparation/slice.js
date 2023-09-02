@@ -15,6 +15,7 @@ const extraActions = [
   ops.fetchGlasses,
   ops.fetchCategories,
   ops.fetchPopularRecipes,
+  ops.addRecipe,
 ];
 
 export const preparationSlice = createSlice({
