@@ -1,5 +1,9 @@
 @import "../../styles/variables";
 
+.ingr {
+    height: 302px;
+}
+
 .indr_title {
     margin-bottom: 24px;
     font-size: 16px;
@@ -15,42 +19,45 @@
 }
 
 .ingr_item {
+    margin-bottom: 0;
     width: 220px;
     height: 220px;
-    padding: 31px 32px;
-
+    
     border-radius: 8px;
     background: rgba(22, 31, 55, 0.50);
 }
 
-.ingr_text {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 14px;
-    margin-left: auto;
-    width: 220px;
-    
-    justify-content: space-between;
-    
-
-}
 .ingr_name{
+    display: flex;
+    width: 220px;
+
+    justify-content: space-between;
     font-size: 18px;
     font-weight: 500;
     line-height: 1.33;
 
     color: $accent;
-        
 }
+
 .ingr_measure {
     font-size: 16px;
     font-weight: 500;
     line-height: 1.25;
 
     color: $accent-faded-50;
-        
 }
-// .img {
-//     margin-bottom: 46px;
-// }
+
+.svg {
+    width: 175px;
+    height: 175px;
+    margin: auto;
+    margin-top: 22px;
+    margin-bottom: 37px;
+    // margin-bottom: 46px;
+}
+.img {
+    width: 175px;
+    margin: auto;
+    margin-top: 22px;
+    margin-bottom: 37px;
+}

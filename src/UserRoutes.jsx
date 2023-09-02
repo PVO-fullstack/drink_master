@@ -4,7 +4,6 @@ import { Drinks } from "./pages/Drinks";
 import { AddRecipe } from "./pages/AddRecipe";
 import { MyRecipes } from "./pages/MyRecipes";
 import { Favorites } from "./pages/Favorites";
-import { RecipePage } from "./pages/RecipePage";
 import { Layout } from "./components/Layout/Layout";
 import { RestrictedRoute } from "./components/Routes/RestrictedRoute";
 import { Welcome } from "./pages/AuthPages/Welcome";

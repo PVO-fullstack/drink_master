@@ -26,19 +26,22 @@ export const RecipePageHero = () => {
     // console.log(recipe.isFavorite);
     return (
         <div className={css.page}>
-            <p className={css.glass}>{recipe.glass}</p>
-            <div className={css.recipe_page}>
-                
-                <div className={css.recipe}>
-                    <PageTitle className={css.heading}>{recipe.drink}</PageTitle>
-                    {recipe.description !== '' && (<p className={css.descrip}>{recipe.description}</p>)}
-                    {recipe.isFavorite === false ? (<button className={css.btn_add} type="button">Add to favorite recipe</button>):(<button className={css.btn_delete} type="button">Remove from favorite</button>)}
-                                   
+            <div className={css.page_recipe}>
+                <p className={css.glass}>{recipe.glass}</p>
+                <div className={css.recipe_list}>
+                    
+                    <div className={css.recipe}>
+                        <PageTitle className={css.heading}>{recipe.drink}</PageTitle>
+                        {recipe.description !== '' && (<p className={css.descrip}>{recipe.description}</p>)}
+                        {recipe.isFavorite === false ? (<button className={css.btn_add} type="button">Add to favorite recipe</button>):(<button className={css.btn_delete} type="button">Remove from favorite</button>)}
+                                    
+                    </div>
+                    {recipe.drinkThumb === '' ? ( <img src="public/images/placeholders/placeholder400.jpg" alt="" /> ) : ( <img className={css.img} src={recipe.drinkThumb} alt={recipe.drink} />)}
                 </div>
-                {recipe.drinkThumb === '' ? ( <img src="public/images/placeholders/placeholder400.jpg" alt="" /> ) : ( <img className={css.img} src={recipe.drinkThumb} alt={recipe.drink} />)}
             </div>
-            <RecipeInngredientsList ingredients={ recipe.ingredients} />
-            <RecipePreparation instructions={ recipe.instructions} />
+                <RecipeInngredientsList ingredients={ recipe.ingredients} />
+                <RecipePreparation instructions={recipe.instructions} />
+            
         </div>
         
     )
