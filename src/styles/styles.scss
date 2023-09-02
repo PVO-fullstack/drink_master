@@ -35,14 +35,14 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  /* Firefox: */
-  scrollbar-width: thin;
+  // For Firefox:
+  scrollbar-color: #434d67 #161f37;
 }
 
 ::-webkit-scrollbar {
   width: 8px;
   background-color: #161f37;
-  overflow: auto;
+  border-radius: 20px;
 }
 
 ::-webkit-scrollbar-thumb {

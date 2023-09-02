@@ -32,35 +32,38 @@ export const AddRecipeForm = () => {
     return normalizedString.split('\n').filter((el) => el.trim());
   };
 
-  const handleSubmit = async (values, { resetForm }) => {
-    toast.success(`Submitting`);
+  // const handleSubmit = async (values, { resetForm }) => {
+  //   console.log('values: ', values);
+  //   try {
+  //     await axios.post('/own', values);
+  //     toast.success(`Sent`);
+  //   } catch (error) {
+  //     toast.error(error.message);
+  //   }
+  // };
 
-    // if (typeof values.instructions === 'string') {
-    //   values.instructions = convertTextAreaToArray(values.instructions);
-    // }
-    // let formData = new FormData();
-    // for (const key in values) {
-    //   formData.append(key, values[key]);
+  const handleSubmit = (values, { resetForm }) => {
+    if (typeof values.instructions === 'string') {
+      values.instructions = convertTextAreaToArray(values.instructions);
+    }
+    // console.log('values: ', values);
+
+    let formData = new FormData();
+    for (const key in values) {
+      formData.append(key, values[key]);
+    }
+
+    // {
+    //   my_field: 'my value',
+    //   my_file:  fileInput.files // FileList will be unwrapped as sepate fields
     // }
 
     // console.log('formData: ', formData);
     // alert(JSON.stringify(values, null, 2));
 
-    // try {
-    // axios.post('/own', formData);
-    //   dispatch(addRecipe(formData)).then(
-    //     toast.success(`Congratulations, your recipe has been added`)
-    //   );
-    // } catch (error) {
-    //   toast.error(error.message);
-    // } finally {
-    // setSubmitting(false);
-    // If onSubmit is async, then Formik will automatically set isSubmitting to false on your behalf once it has resolved
-    // resetForm();
-
-    // await dispatch(addRecipe(values))
-    //   .then(toast.success(`Recipe has been added`))
-    //   .catch((error) => toast.error(error.message));
+    dispatch(addRecipe(values))
+      .then(toast.success(`Recipe has been added`))
+      .catch((error) => toast.error(error.message));
 
     // setSubmitting(false);
     // If onSubmit is async, then Formik will automatically set isSubmitting to false on your behalf once it has resolved
@@ -71,7 +74,7 @@ export const AddRecipeForm = () => {
 
   return (
     <Formik
-      initialValues={initialValues}
+      initialValues={testInitialValues}
       // validationSchema={yupSchema}
       onSubmit={handleSubmit}
     >
@@ -109,5 +112,19 @@ const initialValues = {
     { title: '', measure: '' },
   ],
   instructions: [],
+  drinkThumb: '',
+};
+
+const testInitialValues = {
+  drink: 'test drink',
+  description: 'test description',
+  category: 'Ordinary Drink',
+  glass: 'Copper Mug',
+  ingredients: [
+    { title: 'Light rum', measure: '1 bucket' },
+    { title: '', measure: '' },
+    { title: '', measure: '' },
+  ],
+  instructions: ['test instructions'],
   drinkThumb: '',
 };

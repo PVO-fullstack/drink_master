@@ -99,5 +99,5 @@ const measureStyleOverride = {
     minWidth: 101,
     [tablet]: { width: 150 },
   },
-  menu: { maxWidth: 80 },
+  menu: { maxWidth: 80, borderRadius: 15 },
 };

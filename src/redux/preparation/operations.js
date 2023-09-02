@@ -40,15 +40,7 @@ const glassesPayload = payloadCreator(api.fetchGlasses);
 // Operation
 export const fetchGlasses = createAsyncThunk('glass', glassesPayload);
 
-// --------------* AddRecipe *----------------------------
-
-// Payload
-const addRecipePayload = payloadCreator(api.addRecipe);
-
-// Operation
-export const addRecipe = createAsyncThunk('own', addRecipePayload);
-
-// --------------* AddRecipe *----------------------------
+// -------------* Popular Recipes *-----------------------
 
 // Payload
 const fetchPopularRecipesPayload = payloadCreator(api.fetchPopularRecipes);
@@ -58,3 +50,11 @@ export const fetchPopularRecipes = createAsyncThunk(
   'popular-recipes',
   fetchPopularRecipesPayload
 );
+
+// --------------* AddRecipe *----------------------------
+
+// Payload
+const addRecipePayload = payloadCreator(api.addRecipe);
+
+// Operation
+export const addRecipe = createAsyncThunk('own', addRecipePayload);

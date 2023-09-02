@@ -62,20 +62,22 @@ export const makeStyles = ({ style }) => ({
 
   menu: (baseStyles) => ({
     ...baseStyles,
-    backgroundColor: 'transparent',
+    backgroundColor: '#161f37',
     marginTop: 4,
     width: '100%', // 'max-content'
+    borderRadius: 20,
+    padding: 8,
     ...style.menu,
   }),
 
   menuList: (baseStyles) => ({
     ...baseStyles,
-    backgroundColor: '#161f37',
-    borderRadius: 20,
-    padding: 14,
+    overflowX: 'hidden',
     display: 'flex',
     flexDirection: 'column',
     gap: 8,
+    padding: 6,
+    // backgroundColor: 'blueviolet',
     ...style.menuList,
   }),
 
@@ -83,11 +85,10 @@ export const makeStyles = ({ style }) => ({
 
   option: (baseStyles, state) => ({
     ...baseStyles,
-    //   padding: 0,
     color: state.isFocused ? '#f3f3f3' : 'rgba(243, 243, 243, 0.5)',
-    //   backgroundColor: 'transparent',
     //   fontSize: variant === 'addrecipe' ? 14 : 17,
     //   lineHeight: variant === 'addrecipe' ? '128%' : '156%',
+    lineHeight: '128%',
     whiteSpace: 'nowrap',
     ...style.option,
   }),
