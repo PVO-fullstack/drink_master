@@ -1,0 +1,34 @@
+@import '../../styles/variables';
+
+.wrapper {
+  color: $accent;
+}
+
+.heading {
+  margin-bottom: 28px;
+
+  @media screen and (min-width: $tablet) {
+    margin-bottom: 40px;
+  }
+}
+
+.cardsWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  // background-color: blueviolet;
+
+  @media screen and (min-width: $tablet) {
+    gap: 32px;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    max-width: $tablet;
+  }
+
+  @media screen and (min-width: $desktop) {
+    gap: 28px;
+    flex-direction: column;
+    flex-wrap: nowrap;
+  }
+}

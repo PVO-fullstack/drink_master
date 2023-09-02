@@ -1,0 +1,47 @@
+@import '../../../styles/variables';
+
+.item {
+  display: flex;
+  // align-items: center;
+  justify-content: space-between;
+}
+
+.inputsWrapper {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  // background-color: gray;
+
+  width: 100%;
+  @media screen and (min-width: $mobile) and (max-width: ($desktop - 1)) {
+    max-width: 496px;
+  }
+}
+
+.label {
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 4px;
+}
+
+.removeButton {
+  background-color: transparent;
+  border: none;
+  color: $accent;
+  // height: 100%;
+  // min-height: 50px;
+  // background-color: blueviolet;
+
+  &::disabled {
+    color: rgba($accent, 0.3);
+  }
+}
+
+.error {
+  color: $error;
+  margin-top: 4px;
+  font-size: 12px;
+  line-height: calc(14 / 12);
+}

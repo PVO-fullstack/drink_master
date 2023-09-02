@@ -13,29 +13,48 @@ const payloadCreator =
     }
   };
 
-// ****************************************************
+// -------------* Ingredients *--------------------------
 
-// Payload Ingredients
+// Payload
 const ingredientsPayload = payloadCreator(api.fetchIngredients);
 
-// Operation Ingredients
+// Operation
 export const fetchIngredients = createAsyncThunk(
   'ingredients',
   ingredientsPayload
 );
 
-// ___________________________________________________
+// -------------* Categories *---------------------------
 
-// Payload Categories
+// Payload
 const categoriesPayload = payloadCreator(api.fetchCategories);
 
-// Operation Categories
+// Operation
 export const fetchCategories = createAsyncThunk('category', categoriesPayload);
 
-// ___________________________________________________
+// ---------------* Glasses *----------------------------
 
-// Payload Glasses
+// Payload
 const glassesPayload = payloadCreator(api.fetchGlasses);
 
-// Operation Glasses
+// Operation
 export const fetchGlasses = createAsyncThunk('glass', glassesPayload);
+
+// -------------* Popular Recipes *-----------------------
+
+// Payload
+const fetchPopularRecipesPayload = payloadCreator(api.fetchPopularRecipes);
+
+// Operation
+export const fetchPopularRecipes = createAsyncThunk(
+  'popular-recipes',
+  fetchPopularRecipesPayload
+);
+
+// --------------* AddRecipe *----------------------------
+
+// Payload
+const addRecipePayload = payloadCreator(api.addRecipe);
+
+// Operation
+export const addRecipe = createAsyncThunk('own', addRecipePayload);

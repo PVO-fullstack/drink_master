@@ -1,11 +1,14 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react';
+import PropTypes from 'prop-types';
 
-export const AddIcon = () => {
+// ###################################################
+
+export const AddIcon = ({ width, height }) => {
   return (
     <svg
-      width="29"
-      height="28"
+      width={width}
+      height={height}
       viewBox="0 0 28 28"
       xmlns="http://www.w3.org/2000/svg"
       style={{ stroke: 'currentcolor' }}
@@ -26,4 +29,9 @@ export const AddIcon = () => {
       />
     </svg>
   );
+};
+
+AddIcon.propTypes = {
+  width: PropTypes.number,
+  height: PropTypes.number,
 };

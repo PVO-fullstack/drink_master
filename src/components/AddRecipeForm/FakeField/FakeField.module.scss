@@ -1,0 +1,57 @@
+@import '../../../styles/variables';
+
+.wrapper {
+  display: flex;
+  //   flex-direction: column;
+  justify-content: space-between;
+  height: calc($input-placeholder + $paragraph);
+
+  border: none;
+  border-bottom: 1px solid rgba($accent, 0.5);
+
+  transition: color $transition-duration $transition-timing-function,
+    border-color $transition-duration $transition-timing-function,
+    transform $transition-duration $transition-timing-function;
+
+  &::focus-within {
+    outline: none;
+    outline-offset: 1px;
+    border-color: $accent;
+    background-color: red;
+
+    outline: none;
+    border-color: $accent;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: $accent;
+  }
+
+  &:required:invalid {
+    border-color: maroon;
+  }
+}
+
+.fakeLabel {
+  color: $accent-faded-50;
+  font-size: $input-placeholder;
+  font-weight: $regular;
+  letter-spacing: -0.32px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: green;
+}
+
+.select {
+  background-color: blueviolet;
+}
+
+.error {
+  color: $error;
+  margin-top: 4px;
+  font-size: 12px;
+  line-height: calc(14 / 12);
+}

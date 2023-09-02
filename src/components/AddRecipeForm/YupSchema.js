@@ -7,8 +7,8 @@ export const yupSchema = object({
   description: string()
     .max(100, 'Must be 100 characters or less')
     .required('Please provide a description'),
-  category: string().required('Please select a glass'),
-  glass: string().required('Please select a glass'),
+  category: string().required('Please choose a category'),
+  glass: string().required('Please specify which glass to use for serving'),
   ingredients: array()
     .of(
       object().shape({

@@ -15,3 +15,23 @@
     margin-bottom: 62px;
   }
 }
+
+.large {
+  margin-bottom: 40px;
+
+  @media screen and (min-width: $tablet) {
+    margin-bottom: 60px;
+  }
+}
+
+.small {
+  margin-bottom: 16px;
+
+  @media screen and (min-width: $tablet) {
+    margin-bottom: 28px;
+  }
+}
+
+.none {
+  margin-bottom: 0;
+}

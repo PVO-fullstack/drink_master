@@ -4,7 +4,9 @@ export { RecipeIngredientsFields } from './RecipeIngredientsFields/RecipeIngredi
 export { RecipePreparationFields } from './RecipePreparationFields/RecipePreparationFields';
 
 export { FormikImageUploader } from './FormikImageUploader/FormikImageUploader';
-export { FormikIngredient } from './FormikIngredient/FormikIngredient';
-export { FormikSelect } from './FormikSelect/FormikSelect';
 export { FormikTextInput } from './FormikTextInput/FormikTextInput';
 export { ImageUploadBlock } from './ImageUploadBlock/ImageUploadBlock';
+export { SearchDropdown } from './SearchDropdown/SearchDropdown';
+
+export { IngredientItem } from './IngredientItem/IngredientItem';
+export { Counter } from './Counter/Counter';

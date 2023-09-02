@@ -9,22 +9,17 @@ import {
 } from '../../../redux/preparation/operations';
 import { selectPreparation } from '../../../redux/preparation/selectors';
 
-import { ImageUploadBlock, FormikTextInput, FormikSelect } from '..';
+import { ImageUploadBlock, FormikTextInput, SearchDropdown } from '..';
 import style from './RecipeDescriptionFields.module.scss';
 
 // ###################################################
 
-const variant = 'addrecipe';
-
 export const RecipeDescriptionFields = ({ setFieldValue }) => {
   //
-  // ****************** Global State ********************
   const { categories, glasses } = useSelector(selectPreparation);
 
-  // ****************** Component State ********************
   const [objectURL, setObjectURL] = useState(null);
 
-  // ******************** Lifecycle ************************
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -81,26 +76,24 @@ export const RecipeDescriptionFields = ({ setFieldValue }) => {
 
         <FormikTextInput name="description" label="Description" />
 
-        <FormikSelect
+        <SearchDropdown
           name="category"
-          label="Category"
           data={categories}
-          variant={variant}
-          placeHolder="Select a category"
-          isSearchable={false}
+          style={fakeInputStyleOverride}
+          placeholder={fakeInputPlaceholder}
           itemsBeforeScroll={6}
-          unstyled
+          hasFakeField={true}
+          isSearchable={false}
         />
 
-        <FormikSelect
+        <SearchDropdown
           name="glass"
-          label="Glass"
           data={glasses}
-          variant={variant}
-          placeHolder="Select glass type"
-          isSearchable={false}
+          style={fakeInputStyleOverride}
+          placeholder={fakeInputPlaceholder}
           itemsBeforeScroll={6}
-          unstyled
+          hasFakeField={true}
+          isSearchable={false}
         />
       </div>
     </div>
@@ -110,3 +103,21 @@ export const RecipeDescriptionFields = ({ setFieldValue }) => {
 RecipeDescriptionFields.propTypes = {
   setFieldValue: PropTypes.func,
 };
+
+// ##########################################
+
+const fakeInputStyleOverride = {
+  control: {
+    padding: 0,
+    marginTop: -4,
+    border: 'none',
+    borderRadius: 'none',
+    // backgroundColor: 'blueViolet',
+    width: 'max-content',
+  },
+
+  menu: { width: 'max-content' },
+  // container: { width: '100%' },
+};
+
+const fakeInputPlaceholder = 'Please select';
