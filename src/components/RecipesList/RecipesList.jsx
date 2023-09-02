@@ -48,12 +48,6 @@ export const RecipesList = ({ type }) => {
     }
   }, [dispatch, currentPage, recipesPerPage, type]);
 
-  // useEffect(() => {
-  //   dispatch(
-  //     fetchRecipesThunk({ type, page: currentPage, limit: recipesPerPage })
-  //   );
-  // }, [dispatch, currentPage, recipesPerPage, type]);
-
   const calculateTotalPages = (totalRecipes, recipesPerPage) => {
     return Math.ceil(totalRecipes / recipesPerPage);
   };
