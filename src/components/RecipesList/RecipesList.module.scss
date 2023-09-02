@@ -1,6 +1,51 @@
+@import "../../styles/variables";
+
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  // padding-left: 20px;
+  // padding-right: 20px;
+  width: 335px;
+
+  @media screen and (min-width: $tablet) {
+    // padding-left: 32px;
+    // padding-right: 32px;
+    width: 704px;
+  }
+  @media screen and (min-width: $desktop) {
+    // padding-left: 100px;
+    // padding-right: 100px;
+    width: 1240px;
+  }
+}
+
+// .page_title {
+//   margin-top: 80px;
+//   margin-bottom: 40px;
+
+//   @media screen and (min-width: $tablet) {
+//     margin-top: 140px;
+//     margin-bottom: 60px;
+//   }
+//   @media screen and (min-width: $desktop) {
+//     margin-top: 158px;
+//     margin-bottom: 62px;
+//   }
+// }
+
 .recipes_list {
   display: flex;
-  flex-wrap: wrap;
+  gap: 40px;
 
-  gap: 20px;
+  @media screen and (max-width: ($tablet - 1px)) {
+    flex-direction: column;
+  }
+
+  @media screen and (min-width: $tablet) {
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  @media screen and (min-width: $desktop) {
+    gap: 20px;
+  }
 }
