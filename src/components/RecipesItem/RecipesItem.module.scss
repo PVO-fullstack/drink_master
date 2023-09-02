@@ -52,14 +52,25 @@
     gap: 24px;
   }
 }
+.recipes_item_title {
+  color: $accent;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: calc(24 / 18);
+
+  @media screen and (min-width: $tablet) {
+    font-size: 24px;
+
+    line-height: calc(32 / 24);
+  }
+}
 
 .recipes_item__ingredients {
   color: rgba(243, 243, 243, 0.5);
   font-size: 14px;
   font-weight: 500;
   line-height: calc(18 / 14);
-
-  // margin-bottom: 24px;
 
   @media screen and (min-width: $tablet) {
     line-height: calc(18 / 16);
@@ -73,13 +84,15 @@
   overflow: hidden;
   color: #f3f3f3;
   text-overflow: ellipsis;
-  font-size: 16px;
-  line-height: calc(22 / 16);
+  font-size: 14px;
+  line-height: calc(18 / 14);
   max-width: 100%;
 
   @media screen and (min-width: $tablet) {
     -webkit-line-clamp: 5;
     height: 110px;
+    font-size: 16px;
+    line-height: calc(22 / 16);
   }
   @media screen and (min-width: $desktop) {
     -webkit-line-clamp: 4;
