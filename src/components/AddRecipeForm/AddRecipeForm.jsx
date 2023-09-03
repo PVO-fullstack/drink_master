@@ -1,20 +1,21 @@
 /* eslint-disable no-unused-vars */
-import React from 'react';
-import { useDispatch } from 'react-redux';
+import React from "react";
+import { useDispatch } from "react-redux";
 
 import { toast } from 'react-hot-toast';
 
-import { Formik, Form } from 'formik';
-import { yupSchema } from './YupSchema';
+
+import { Formik, Form } from "formik";
+import { yupSchema } from "./YupSchema";
 
 import {
   RecipeDescriptionFields,
   RecipeIngredientsFields,
   RecipePreparationFields,
-} from '.';
+} from ".";
 
-import { Button } from '../Button/Button';
-import { addRecipe } from '../../redux/preparation/operations';
+import { Button } from "../Button/Button";
+import { addRecipe } from "../../redux/preparation/operations";
 
 import style from './AddRecipeForm.module.scss';
 import { useNavigate } from 'react-router-dom';
@@ -27,8 +28,8 @@ export const AddRecipeForm = () => {
   const navigate = useNavigate();
 
   const convertTextAreaToArray = (string) => {
-    const normalizedString = string.replace(/\r\n/g, '\n');
-    return normalizedString.split('\n').filter((el) => el.trim());
+    const normalizedString = string.replace(/\r\n/g, "\n");
+    return normalizedString.split("\n").filter((el) => el.trim());
   };
 
   // const testSubmit = (values, formikBag) => {
@@ -48,7 +49,7 @@ export const AddRecipeForm = () => {
   const handleSubmit = (values, formikBag) => {
     const { resetForm, setSubmitting } = formikBag;
 
-    if (typeof values.instructions === 'string') {
+    if (typeof values.instructions === "string") {
       values.instructions = convertTextAreaToArray(values.instructions);
     }
 
@@ -104,15 +105,15 @@ export const AddRecipeForm = () => {
 // ####################################################
 
 const initialValues = {
-  drink: '',
-  description: '',
-  category: '',
-  glass: '',
+  drink: "",
+  description: "",
+  category: "",
+  glass: "",
   ingredients: [
-    { title: '', measure: '' },
-    { title: '', measure: '' },
-    { title: '', measure: '' },
+    { title: "", measure: "" },
+    { title: "", measure: "" },
+    { title: "", measure: "" },
   ],
-  instructions: [''],
-  imageOfRecipe: '',
+  instructions: [""],
+  imageOfRecipe: "",
 };
