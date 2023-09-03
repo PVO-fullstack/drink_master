@@ -9,7 +9,7 @@ export const RecipeInngredientsList = ({ingredients}) => {
             <h3 className={css.indr_title}>Ingredients</h3>
             <ul className={css.indr_list}>
                 {ingredients.map(({ title, measure, ingredientThumb }) => (
-                <li className={css.ingr_item}>
+                <li className={css.ingr_item} key={title}>
                             
                     {ingredientThumb === '' ?
                     (<svg className={css.svg} xmlns="http://www.w3.org/2000/svg" width="131" height="133" viewBox="0 0 131 133" fill="none">
@@ -27,7 +27,7 @@ export const RecipeInngredientsList = ({ingredients}) => {
     )
 }
 
-RecipeInngredientsList.PropTypes = {
+RecipeInngredientsList.propTypes = {
      array: PropTypes.arrayOf(
         PropTypes.exact({
             title: PropTypes.string.isRequired,
