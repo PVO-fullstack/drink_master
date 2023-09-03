@@ -1,29 +1,41 @@
-import React, { useState } from "react";
-import { Navigation } from "../Navigation/Navigation";
-import UserMenu from "../UserMenu/UserMenu";
-import Logo from "../Logo/Logo";
-import css from './Header.module.scss'
-import AlignJustify from "../ComponentsSVG/AlignJustify";
-import CloseSVG from "../ComponentsSVG/CloseSVG";
+import { useState } from 'react';
+import { Navigation } from '../Navigation/Navigation';
+import PropTypes from 'prop-types';
 
-export const Header = () => {
+import UserMenu from '../UserMenu/UserMenu';
+import Logo from '../Logo/Logo';
+import AlignJustify from '../ComponentsSVG/AlignJustify';
+import CloseSVG from '../ComponentsSVG/CloseSVG';
+
+import css from './Header.module.scss';
+
+export const Header = ({ headerRef }) => {
   const [BurgerNavigation, setBurgerNavigation] = useState(false);
-  const togleBurgerBackdrop = (e) => {
-    setBurgerNavigation(!BurgerNavigation)
+  const toggleBurgerBackdrop = (e) => {
+    setBurgerNavigation(!BurgerNavigation);
     // e.target.classList.toggle("active")
   };
-  const burgerPosition = BurgerNavigation ? "0px" : "-100vh"
-
+  const burgerPosition = BurgerNavigation ? '0px' : '-100vh';
 
   return (
-    <header className={css.header}>
+    <header className={css.header} ref={headerRef}>
       <div className={css.headerContainer}>
         <Logo />
         <Navigation style="csshead" />
         <div className={css.headerSideWrapper}>
           <UserMenu />
-          <button onClick={togleBurgerBackdrop} className={css.headerBurgerMenuBTN}>
-            {BurgerNavigation ? <CloseSVG className={`headerBurgerMenuIcon`} fill={"#F3F3F3"} /> : <AlignJustify className={`headerBurgerMenuIcon`} fill={"#F3F3F3"} />}
+          <button
+            onClick={toggleBurgerBackdrop}
+            className={css.headerBurgerMenuBTN}
+          >
+            {BurgerNavigation ? (
+              <CloseSVG className={`headerBurgerMenuIcon`} fill={'#F3F3F3'} />
+            ) : (
+              <AlignJustify
+                className={`headerBurgerMenuIcon`}
+                fill={'#F3F3F3'}
+              />
+            )}
           </button>
         </div>
       </div>
@@ -33,4 +45,8 @@ export const Header = () => {
       <div className={css.headerUnderline}></div>
     </header>
   );
+};
+
+Header.propTypes = {
+  headerRef: PropTypes.object,
 };
