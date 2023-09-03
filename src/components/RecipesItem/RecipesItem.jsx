@@ -76,7 +76,7 @@ RecipesItem.propTypes = {
     _id: PropTypes.string.isRequired,
     drinkThumb: PropTypes.string.isRequired,
     drink: PropTypes.string.isRequired,
-    description: PropTypes.array.isRequired,
+    description: PropTypes.string.isRequired,
   }).isRequired,
   type: PropTypes.oneOf(["own", "favorite"]).isRequired,
   page: PropTypes.number.isRequired,
