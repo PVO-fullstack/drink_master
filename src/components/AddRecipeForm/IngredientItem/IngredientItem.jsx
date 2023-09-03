@@ -32,6 +32,7 @@ export const IngredientItem = ({ index, length, onRemove }) => {
           style={ingredientStyleOverride}
           placeholder="Ingredient name"
           itemsBeforeScroll={itemsBeforeScroll}
+          labelVisibility="hidden"
         />
 
         <SearchDropdown
@@ -40,6 +41,7 @@ export const IngredientItem = ({ index, length, onRemove }) => {
           style={measureStyleOverride}
           placeholder="Measure"
           itemsBeforeScroll={itemsBeforeScroll}
+          labelVisibility="hidden"
         />
       </div>
 

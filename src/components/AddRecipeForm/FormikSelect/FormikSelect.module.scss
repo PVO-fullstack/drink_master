@@ -29,9 +29,9 @@
   font-weight: $regular;
   letter-spacing: -0.32px;
 
-  position: absolute;
-  top: 0;
-  left: 0;
+  // position: absolute;
+  // top: 0;
+  // left: 0;
 
   transition: color $transition-duration $transition-timing-function,
     transform $transition-duration $transition-timing-function;

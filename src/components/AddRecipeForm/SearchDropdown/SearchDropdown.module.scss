@@ -13,10 +13,6 @@
   font-weight: $regular;
   letter-spacing: -0.32px;
 
-  position: absolute;
-  top: 0;
-  left: 0;
-
   transition: color $transition-duration $transition-timing-function,
     transform $transition-duration $transition-timing-function;
 
@@ -24,10 +20,10 @@
     color: $accent;
   }
 
-  .field:not(:placeholder-shown) + & {
-    // color: magenta;
-    visibility: hidden;
-  }
+  // .field:placeholder-shown + & {
+  // color: magenta;
+  // // visibility: hidden;
+  // }
 }
 
 .error {

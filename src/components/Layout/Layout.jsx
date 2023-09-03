@@ -1,21 +1,48 @@
 import { Header } from '../Header/Header';
-import Footer from '../Footer/Footer';
+import { Footer } from '../Footer/Footer';
 import { Outlet } from 'react-router';
-// import { Suspense } from 'react';
+import { Suspense, useEffect, useRef, useState } from 'react';
 
 import style from './Layout.module.scss';
 
 export const Layout = () => {
+  const headerRef = useRef(null);
+
+  const [headerHeight, setHeaderHeight] = useState(null);
+
+  useEffect(() => {
+    const header = headerRef.current;
+    const { height } = header.getBoundingClientRect();
+    setHeaderHeight(height);
+
+    // *****************
+
+    window.onscroll = () => changeHeaderBackground();
+
+    function changeHeaderBackground() {
+      if (window.scrollY > headerHeight) {
+        header.style.backgroundColor = 'rgb(22, 31, 55, 0.80)';
+        header.style.backdropFilter = 'blur(10px)';
+      } else {
+        header.style.backgroundColor = 'transparent';
+        header.style.backdropFilter = 'none';
+      }
+    }
+    // *****************
+  }, [headerHeight]);
+
   return (
     <div>
-      <Header />
-
+      <Header headerRef={headerRef} />
       <div className={style.container}>
-        {/* <Suspense fallback={<div>Loading...</div>}> */}
-        <main className={style.page}>
-          <Outlet />
-        </main>
-        {/* </Suspense> */}
+        <Suspense fallback={<div>Loading...</div>}>
+          <main
+            className={style.page}
+            style={{ height: window.innerHeight + headerHeight }}
+          >
+            <Outlet />
+          </main>
+        </Suspense>
       </div>
 
       <Footer />

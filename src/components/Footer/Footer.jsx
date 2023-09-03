@@ -1,11 +1,10 @@
-import React from 'react';
 import css from './Footer.module.scss';
 import Logo from '../Logo/Logo.jsx';
 import { FollowUs } from '../FollowUs/FollowUs';
 import { Navigation } from '../Navigation/Navigation';
 import SubscribeForm from '../SubscribeForm/SubscribeForm';
 
-const Footer = () => {
+export const Footer = () => {
   return (
     <footer className={css.footer}>
       <div className={css.footerContainer}>
@@ -14,10 +13,10 @@ const Footer = () => {
             <Logo />
             <FollowUs />
           </div>
-          <div className={css.footerNawigation}>
+          <div className={css.footerNavigation}>
             <Navigation style="cssfoot" />
           </div>
-          <div className={css.footerSupscribe}>
+          <div className={css.footerSubscribe}>
             <SubscribeForm />
           </div>
         </div>
@@ -32,5 +31,3 @@ const Footer = () => {
     </footer>
   );
 };
-
-export default Footer;

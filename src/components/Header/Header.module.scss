@@ -1,91 +1,93 @@
 .header {
-    width: 100vw;
-    position: fixed;
-    height: 72px;
-    z-index: 100;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
 
-    @media screen and (min-width: 768px) {
-        height: 84px;
-    }
+  height: 72px;
+  z-index: 100;
+
+  @media screen and (min-width: 768px) {
+    height: 84px;
+  }
 }
 
 .headerContainer {
-    position: relative;
-    display: flex;
-    align-items: center;
-    flex-direction: row;
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 20px 20px;
+  z-index: 100;
+
+  @media screen and (min-width: 768px) {
+    padding: 20px 32px;
+  }
+
+  @media screen and (min-width: 1440px) {
     justify-content: space-between;
-    padding: 20px 20px;
-    z-index: 100;
-
-    @media screen and (min-width: 768px) {
-        padding: 20px 32px;
-    }
-
-    @media screen and (min-width: 1440px) {
-        justify-content: space-between;
-        padding: 20px 100px;
-    }
+    padding: 20px 100px;
+  }
 }
 
 .headerSideWrapper {
-    display: flex;
-    gap: 14px;
-    align-items: center;
+  display: flex;
+  gap: 14px;
+  align-items: center;
 
-    @media screen and (min-width: 768px) {
-        gap: 24px;
-    }
+  @media screen and (min-width: 768px) {
+    gap: 24px;
+  }
 }
 
 .headerBurgerMenuBTN {
-    border: none;
-    background-color: transparent;
+  border: none;
+  background-color: transparent;
 
-    width: 32px;
-    height: 32px;
+  width: 32px;
+  height: 32px;
 
-    @media screen and (min-width: 768px) {
-        width: 38px;
-        height: 38px;
-    }
+  @media screen and (min-width: 768px) {
+    width: 38px;
+    height: 38px;
+  }
 
-    @media screen and (min-width: 1199px) {
-        display: none;
-    }
+  @media screen and (min-width: 1199px) {
+    display: none;
+  }
 }
 
 .headerBurgerMenuIcon {
-    display: none;
+  display: none;
 }
 
 .headerBurgerBackdrop {
-    position: absolute;
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-
-    background-color: rgba(10, 10, 17, 1);
-    background-image: url(/images/PNG/Background.png), url(/images/PNG/Background2.png), url(/images/PNG/Background3.png);
-    background-position: top left, top 120px right, top right;
-    background-repeat: no-repeat, no-repeat, no-repeat;
-    background-size: 35%, 20%, 20%;
-    transition: top 500ms ease-in-out;
-
+  background-color: rgba(10, 10, 17, 1);
+  background-image: url(/images/PNG/Background.png),
+    url(/images/PNG/Background2.png), url(/images/PNG/Background3.png);
+  background-position: top left, top 120px right, top right;
+  background-repeat: no-repeat, no-repeat, no-repeat;
+  background-size: 35%, 20%, 20%;
+  transition: top 500ms ease-in-out;
 }
 
 .headerBurgerBackdropOpen {
-    margin: 0;
+  margin: 0;
 }
 
 .headerUnderline {
-    position: absolute;
-    width: 100vw;
-    height: 1px;
-    bottom: 0;
-    left: 0;
-    background-color: rgba(243, 243, 243, 0.2);
+  position: absolute;
+  width: 100vw;
+  height: 1px;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(243, 243, 243, 0.2);
 }

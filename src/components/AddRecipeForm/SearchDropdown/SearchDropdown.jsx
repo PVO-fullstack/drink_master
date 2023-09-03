@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import PropTypes from 'prop-types';
+import PropTypes, { oneOf } from 'prop-types';
 import { useField } from 'formik';
 import Select from 'react-select';
 
@@ -15,6 +15,7 @@ export const SearchDropdown = (props) => {
     data,
     hasFakeField = false,
     // isSearchable = true,
+    labelVisibility = 'visible',
   } = props;
   //
   // eslint-disable-next-line no-unused-vars
@@ -66,6 +67,9 @@ export const SearchDropdown = (props) => {
         <label
           htmlFor={label || name}
           className={hasFakeField ? style.fakeFieldLabel : style.label}
+          style={{
+            visibility: labelVisibility === 'hidden' ? 'hidden' : 'visible',
+          }}
         >
           {hasFakeField ? capitalizedName : label || name}
         </label>
@@ -84,4 +88,5 @@ SearchDropdown.propTypes = {
   data: PropTypes.arrayOf(PropTypes.shape),
   hasFakeField: PropTypes.bool,
   isSearchable: PropTypes.bool,
+  labelVisibility: oneOf(['visible', 'hidden']),
 };

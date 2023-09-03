@@ -1,5 +1,5 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { addToFavoriteThunk, fetchRecipIdThunk } from "./recipeOperations";
+import { createSlice } from '@reduxjs/toolkit';
+import { addToFavoriteThunk, fetchRecipIdThunk } from './recipeOperations';
 
 const initialState = {
   recipeId: {
@@ -13,7 +13,7 @@ const initialState = {
 };
 
 export const recipeSlice = createSlice({
-  name: "recipeById",
+  name: 'recipeById',
   initialState,
   reducers: {},
   extraReducers: (builder) =>
@@ -26,5 +26,5 @@ export const recipeSlice = createSlice({
         state.recipeId.isFavorite = payload;
       }),
 });
-console.log(recipeSlice);
+// console.log(recipeSlice);
 export default recipeSlice.reducer;
