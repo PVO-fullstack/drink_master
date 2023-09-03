@@ -1,26 +1,26 @@
-import Home from './pages/Home';
-import { Navigate, Route, Routes } from 'react-router-dom';
-import { Drinks } from './pages/Drinks';
-import { AddRecipe } from './pages/AddRecipe';
-import { MyRecipes } from './pages/MyRecipes';
-import { Favorites } from './pages/Favorites';
-import { Layout } from './components/Layout/Layout';
-import { RestrictedRoute } from './components/Routes/RestrictedRoute';
-import { Welcome } from './pages/AuthPages/Welcome';
-import { Registration } from './pages/AuthPages/Registration';
-import { Login } from './pages/AuthPages/Login';
-import { PrivatRoute } from './components/Routes/PrivatRoute';
-import { useSelector } from 'react-redux';
-import { selectIsRefresh } from './redux/auth/authSelectors';
-import { Recipe } from './pages/Recipe';
+import Home from "./pages/Home";
+import { Navigate, Route, Routes } from "react-router-dom";
+import { Drinks } from "./pages/Drinks";
+import { AddRecipe } from "./pages/AddRecipe";
+import { MyRecipes } from "./pages/MyRecipes";
+import { Favorites } from "./pages/Favorites";
+import { Layout } from "./components/Layout/Layout";
+import { RestrictedRoute } from "./components/Routes/RestrictedRoute";
+import { Welcome } from "./pages/AuthPages/Welcome";
+import { Registration } from "./pages/AuthPages/Registration";
+import { Login } from "./pages/AuthPages/Login";
+import { PrivatRoute } from "./components/Routes/PrivatRoute";
+import { useSelector } from "react-redux";
+import { selectIsRefresh } from "./redux/auth/authSelectors";
+import { Recipe } from "./pages/Recipe";
 
-import { Toaster } from 'react-hot-toast';
-import { toastOptions, containerStyle } from './services/toastOptions';
+import { Toaster } from "react-hot-toast";
+import { toastOptions, containerStyle } from "./services/toastOptions";
 export const UserRoutes = () => {
   const isRefresh = useSelector(selectIsRefresh);
 
   return isRefresh ? (
-    'Refresh User'
+    "Refresh User"
   ) : (
     <>
       <Toaster containerStyle={containerStyle} toastOptions={toastOptions} />
@@ -52,16 +52,21 @@ export const UserRoutes = () => {
               <PrivatRoute redirectTo="/welcome" component={<MyRecipes />} />
             }
           />
-          <Route path="recipes/:id" element={<Recipe />} />
+          <Route
+            path="recipes/:id"
+            element={
+              <PrivatRoute redirectTo="/welcome" component={<Recipe />} />
+            }
+          />
           <Route
             path="favorites"
             element={
               <PrivatRoute redirectTo="/welcome" component={<Favorites />} />
             }
           />
-          </Route>
-          
-          <Route
+        </Route>
+
+        <Route
           path="/welcome"
           element={<RestrictedRoute redirectTo="/" component={<Welcome />} />}
         />

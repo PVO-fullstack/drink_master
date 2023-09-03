@@ -1,26 +1,30 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchRecipIdThunk } from "./recipeOperations";
+import { addToFavoriteThunk, fetchRecipIdThunk } from "./recipeOperations";
 
 const initialState = {
-  recipeId: { drink: null, glass: null, ingredients: [], instructions: []},
+  recipeId: {
+    drink: null,
+    glass: null,
+    ingredients: [],
+    instructions: [],
+    isFavorite: false,
+  },
   error: null,
 };
 
 export const recipeSlice = createSlice({
-    name: "recipeById",
-    initialState,
-    reducers: {},
-    extraReducers: (builder) =>
-        builder
-            .addCase(fetchRecipIdThunk.fulfilled, (state, {payload}) => {
-                state.recipeId = payload;
-                state.error = null;
-            })
-}
-    
-)
+  name: "recipeById",
+  initialState,
+  reducers: {},
+  extraReducers: (builder) =>
+    builder
+      .addCase(fetchRecipIdThunk.fulfilled, (state, { payload }) => {
+        state.recipeId = payload;
+        state.error = null;
+      })
+      .addCase(addToFavoriteThunk.fulfilled, (state, { payload }) => {
+        state.recipeId.isFavorite = payload;
+      }),
+});
 console.log(recipeSlice);
 export default recipeSlice.reducer;
-
-
-
