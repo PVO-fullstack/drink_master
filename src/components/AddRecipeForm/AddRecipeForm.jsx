@@ -30,19 +30,19 @@ export const AddRecipeForm = () => {
     return normalizedString.split('\n').filter((el) => el.trim());
   };
 
-  const testSubmit = (values, formikBag) => {
-    const { resetForm, setSubmitting } = formikBag;
-    if (typeof values.instructions === 'string') {
-      values.instructions = convertTextAreaToArray(values.instructions);
-    }
-    // console.log('values:', JSON.stringify(values, null, 2));
-    let formData = new FormData();
-    for (const key in values) {
-      formData.append(key, values[key]);
-    }
-    console.log('formData: ', formData);
-    setSubmitting(false);
-  };
+  // const testSubmit = (values, formikBag) => {
+  //   const { resetForm, setSubmitting } = formikBag;
+  //   if (typeof values.instructions === 'string') {
+  //     values.instructions = convertTextAreaToArray(values.instructions);
+  //   }
+  //   // console.log('values:', JSON.stringify(values, null, 2));
+  //   let formData = new FormData();
+  //   for (const key in values) {
+  //     formData.append(key, values[key]);
+  //   }
+  //   console.log('formData: ', formData);
+  //   setSubmitting(false);
+  // };
 
   const handleSubmit = (values, formikBag) => {
     const { resetForm, setSubmitting } = formikBag;
@@ -71,8 +71,6 @@ export const AddRecipeForm = () => {
         setSubmitting(false); // If onSubmit is async, then Formik will automatically set isSubmitting to false on your behalf once it has resolved
         resetForm();
       });
-
-    setSubmitting(false);
   };
 
   // ******************** End of handlers ******************
