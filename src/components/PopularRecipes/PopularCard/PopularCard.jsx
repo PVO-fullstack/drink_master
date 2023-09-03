@@ -14,7 +14,6 @@ export const PopularCard = ({ recipe }) => {
 
   return (
     <Link to={`/recipes/${id}`} className={style.card}>
-      {/*  */}
       <div className={style.thumb}>
         <img
           className={style.image}

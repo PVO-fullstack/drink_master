@@ -1,35 +1,36 @@
 .userMenu {
-    position: relative;
-    display: flex;
-    flex-direction: row;
-    gap: 8px;
-    align-items: center;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
 
-    @media screen and (min-width: 768px) {
-        gap: 14px;
-    }
+  cursor: pointer;
+
+  @media screen and (min-width: 768px) {
+    gap: 14px;
+  }
 }
 
 .userMenuImg {
-    border-radius: 50%;
-    color: rgba(243, 243, 243, 1);
-    fill: aliceblue;
-    width: 32px;
-    height: 32px;
+  border-radius: 50%;
+  color: rgba(243, 243, 243, 1);
+  fill: aliceblue;
+  width: 32px;
+  height: 32px;
 
-    @media screen and (min-width: 768px) {
-        width: 44px;
-        height: 44px;
-    }
+  @media screen and (min-width: 768px) {
+    width: 44px;
+    height: 44px;
+  }
 }
 
 .userMenuName {
-    font-weight: 500;
-    font-size: 14px;
-    color: rgba(243, 243, 243, 1);
+  font-weight: 500;
+  font-size: 14px;
+  color: rgba(243, 243, 243, 1);
 
-    @media screen and (min-width: 768px) {
-        font-size: 16px;
-
-    }
+  @media screen and (min-width: 768px) {
+    font-size: 16px;
+  }
 }

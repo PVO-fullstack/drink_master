@@ -5,7 +5,7 @@ export const yupSchema = object({
     .max(40, 'Title must be 40 characters or less')
     .required('Title is required'),
   description: string()
-    .max(100, 'Must be 100 characters or less')
+    .max(500, 'Must be 500 characters or less')
     .required('Please provide a description'),
   category: string().required('Please choose a category'),
   glass: string().required('What glass to serve in?'),
