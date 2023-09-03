@@ -29,22 +29,22 @@ export const RecipeDescriptionFields = ({ setFieldValue }) => {
 
     if (selectedFile.size > 2000000) {
       alert('File too large');
-      throw new Error('File too large');
+      throw new Error('File is too big');
     }
     setObjectURL(URL.createObjectURL(selectedFile));
-    setFieldValue('photoUrl', selectedFile);
+    setFieldValue('imageOfRecipe', selectedFile);
   };
   const handleRemoveThumbnail = () => {
     URL.revokeObjectURL(objectURL);
     setObjectURL(null);
-    setFieldValue('photoUrl', '');
+    setFieldValue('imageOfRecipe', '');
   };
 
   return (
     <div className={style.container}>
       <div className={style.addImageGroup}>
         <ImageUploadBlock
-          labelFor="photoUrl" //must match FormikImageUploader
+          labelFor="imageOfRecipe" //must match FormikImageUploader
           imageURL={objectURL}
           removeHandler={handleRemoveThumbnail}
         />
@@ -52,8 +52,8 @@ export const RecipeDescriptionFields = ({ setFieldValue }) => {
         <input
           type="file"
           accept="image/*"
-          name="photoUrl"
-          id="photoUrl"
+          name="imageOfRecipe"
+          id="imageOfRecipe"
           onChange={handleImageUpload}
         />
       </div>

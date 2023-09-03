@@ -30,17 +30,30 @@ export const AddRecipeForm = () => {
     return normalizedString.split("\n").filter((el) => el.trim());
   };
 
-  const handleSubmit = (values, { resetForm, setSubmitting }) => {
+  // const testSubmit = (values, formikBag) => {
+  //   const { resetForm, setSubmitting } = formikBag;
+  //   if (typeof values.instructions === 'string') {
+  //     values.instructions = convertTextAreaToArray(values.instructions);
+  //   }
+  //   // console.log('values:', JSON.stringify(values, null, 2));
+  //   let formData = new FormData();
+  //   for (const key in values) {
+  //     formData.append(key, values[key]);
+  //   }
+  //   console.log('formData: ', formData);
+  //   setSubmitting(false);
+  // };
+
+  const handleSubmit = (values, formikBag) => {
+    const { resetForm, setSubmitting } = formikBag;
+
     if (typeof values.instructions === "string") {
       values.instructions = convertTextAreaToArray(values.instructions);
     }
-
-    // alert(JSON.stringify(values, null, 2));
-
+    // console.log('values:', JSON.stringify(values, null, 2));
     // let formData = new FormData();
-    // for (const key in values) {
-    //   formData.append(key, values[key]);
-    // }
+    // for (const key in values) { formData.append(key, values[key]) };
+    // console.log('formData: ', formData);
 
     dispatch(addRecipe(values))
       .then((data) => {
@@ -67,6 +80,7 @@ export const AddRecipeForm = () => {
       initialValues={initialValues}
       onSubmit={handleSubmit}
       validationSchema={yupSchema}
+      // onSubmit={testSubmit}
     >
       {({ values, setFieldValue, isSubmitting }) => (
         <Form className={style.form}>
@@ -97,18 +111,6 @@ const initialValues = {
     { title: "", measure: "" },
     { title: "", measure: "" },
   ],
-  instructions: [],
-  photoUrl: {},
+  instructions: [""],
+  imageOfRecipe: "",
 };
-
-// const testInitialValues = {
-//   drink: 'Відро пійла',
-//   description: 'Тут немає чого додати...',
-//   category: 'Other/Unknown',
-//   glass: 'Punch bowl',
-//   ingredients: [{ title: 'Vodka', measure: '1 bucketful' }],
-//   instructions: [
-//     'Взяти будь-яке гідне пійло у великій кількості Вилити у відро',
-//   ],
-//   photoUrl: '',
-// };

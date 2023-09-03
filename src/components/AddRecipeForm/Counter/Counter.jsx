@@ -8,15 +8,15 @@ import style from './Counter.module.scss';
 
 // ###################################################
 
-export const Counter = ({ length, arrayHelpers }) => {
+export const Counter = ({ length, pop, push }) => {
   //
-  const addItem = (arrayHelpers) => {
-    arrayHelpers.push({ title: '', measure: '' });
+  const addItem = () => {
+    push({ title: '', measure: '' });
   };
 
-  const removeItem = (arrayHelpers) => {
+  const removeItem = () => {
     if (length === 1) throw new Error("Can't make a cocktail out of nothing");
-    arrayHelpers.pop();
+    pop();
   };
 
   return (
@@ -24,7 +24,7 @@ export const Counter = ({ length, arrayHelpers }) => {
       <button
         className={style.counterButton}
         type="button"
-        onClick={() => removeItem(arrayHelpers)}
+        onClick={removeItem}
         disabled={length === 1}
         aria-label="Decrement ingredient list by 1"
       >
@@ -36,7 +36,7 @@ export const Counter = ({ length, arrayHelpers }) => {
       <button
         className={style.counterButton}
         type="button"
-        onClick={() => addItem(arrayHelpers)}
+        onClick={addItem}
         aria-label="Increment ingredient list by 1"
       >
         <PlusIcon width={16} height={16} />
@@ -47,5 +47,6 @@ export const Counter = ({ length, arrayHelpers }) => {
 
 Counter.propTypes = {
   length: PropTypes.number.isRequired,
-  arrayHelpers: PropTypes.object.isRequired,
+  pop: PropTypes.func.isRequired,
+  push: PropTypes.func.isRequired,
 };
