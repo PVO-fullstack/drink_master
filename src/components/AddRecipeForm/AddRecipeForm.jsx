@@ -1,23 +1,23 @@
 /* eslint-disable no-unused-vars */
-import React from 'react';
-import { useDispatch } from 'react-redux';
+import React from "react";
+import { useDispatch } from "react-redux";
 
-import axios from 'axios';
-import { toast } from 'react-hot-toast';
+import axios from "axios";
+import { toast } from "react-hot-toast";
 
-import { Formik, Form } from 'formik';
-import { yupSchema } from './YupSchema';
+import { Formik, Form } from "formik";
+import { yupSchema } from "./YupSchema";
 
 import {
   RecipeDescriptionFields,
   RecipeIngredientsFields,
   RecipePreparationFields,
-} from '.';
+} from ".";
 
-import { Button } from '../Button/Button';
-import { addRecipe } from '../../redux/preparation/operations';
+import { Button } from "../Button/Button";
+import { addRecipe } from "../../redux/preparation/operations";
 
-import style from './AddRecipeForm.module.scss';
+import style from "./AddRecipeForm.module.scss";
 
 // ###################################################
 
@@ -26,12 +26,12 @@ export const AddRecipeForm = () => {
   const dispatch = useDispatch();
 
   const convertTextAreaToArray = (string) => {
-    const normalizedString = string.replace(/\r\n/g, '\n');
-    return normalizedString.split('\n').filter((el) => el.trim());
+    const normalizedString = string.replace(/\r\n/g, "\n");
+    return normalizedString.split("\n").filter((el) => el.trim());
   };
 
   const handleSubmit = (values, { resetForm, setSubmitting }) => {
-    if (typeof values.instructions === 'string') {
+    if (typeof values.instructions === "string") {
       values.instructions = convertTextAreaToArray(values.instructions);
     }
 
@@ -45,7 +45,7 @@ export const AddRecipeForm = () => {
     dispatch(addRecipe(values))
       .then((data) => {
         if (data.error) throw new Error(data.payload);
-        return toast.success('Contact has been deleted');
+        return toast.success("Recipe has has been successfully added");
       })
       .catch((error) => {
         toast.error("We're sorry, but something went wrong");
@@ -88,14 +88,14 @@ export const AddRecipeForm = () => {
 // ####################################################
 
 const initialValues = {
-  drink: '',
-  description: '',
-  category: '',
-  glass: '',
+  drink: "",
+  description: "",
+  category: "",
+  glass: "",
   ingredients: [
-    { title: '', measure: '' },
-    { title: '', measure: '' },
-    { title: '', measure: '' },
+    { title: "", measure: "" },
+    { title: "", measure: "" },
+    { title: "", measure: "" },
   ],
   instructions: [],
   photoUrl: {},
