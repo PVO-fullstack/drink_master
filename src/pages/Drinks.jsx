@@ -1,5 +1,5 @@
-import React from "react";
+import { DrinksComponent } from "../components/Drinks/Drinks";
 
 export const Drinks = () => {
-  return <div>Drinks</div>;
+  return <DrinksComponent />;
 };
