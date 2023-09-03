@@ -2,7 +2,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 
-import axios from 'axios';
 import { toast } from 'react-hot-toast';
 
 import { Formik, Form } from 'formik';
@@ -18,12 +17,14 @@ import { Button } from '../Button/Button';
 import { addRecipe } from '../../redux/preparation/operations';
 
 import style from './AddRecipeForm.module.scss';
+import { useNavigate } from 'react-router-dom';
 
 // ###################################################
 
 export const AddRecipeForm = () => {
   //
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const convertTextAreaToArray = (string) => {
     const normalizedString = string.replace(/\r\n/g, '\n');
@@ -50,15 +51,16 @@ export const AddRecipeForm = () => {
     if (typeof values.instructions === 'string') {
       values.instructions = convertTextAreaToArray(values.instructions);
     }
-    // console.log('values:', JSON.stringify(values, null, 2));
-    // let formData = new FormData();
-    // for (const key in values) { formData.append(key, values[key]) };
-    // console.log('formData: ', formData);
 
     dispatch(addRecipe(values))
       .then((data) => {
         if (data.error) throw new Error(data.payload);
-        return toast.success('Your recipe has been added');
+        toast.success('Recipe has has been successfully added. Redirecting...');
+
+        if (data.id)
+          setTimeout(() => {
+            navigate(`/recipes/${data.id}`);
+          }, 1500);
       })
       .catch((error) => {
         toast.error("We're sorry, but something went wrong");

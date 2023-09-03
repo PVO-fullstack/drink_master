@@ -1,11 +1,11 @@
-import { useSelector } from "react-redux";
-import css from "./UserMenu.module.scss";
-import { selectUser } from "../../redux/auth/authSelectors";
-import UserDefaultSVG from "../ComponentsSVG/UserDefaultSVG";
-import { UserLogoModal } from "../UserLogoModal/UserLogoModal";
-import { useState } from "react";
-import { UserInfoModal } from "../UserInfoModal/UserInfoModal";
-import { LogoutModal } from "../LogoutModal/LogoutModal";
+import { useSelector } from 'react-redux';
+import css from './UserMenu.module.scss';
+import { selectUser } from '../../redux/auth/authSelectors';
+import UserDefaultSVG from '../ComponentsSVG/UserDefaultSVG';
+import { UserLogoModal } from '../UserLogoModal/UserLogoModal';
+import { useState } from 'react';
+import { UserInfoModal } from '../UserInfoModal/UserInfoModal';
+import { LogoutModal } from '../LogoutModal/LogoutModal';
 
 const UserMenu = () => {
   const { name, avatarURL } = useSelector(selectUser);
@@ -38,7 +38,12 @@ const UserMenu = () => {
   };
 
   return (
-    <div className={css.userMenu} onClick={handleShowLogoModal}>
+    <div
+      className={css.userMenu}
+      onClick={handleShowLogoModal}
+      role="button"
+      aria-roledescription="button"
+    >
       {avatarURL ? (
         <img
           src={avatarURL}
@@ -48,10 +53,10 @@ const UserMenu = () => {
           height={44}
         ></img>
       ) : (
-        <UserDefaultSVG className={`userMenuImg`} fill={"#F3F3F3"} />
+        <UserDefaultSVG className={`userMenuImg`} fill={'#F3F3F3'} />
       )}
 
-      <p className={css.userMenuName}>{name ? name : "Name"}</p>
+      <p className={css.userMenuName}>{name ? name : 'Name'}</p>
 
       {showLogoModal && (
         <UserLogoModal
