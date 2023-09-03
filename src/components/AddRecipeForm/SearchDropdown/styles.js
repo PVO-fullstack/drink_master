@@ -18,7 +18,7 @@ export const makeStyles = ({ style }) => ({
     verticalAlign: 'text-top',
     cursor: 'pointer',
     display: 'flex',
-    ...style?.control,
+    ...style.control,
   }),
 
   container: (baseStyles) => ({
@@ -28,7 +28,7 @@ export const makeStyles = ({ style }) => ({
     display: 'flex',
     justifyContent: 'center',
     width: 'auto',
-    ...style?.container,
+    ...style.container,
     // backgroundColor: 'blueViolet',
     // [tablet]: {
     //   backgroundColor: 'yellow',
@@ -40,7 +40,7 @@ export const makeStyles = ({ style }) => ({
     color: 'currentColor',
     width: '100%',
     // maxWidth: 300,
-    ...style?.singleValue,
+    ...style.singleValue,
   }),
 
   dropdownIndicator: (baseStyles, state) => ({
@@ -48,14 +48,14 @@ export const makeStyles = ({ style }) => ({
     color: '#f3f3f3',
     transform: state.selectProps.menuIsOpen ? 'rotate(0.5turn)' : 'unset',
     // cursor: 'pointer',
-    ...style?.dropdownIndicator,
+    ...style.dropdownIndicator,
   }),
 
   // input: (baseStyles) => ({
   //   ...baseStyles,
   //   color: 'red',
   //   padding: 0,
-  //   ...style?.input,
+  //   ...style.input,
   // }),
   //   // loadingIndicator: (baseStyles) => ({...baseStyles}),
   //   // loadingMessage: (baseStyles) => ({...baseStyles}),
@@ -67,7 +67,7 @@ export const makeStyles = ({ style }) => ({
     width: '100%', // 'max-content'
     borderRadius: 20,
     padding: 8,
-    ...style?.menu,
+    ...style.menu,
   }),
 
   menuList: (baseStyles) => ({
@@ -78,7 +78,7 @@ export const makeStyles = ({ style }) => ({
     gap: 8,
     padding: 6,
     // backgroundColor: 'blueviolet',
-    ...style?.menuList,
+    ...style.menuList,
   }),
 
   //   // noOptionsMessage: (baseStyles) => ({...baseStyles}),
@@ -90,7 +90,7 @@ export const makeStyles = ({ style }) => ({
     //   lineHeight: variant === 'addrecipe' ? '128%' : '156%',
     lineHeight: '128%',
     whiteSpace: 'nowrap',
-    ...style?.option,
+    ...style.option,
   }),
 
   //   placeholder: (baseStyles) => ({

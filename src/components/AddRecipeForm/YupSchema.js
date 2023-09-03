@@ -21,8 +21,8 @@ export const yupSchema = object({
   instructions: string().required(
     'Please leave instructions on how to mix the ingredients'
   ),
-  photoUrl: mixed().required('Please upload an image for your recipe'),
-  // photoUrl: mixed().test('is-file-too-big', 'File exceeds 2MB', () => {
+  imageOfRecipe: mixed().required('Please upload an image for your recipe'),
+  // imageOfRecipe: mixed().test('is-file-too-big', 'File exceeds 2MB', () => {
   //   let valid = true;
   //   const file = fileRef?.current?.files[0];
   //   if (file && file.size / 1024 / 1024 > 10) valid = false;

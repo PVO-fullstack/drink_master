@@ -30,17 +30,21 @@ export const AddRecipeForm = () => {
     return normalizedString.split('\n').filter((el) => el.trim());
   };
 
-  const handleSubmit = (values, { resetForm, setSubmitting }) => {
+  const handleSubmit = (values, formikBag) => {
+    const { resetForm, setSubmitting } = formikBag;
+
     if (typeof values.instructions === 'string') {
       values.instructions = convertTextAreaToArray(values.instructions);
     }
+    console.log('values:', JSON.stringify(values, null, 2));
 
-    // alert(JSON.stringify(values, null, 2));
+    let formData = new FormData();
 
-    // let formData = new FormData();
-    // for (const key in values) {
-    //   formData.append(key, values[key]);
-    // }
+    for (const key in values) {
+      formData.append(key, values[key]);
+    }
+
+    console.log('formData: ', formData);
 
     dispatch(addRecipe(values))
       .then((data) => {
@@ -56,17 +60,20 @@ export const AddRecipeForm = () => {
       })
       .finally(() => {
         setSubmitting(false); // If onSubmit is async, then Formik will automatically set isSubmitting to false on your behalf once it has resolved
-        resetForm();
+        // resetForm();
       });
+
+    setSubmitting(false);
   };
 
   // ******************** End of handlers ******************
 
   return (
     <Formik
-      initialValues={initialValues}
+      // initialValues={initialValues}
+      initialValues={testInitialValues}
       onSubmit={handleSubmit}
-      validationSchema={yupSchema}
+      // validationSchema={yupSchema}
     >
       {({ values, setFieldValue, isSubmitting }) => (
         <Form className={style.form}>
@@ -98,17 +105,17 @@ const initialValues = {
     { title: '', measure: '' },
   ],
   instructions: [],
-  photoUrl: {},
+  imageOfRecipe: {},
 };
 
-// const testInitialValues = {
-//   drink: 'Відро пійла',
-//   description: 'Тут немає чого додати...',
-//   category: 'Other/Unknown',
-//   glass: 'Punch bowl',
-//   ingredients: [{ title: 'Vodka', measure: '1 bucketful' }],
-//   instructions: [
-//     'Взяти будь-яке гідне пійло у великій кількості Вилити у відро',
-//   ],
-//   photoUrl: '',
-// };
+const testInitialValues = {
+  drink: 'Відро пійла',
+  description: 'Тут немає чого додати. Назва промовляє сама за себе',
+  category: 'Other/Unknown',
+  glass: 'Punch bowl',
+  ingredients: [{ title: 'Vodka', measure: '1 bucketful' }],
+  // instructions:
+  //   'Вилити пійло у файне нове відро\nДодати лід за смаком, не змішувати, не збовтувати\nПити',
+  instructions: ['Вилити пійло у файне нове відро'],
+  imageOfRecipe: '',
+};
