@@ -1,11 +1,8 @@
 import style from "./LogoutModal.module.scss";
 import closeSVG from "/images/SVG/x.svg";
-import { useDispatch, useSelector } from "react-redux";
-import { selectUser } from "../../redux/auth/authSelectors";
-import { Field, Form, Formik } from "formik";
-import { Modal } from "../Modal/Modal";
-import { useEffect, useState } from "react";
-import { changeAvatar, logOutUser } from "../../redux/auth/authOperations";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { logOutUser } from "../../redux/auth/authOperations";
 import PropTypes from "prop-types";
 import { createPortal } from "react-dom";
 

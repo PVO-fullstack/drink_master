@@ -1,12 +1,8 @@
 import style from "./UserLogoModal.module.scss";
 import editSVG from "/images/SVG/edit.svg";
-import { useDispatch } from "react-redux";
-import { logOutUser } from "../../redux/auth/authOperations";
 import PropTypes from "prop-types";
 
-export const UserLogoModal = ({ showUserInfo, showLogOut, closeModal }) => {
-  // const dispatch = useDispatch();
-
+export const UserLogoModal = ({ showUserInfo, showLogOut }) => {
   const showUser = () => {
     showUserInfo();
   };
@@ -41,5 +37,4 @@ export const UserLogoModal = ({ showUserInfo, showLogOut, closeModal }) => {
 UserLogoModal.propTypes = {
   showUserInfo: PropTypes.func,
   showLogOut: PropTypes.func,
-  closeModal: PropTypes.func,
 };
