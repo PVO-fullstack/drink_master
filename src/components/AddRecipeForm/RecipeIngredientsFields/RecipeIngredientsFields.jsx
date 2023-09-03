@@ -16,27 +16,18 @@ export const RecipeIngredientsFields = ({ items }) => {
   //
   const length = items.length;
 
-  // useEffect(() => {
-  //   console.log('useEffect fired');
-  //   console.log('items in useEffect', items);
-  // }, [items]);
-
-  const handleRemove = (arrayHelpers, index) => {
-    // console.log('deleted item: ', arrayHelpers.remove(index));
-    arrayHelpers.remove(index);
-    console.log('items in onClick: ', arrayHelpers.form.values.ingredients);
-  };
-
   return (
-    <FieldArray
+    <FieldArray // https://formik.org/docs/examples/field-arrays
       name="ingredients"
-      render={(arrayHelpers) => (
+      render={(
+        { remove, pop, push } // arrayHelpers
+      ) => (
         <div className={style.container}>
           {/*  */}
           <div className={style.titleAndCounter}>
             <SectionTitle>Ingredients</SectionTitle>
 
-            <Counter length={length} arrayHelpers={arrayHelpers} />
+            <Counter length={length} pop={pop} push={push} />
           </div>
 
           <ul className={style.ingredientsWrapper}>
@@ -45,8 +36,7 @@ export const RecipeIngredientsFields = ({ items }) => {
                 <IngredientItem
                   index={index}
                   length={length}
-                  // onClick={() => arrayHelpers.remove(index)}
-                  onClick={() => handleRemove(arrayHelpers, index)}
+                  onRemove={() => remove(index)}
                 />
               </li>
             ))}

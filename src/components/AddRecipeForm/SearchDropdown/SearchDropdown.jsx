@@ -14,10 +14,8 @@ export const SearchDropdown = (props) => {
     label,
     data,
     hasFakeField = false,
-    flexGrow = 0,
     // isSearchable = true,
   } = props;
-  //
   //
   // eslint-disable-next-line no-unused-vars
   const [field, meta, helpers] = useField(props);
@@ -51,7 +49,7 @@ export const SearchDropdown = (props) => {
   const styles = makeStyles(props);
 
   return (
-    <div className={style.wrapper} style={{ flexGrow: flexGrow }}>
+    <div className={style.wrapper}>
       <div
         className={hasFakeField ? style.fakeFieldWrapper : style.fieldWrapper}
       >
@@ -86,5 +84,4 @@ SearchDropdown.propTypes = {
   data: PropTypes.arrayOf(PropTypes.shape),
   hasFakeField: PropTypes.bool,
   isSearchable: PropTypes.bool,
-  flexGrow: PropTypes.number,
 };
