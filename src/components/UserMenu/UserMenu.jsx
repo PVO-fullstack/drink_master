@@ -5,26 +5,40 @@ import UserDefaultSVG from "../ComponentsSVG/UserDefaultSVG";
 import { UserLogoModal } from "../UserLogoModal/UserLogoModal";
 import { useState } from "react";
 import { UserInfoModal } from "../UserInfoModal/UserInfoModal";
+import { LogoutModal } from "../LogoutModal/LogoutModal";
 
 const UserMenu = () => {
   const { name, avatarURL } = useSelector(selectUser);
   const [showLogoModal, setShowLogoModal] = useState(false);
   const [showUserInfoModal, setShowUserInfoModal] = useState(false);
+  const [showLogOut, setShowLogOut] = useState(false);
 
-  const handleShowUserInfo = () => {
-    setShowUserInfoModal(true);
+  const handleShowLogoModal = () => {
+    setShowLogoModal(true);
   };
 
   const handleCloseLogoModal = () => {
     setShowLogoModal(false);
   };
 
+  const handleShowUserInfo = () => {
+    setShowUserInfoModal(true);
+  };
+
   const handleCloseUserInfoModal = () => {
     setShowUserInfoModal(false);
   };
 
+  const handleShowLogOut = () => {
+    setShowLogOut(true);
+  };
+
+  const handleCloseLogOut = () => {
+    setShowLogOut(false);
+  };
+
   return (
-    <div className={css.userMenu} onClick={() => setShowLogoModal(true)}>
+    <div className={css.userMenu} onClick={handleShowLogoModal}>
       {avatarURL ? (
         <img
           src={avatarURL}
@@ -41,14 +55,21 @@ const UserMenu = () => {
 
       {showLogoModal && (
         <UserLogoModal
-          close={handleCloseLogoModal}
+          closeModal={handleCloseLogoModal}
           showUserInfo={handleShowUserInfo}
+          showLogOut={handleShowLogOut}
         />
       )}
       {showUserInfoModal && (
         <UserInfoModal
           closeModal={handleCloseUserInfoModal}
           close={handleCloseLogoModal}
+        />
+      )}
+      {showLogOut && (
+        <LogoutModal
+          close={handleCloseLogoModal}
+          closeModal={handleCloseLogOut}
         />
       )}
     </div>
