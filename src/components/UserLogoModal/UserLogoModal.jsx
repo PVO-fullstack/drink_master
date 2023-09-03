@@ -4,15 +4,15 @@ import { useDispatch } from "react-redux";
 import { logOutUser } from "../../redux/auth/authOperations";
 import PropTypes from "prop-types";
 
-export const UserLogoModal = ({ showUserInfo }) => {
-  const dispatch = useDispatch();
+export const UserLogoModal = ({ showUserInfo, showLogOut, closeModal }) => {
+  // const dispatch = useDispatch();
 
   const showUser = () => {
     showUserInfo();
   };
 
-  const logqOut = () => {
-    dispatch(logOutUser());
+  const showLogOutModal = () => {
+    showLogOut();
   };
 
   return (
@@ -24,7 +24,11 @@ export const UserLogoModal = ({ showUserInfo }) => {
               Edit profile
               <img className={style.edit_swg} src={editSVG} alt="edit" />
             </button>
-            <button onClick={logqOut} className={style.btn} type="button">
+            <button
+              onClick={showLogOutModal}
+              className={style.btn}
+              type="button"
+            >
               Log out
             </button>
           </div>
@@ -36,4 +40,6 @@ export const UserLogoModal = ({ showUserInfo }) => {
 
 UserLogoModal.propTypes = {
   showUserInfo: PropTypes.func,
+  showLogOut: PropTypes.func,
+  closeModal: PropTypes.func,
 };

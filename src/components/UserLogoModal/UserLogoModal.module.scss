@@ -1,62 +1,50 @@
 .backdrop {
     position: fixed;
-
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background-color: rgba(17, 17, 17, 0.4);
-
-    // opacity: 1;
-    // cursor: pointer;
-    // z-index: 20000;
     padding: 94px 15px;
-    // overflow-y: scroll;
-    // overscroll-behavior: none;
-
-
-    // &.is-hidden {
-    //     visibility: hidden;
-    //     opacity: 0;
-    //     pointer-events: none;
-    // }
 }
 
 
 .modal {
     position: absolute;
-    top: 0;
     right: 50px;
     width: 177px;
     height: 134px;
     overflow-y: auto;
     overflow-x: hidden;
     background-color: #161F37;
-
-    // color: var(--text-color);
-    // border: 2px solid var(--modal-border-color);
     border-radius: 16px;
 
-    animation: dropDown 1s linear 250ms 1 normal forwards;
+    // animation: dropDown 500ms linear 250ms 1 normal forwards;
 
-    // animation: normal 3s linear forwards 1 reverse both paused dropDown;
-
-    @keyframes dropDown {
-        from {
-            opacity: 0;
-            transform: translateY(-100%);
-        }
-
-        50% {
-            opacity: 0;
-            transform: translateY(0);
-        }
-
-        to {
-            transform: translateY(84px);
-            opacity: 1;
-        }
+    @media screen and (min-width: $mobile) {
+        top: 72px
     }
+
+    @media screen and (min-width: $tablet) {
+        top: 84px
+    }
+
+    // @keyframes dropDown {
+    //     from {
+    //         opacity: 0;
+    //         transform: translateY(-100%);
+    //     }
+
+    //     50% {
+    //         opacity: 0;
+    //         transform: translateY(0);
+    //     }
+
+    //     to {
+    //         transform: translateY(84px);
+    //         opacity: 1;
+    //     }
+    // }
 }
 
 
