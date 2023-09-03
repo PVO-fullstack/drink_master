@@ -33,7 +33,7 @@ export const RecipePageHero = () => {
         <p className={css.glass}>{recipe.glass}</p>
         <div className={css.recipe_list}>
           <div className={css.recipe}>
-            <PageTitle className={css.recipe_title}>{recipe.drink}</PageTitle>
+            <PageTitle>{recipe.drink}</PageTitle>
             {recipe.description !== "" && (
               <p className={css.descrip}>{recipe.description}</p>
             )}
