@@ -30,6 +30,20 @@ export const AddRecipeForm = () => {
     return normalizedString.split('\n').filter((el) => el.trim());
   };
 
+  const testSubmit = (values, formikBag) => {
+    const { resetForm, setSubmitting } = formikBag;
+    if (typeof values.instructions === 'string') {
+      values.instructions = convertTextAreaToArray(values.instructions);
+    }
+    // console.log('values:', JSON.stringify(values, null, 2));
+    let formData = new FormData();
+    for (const key in values) {
+      formData.append(key, values[key]);
+    }
+    console.log('formData: ', formData);
+    setSubmitting(false);
+  };
+
   const handleSubmit = (values, formikBag) => {
     const { resetForm, setSubmitting } = formikBag;
 
@@ -37,13 +51,8 @@ export const AddRecipeForm = () => {
       values.instructions = convertTextAreaToArray(values.instructions);
     }
     // console.log('values:', JSON.stringify(values, null, 2));
-
     // let formData = new FormData();
-
-    // for (const key in values) {
-    //   formData.append(key, values[key]);
-    // }
-
+    // for (const key in values) { formData.append(key, values[key]) };
     // console.log('formData: ', formData);
 
     dispatch(addRecipe(values))
@@ -73,6 +82,7 @@ export const AddRecipeForm = () => {
       initialValues={initialValues}
       onSubmit={handleSubmit}
       validationSchema={yupSchema}
+      // onSubmit={testSubmit}
     >
       {({ values, setFieldValue, isSubmitting }) => (
         <Form className={style.form}>
@@ -103,6 +113,6 @@ const initialValues = {
     { title: '', measure: '' },
     { title: '', measure: '' },
   ],
-  instructions: [],
+  instructions: [''],
   imageOfRecipe: '',
 };
