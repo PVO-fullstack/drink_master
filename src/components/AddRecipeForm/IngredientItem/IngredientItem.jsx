@@ -15,7 +15,7 @@ import style from './IngredientItem.module.scss';
 
 // ###################################################
 
-export const IngredientItem = ({ index, length, onClick }) => {
+export const IngredientItem = ({ index, length, onRemove }) => {
   //
   const unsortedIngredients = useSelector(selectIngredients);
 
@@ -46,7 +46,7 @@ export const IngredientItem = ({ index, length, onClick }) => {
       <button
         className={style.removeButton}
         type="button"
-        onClick={onClick}
+        onClick={onRemove}
         disabled={length === 1}
         aria-label="Remove ingredient"
       >
@@ -59,7 +59,7 @@ export const IngredientItem = ({ index, length, onClick }) => {
 IngredientItem.propTypes = {
   index: PropTypes.number.isRequired,
   length: PropTypes.number.isRequired,
-  onClick: PropTypes.func,
+  onRemove: PropTypes.func,
 };
 
 // *********************************************
