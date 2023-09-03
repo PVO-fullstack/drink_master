@@ -58,7 +58,7 @@ export const AddRecipeForm = () => {
     dispatch(addRecipe(values))
       .then((data) => {
         if (data.error) throw new Error(data.payload);
-        return toast.success('Contact has been deleted');
+        return toast.success('Your recipe has been added');
       })
       .catch((error) => {
         toast.error("We're sorry, but something went wrong");
