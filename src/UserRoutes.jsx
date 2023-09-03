@@ -13,6 +13,7 @@ import { PrivatRoute } from "./components/Routes/PrivatRoute";
 import { useSelector } from "react-redux";
 import { selectIsRefresh } from "./redux/auth/authSelectors";
 import { Recipe } from "./pages/Recipe";
+import { ErrorPage } from "./pages/404";
 
 export const UserRoutes = () => {
   const isRefresh = useSelector(selectIsRefresh);
@@ -70,7 +71,7 @@ export const UserRoutes = () => {
           path="/signin"
           element={<RestrictedRoute redirectTo="/" component={<Login />} />}
         />
-        <Route path="*" element={<Navigate to="/" replace />} />
+        <Route path="*" element={<ErrorPage />} />
       </Routes>
     </>
   );
