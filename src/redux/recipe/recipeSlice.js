@@ -26,5 +26,5 @@ export const recipeSlice = createSlice({
         state.recipeId.isFavorite = payload;
       }),
 });
-console.log(recipeSlice);
+
 export default recipeSlice.reducer;
