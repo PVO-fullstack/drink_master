@@ -10,26 +10,22 @@ export const Layout = () => {
 
   const [headerHeight, setHeaderHeight] = useState(null);
 
+  // *****************
   useEffect(() => {
     const header = headerRef.current;
     const { height } = header.getBoundingClientRect();
     setHeaderHeight(height);
-
-    // *****************
-
-    window.onscroll = () => changeHeaderBackground();
-
-    function changeHeaderBackground() {
+    window.onscroll = () => {
       if (window.scrollY > headerHeight) {
-        header.style.backgroundColor = 'rgb(22, 31, 55, 0.80)';
+        header.style.backgroundColor = 'rgb(1, 1, 24, 0.50)';
         header.style.backdropFilter = 'blur(10px)';
       } else {
         header.style.backgroundColor = 'transparent';
         header.style.backdropFilter = 'none';
       }
-    }
-    // *****************
+    };
   }, [headerHeight]);
+  // *****************
 
   return (
     <div>
