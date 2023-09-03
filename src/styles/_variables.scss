@@ -74,13 +74,13 @@ $img-height: var(--img-height);
 
 // Container padding
 :root {
-  --container-padding: 20px;
+  --container-padding: 80px 20px;
 
   @media screen and (min-width: $tablet) {
-    --container-padding: 32px;
+    --container-padding: 140px 32px;
   }
   @media screen and (min-width: $desktop) {
-    --container-padding: 100px;
+    --container-padding: 160px 100px 140px;
   }
 }
 

@@ -3,13 +3,14 @@ import { useDispatch } from 'react-redux';
 import { AddRecipeForm, FollowUs, PageTitle } from '../components';
 import { PopularRecipes } from '../components/PopularRecipes/PopularRecipes';
 
-import style from './AddRecipe.module.scss';
 import { useEffect } from 'react';
 import {
   fetchCategories,
   fetchGlasses,
   fetchIngredients,
 } from '../redux/preparation/operations';
+
+import style from './AddRecipe.module.scss';
 
 export const AddRecipe = () => {
   const dispatch = useDispatch();

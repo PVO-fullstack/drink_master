@@ -32,10 +32,7 @@ export const Layout = () => {
       <Header headerRef={headerRef} />
       <div className={style.container}>
         <Suspense fallback={<div>Loading...</div>}>
-          <main
-            className={style.page}
-            style={{ height: window.innerHeight + headerHeight }}
-          >
+          <main className={style.page} style={{ marginTop: headerHeight }}>
             <Outlet />
           </main>
         </Suspense>
