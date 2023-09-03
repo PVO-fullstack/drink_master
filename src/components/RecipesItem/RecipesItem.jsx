@@ -10,6 +10,7 @@ import {
   fetchRecipesThunk,
   updateFavRecipeThunk,
 } from "../../redux/cockteil/cockteilsOperations";
+// import image from "/images/placeholder_image.jpg";
 
 export const RecipesItem = ({
   recipe,
@@ -20,7 +21,7 @@ export const RecipesItem = ({
   recipes,
 }) => {
   const dispatch = useDispatch();
-  const { _id, drinkThumb, drink, instructions } = recipe;
+  const { _id, drinkThumb, drink, description } = recipe;
 
   const deleteRecipe = async () => {
     try {
@@ -51,7 +52,7 @@ export const RecipesItem = ({
           <p className={css.recipes_item__ingredients}>Ingredients</p>
         </div>
 
-        <p className={css.recipes_item__description}>{instructions}</p>
+        <p className={css.recipes_item__description}>{description}</p>
 
         <div className={css.recipes_item__button_wrapper}>
           <NavLink className={cssButton.button} to={`/recipes/${_id}`}>
@@ -75,7 +76,7 @@ RecipesItem.propTypes = {
     _id: PropTypes.string.isRequired,
     drinkThumb: PropTypes.string.isRequired,
     drink: PropTypes.string.isRequired,
-    instructions: PropTypes.array.isRequired,
+    description: PropTypes.string.isRequired,
   }).isRequired,
   type: PropTypes.oneOf(["own", "favorite"]).isRequired,
   page: PropTypes.number.isRequired,
