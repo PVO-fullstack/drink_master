@@ -1,0 +1,42 @@
+@import "../../../styles/variables";
+
+.containerInput {
+  position: relative;
+  display: inline-block;
+}
+
+.searchFormInput {
+  color: $accent;
+  font-size: 14px;
+  font-weight: $regular;
+  line-height: 1.29;
+  padding-left: 24px;
+  padding-top: 18px;
+  padding-bottom: 18px;
+  width: 335px;
+  border: 1px solid rgba(243, 243, 243, 0.2);
+  opacity: 0.8;
+  border-radius: $field-radius;
+  margin-top: 40px;
+
+  @media screen and (min-width: $tablet) {
+    font-size: 17px;
+    line-height: 1.56;
+    padding-top: 14px;
+    padding-bottom: 15px;
+    width: 264px;
+    margin-top: 60px;
+  }
+  @media screen and (min-width: $desktop) {
+    margin-top: 60px;
+  }
+}
+
+.logoContainer {
+  position: absolute;
+  right: 24px;
+  transform: translateY(-180%);
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
+}

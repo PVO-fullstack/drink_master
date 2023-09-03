@@ -1,4 +1,4 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { configureStore } from "@reduxjs/toolkit";
 import {
   persistStore,
   persistReducer,
@@ -8,17 +8,18 @@ import {
   PERSIST,
   PURGE,
   REGISTER,
-} from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
-import { authSlice } from './auth/authSlice';
-import { cockteilsSlise } from './cockteil/cockteilsSlice';
-import { preparationSlice } from './preparation/slice';
-import { recipeSlice } from './recipe/recipeSlice';
+} from "redux-persist";
+import storage from "redux-persist/lib/storage";
+import { authSlice } from "./auth/authSlice";
+import { cockteilsSlise } from "./cockteil/cockteilsSlice";
+import { preparationSlice } from "./preparation/slice";
+import { recipeSlice } from "./recipe/recipeSlice";
+import { sliceDrinks } from "./drinks/sliceDrinks";
 
 const persistConfig = {
-  key: 'auth',
+  key: "auth",
   storage,
-  whitelist: ['token'],
+  whitelist: ["token"],
 };
 
 export const store = configureStore({
@@ -27,6 +28,7 @@ export const store = configureStore({
     cockteil: cockteilsSlise.reducer,
     preparation: preparationSlice.reducer,
     recipe: recipeSlice.reducer,
+    drinks: sliceDrinks.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

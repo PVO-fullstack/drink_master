@@ -1,23 +1,26 @@
 import React, { useState, useEffect } from "react";
-import instance from "../../../shared/api/instance";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchRecipesByCategory } from "../../../redux/drinks/operationsDrinks";
+import { selectDrinksByCategory } from "../../../redux/drinks/selectorsDrinks";
 import css from "../PopularCategories/PopularCategories.module.scss";
 
-const PopularCategories = ({ categoryDrink }) => {
-  const [drinksInCategory, setDrinksInCategory] = useState([]);
+const PopularCategories = () => {
+  const categoriesToDisplay = [
+    "Ordinary Drink",
+    "Cocktail",
+    "Shake",
+    "Other/Unknown",
+  ];
+  const drinks = useSelector(selectDrinksByCategory);
+  console.log(drinks);
+  const dispatch = useDispatch();
   const [cardsPerRow, setCardsPerRow] = useState(3);
 
   useEffect(() => {
-    instance
-      .get("/recipes/main-page")
-      .then((res) => {
-        const data = res.data;
-        const drinks = data[categoryDrink];
-        setDrinksInCategory(drinks);
-      })
-      .catch((error) => {
-        console.error("Error fetching drinks:", error);
-      });
-  }, [categoryDrink]);
+    dispatch(fetchRecipesByCategory())
+      .unwrap()
+      .catch((e) => console.log("error: ", e));
+  }, [dispatch]);
 
   useEffect(() => {
     const updateCardsPerRow = () => {
@@ -41,25 +44,32 @@ const PopularCategories = ({ categoryDrink }) => {
 
   return (
     <div>
-      <h2 className={css.nameCategory}>{categoryDrink}</h2>
-      <ul className={css.cocktailList}>
-        {drinksInCategory.slice(0, cardsPerRow).map((drink) => (
-          <li key={drink.drink}>
-            <div className={css.imgContainer}>
-              <img
-                src={drink.drinkThumb}
-                alt={drink.drink}
-                className={css.imgCocktail}
-              />
-            </div>
+      {categoriesToDisplay.map((categoryDrink) => {
+        const categoryDrinks = drinks[categoryDrink] || [];
+        return (
+          <div key={categoryDrink}>
+            <h2 className={css.nameCategory}>{categoryDrink}</h2>
+            <ul className={css.cocktailList}>
+              {categoryDrinks.slice(0, cardsPerRow).map((drink) => (
+                <li key={drink.drink}>
+                  <div className={css.imgContainer}>
+                    <img
+                      src={drink.drinkThumb}
+                      alt={drink.drink}
+                      className={css.imgCocktail}
+                    />
+                  </div>
 
-            <div className={css.nameAndIngridients}>
-              <p className={css.nameCocktail}>{drink.drink}</p>
-              <p className={css.ingredients}>Ingredients</p>
-            </div>
-          </li>
-        ))}
-      </ul>
+                  <div className={css.nameAndIngridients}>
+                    <p className={css.nameCocktail}>{drink.drink}</p>
+                    <p className={css.ingredients}>Ingredients</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        );
+      })}
     </div>
   );
 };

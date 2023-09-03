@@ -5,10 +5,7 @@ const Home = () => {
   return (
     <div>
       <Hero />
-      <PopularCategories categoryDrink="Ordinary Drink" />
-      <PopularCategories categoryDrink="Cocktail" />
-      <PopularCategories categoryDrink="Shake" />
-      <PopularCategories categoryDrink="Other/Unknown" />
+      <PopularCategories />
       <OtherDrinksBtn />
     </div>
   );

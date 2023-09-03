@@ -9,6 +9,7 @@ export const handlePending = (state) => {
 };
 
 export const handleRejected = (state, { error, payload }) => {
+  console.log("error in handleRejected: ", error);
   state.isLoading = false;
   state.error = payload ?? error.message;
 };
