@@ -1,3 +1,24 @@
+@import '../../styles/variables';
+
+.container {
+  margin-left: auto;
+  margin-right: auto;
+
+  @media screen and (min-width: $mobile) {
+    width: $mobile;
+  }
+  @media screen and (min-width: $tablet) {
+    width: $tablet;
+  }
+  @media screen and (min-width: $desktop) {
+    width: $desktop;
+  }
+}
+
+.page {
+  padding: $container-padding;
+}
+
 .pagePadding {
-    padding-top: 84px;
+  padding-top: 84px;
 }
