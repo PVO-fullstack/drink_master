@@ -1,5 +1,13 @@
 import React from "react";
+import { RecipePageHero } from "../components";
+
 
 export const Recipe = () => {
-  return <div>Recipe</div>;
+
+
+  return (
+    <div>
+      <RecipePageHero/>
+    </div>);
+  
 };

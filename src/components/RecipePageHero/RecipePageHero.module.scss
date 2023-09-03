@@ -1,0 +1,140 @@
+@import "../../styles/variables";
+
+
+.page {
+    width: 100vw;
+    padding-top: 58px;
+    padding-top: 80px;
+    padding: $container-padding;
+
+    justify-content: center;
+
+    @media screen and (min-width: 1440px) {
+        padding-top: 132px;
+        padding-top: 140px;
+    }
+}
+.page_recipe {
+    margin-bottom: 100px;
+
+    @media screen and (min-width: 1440px) {
+            margin-bottom: 100px;
+    }
+}
+.recipe_title {
+    margin: 0;
+}
+
+.recipe_list {
+
+    @media screen and (min-width: 1440px) {
+    display: flex;
+    justify-content: space-between;
+    } 
+}
+
+
+.glass {
+    margin-bottom: 8px;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.17;
+    
+    color: $accent-faded-50;
+
+    @media screen and (min-width: 1440px) {
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 1.25;
+    }
+}
+
+.descrip {
+        margin-bottom: 40px;
+        width: 593px;
+        font-size: 16px;
+        line-height: 1.38;
+        
+        color: $accent;
+
+}
+
+.btn_add {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    padding: 14px 40px;
+    
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.29;
+
+    color: $dark-blue;
+    background-color: $accent;
+    border: 0px;
+    border-radius: $button-radius;
+
+    &:hover,
+    &:focus {
+            color: $accent ;
+            background-color: $dark-blue;
+        }
+
+    &:active {
+        background-color: $dark-blue;
+    }
+
+    &:disabled {
+        color: $accent-faded-20;
+        background-color: $slate-blue;
+    }
+
+        @media screen and (min-width: 1440px) {
+            margin-bottom: 0;
+            font-size: 16px;
+            line-height: 1.13;
+        }
+}
+.btn_remove {
+        margin-top: 40px;
+        margin-bottom: 40px;
+        padding: 14px 40px;
+        
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 1.29;
+        
+            color: $accent;
+            background-color: $dark-blue;
+            border: 0px;
+            border-radius: $button-radius;
+        
+            &:hover,
+            &:focus {
+                color: $dark-blue;
+                background-color: $accent;
+            }
+        
+            &:active {
+                background-color: $dark-blue;
+            }
+        
+            &:disabled {
+                color: $accent-faded-20;
+                background-color: $slate-blue;
+            }
+    @media screen and (min-width: 1440px) {
+        margin-bottom: 0;
+        font-size: 16px;
+        line-height: 1.13;
+    }
+}
+.img {
+    width: 335px;
+    height: 400px;
+
+    @media screen and (min-width: 1440px) {
+        width: 400px;
+        height: 400px;
+    }
+}
+

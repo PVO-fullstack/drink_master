@@ -1,0 +1,33 @@
+@import "../../styles/variables";
+
+.preparation {
+    margin-top: 100px;
+}
+.prep {
+    display: flex;
+}
+.prep_title {
+    margin-bottom: 60px;
+    font-size: 40px;
+    font-weight: 600;
+    line-height: 44px;
+       
+    color: $accent;
+}
+.prep_img {
+    width: 631px;
+    height: 430px;
+}
+.prep_list {
+    width: 549px;
+    margin-left: auto;
+}
+.prep_item {
+    
+    font-size: 16px;
+    line-height: 1.38;
+    color: $accent;
+}
+.prep_text {
+    color: $accent;
+}

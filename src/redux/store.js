@@ -13,6 +13,7 @@ import storage from 'redux-persist/lib/storage';
 import { authSlice } from './auth/authSlice';
 import { cockteilsSlise } from './cockteil/cockteilsSlice';
 import { preparationSlice } from './preparation/slice';
+import { recipeSlice } from './recipe/recipeSlice';
 
 const persistConfig = {
   key: 'auth',
@@ -25,6 +26,7 @@ export const store = configureStore({
     auth: persistReducer(persistConfig, authSlice.reducer),
     cockteil: cockteilsSlise.reducer,
     preparation: preparationSlice.reducer,
+    recipe: recipeSlice.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

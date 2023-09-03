@@ -16,11 +16,12 @@ import { Recipe } from "./pages/Recipe";
 import { ErrorPage } from "./pages/404";
 import { Toaster } from 'react-hot-toast';
 import { toastOptions, containerStyle } from './services/toastOptions';
+
 export const UserRoutes = () => {
   const isRefresh = useSelector(selectIsRefresh);
 
   return isRefresh ? (
-    'Refresh User'
+    "Refresh User"
   ) : (
     <>
       <Toaster containerStyle={containerStyle} toastOptions={toastOptions} />
@@ -52,7 +53,12 @@ export const UserRoutes = () => {
               <PrivatRoute redirectTo="/welcome" component={<MyRecipes />} />
             }
           />
-          <Route path="myrecipes/:recipesId" element={<Recipe />} />
+          <Route
+            path="recipes/:id"
+            element={
+              <PrivatRoute redirectTo="/welcome" component={<Recipe />} />
+            }
+          />
           <Route
             path="favorites"
             element={
@@ -60,6 +66,7 @@ export const UserRoutes = () => {
             }
           />
         </Route>
+
         <Route
           path="/welcome"
           element={<RestrictedRoute redirectTo="/" component={<Welcome />} />}
