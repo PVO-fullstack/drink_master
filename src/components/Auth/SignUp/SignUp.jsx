@@ -4,7 +4,6 @@ import style from "./SignUp.module.scss";
 import { NavLink } from "react-router-dom";
 import { registerUser } from "../../../redux/auth/authOperations";
 import { useDispatch } from "react-redux";
-import { Toaster, toast } from "react-hot-toast";
 
 export const SignUp = () => {
   const dispatch = useDispatch();
@@ -15,11 +14,7 @@ export const SignUp = () => {
   const emailRegexp = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
 
   const SignupSchema = Yup.object({
-    // name: Yup.string()
-    //   .max(15, "Must be 15 characters or less")
-    //   .required("Required"),
     email: Yup.string()
-      // .email("Invalid email address")
       .matches(emailRegexp, { message: "Invalid email address" })
       .required("Email required"),
     password: Yup.string()

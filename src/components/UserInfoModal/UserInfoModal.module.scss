@@ -1,140 +1,223 @@
 .backdrop {
     position: fixed;
-
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background-color: rgba(17, 17, 17, 0.4);
-
     opacity: 1;
-    cursor: pointer;
     z-index: 20000;
     padding: 94px 15px;
-    // overflow-y: scroll;
-    // overscroll-behavior: none;
-
-
-    // &.is-hidden {
-    //     visibility: hidden;
-    //     opacity: 0;
-    //     pointer-events: none;
-    // }
 }
-
 
 .modal {
     position: absolute;
     top: 50%;
     left: 50%;
-
     transform: translate(-50%, -50%) scale(1);
-
-    // padding: 40px 24px;
-
-    width: 500px;
-    height: 416px;
     overflow-y: auto;
     overflow-x: hidden;
     background-color: #161F37;
-
-    // color: var(--text-color);
-    // border: 2px solid var(--modal-border-color);
     border-radius: 16px;
 
-    // @media screen and (min-width: $tablet) {
-    //     max-width: 579px;
-    //     min-height: 465px;
-    //     padding: 40px;
+    @media screen and (min-width: $mobile) {
+        width: 335px;
+        height: 345px;
+    }
 
-    //$desktop
-
+    @media screen and (min-width: $tablet) {
+        width: 500px;
+        height: 426px;
+    }
 }
 
 .closeModal {
     margin-left: auto;
-    padding-top: 18px;
-    padding-right: 18px;
+
+    @media screen and (min-width: $mobile) {
+        padding-top: 14px;
+        padding-right: 14px;
+    }
+
+    @media screen and (min-width: $tablet) {
+        padding-top: 18px;
+        padding-right: 18px;
+    }
 }
 
-// .avatarConteiner {
-//     position: relative;
-// }
+.avatarConteiner {
+    position: relative;
+
+    @media screen and (min-width: $mobile) {
+        margin-top: 12px;
+    }
+
+    @media screen and (min-width: $tablet) {
+        margin-top: 0;
+    }
+}
 
 .avatar {
     margin-left: auto;
     margin-right: auto;
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
+
+    object-fit: cover;
+
+    @media screen and (min-width: $mobile) {
+        width: 80px;
+        height: 80px;
+    }
+
+    @media screen and (min-width: $tablet) {
+        width: 100px;
+        height: 100px;
+    }
+}
+
+input[type='file'].avatar {
+    color: transparent;
+    opacity: 1;
+
+    &::-webkit-file-upload-button {
+        visibility: hidden;
+    }
+
+    &:before {
+        content: '';
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-image: url("/images/SVG/add_photo.svg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        color: white;
+        display: inline-block;
+        outline: none;
+        white-space: nowrap;
+        -webkit-user-select: none;
+        cursor: pointer;
+
+        @media screen and (min-width: $mobile) {
+            width: 28px;
+            height: 28px;
+            top: -39px;
+        }
+
+        @media screen and (min-width: $tablet) {
+            width: 32px;
+            height: 32px;
+            top: -66px;
+        }
+    }
+
+
+
+    &:hover::before {
+        border-color: black;
+    }
+
+    &:active {
+        outline: 0;
+    }
+
+    &:active::before {
+        background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+    }
+}
+
+.avatarImg {
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 50%;
+    height: 100px;
+    margin-bottom: 40px;
 }
 
 .addPhoto {
     position: absolute;
     left: 50%;
-
+    top: -45px;
     transform: translate(-50%, -50%);
 }
 
 .form {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 60px;
+    margin-top: 66px;
+
+    @media screen and (min-width: $mobile) {
+        margin-top: 39px;
+    }
+
+    @media screen and (min-width: $tablet) {
+        margin-top: 66px;
+    }
+}
+
+.foto {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .field {
-    width: 400px;
     padding: 14px 0 15px 24px;
     border-radius: 200px;
     border: 1px solid rgba(243, 243, 243, 0.20);
     opacity: 0.8;
     color: #F3F3F3;
-    font-size: 17px;
+
     font-weight: 400;
     background-color: inherit;
-}
 
-input[type="file"] {
-    display: none;
+    @media screen and (min-width: $mobile) {
+        width: 285px;
+        font-size: 14px;
+    }
+
+    @media screen and (min-width: $tablet) {
+        width: 400px;
+        font-size: 17px;
+    }
 }
 
 input.img {
     border: 1px solid #ccc;
     display: inline-block;
     padding: 6px 12px;
-    cursor: pointer;
-
-    //     &::-webkit-file-upload-button {
-    //         width: 100px;
-    //         height: 100px;
-    //         padding: 14px 0 15px 24px;
-    //         border-radius: 200px;
-    //         border: 1px solid rgba(243, 243, 243, 0.20);
-    //         opacity: 0.8;
-    //         color: #F3F3F3;
-    //         font-size: 17px;
-    //         font-weight: 400;
-    //         background: inherit;
-    //     }
 }
 
 .btn {
     border-radius: 42px;
-    margin-top: 40px;
-    margin-bottom: 14px;
     background: #F3F3F3;
     color: #161F37;
     font-weight: 600;
 
     @media screen and (min-width: $mobile) {
-        width: 335px;
-        padding: 18px 140px;
+        width: 285px;
+        padding: 18px 90px;
+        margin-top: 18px;
         font-size: 14px;
         line-height: 1.28;
     }
 
     @media screen and (min-width: $tablet) {
         width: 400px;
-        padding: 18px 169px;
+        padding: 18px 140px;
+        margin-top: 25px;
+        font-size: 16px;
+        line-height: 1.12;
+    }
+
+    @media screen and (min-width: $desktop) {
+        width: 400px;
+        padding: 18px 145px;
         font-size: 16px;
         line-height: 1.12;
     }

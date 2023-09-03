@@ -7,8 +7,8 @@ export const yupSchema = object({
   description: string()
     .max(100, 'Must be 100 characters or less')
     .required('Please provide a description'),
-  category: string().required('Please select a glass'),
-  glass: string().required('Please select a glass'),
+  category: string().required('Please choose a category'),
+  glass: string().required('What glass to serve in?'),
   ingredients: array()
     .of(
       object().shape({
@@ -18,20 +18,15 @@ export const yupSchema = object({
     )
     .required('Please add at least one ingredient')
     .min(1, 'Must contain at least one ingredient'),
-  instructions: array()
-    .of(string())
-    .required('Please leave instructions on how to mix the ingredients'),
-  drinkThumb: mixed().required('Please upload an image for your recipe'),
-  //   drinkThumb: mixed().test('is-file-too-big', 'File exceeds 2MB', () => {
-  //     let valid = true;
-  //     const files = fileRef?.current?.files;
-  //     if (files) {
-  //       //   const fileArr = Array.from(files);
-  //       const size = files[0].size / 1024 / 1024;
-  //       if (size > 10) {
-  //         valid = false;
-  //       }
-  //     }
-  //     return valid;
-  //   }),
+  instructions: string().required(
+    'Please leave instructions on how to mix the ingredients'
+  ),
+  photoUrl: mixed().required('Please upload an image for your recipe'),
+  // photoUrl: mixed().test('is-file-too-big', 'File exceeds 2MB', () => {
+  //   let valid = true;
+  //   const file = fileRef?.current?.files[0];
+  //   if (file && file.size / 1024 / 1024 > 10) valid = false;
+  //   }
+  //   return valid;
+  // }),
 });

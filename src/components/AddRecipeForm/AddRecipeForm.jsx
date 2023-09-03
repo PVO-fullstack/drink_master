@@ -1,5 +1,9 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
+import { useDispatch } from 'react-redux';
+
+import axios from 'axios';
+import { toast } from 'react-hot-toast';
 
 import { Formik, Form } from 'formik';
 import { yupSchema } from './YupSchema';
@@ -10,35 +14,50 @@ import {
   RecipePreparationFields,
 } from '.';
 
-import style from './AddRecipeForm.module.scss';
 import { Button } from '../Button/Button';
+import { addRecipe } from '../../redux/preparation/operations';
+
+import style from './AddRecipeForm.module.scss';
 
 // ###################################################
 
-// const variant = 'addrecipe';
-
 export const AddRecipeForm = () => {
   //
+  const dispatch = useDispatch();
+
   const convertTextAreaToArray = (string) => {
     const normalizedString = string.replace(/\r\n/g, '\n');
     return normalizedString.split('\n').filter((el) => el.trim());
   };
-  // ******************** Handlers *************************
-  const handleSubmit = async (values, { resetForm }) => {
-    values.instructions = convertTextAreaToArray(values.instructions);
 
-    let formData = new FormData();
-    for (const key in values) {
-      formData.append(key, values[key]);
+  const handleSubmit = (values, { resetForm, setSubmitting }) => {
+    if (typeof values.instructions === 'string') {
+      values.instructions = convertTextAreaToArray(values.instructions);
     }
-    // console.log('formData: ', formData);
-    alert(JSON.stringify(values, null, 2));
 
-    // If onSubmit is async, then Formik will automatically set isSubmitting to false on your behalf once it has resolved
-    resetForm();
-    // try {
-    // } catch (error) {
-    // } finally {setSubmitting(false);}
+    // alert(JSON.stringify(values, null, 2));
+
+    // let formData = new FormData();
+    // for (const key in values) {
+    //   formData.append(key, values[key]);
+    // }
+
+    dispatch(addRecipe(values))
+      .then((data) => {
+        if (data.error) throw new Error(data.payload);
+        return toast.success('Contact has been deleted');
+      })
+      .catch((error) => {
+        toast.error("We're sorry, but something went wrong");
+
+        setTimeout(() => {
+          toast.error(error.message);
+        }, 1500);
+      })
+      .finally(() => {
+        setSubmitting(false); // If onSubmit is async, then Formik will automatically set isSubmitting to false on your behalf once it has resolved
+        resetForm();
+      });
   };
 
   // ******************** End of handlers ******************
@@ -46,18 +65,18 @@ export const AddRecipeForm = () => {
   return (
     <Formik
       initialValues={initialValues}
-      // validationSchema={yupSchema}
       onSubmit={handleSubmit}
+      validationSchema={yupSchema}
     >
-      {({ values, setFieldValue }) => (
+      {({ values, setFieldValue, isSubmitting }) => (
         <Form className={style.form}>
           <div className={style.wrapper}>
             <RecipeDescriptionFields setFieldValue={setFieldValue} />
-            <RecipeIngredientsFields values={values} />
-            <RecipePreparationFields />
+            <RecipeIngredientsFields items={values.ingredients} />
+            <RecipePreparationFields values={values} />
           </div>
 
-          <Button type="submit" variant="accented">
+          <Button type="submit" variant="accented" disabled={isSubmitting}>
             Add
           </Button>
         </Form>
@@ -79,5 +98,17 @@ const initialValues = {
     { title: '', measure: '' },
   ],
   instructions: [],
-  drinkThumb: '',
+  photoUrl: {},
 };
+
+// const testInitialValues = {
+//   drink: 'Відро пійла',
+//   description: 'Тут немає чого додати...',
+//   category: 'Other/Unknown',
+//   glass: 'Punch bowl',
+//   ingredients: [{ title: 'Vodka', measure: '1 bucketful' }],
+//   instructions: [
+//     'Взяти будь-яке гідне пійло у великій кількості Вилити у відро',
+//   ],
+//   photoUrl: '',
+// };

@@ -1,19 +1,14 @@
 import style from "./UserLogoModal.module.scss";
-import { createPortal } from "react-dom";
 import editSVG from "/images/SVG/edit.svg";
-import { useDispatch } from "react-redux";
-import { logOutUser } from "../../redux/auth/authOperations";
+import PropTypes from "prop-types";
 
-export const UserLogoModal = ({ close, showUserInfo }) => {
-  const dispatch = useDispatch();
-
+export const UserLogoModal = ({ showUserInfo, showLogOut }) => {
   const showUser = () => {
     showUserInfo();
-    close();
   };
 
-  const logqOut = () => {
-    dispatch(logOutUser());
+  const showLogOutModal = () => {
+    showLogOut();
   };
 
   return (
@@ -25,7 +20,11 @@ export const UserLogoModal = ({ close, showUserInfo }) => {
               Edit profile
               <img className={style.edit_swg} src={editSVG} alt="edit" />
             </button>
-            <button onClick={logqOut} className={style.btn} type="button">
+            <button
+              onClick={showLogOutModal}
+              className={style.btn}
+              type="button"
+            >
               Log out
             </button>
           </div>
@@ -33,4 +32,9 @@ export const UserLogoModal = ({ close, showUserInfo }) => {
       </div>
     </>
   );
+};
+
+UserLogoModal.propTypes = {
+  showUserInfo: PropTypes.func,
+  showLogOut: PropTypes.func,
 };

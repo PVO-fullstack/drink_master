@@ -1,45 +1,28 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import PropTypes from 'prop-types';
 
-import {
-  fetchCategories,
-  fetchGlasses,
-} from '../../../redux/preparation/operations';
+import { useSelector } from 'react-redux';
 import { selectPreparation } from '../../../redux/preparation/selectors';
 
-import { ImageUploadBlock, FormikTextInput, FormikSelect } from '..';
+import PropTypes from 'prop-types';
+
+import { ImageUploadBlock, FormikTextInput, SearchDropdown } from '..';
+import itemsBeforeScroll from '../../../constants/select';
 import style from './RecipeDescriptionFields.module.scss';
 
 // ###################################################
 
-const variant = 'addrecipe';
-
 export const RecipeDescriptionFields = ({ setFieldValue }) => {
   //
-  // ****************** Global State ********************
-  const { categories, glasses } = useSelector(selectPreparation);
+  const aux = useSelector(selectPreparation);
 
-  // ****************** Component State ********************
+  const glasses = [...aux.glasses].sort((a, b) => a.name.localeCompare(b.name));
+
+  const categories = [...aux.categories].sort((a, b) =>
+    a.name.localeCompare(b.name)
+  );
+
   const [objectURL, setObjectURL] = useState(null);
-
-  // ******************** Lifecycle ************************
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchCategories())
-      .unwrap()
-      .catch((e) => console.error('error: ', e));
-  }, [dispatch]);
-
-  useEffect(() => {
-    dispatch(fetchGlasses())
-      .unwrap()
-      .catch((e) => console.error('error: ', e));
-  }, [dispatch]);
-
-  // ******************** Handlers ************************
 
   const handleImageUpload = (event) => {
     const selectedFile = event.target.files[0];
@@ -49,20 +32,19 @@ export const RecipeDescriptionFields = ({ setFieldValue }) => {
       throw new Error('File too large');
     }
     setObjectURL(URL.createObjectURL(selectedFile));
-    setFieldValue('drinkThumb', selectedFile);
+    setFieldValue('photoUrl', selectedFile);
   };
   const handleRemoveThumbnail = () => {
     URL.revokeObjectURL(objectURL);
     setObjectURL(null);
+    setFieldValue('photoUrl', '');
   };
-
-  // ****************** End of handlers *******************
 
   return (
     <div className={style.container}>
       <div className={style.addImageGroup}>
         <ImageUploadBlock
-          labelFor="drinkThumb" //must match FormikImageUploader
+          labelFor="photoUrl" //must match FormikImageUploader
           imageURL={objectURL}
           removeHandler={handleRemoveThumbnail}
         />
@@ -70,8 +52,8 @@ export const RecipeDescriptionFields = ({ setFieldValue }) => {
         <input
           type="file"
           accept="image/*"
-          name="drinkThumb"
-          id="drinkThumb"
+          name="photoUrl"
+          id="photoUrl"
           onChange={handleImageUpload}
         />
       </div>
@@ -81,26 +63,24 @@ export const RecipeDescriptionFields = ({ setFieldValue }) => {
 
         <FormikTextInput name="description" label="Description" />
 
-        <FormikSelect
+        <SearchDropdown
           name="category"
-          label="Category"
           data={categories}
-          variant={variant}
-          placeHolder="Select a category"
+          style={fakeInputStyleOverride}
+          placeholder={fakeInputPlaceholder}
+          itemsBeforeScroll={itemsBeforeScroll}
+          hasFakeField={true}
           isSearchable={false}
-          itemsBeforeScroll={6}
-          unstyled
         />
 
-        <FormikSelect
+        <SearchDropdown
           name="glass"
-          label="Glass"
           data={glasses}
-          variant={variant}
-          placeHolder="Select glass type"
+          style={fakeInputStyleOverride}
+          placeholder={fakeInputPlaceholder}
+          itemsBeforeScroll={itemsBeforeScroll}
+          hasFakeField={true}
           isSearchable={false}
-          itemsBeforeScroll={6}
-          unstyled
         />
       </div>
     </div>
@@ -110,3 +90,21 @@ export const RecipeDescriptionFields = ({ setFieldValue }) => {
 RecipeDescriptionFields.propTypes = {
   setFieldValue: PropTypes.func,
 };
+
+// ##########################################
+
+const fakeInputStyleOverride = {
+  control: {
+    padding: 0,
+    marginTop: -4,
+    border: 'none',
+    borderRadius: 'none',
+    // backgroundColor: 'blueViolet',
+    width: 'max-content',
+  },
+
+  menu: { width: 'max-content' },
+  // container: { width: '100%' },
+};
+
+const fakeInputPlaceholder = 'Please select';

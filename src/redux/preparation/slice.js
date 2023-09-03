@@ -14,6 +14,8 @@ const extraActions = [
   ops.fetchIngredients,
   ops.fetchGlasses,
   ops.fetchCategories,
+  ops.fetchPopularRecipes,
+  ops.addRecipe,
 ];
 
 export const preparationSlice = createSlice({
@@ -22,6 +24,7 @@ export const preparationSlice = createSlice({
     ingredients: [],
     categories: [],
     glasses: [],
+    popular: [],
     isLoading: false,
     error: null,
   },
@@ -35,6 +38,10 @@ export const preparationSlice = createSlice({
       .addCase(
         ops.fetchCategories.fulfilled,
         rds.handleFetchCategoriesFulfilled
+      )
+      .addCase(
+        ops.fetchPopularRecipes.fulfilled,
+        rds.handleFetchPopularRecipesFulfilled
       )
       .addCase(ops.fetchGlasses.fulfilled, rds.handleFetchGlassesFulfilled)
       .addMatcher(isFulfilled(...extraActions), rds.handleFulfilled)

@@ -1,6 +1,40 @@
+@import "../../styles/variables";
+
+.container {
+  margin-left: auto;
+  margin-right: auto;
+
+  width: 335px;
+
+  @media screen and (min-width: $tablet) {
+    width: 704px;
+  }
+  @media screen and (min-width: $desktop) {
+    width: 1240px;
+  }
+}
+
 .recipes_list {
   display: flex;
-  flex-wrap: wrap;
+  gap: 40px;
 
-  gap: 20px;
+  @media screen and (max-width: ($tablet - 1px)) {
+    flex-direction: column;
+    margin-bottom: 40px;
+  }
+
+  @media screen and (min-width: $tablet) {
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  @media screen and (min-width: $desktop) {
+    gap: 20px;
+  }
+}
+
+.error {
+  color: $error;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: calc(22 / 14);
 }

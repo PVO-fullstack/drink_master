@@ -14,14 +14,17 @@ import { useSelector } from "react-redux";
 import { selectIsRefresh } from "./redux/auth/authSelectors";
 import { Recipe } from "./pages/Recipe";
 import { ErrorPage } from "./pages/404";
-
+import { Toaster } from 'react-hot-toast';
+import { toastOptions, containerStyle } from './services/toastOptions';
 export const UserRoutes = () => {
   const isRefresh = useSelector(selectIsRefresh);
 
   return isRefresh ? (
-    "Refresh User"
+    'Refresh User'
   ) : (
     <>
+      <Toaster containerStyle={containerStyle} toastOptions={toastOptions} />
+
       <Routes>
         <Route
           path="/"
