@@ -41,19 +41,17 @@ export const RecipeIngredientsFields = ({ items }) => {
             <Counter length={length} pop={pop} push={push} />
           </div>
 
-          {length > 0 && (
-            <ul className={style.ingredientsWrapper}>
-              {items.map((item, index) => (
-                <li key={index}>
-                  <IngredientItem
-                    index={index}
-                    length={length}
-                    onRemove={() => remove(index)}
-                  />
-                </li>
-              ))}
-            </ul>
-          )}
+          <ul className={style.ingredientsWrapper}>
+            {items.map((item, index) => (
+              <li key={index}>
+                <IngredientItem
+                  index={index}
+                  length={length}
+                  onRemove={() => remove(index)}
+                />
+              </li>
+            ))}
+          </ul>
         </div>
       )}
     />
