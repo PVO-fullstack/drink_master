@@ -36,15 +36,15 @@ export const AddRecipeForm = () => {
     if (typeof values.instructions === 'string') {
       values.instructions = convertTextAreaToArray(values.instructions);
     }
-    console.log('values:', JSON.stringify(values, null, 2));
+    // console.log('values:', JSON.stringify(values, null, 2));
 
-    let formData = new FormData();
+    // let formData = new FormData();
 
-    for (const key in values) {
-      formData.append(key, values[key]);
-    }
+    // for (const key in values) {
+    //   formData.append(key, values[key]);
+    // }
 
-    console.log('formData: ', formData);
+    // console.log('formData: ', formData);
 
     dispatch(addRecipe(values))
       .then((data) => {
