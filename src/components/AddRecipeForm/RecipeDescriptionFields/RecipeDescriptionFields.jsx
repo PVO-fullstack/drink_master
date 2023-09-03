@@ -1,40 +1,28 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import PropTypes from 'prop-types';
 
-import {
-  fetchCategories,
-  fetchGlasses,
-} from '../../../redux/preparation/operations';
+import { useSelector } from 'react-redux';
 import { selectPreparation } from '../../../redux/preparation/selectors';
 
+import PropTypes from 'prop-types';
+
 import { ImageUploadBlock, FormikTextInput, SearchDropdown } from '..';
+import itemsBeforeScroll from '../../../constants/select';
 import style from './RecipeDescriptionFields.module.scss';
 
 // ###################################################
 
 export const RecipeDescriptionFields = ({ setFieldValue }) => {
   //
-  const { categories, glasses } = useSelector(selectPreparation);
+  const aux = useSelector(selectPreparation);
+
+  const glasses = [...aux.glasses].sort((a, b) => a.name.localeCompare(b.name));
+
+  const categories = [...aux.categories].sort((a, b) =>
+    a.name.localeCompare(b.name)
+  );
 
   const [objectURL, setObjectURL] = useState(null);
-
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchCategories())
-      .unwrap()
-      .catch((e) => console.error('error: ', e));
-  }, [dispatch]);
-
-  useEffect(() => {
-    dispatch(fetchGlasses())
-      .unwrap()
-      .catch((e) => console.error('error: ', e));
-  }, [dispatch]);
-
-  // ******************** Handlers ************************
 
   const handleImageUpload = (event) => {
     const selectedFile = event.target.files[0];
@@ -44,20 +32,19 @@ export const RecipeDescriptionFields = ({ setFieldValue }) => {
       throw new Error('File too large');
     }
     setObjectURL(URL.createObjectURL(selectedFile));
-    setFieldValue('drinkThumb', selectedFile);
+    setFieldValue('photoUrl', selectedFile);
   };
   const handleRemoveThumbnail = () => {
     URL.revokeObjectURL(objectURL);
     setObjectURL(null);
+    setFieldValue('photoUrl', '');
   };
-
-  // ****************** End of handlers *******************
 
   return (
     <div className={style.container}>
       <div className={style.addImageGroup}>
         <ImageUploadBlock
-          labelFor="drinkThumb" //must match FormikImageUploader
+          labelFor="photoUrl" //must match FormikImageUploader
           imageURL={objectURL}
           removeHandler={handleRemoveThumbnail}
         />
@@ -65,8 +52,8 @@ export const RecipeDescriptionFields = ({ setFieldValue }) => {
         <input
           type="file"
           accept="image/*"
-          name="drinkThumb"
-          id="drinkThumb"
+          name="photoUrl"
+          id="photoUrl"
           onChange={handleImageUpload}
         />
       </div>
@@ -81,7 +68,7 @@ export const RecipeDescriptionFields = ({ setFieldValue }) => {
           data={categories}
           style={fakeInputStyleOverride}
           placeholder={fakeInputPlaceholder}
-          itemsBeforeScroll={6}
+          itemsBeforeScroll={itemsBeforeScroll}
           hasFakeField={true}
           isSearchable={false}
         />
@@ -91,7 +78,7 @@ export const RecipeDescriptionFields = ({ setFieldValue }) => {
           data={glasses}
           style={fakeInputStyleOverride}
           placeholder={fakeInputPlaceholder}
-          itemsBeforeScroll={6}
+          itemsBeforeScroll={itemsBeforeScroll}
           hasFakeField={true}
           isSearchable={false}
         />

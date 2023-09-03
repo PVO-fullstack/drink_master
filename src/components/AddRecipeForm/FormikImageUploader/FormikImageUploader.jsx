@@ -12,7 +12,7 @@ export const FormikImageUploader = (props) => {
   const [field, meta] = useField(props);
   // console.log('event.target.files[0]: ', event.target.files[0]);
 
-  const handler = (e) => func('drinkThumb', e.target.files[0]);
+  const handler = (e) => func('photoUrl', e.target.files[0]);
 
   return (
     <div className={style.wrapper}>

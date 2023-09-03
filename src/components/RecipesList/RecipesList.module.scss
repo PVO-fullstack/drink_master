@@ -3,35 +3,16 @@
 .container {
   margin-left: auto;
   margin-right: auto;
-  // padding-left: 20px;
-  // padding-right: 20px;
+
   width: 335px;
 
   @media screen and (min-width: $tablet) {
-    // padding-left: 32px;
-    // padding-right: 32px;
     width: 704px;
   }
   @media screen and (min-width: $desktop) {
-    // padding-left: 100px;
-    // padding-right: 100px;
     width: 1240px;
   }
 }
-
-// .page_title {
-//   margin-top: 80px;
-//   margin-bottom: 40px;
-
-//   @media screen and (min-width: $tablet) {
-//     margin-top: 140px;
-//     margin-bottom: 60px;
-//   }
-//   @media screen and (min-width: $desktop) {
-//     margin-top: 158px;
-//     margin-bottom: 62px;
-//   }
-// }
 
 .recipes_list {
   display: flex;
@@ -39,6 +20,7 @@
 
   @media screen and (max-width: ($tablet - 1px)) {
     flex-direction: column;
+    margin-bottom: 40px;
   }
 
   @media screen and (min-width: $tablet) {
@@ -48,4 +30,11 @@
   @media screen and (min-width: $desktop) {
     gap: 20px;
   }
+}
+
+.error {
+  color: $error;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: calc(22 / 14);
 }
