@@ -60,7 +60,7 @@ export const AddRecipeForm = () => {
       })
       .finally(() => {
         setSubmitting(false); // If onSubmit is async, then Formik will automatically set isSubmitting to false on your behalf once it has resolved
-        // resetForm();
+        resetForm();
       });
 
     setSubmitting(false);
@@ -70,10 +70,9 @@ export const AddRecipeForm = () => {
 
   return (
     <Formik
-      // initialValues={initialValues}
-      initialValues={testInitialValues}
+      initialValues={initialValues}
       onSubmit={handleSubmit}
-      // validationSchema={yupSchema}
+      validationSchema={yupSchema}
     >
       {({ values, setFieldValue, isSubmitting }) => (
         <Form className={style.form}>
@@ -105,17 +104,5 @@ const initialValues = {
     { title: '', measure: '' },
   ],
   instructions: [],
-  imageOfRecipe: {},
-};
-
-const testInitialValues = {
-  drink: 'Відро пійла',
-  description: 'Тут немає чого додати. Назва промовляє сама за себе',
-  category: 'Other/Unknown',
-  glass: 'Punch bowl',
-  ingredients: [{ title: 'Vodka', measure: '1 bucketful' }],
-  // instructions:
-  //   'Вилити пійло у файне нове відро\nДодати лід за смаком, не змішувати, не збовтувати\nПити',
-  instructions: ['Вилити пійло у файне нове відро'],
   imageOfRecipe: '',
 };

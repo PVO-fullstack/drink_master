@@ -16,10 +16,10 @@ export const RecipeIngredientsFields = ({ items }) => {
   //
   const length = items.length;
 
-  // useEffect(() => {
-  //   console.log('useEffect fired');
-  //   console.log('items in useEffect', items);
-  // }, [items]);
+  useEffect(() => {
+    console.log('useEffect fired');
+    console.log('items in useEffect', items);
+  }, [items]);
 
   // const handleRemove = (arrayHelpers, index) => {
   //   // console.log('deleted item: ', arrayHelpers.remove(index));
