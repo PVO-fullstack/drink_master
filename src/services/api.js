@@ -1,19 +1,19 @@
-import instance from '../shared/api/instance';
+import instance from "../shared/api/instance";
 
 // ############### Recipes ##########################
 
 export const fetchRecipes = async () => {
-  const { data } = await instance.get('/recipes');
+  const { data } = await instance.get("/recipes");
   return data;
 };
 
 export const fetchPopularRecipes = async () => {
-  const { data } = await instance.get('/popular-recipes');
+  const { data } = await instance.get("/popular-recipes");
   return data;
 };
 
 export const addRecipe = async (recipe) => {
-  const { data } = await instance.post('/own', recipe);
+  const { data } = await instance.post("/own", recipe);
   // const { data } = await instance.postForm('/own', recipe);
 
   // const { data } = await instance.post('/own', recipe, {
@@ -40,19 +40,23 @@ export const updateFavRecipe = async ({ _id, type }) => {
   return data;
 };
 
+export const fetchRecipesByCategory = async () => {
+  const { data } = await instance.get("/recipes/main-page");
+  return data;
+};
 // ############### Preparation #######################
 
 export const fetchIngredients = async () => {
-  const { data } = await instance.get('/ingredients');
+  const { data } = await instance.get("/ingredients");
   return data;
 };
 
 export const fetchCategories = async () => {
-  const { data } = await instance.get('/category');
+  const { data } = await instance.get("/category");
   return data;
 };
 
 export const fetchGlasses = async () => {
-  const { data } = await instance.get('/glass');
+  const { data } = await instance.get("/glass");
   return data;
 };
