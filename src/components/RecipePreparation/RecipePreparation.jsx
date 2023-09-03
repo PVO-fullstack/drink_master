@@ -8,8 +8,9 @@ export const RecipePreparation = ({instructions}) => {
         <div className={css.preparation}>
             <h2 className={ css.prep_title} >Recipe Preparation</h2>
             <div className={css.prep}>
-                <img className={ css.prep_img} src="../public/recipePrep.jpg" alt="Coctails" />
-            
+                <img className={css.prep_img} src="../public/recipePrep.jpg" alt="Coctails" />
+                {instructions.length === 1 ? (<p className={css.prep_item_inst}>{instructions[0]}</p>) : (
+                    
                 <ul className={css.prep_list}>               
                     {instructions.map(item => (
                         <li className={css.prep_item}>
@@ -18,6 +19,8 @@ export const RecipePreparation = ({instructions}) => {
                     ))
                     }
                     </ul>
+                )}
+            
             </div>
         </div>
         
