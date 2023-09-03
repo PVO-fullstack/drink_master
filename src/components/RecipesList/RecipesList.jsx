@@ -13,6 +13,7 @@ import {
   fetchRecipesThunk,
 } from "../../redux/cockteil/cockteilsOperations";
 import Paginator from "../Paginator/Paginator";
+import { NotFoundComponent } from "../NotFound/NotFoundComponent";
 
 const determineRecipesPerPage = () => {
   if (window.innerWidth < 768) {
@@ -56,6 +57,8 @@ export const RecipesList = ({ type }) => {
     <>
       {error ? (
         <p className={css.error}>Error: {error}</p>
+      ) : recipesLength < 1 ? (
+        <NotFoundComponent type={type} />
       ) : (
         <>
           <ul className={css.recipes_list}>
