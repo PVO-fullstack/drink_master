@@ -29,7 +29,18 @@
 
 .img {
     height: 500px;
+    // z-index: -1;
+    // opacity: .99;
 }
+
+// .spots{
+//     background-image: url(/images/PNG/Background.png), url(/images/PNG/Background2.png), url(/images/PNG/Background3.png);
+//     background-position: top left, top right, top right;
+//     background-repeat: no-repeat, no-repeat, no-repeat;
+//     width:375px;
+//     background-size: 35%, 20%, 20%;
+//     z-index: 2;
+// }
 
 .text {
    color: #F3F3F3;

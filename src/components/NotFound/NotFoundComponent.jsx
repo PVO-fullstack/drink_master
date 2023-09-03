@@ -2,6 +2,7 @@ import css from "../NotFound/NotFoundComponent.module.scss";
 
 export const NotFoundComponent = () => {
     return (
+      <div className={css.spots} >
         <div className={css.container}>
           <div className={css.containerWrap}>
             <img className={css.img} src="cocktailNotFoundDesctop.jpg" alt="img"/>
@@ -10,5 +11,6 @@ export const NotFoundComponent = () => {
             </div>
           </div>
         </div>
+      </div>
     );
 };
