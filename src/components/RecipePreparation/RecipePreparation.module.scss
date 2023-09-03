@@ -19,15 +19,33 @@
     height: 430px;
 }
 .prep_list {
+    padding-left: 30px;
     width: 549px;
     margin-left: auto;
 }
 .prep_item {
-    
+    display: flex;
+    align-items:flex-start;
+    margin-bottom: 14px;
     font-size: 16px;
     line-height: 1.38;
     color: $accent;
+
 }
+.prep_item_marker {
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
 .prep_text {
     color: $accent;
+}
+
+.marker {
+    width: 5px;
+    height: 5px;
+   margin-top: 8px;
+    margin-right: 5px;
+    border-radius: 50%;
+    background-color: $accent;
 }

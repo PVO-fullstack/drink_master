@@ -10,14 +10,14 @@ export const RecipePreparation = ({instructions}) => {
             <div className={css.prep}>
                 <img className={ css.prep_img} src="../public/recipePrep.jpg" alt="Coctails" />
             
-            <ul className={css.prep_list}>
-                {instructions.map(item => (
-                    <li className={css.prep_item}>
-                        {item}
-                    </li>
-                ))
-                }
-                </ul>
+                <ul className={css.prep_list}>               
+                    {instructions.map(item => (
+                        <li className={css.prep_item}>
+                            {instructions.length > 1 && <span className={css.marker}></span>}{item}
+                        </li>
+                    ))
+                    }
+                    </ul>
             </div>
         </div>
         
