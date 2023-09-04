@@ -25,9 +25,15 @@ export const UserLogoModal = ({ showUserInfo, showLogOut, closeModal }) => {
     showLogOut();
   };
 
+  const handleCloseModal = (e) => {
+    if (e.target === e.currentTarget) {
+      closeModal();
+    }
+  };
+
   return (
     <>
-      <div className={style.backdrop}>
+      <div onClick={handleCloseModal} className={style.backdrop}>
         <div className={style.modal}>
           <div className={style.btnConteiner}>
             <button onClick={showUser} className={style.edit} type="button">
