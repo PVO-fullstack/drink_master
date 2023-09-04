@@ -9,17 +9,14 @@
 
     @media screen and (min-width: $mobile) {
         background-image: url(/startBgTablet.jpg);
-        background-position: top -145px right -100px;
     }
 
     @media screen and (min-width: $tablet) {
         background-image: url(/startBgTablet.jpg);
-        background-position: right;
     }
 
     @media screen and (min-width: $desktop) {
         background-image: url(/startBg.jpg);
-        background-position: right;
     }
 }
 
