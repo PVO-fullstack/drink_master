@@ -1,9 +1,11 @@
 import { AuthNav } from "../../components/Auth/AuthNav/AuthNav";
 
-export const Welcome = () => {
+const Welcome = () => {
   return (
     <>
       <AuthNav />
     </>
   );
 };
+
+export default Welcome;

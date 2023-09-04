@@ -12,19 +12,15 @@ export const AuthNav = () => {
           retrieve your own recipes at any time.
         </p>
 
-        <div className={style.btn}>
-          <NavLink className={style.link} to="/signup">
+        <div className={style.btnConteiner}>
+          <NavLink className={style.btn} to="/signup">
             Registration
           </NavLink>
-        </div>
-        <div className={style.btn + " " + style.nextBtn}>
-          <NavLink className={style.link} to="/signin">
+          <NavLink className={style.btn} to="/signin">
             Sign in
           </NavLink>
         </div>
       </div>
-      {/* <div className={style.glass}></div> */}
-      {/* <div className={style.elips3}></div> */}
     </div>
   );
 };

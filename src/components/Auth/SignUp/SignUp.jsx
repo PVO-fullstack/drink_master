@@ -39,7 +39,7 @@ export const SignUp = () => {
           }}
         >
           {(formik) => {
-            const { isValid, dirty } = formik;
+            const { isValid, dirty, handleChange, setFieldTouched } = formik;
             return (
               <Form className={style.form}>
                 <Field
@@ -47,17 +47,24 @@ export const SignUp = () => {
                   type="text"
                   name="name"
                   placeholder="Name"
+                  onChange={(e) => {
+                    setFieldTouched("name");
+                    handleChange(e);
+                  }}
                 />
                 <Field
                   className={style.field}
                   type="email"
                   name="email"
                   placeholder="Email"
+                  onChange={(e) => {
+                    setFieldTouched("email");
+                    handleChange(e);
+                  }}
                 />
                 {dirty && (
                   <ErrorMessage
                     name="email"
-                    // render={(errors) => toast.error(errors)}
                     component="span"
                     className={style.error}
                   />
@@ -67,6 +74,10 @@ export const SignUp = () => {
                   type="password"
                   name="password"
                   placeholder="Password"
+                  onChange={(e) => {
+                    setFieldTouched("password");
+                    handleChange(e);
+                  }}
                 />
                 <ErrorMessage
                   name="password"

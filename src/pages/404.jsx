@@ -1,9 +1,11 @@
 import { Error } from "../components/404/404Component";
 
-export const ErrorPage = () => {
-    return (
-        <div>
-          <Error/>
-        </div>
-    );
+const ErrorPage = () => {
+  return (
+    <div>
+      <Error />
+    </div>
+  );
 };
+
+export default ErrorPage;

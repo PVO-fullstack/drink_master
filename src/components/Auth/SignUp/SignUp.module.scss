@@ -1,20 +1,22 @@
 .conteiner {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    background-size: contain;
+    align-items: center;
+    background-position: right center;
+    background-repeat: no-repeat;
+
     @media screen and (min-width: $mobile) {
         background-image: url(/startBgTablet.jpg);
-        background-position: top -145px right -100px;
-        background-repeat: no-repeat;
     }
 
     @media screen and (min-width: $tablet) {
         background-image: url(/startBgTablet.jpg);
-        background-position: right;
-        background-repeat: no-repeat;
     }
 
     @media screen and (min-width: $desktop) {
         background-image: url(/startBg.jpg);
-        background-position: right;
-        background-repeat: no-repeat;
     }
 }
 
@@ -113,6 +115,12 @@
 
 
 .btn {
+    width: 100%;
+    height: 54px;
+    border: none;
+    cursor: pointer;
+    transition: box-shadow 0.3s ease 0s;
+
     border-radius: 42px;
     margin-top: 40px;
     margin-bottom: 14px;
@@ -121,17 +129,22 @@
     font-weight: 600;
 
     @media screen and (min-width: $mobile) {
-        width: 335px;
+        // width: 335px;
         padding: 18px 140px;
         font-size: 14px;
         line-height: 1.28;
     }
 
     @media screen and (min-width: $tablet) {
-        width: 400px;
+        // width: 400px;
         padding: 18px 169px;
         font-size: 16px;
         line-height: 1.12;
+    }
+
+    &:hover {
+        text-decoration: underline;
+        box-shadow: rgba(245, 245, 23, 0.87) 1px 0px 3px 4px inset;
     }
 }
 

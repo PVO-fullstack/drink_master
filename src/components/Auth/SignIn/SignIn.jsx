@@ -44,7 +44,7 @@ export const SignIn = () => {
           }}
         >
           {(formik) => {
-            const { isValid, dirty } = formik;
+            const { isValid, dirty, setFieldValue } = formik;
             return (
               <Form className={style.form}>
                 <Field
@@ -52,6 +52,9 @@ export const SignIn = () => {
                   type="email"
                   name="email"
                   placeholder="Email"
+                  onChange={(e) => {
+                    setFieldValue("email", e.currentTarget.value);
+                  }}
                 />
                 <ErrorMessage
                   name="email"
@@ -64,6 +67,9 @@ export const SignIn = () => {
                   type="password"
                   name="password"
                   placeholder="Password"
+                  onChange={(e) => {
+                    setFieldValue("password", e.currentTarget.value);
+                  }}
                 />
                 <ErrorMessage
                   name="password"

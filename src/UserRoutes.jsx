@@ -1,21 +1,22 @@
-import Home from "./pages/Home";
-import { Navigate, Route, Routes } from "react-router-dom";
-import { Drinks } from "./pages/Drinks";
-import { AddRecipe } from "./pages/AddRecipe";
-import { MyRecipes } from "./pages/MyRecipes";
-import { Favorites } from "./pages/Favorites";
-import { Layout } from "./components/Layout/Layout";
+import { Suspense, lazy } from "react";
+import { Route, Routes } from "react-router-dom";
+import Layout from "./components/Layout/Layout";
 import { RestrictedRoute } from "./components/Routes/RestrictedRoute";
-import { Welcome } from "./pages/AuthPages/Welcome";
-import { Registration } from "./pages/AuthPages/Registration";
-import { Login } from "./pages/AuthPages/Login";
 import { PrivatRoute } from "./components/Routes/PrivatRoute";
 import { useSelector } from "react-redux";
 import { selectIsRefresh } from "./redux/auth/authSelectors";
-import { Recipe } from "./pages/Recipe";
-import { ErrorPage } from "./pages/404";
-import { Toaster } from 'react-hot-toast';
-import { toastOptions, containerStyle } from './services/toastOptions';
+const HomePage = lazy(() => import("./pages/Home"));
+const DrinksPage = lazy(() => import("./pages/Drinks"));
+const AddRecipePage = lazy(() => import("./pages/AddRecipe"));
+const MyRecipesPage = lazy(() => import("./pages/MyRecipes"));
+const FavoritesPage = lazy(() => import("./pages/Favorites"));
+const WelcomePage = lazy(() => import("./pages/AuthPages/Welcome"));
+const RegistrationPage = lazy(() => import("./pages/AuthPages/Registration"));
+const LoginPage = lazy(() => import("./pages/AuthPages/Login"));
+const RecipePage = lazy(() => import("./pages/Recipe"));
+const ErrorPage = lazy(() => import("./pages/404"));
+import { Toaster } from "react-hot-toast";
+import { toastOptions, containerStyle } from "./services/toastOptions";
 
 export const UserRoutes = () => {
   const isRefresh = useSelector(selectIsRefresh);
@@ -24,65 +25,89 @@ export const UserRoutes = () => {
     "Refresh User"
   ) : (
     <>
-      <Toaster containerStyle={containerStyle} toastOptions={toastOptions} />
+      {/* <ThemeProvider theme={theme === 'dark' ? darkTheme : lightTheme}> */}
+      <Suspense fallback={<div>Loading...</div>}>
+        <Toaster containerStyle={containerStyle} toastOptions={toastOptions} />
 
-      <Routes>
-        <Route
-          path="/"
-          element={<PrivatRoute redirectTo="/welcome" component={<Layout />} />}
-        >
+        <Routes>
           <Route
-            index
-            element={<PrivatRoute redirectTo="/welcome" component={<Home />} />}
-          />
-          <Route
-            path="drinks"
+            path="/"
             element={
-              <PrivatRoute redirectTo="/welcome" component={<Drinks />} />
+              <PrivatRoute redirectTo="/welcome" component={<Layout />} />
             }
-          />
-          <Route
-            path="addrecipe"
-            element={
-              <PrivatRoute redirectTo="/welcome" component={<AddRecipe />} />
-            }
-          />
-          <Route
-            path="myrecipes"
-            element={
-              <PrivatRoute redirectTo="/welcome" component={<MyRecipes />} />
-            }
-          />
-          <Route
-            path="recipes/:id"
-            element={
-              <PrivatRoute redirectTo="/welcome" component={<Recipe />} />
-            }
-          />
-          <Route
-            path="favorites"
-            element={
-              <PrivatRoute redirectTo="/welcome" component={<Favorites />} />
-            }
-          />
-        </Route>
+          >
+            <Route
+              index
+              element={
+                <PrivatRoute redirectTo="/welcome" component={<HomePage />} />
+              }
+            />
+            <Route
+              path="drinks"
+              element={
+                <PrivatRoute redirectTo="/welcome" component={<DrinksPage />} />
+              }
+            />
+            <Route
+              path="addrecipe"
+              element={
+                <PrivatRoute
+                  redirectTo="/welcome"
+                  component={<AddRecipePage />}
+                />
+              }
+            />
+            <Route
+              path="myrecipes"
+              element={
+                <PrivatRoute
+                  redirectTo="/welcome"
+                  component={<MyRecipesPage />}
+                />
+              }
+            />
+            <Route
+              path="recipes/:id"
+              element={
+                <PrivatRoute redirectTo="/welcome" component={<RecipePage />} />
+              }
+            />
+            <Route
+              path="favorites"
+              element={
+                <PrivatRoute
+                  redirectTo="/welcome"
+                  component={<FavoritesPage />}
+                />
+              }
+            />
+          </Route>
 
-        <Route
-          path="/welcome"
-          element={<RestrictedRoute redirectTo="/" component={<Welcome />} />}
-        />
-        <Route
-          path="/signup"
-          element={
-            <RestrictedRoute redirectTo="/" component={<Registration />} />
-          }
-        />
-        <Route
-          path="/signin"
-          element={<RestrictedRoute redirectTo="/" component={<Login />} />}
-        />
-        <Route path="*" element={<ErrorPage />} />
-      </Routes>
+          <Route
+            path="/welcome"
+            element={
+              <RestrictedRoute redirectTo="/" component={<WelcomePage />} />
+            }
+          />
+          <Route
+            path="/signup"
+            element={
+              <RestrictedRoute
+                redirectTo="/"
+                component={<RegistrationPage />}
+              />
+            }
+          />
+          <Route
+            path="/signin"
+            element={
+              <RestrictedRoute redirectTo="/" component={<LoginPage />} />
+            }
+          />
+          <Route path="*" element={<ErrorPage />} />
+        </Routes>
+        {/* </ThemeProvider> */}
+      </Suspense>
     </>
   );
 };

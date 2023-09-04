@@ -1,28 +1,25 @@
-//   @media screen and (min-width: 768px) {
-//       max-width: 768px;
-//   }
-
-//   @media screen and (min-width: 1200px) {
-//       max-width: 1200px;
-//   }
-
 .conteiner {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    background-size: contain;
+    align-items: center;
+    background-position: right center;
+    background-repeat: no-repeat;
+
     @media screen and (min-width: $mobile) {
         background-image: url(/startBgTablet.jpg);
         background-position: top -145px right -100px;
-        background-repeat: no-repeat;
     }
 
     @media screen and (min-width: $tablet) {
         background-image: url(/startBgTablet.jpg);
         background-position: right;
-        background-repeat: no-repeat;
     }
 
     @media screen and (min-width: $desktop) {
         background-image: url(/startBg.jpg);
         background-position: right;
-        background-repeat: no-repeat;
     }
 }
 
@@ -89,36 +86,23 @@
     }
 }
 
-// .glass {
-//     width: 703px;
-//     background: url(/startBg.jpg), lightgray 50% / cover no-repeat;
-// }
-
-// .elips3 {
-//     position: absolute;
-//     left: 1181px;
-//     top: 458px;
-//     width: 549px;
-//     height: 543px;
-//     flex-shrink: 0;
-//     border-radius: 549px;
-//     background: rgba(64, 112, 205, 0.50);
-//     filter: blur(104.8543701171875px);
-// }
+.btnConteiner {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
 
 .btn {
-    display: inline-flex;
+    display: inline-block;
+    border: 1px solid #f3f3f333;
+    transition: background-color 0.5s ease-in-out 0s, color 0.5s ease-in-out 0s;
 
     font-weight: 600;
-    line-height: 1.125;
+    line-height: 1.28;
 
     border-radius: $button-radius;
 
     color: $accent;
-
-    $bg: $dark-blue;
-    background-color: $bg;
-    border: 1px solid $bg;
 
     &:hover,
     &:focus {
@@ -137,25 +121,11 @@
 
     @media screen and (min-width: $mobile) {
         font-size: 14px;
-    }
-
-    @media screen and (min-width: $tablet) {
-        font-size: 16px;
-    }
-}
-
-.nextBtn {
-    margin-left: 14px;
-}
-
-.link {
-    @media screen and (min-width: $mobile) {
         padding: 14px 40px;
     }
 
     @media screen and (min-width: $tablet) {
+        font-size: 16px;
         padding: 18px 44px;
     }
-
-
 }

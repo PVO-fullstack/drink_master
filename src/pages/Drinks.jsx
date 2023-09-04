@@ -1,5 +1,7 @@
 import { DrinksComponent } from "../components/Drinks/Drinks";
 
-export const Drinks = () => {
+const Drinks = () => {
   return <DrinksComponent />;
 };
+
+export default Drinks;
