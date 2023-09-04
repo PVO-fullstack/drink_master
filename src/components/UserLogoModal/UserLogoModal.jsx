@@ -1,8 +1,22 @@
+import { useEffect } from "react";
 import style from "./UserLogoModal.module.scss";
 import editSVG from "/images/SVG/edit.svg";
 import PropTypes from "prop-types";
 
-export const UserLogoModal = ({ showUserInfo, showLogOut }) => {
+export const UserLogoModal = ({ showUserInfo, showLogOut, closeModal }) => {
+  useEffect(() => {
+    const handleEsc = (e) => {
+      if (e.key === "Escape") {
+        closeModal();
+      }
+    };
+    window.addEventListener("keydown", handleEsc);
+
+    return () => {
+      window.removeEventListener("keydown", handleEsc);
+    };
+  }, [closeModal]);
+
   const showUser = () => {
     showUserInfo();
   };
@@ -37,4 +51,5 @@ export const UserLogoModal = ({ showUserInfo, showLogOut }) => {
 UserLogoModal.propTypes = {
   showUserInfo: PropTypes.func,
   showLogOut: PropTypes.func,
+  closeModal: PropTypes.func,
 };
