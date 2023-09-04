@@ -1,27 +1,26 @@
 @import "../../styles/variables";
 
 
-.page {
+// .page {
     
 
-    @media screen and (min-width: $desktop) {
+//     @media screen and (min-width: $desktop) {
         
         
-    }
-}
-.recipe {
+//     }
+// }
+// .recipe {
 
-    @media screen and (min-width: $tablet) {
+//     @media screen and (min-width: $tablet) {
            
-        }
-    @media screen and (min-width: $desktop) {
+//         }
+//     @media screen and (min-width: $desktop) {
            
-    }
+//     }
 
     
-}
+// }
 .page_recipe {
-    
     @media screen and (min-width: $desktop) {
             margin-bottom: 100px;
     }
@@ -31,20 +30,12 @@
         font-weight: 600;
         line-height: 1.19;
         
-        color: #F3F3F3;
+        color: $accent;
 
     @media screen and (min-width: $tablet) {
         margin: 0;
-        color: #F3F3F3;
         font-size: 56px;
-        font-weight: 600;
         line-height: 1.07;
-        
-    }
-    
-
-    @media screen and (min-width: $desktop){
-        margin: 0;
     }
 }
 
@@ -66,7 +57,6 @@
 .glass {
     margin-bottom: 8px;
     font-size: 12px;
-    font-weight: 400;
     line-height: 1.17;
     
     color: $accent-faded-50;
@@ -77,37 +67,21 @@
         
     }
 
-    @media screen and (min-width: $desktop) {
-        font-size: 16px;
-        line-height: 1.25;
-    }
 }
 
 .descrip {
     margin-top: 20px;
-    width: 335;
+    width: 335px;
     font-size: 14px;
     line-height: 1.29;
         
-    color: #F3F3F3;
+    color: $accent;
 
     @media screen and (min-width: $tablet) {
         margin-top: 28px;
         width: 593px;
         font-size: 16px;
         line-height: 1.38;
-
-        color: $accent;
-            
-    }
-
-    @media screen and (min-width: $desktop) {
-        margin-top: 28px;
-        width: 593px;
-        font-size: 16px;
-        line-height: 1.38;
-        
-        color: $accent;
     }
 
 }
@@ -143,18 +117,10 @@
     
     @media screen and (min-width: $tablet) {
         padding: 18px 44px;
-        color: #161F37;
         font-size: 16px;
-        font-style: normal;
         line-height: 1.13;
     }
 
-    @media screen and (min-width: $desktop) {
-        margin-bottom: 80px;
-        padding: 18px 44px;
-        font-size: 16px;
-        line-height: 1.13;
-    }
 }
 
 .img {

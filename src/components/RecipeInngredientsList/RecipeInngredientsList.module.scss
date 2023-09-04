@@ -1,16 +1,9 @@
 @import "../../styles/variables";
 
 
- @media screen and (min-width: $tablet) {}
-
- @media screen and (min-width: $desktop) {}
-
 .ingr {
-    margin-bottom: 80px;
-    
-    @media screen and (min-width: $tablet) {
         margin-bottom: 80px;
-    }
+
     @media screen and (min-width: $desktop) {
         height: 302px;
     }
@@ -23,114 +16,80 @@
         font-weight: 500;
         line-height: 1.25;
         
-        color: rgba(243, 243, 243, 0.50);
+        color: $accent-faded-50;
 
     @media screen and (min-width: $tablet) {
         margin-bottom: 24px;
-        font-size: 16px;
-        font-weight: 500;
-        line-height: 1.25;
-        
+  
     }
     @media screen and (min-width: $desktop) {
         margin-bottom: 24px;
-        font-size: 16px;
-        font-weight: 500;
-        line-height: 1.25;
-        
-        color: $accent-faded-50;
+
     }
-   
 }
 
 .indr_list {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
 
     @media screen and (min-width: $tablet) {
-
+        gap: 22px;
     }
     @media screen and (min-width: $desktop) {
-        display: flex;
         gap: 35px;
     }
     
 }
 
 .ingr_item {
-    width: 157px;
+        width: 157px;
     
     @media screen and (min-width: $tablet) {
         width: 220px;
     }
     @media screen and (min-width: $desktop) {
         margin-bottom: 0;
-        width: 220px;
-    // height: 220px;
-    
-    // border-radius: 8px;
-    // background: rgba(22, 31, 55, 0.50);
-    }
 
+    }
 }
 
 .ingr_name{
         display: flex;
         width: 157px;
         justify-content: space-between;
-
-        color: #F3F3F3;
+       
         font-size: 14px;
         font-weight: 500;
         line-height: 1.29;
 
+        color: $accent;
+
     @media screen and (min-width: $tablet) {
         width: 220px;
-        justify-content: space-between;
-        color: #F3F3F3;
-        
         font-size: 18px;
         line-height: 1.33;
         
     }
-    @media screen and (min-width: $desktop) {
-        display: flex;
-        width: 220px;
-        justify-content: space-between;
 
-        font-size: 18px;
-        font-weight: 500;
-        line-height: 1.33;
-        
-        color: $accent
-    }
-   
 }
 
 .ingr_measure {
-    color: rgba(243, 243, 243, 0.50);
-    font-family: Manrope;
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 1.29;
-    
-    @media screen and (min-width: $tablet) {
-        color: rgba(243, 243, 243, 0.50);
-        font-size: 16px;
+        font-size: 14px;
         font-weight: 500;
-        line-height: 1.25;
-        
+        line-height: 1.29;
 
+        color: $accent-faded-50;
+        
+    @media screen and (min-width: $tablet) {
+        font-size: 16px;
+        line-height: 1.25;
     }
     @media screen and (min-width: $desktop) {
         font-size: 16px;
-        font-weight: 500;
         line-height: 1.25;
-            
-        color: $accent-faded-50;
-    }
 
+    }
 }
 
 .svg {
@@ -141,7 +100,7 @@
     object-fit: cover;
 
     border-radius: 8px;
-    background: rgba(22, 31, 55, 0.50);
+    background: $accent-faded-50;;
 
     @media screen and (min-width: $tablet) {
         width: 220px;
@@ -151,12 +110,9 @@
 
     }
     @media screen and (min-width: $desktop) {
-        width: 220px;
-        height: 220px;
         margin: auto;
-        padding: 23px;
-        margin-bottom: 14px;
-        // margin-bottom: 46px;
+       
+ 
     }
     
 }
@@ -165,26 +121,22 @@
     height: 157px;
     padding: 28px;
     margin-bottom: 8px;
-
     object-fit: cover;
 
-
     border-radius: 8px;
-    background: rgba(22, 31, 55, 0.50);
+    background: $accent-faded-50;
+        
 
     @media screen and (min-width: $tablet) {
         width: 220px;
         height: 220px;
         padding: 23px;
         margin-bottom: 14px;
-
     }
 
     @media screen and (min-width: $desktop) {
-        width: 220px;
         margin: auto;
-        padding: 23px;
-        margin-bottom: 14px;
+
     }
     
 }
