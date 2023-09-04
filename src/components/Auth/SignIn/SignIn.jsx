@@ -4,6 +4,7 @@ import style from "./SignIn.module.scss";
 import { NavLink } from "react-router-dom";
 import { logInUser } from "../../../redux/auth/authOperations";
 import { useDispatch } from "react-redux";
+import { toast } from "react-hot-toast";
 import { useState } from "react";
 
 export const SignIn = () => {
@@ -36,6 +37,7 @@ export const SignIn = () => {
             console.log(values);
             dispatch(logInUser(values)).then((result) => {
               if (result.error) {
+                toast.error(result.payload);
                 return;
               }
               resetForm();
