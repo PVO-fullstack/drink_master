@@ -30,7 +30,7 @@ export const RecipePageHero = () => {
   return (
     <div className={css.page}>
       <div className={css.page_recipe}>
-        <p className={css.glass}>{recipe.glass}</p>
+        <h3 className={css.glass}>{recipe.glass}</h3>
         <div className={css.recipe_list}>
           <div className={css.recipe}>
             <PageTitle className={css.recipe_title}>{recipe.drink}</PageTitle>
