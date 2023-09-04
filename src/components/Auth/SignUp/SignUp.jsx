@@ -4,9 +4,11 @@ import style from "./SignUp.module.scss";
 import { NavLink } from "react-router-dom";
 import { registerUser } from "../../../redux/auth/authOperations";
 import { useDispatch } from "react-redux";
+import { useState } from "react";
 
 export const SignUp = () => {
   const dispatch = useDispatch();
+  const [showPassword, setshowPassword] = useState(false);
 
   const passwordRules = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,16}$/;
   // min 6 characters, 1 upper case letter, 1 lower case letter, 1 numeric digit.
@@ -69,16 +71,25 @@ export const SignUp = () => {
                     className={style.error}
                   />
                 )}
-                <Field
-                  className={style.field + " " + style.last_field}
-                  type="password"
-                  name="password"
-                  placeholder="Password"
-                  onChange={(e) => {
-                    setFieldTouched("password");
-                    handleChange(e);
-                  }}
-                />
+                <div className={style.hide}>
+                  <Field
+                    className={style.field + " " + style.last_field}
+                    type={showPassword ? "text" : "password"}
+                    name="password"
+                    placeholder="Password"
+                    onChange={(e) => {
+                      setFieldTouched("password");
+                      handleChange(e);
+                    }}
+                  />
+                  <button
+                    onClick={() => setshowPassword((prev) => !prev)}
+                    className={style.showPassword}
+                    type="button"
+                  >
+                    {showPassword ? "hide" : "show"}
+                  </button>
+                </div>
                 <ErrorMessage
                   name="password"
                   component="span"

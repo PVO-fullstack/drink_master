@@ -10,7 +10,7 @@
     background-repeat: no-repeat;
 
     @media screen and (max-width: $mobile) {
-        background-image: url(/startBgTablet.jpg);
+        background-image: url(/startBgMobile.jpg);
     }
 
     @media screen and (min-width: $mobile) {
@@ -144,4 +144,15 @@
         font-size: 16px;
         padding: 18px 44px;
     }
+}
+
+.showPassword {
+    position: absolute;
+    top: 50%;
+    left: 90%;
+    transform: translate(-50%, -50%);
+    border-radius: 42px;
+    padding: 5px 10px;
+    background-color: inherit;
+    color: white
 }

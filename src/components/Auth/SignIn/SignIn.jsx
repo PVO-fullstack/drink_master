@@ -4,10 +4,11 @@ import style from "./SignIn.module.scss";
 import { NavLink } from "react-router-dom";
 import { logInUser } from "../../../redux/auth/authOperations";
 import { useDispatch } from "react-redux";
-import { Toaster, toast } from "react-hot-toast";
+import { useState } from "react";
 
 export const SignIn = () => {
   const dispatch = useDispatch();
+  const [showPassword, setshowPassword] = useState(false);
 
   const passwordRules = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,16}$/;
   // min 6 characters, 1 upper case letter, 1 lower case letter, 1 numeric digit.
@@ -35,8 +36,6 @@ export const SignIn = () => {
             console.log(values);
             dispatch(logInUser(values)).then((result) => {
               if (result.error) {
-                console.log("first", result);
-                toast.error(result.payload);
                 return;
               }
               resetForm();
@@ -44,7 +43,7 @@ export const SignIn = () => {
           }}
         >
           {(formik) => {
-            const { isValid, dirty, setFieldValue } = formik;
+            const { isValid, dirty, handleChange, setFieldTouched } = formik;
             return (
               <Form className={style.form}>
                 <Field
@@ -53,7 +52,8 @@ export const SignIn = () => {
                   name="email"
                   placeholder="Email"
                   onChange={(e) => {
-                    setFieldValue("email", e.currentTarget.value);
+                    setFieldTouched("email");
+                    handleChange(e);
                   }}
                 />
                 <ErrorMessage
@@ -61,16 +61,25 @@ export const SignIn = () => {
                   component="span"
                   className={style.error}
                 />
-
-                <Field
-                  className={style.field + " " + style.last_field}
-                  type="password"
-                  name="password"
-                  placeholder="Password"
-                  onChange={(e) => {
-                    setFieldValue("password", e.currentTarget.value);
-                  }}
-                />
+                <div className={style.hide}>
+                  <Field
+                    className={style.field + " " + style.last_field}
+                    type={showPassword ? "text" : "password"}
+                    name="password"
+                    placeholder="Password"
+                    onChange={(e) => {
+                      setFieldTouched("password");
+                      handleChange(e);
+                    }}
+                  />
+                  <button
+                    onClick={() => setshowPassword((prev) => !prev)}
+                    className={style.showPassword}
+                    type="button"
+                  >
+                    {showPassword ? "hide" : "show"}
+                  </button>
+                </div>
                 <ErrorMessage
                   name="password"
                   component="span"
