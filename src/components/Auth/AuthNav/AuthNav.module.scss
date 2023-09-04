@@ -9,6 +9,10 @@
     background-position: right center;
     background-repeat: no-repeat;
 
+    @media screen and (max-width: $mobile) {
+        background-image: url(/startBgTablet.jpg);
+    }
+
     @media screen and (min-width: $mobile) {
         background-image: url(/startBgTablet.jpg);
     }
