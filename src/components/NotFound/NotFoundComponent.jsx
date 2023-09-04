@@ -6,9 +6,9 @@ export const NotFoundComponent = ({ type }) => {
     <div className={css.spots}>
       <div className={css.container}>
         <div className={css.containerWrap}>
-          <img
+            <img
             className={css.img}
-            src="cocktailNotFoundDesctop.jpg"
+            src="images/PNG/glassError.png"
             alt="img"
           />
           <div className={css.textContainer}>
