@@ -17,16 +17,19 @@ const RecipePage = lazy(() => import("./pages/Recipe"));
 const ErrorPage = lazy(() => import("./pages/404"));
 import { Toaster } from "react-hot-toast";
 import { toastOptions, containerStyle } from "./services/toastOptions";
+// import { Loading } from "notiflix/build/notiflix-loading-aio";
+import { Loader, Spiner } from "./components/Loader/Loader";
 
 export const UserRoutes = () => {
   const isRefresh = useSelector(selectIsRefresh);
 
   return isRefresh ? (
-    "Refresh User"
+    <Spiner />
   ) : (
     <>
       {/* <ThemeProvider theme={theme === 'dark' ? darkTheme : lightTheme}> */}
-      <Suspense fallback={<div>Loading...</div>}>
+
+      <Suspense fallback={<Loader />}>
         <Toaster containerStyle={containerStyle} toastOptions={toastOptions} />
 
         <Routes>
@@ -106,8 +109,8 @@ export const UserRoutes = () => {
           />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
-        {/* </ThemeProvider> */}
       </Suspense>
+      {/* </ThemeProvider> */}
     </>
   );
 };
