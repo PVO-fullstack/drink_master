@@ -100,7 +100,7 @@
     object-fit: cover;
 
     border-radius: 8px;
-    background: $accent-faded-50;;
+    background: rgba(22, 31, 55, 0.50);
 
     @media screen and (min-width: $tablet) {
         width: 220px;
@@ -109,12 +109,7 @@
         margin-bottom: 14px;
 
     }
-    @media screen and (min-width: $desktop) {
-        margin: auto;
-       
- 
-    }
-    
+     
 }
 .img {
     width: 157px;
@@ -124,7 +119,7 @@
     object-fit: cover;
 
     border-radius: 8px;
-    background: $accent-faded-50;
+    background: rgba(22, 31, 55, 0.50);
         
 
     @media screen and (min-width: $tablet) {
@@ -133,11 +128,5 @@
         padding: 23px;
         margin-bottom: 14px;
     }
-
-    @media screen and (min-width: $desktop) {
-        margin: auto;
-
-    }
-    
 }
 
