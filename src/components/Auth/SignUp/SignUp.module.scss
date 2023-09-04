@@ -2,10 +2,16 @@
     width: 100vw;
     height: 100vh;
     display: flex;
-    background-size: contain;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
+    background-size: contain;
     background-position: right center;
     background-repeat: no-repeat;
+
+    @media screen and (max-width: $mobile) {
+        background-image: url(/startBgTablet.jpg);
+    }
 
     @media screen and (min-width: $mobile) {
         background-image: url(/startBgTablet.jpg);
