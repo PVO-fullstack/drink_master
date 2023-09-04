@@ -4,7 +4,7 @@ export const Error = () => {
     return(
         <div className={css.container}>
             <div className={css.thumb}>
-                <img className={css.img} src="cocktailNotFoundDesctop.jpg" alt="" />
+                <img className={css.img} src="images/PNG/glassError.png" alt="img" />
                 <p className={css.label}> <span>4</span><span>4</span> </p>
             </div>
         </div>

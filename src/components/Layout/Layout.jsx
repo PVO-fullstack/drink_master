@@ -2,8 +2,10 @@ import { Header } from "../Header/Header";
 import { Footer } from "../Footer/Footer";
 import { Outlet } from "react-router";
 import { Suspense, useEffect, useRef, useState } from "react";
+// import { Loading } from "notiflix/build/notiflix-loading-aio";
 
 import style from "./Layout.module.scss";
+import { Spiner } from "../Loader/Loader";
 
 const Layout = () => {
   const headerRef = useRef(null);
@@ -31,7 +33,7 @@ const Layout = () => {
     <div>
       <Header headerRef={headerRef} />
       <div className={style.container}>
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<Spiner />}>
           <main className={style.page} style={{ marginTop: headerHeight }}>
             <Outlet />
           </main>

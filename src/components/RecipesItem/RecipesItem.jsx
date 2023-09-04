@@ -59,7 +59,10 @@ export const RecipesItem = ({
         <p className={css.recipes_item__description}>{description}</p>
 
         <div className={css.recipes_item__button_wrapper}>
-          <NavLink className={cssButton.button} to={`/recipes/${_id}`}>
+          <NavLink
+            className={`${cssButton.button} ${css.nav_link}`}
+            to={`/recipes/${_id}`}
+          >
             See recipe
           </NavLink>
           <button
