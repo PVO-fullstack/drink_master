@@ -1,64 +1,143 @@
 @import "../../styles/variables";
 
+
 .ingr {
-    height: 302px;
+        margin-bottom: 80px;
+
+    @media screen and (min-width: $desktop) {
+        height: 302px;
+    }
+    
 }
 
 .indr_title {
-    margin-bottom: 24px;
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 1.25;
+        margin-bottom: 20px;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 1.25;
         
-    color: $accent-faded-50;
+        color: $accent-faded-50;
+
+    @media screen and (min-width: $tablet) {
+        margin-bottom: 24px;
+  
+    }
+    @media screen and (min-width: $desktop) {
+        margin-bottom: 24px;
+
+    }
 }
 
 .indr_list {
-    display: flex;
-    gap: 35px;
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+
+    @media screen and (min-width: $tablet) {
+        gap: 22px;
+    }
+    @media screen and (min-width: $desktop) {
+        gap: 35px;
+    }
+    
 }
 
 .ingr_item {
-    margin-bottom: 0;
-    width: 220px;
-    height: 220px;
+        width: 157px;
     
-    border-radius: 8px;
-    background: rgba(22, 31, 55, 0.50);
+    @media screen and (min-width: $tablet) {
+        width: 220px;
+    }
+    @media screen and (min-width: $desktop) {
+        margin-bottom: 0;
+
+    }
 }
 
 .ingr_name{
-    display: flex;
-    width: 220px;
+        display: flex;
+        width: 157px;
+        justify-content: space-between;
+       
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 1.29;
 
-    justify-content: space-between;
-    font-size: 18px;
-    font-weight: 500;
-    line-height: 1.33;
+        color: $accent;
 
-    color: $accent;
+    @media screen and (min-width: $tablet) {
+        width: 220px;
+        font-size: 18px;
+        line-height: 1.33;
+        
+    }
+
 }
 
 .ingr_measure {
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 1.25;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 1.29;
 
-    color: $accent-faded-50;
+        color: $accent-faded-50;
+        
+    @media screen and (min-width: $tablet) {
+        font-size: 16px;
+        line-height: 1.25;
+    }
+    @media screen and (min-width: $desktop) {
+        font-size: 16px;
+        line-height: 1.25;
+
+    }
 }
 
 .svg {
-    width: 175px;
-    height: 175px;
-    margin: auto;
-    margin-top: 22px;
-    margin-bottom: 37px;
-    // margin-bottom: 46px;
+    width: 157px;
+    height: 157px;
+    padding: 28px;
+    margin-bottom: 8px;
+    object-fit: cover;
+
+    border-radius: 8px;
+    background: $accent-faded-50;;
+
+    @media screen and (min-width: $tablet) {
+        width: 220px;
+        height: 220px;
+        padding: 23px;
+        margin-bottom: 14px;
+
+    }
+    @media screen and (min-width: $desktop) {
+        margin: auto;
+       
+ 
+    }
+    
 }
 .img {
-    width: 175px;
-    margin: auto;
-    margin-top: 22px;
-    margin-bottom: 37px;
+    width: 157px;
+    height: 157px;
+    padding: 28px;
+    margin-bottom: 8px;
+    object-fit: cover;
+
+    border-radius: 8px;
+    background: $accent-faded-50;
+        
+
+    @media screen and (min-width: $tablet) {
+        width: 220px;
+        height: 220px;
+        padding: 23px;
+        margin-bottom: 14px;
+    }
+
+    @media screen and (min-width: $desktop) {
+        margin: auto;
+
+    }
+    
 }
 
