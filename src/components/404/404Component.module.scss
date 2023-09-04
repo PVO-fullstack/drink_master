@@ -1,25 +1,14 @@
 .img {
-    height: 476px;
+    height: 500px;
     @media screen and (min-width: $tablet){
-        height: 517px;
+        height: 476px;
     }
 }
 
 .container {
     display: flex;
     justify-content: center;
-    padding-top: 137px;
-    padding-bottom: 80px;
     margin: 0 auto;
-
-    @media screen and (min-width: $tablet){
-        padding-top: 191px;
-        padding-bottom: 140px;
-    }
-
-    @media screen and (min-width: $desktop){
-        padding-top: 83px;
-    }
   }
   
 .thumb {
@@ -31,8 +20,8 @@
     display:flex;
     gap:100px;
     position: absolute;
-    top:27%;
-    right: 17%;
+    top:19%;
+    right: 14%;
     font-size: 120px;
     font-weight: bold;
     color: rgba(243, 243, 243, 10%);
@@ -40,5 +29,7 @@
     @media screen and (min-width: $tablet){
         gap:120px;
         font-size: 150px;
+        top:16%;
+        right: 4%;
     }
 }
