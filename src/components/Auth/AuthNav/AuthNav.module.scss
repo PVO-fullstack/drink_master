@@ -15,14 +15,18 @@
 
     @media screen and (min-width: $mobile) {
         background-image: url(/startBgTablet.jpg);
+        align-items: center;
     }
 
     @media screen and (min-width: $tablet) {
         background-image: url(/startBgTablet.jpg);
+        align-items: normal;
+        padding-left: 64px;
     }
 
     @media screen and (min-width: $desktop) {
         background-image: url(/startBg.jpg);
+        padding-left: 100px;
     }
 }
 
