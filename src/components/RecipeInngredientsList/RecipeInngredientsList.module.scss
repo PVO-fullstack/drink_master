@@ -1,64 +1,191 @@
 @import "../../styles/variables";
 
+
+ @media screen and (min-width: $tablet) {}
+
+ @media screen and (min-width: $desktop) {}
+
 .ingr {
-    height: 302px;
+    margin-bottom: 80px;
+    
+    @media screen and (min-width: $tablet) {
+        margin-bottom: 80px;
+    }
+    @media screen and (min-width: $desktop) {
+        height: 302px;
+    }
+    
 }
 
 .indr_title {
-    margin-bottom: 24px;
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 1.25;
+        margin-bottom: 20px;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 1.25;
         
-    color: $accent-faded-50;
+        color: rgba(243, 243, 243, 0.50);
+
+    @media screen and (min-width: $tablet) {
+        margin-bottom: 24px;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 1.25;
+        
+    }
+    @media screen and (min-width: $desktop) {
+        margin-bottom: 24px;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 1.25;
+        
+        color: $accent-faded-50;
+    }
+   
 }
 
 .indr_list {
     display: flex;
-    gap: 35px;
+    gap: 20px;
+    flex-wrap: wrap;
+
+    @media screen and (min-width: $tablet) {
+
+    }
+    @media screen and (min-width: $desktop) {
+        display: flex;
+        gap: 35px;
+    }
+    
 }
 
 .ingr_item {
-    margin-bottom: 0;
-    width: 220px;
-    height: 220px;
+    width: 157px;
     
-    border-radius: 8px;
-    background: rgba(22, 31, 55, 0.50);
+    @media screen and (min-width: $tablet) {
+        width: 220px;
+    }
+    @media screen and (min-width: $desktop) {
+        margin-bottom: 0;
+        width: 220px;
+    // height: 220px;
+    
+    // border-radius: 8px;
+    // background: rgba(22, 31, 55, 0.50);
+    }
+
 }
 
 .ingr_name{
-    display: flex;
-    width: 220px;
+        display: flex;
+        width: 157px;
+        justify-content: space-between;
 
-    justify-content: space-between;
-    font-size: 18px;
-    font-weight: 500;
-    line-height: 1.33;
+        color: #F3F3F3;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 1.29;
 
-    color: $accent;
+    @media screen and (min-width: $tablet) {
+        width: 220px;
+        justify-content: space-between;
+        color: #F3F3F3;
+        
+        font-size: 18px;
+        line-height: 1.33;
+        
+    }
+    @media screen and (min-width: $desktop) {
+        display: flex;
+        width: 220px;
+        justify-content: space-between;
+
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 1.33;
+        
+        color: $accent
+    }
+   
 }
 
 .ingr_measure {
-    font-size: 16px;
+    color: rgba(243, 243, 243, 0.50);
+    font-family: Manrope;
+    font-size: 14px;
     font-weight: 500;
-    line-height: 1.25;
+    line-height: 1.29;
+    
+    @media screen and (min-width: $tablet) {
+        color: rgba(243, 243, 243, 0.50);
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 1.25;
+        
 
-    color: $accent-faded-50;
+    }
+    @media screen and (min-width: $desktop) {
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 1.25;
+            
+        color: $accent-faded-50;
+    }
+
 }
 
 .svg {
-    width: 175px;
-    height: 175px;
-    margin: auto;
-    margin-top: 22px;
-    margin-bottom: 37px;
-    // margin-bottom: 46px;
+    width: 157px;
+    height: 157px;
+    padding: 28px;
+    margin-bottom: 8px;
+    object-fit: cover;
+
+    border-radius: 8px;
+    background: rgba(22, 31, 55, 0.50);
+
+    @media screen and (min-width: $tablet) {
+        width: 220px;
+        height: 220px;
+        padding: 23px;
+        margin-bottom: 14px;
+
+    }
+    @media screen and (min-width: $desktop) {
+        width: 175px;
+        height: 175px;
+        margin: auto;
+        margin-top: 22px;
+        margin-bottom: 37px;
+        // margin-bottom: 46px;
+    }
+    
 }
 .img {
-    width: 175px;
-    margin: auto;
-    margin-top: 22px;
-    margin-bottom: 37px;
+    width: 157px;
+    height: 157px;
+    padding: 28px;
+    margin-bottom: 8px;
+
+    object-fit: cover;
+
+
+    border-radius: 8px;
+    background: rgba(22, 31, 55, 0.50);
+
+    @media screen and (min-width: $tablet) {
+        width: 220px;
+        height: 220px;
+        padding: 23px;
+        margin-bottom: 14px;
+
+    }
+
+    @media screen and (min-width: $desktop) {
+        width: 175px;
+        margin: auto;
+        margin-top: 22px;
+        margin-bottom: 37px;
+    }
+    
 }
 
