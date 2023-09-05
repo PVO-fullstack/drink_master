@@ -26,34 +26,40 @@ export const IngredientItem = ({ index, length, onRemove }) => {
   return (
     <div className={style.item}>
       <div className={style.inputsWrapper}>
-        <SearchDropdown
-          name={`ingredients.${index}.title`}
-          data={ingredients}
-          style={ingredientStyleOverride}
-          placeholder="Ingredient name"
-          itemsBeforeScroll={itemsBeforeScroll}
-          labelVisibility="hidden"
-        />
+        <div>
+          <SearchDropdown
+            name={`ingredients.${index}.title`}
+            data={ingredients}
+            style={ingredientStyleOverride}
+            placeholder="Ingredient name"
+            itemsBeforeScroll={itemsBeforeScroll}
+            labelVisible={false}
+          />
+        </div>
 
-        <SearchDropdown
-          name={`ingredients.${index}.measure`}
-          data={measures}
-          style={measureStyleOverride}
-          placeholder="Measure"
-          itemsBeforeScroll={itemsBeforeScroll}
-          labelVisibility="hidden"
-        />
+        <div>
+          <SearchDropdown
+            name={`ingredients.${index}.measure`}
+            data={measures}
+            style={measureStyleOverride}
+            placeholder="Measure"
+            itemsBeforeScroll={itemsBeforeScroll}
+            labelVisible={false}
+          />
+        </div>
       </div>
 
-      <button
-        className={style.removeButton}
-        type="button"
-        onClick={onRemove}
-        disabled={length === 1}
-        aria-label="Remove ingredient"
-      >
-        <RemoveIcon width={20} height={20} />
-      </button>
+      <div className={style.removeButtonCnt}>
+        <button
+          className={style.removeButton}
+          type="button"
+          onClick={onRemove}
+          disabled={length === 1}
+          aria-label="Remove ingredient"
+        >
+          <RemoveIcon width={20} height={20} />
+        </button>
+      </div>
     </div>
   );
 };
