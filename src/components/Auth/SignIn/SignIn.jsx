@@ -3,13 +3,17 @@ import * as Yup from "yup";
 import style from "./SignIn.module.scss";
 import { NavLink } from "react-router-dom";
 import { logInUser } from "../../../redux/auth/authOperations";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-hot-toast";
 import { useState } from "react";
+import { selectIsLoading } from "../../../redux/auth/authSelectors";
+import { Spiner } from "../../Loader/Loader";
 
 export const SignIn = () => {
   const dispatch = useDispatch();
   const [showPassword, setshowPassword] = useState(false);
+
+  const isLoading = useSelector(selectIsLoading);
 
   const passwordRules = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,16}$/;
   // min 6 characters, 1 upper case letter, 1 lower case letter, 1 numeric digit.
@@ -36,6 +40,7 @@ export const SignIn = () => {
           onSubmit={(values, { resetForm }) => {
             console.log(values);
             dispatch(logInUser(values)).then((result) => {
+              isLoading && <Spiner />;
               if (result.error) {
                 toast.error(result.payload);
                 return;
@@ -45,11 +50,24 @@ export const SignIn = () => {
           }}
         >
           {(formik) => {
-            const { isValid, dirty, handleChange, setFieldTouched } = formik;
+            const {
+              isValid,
+              dirty,
+              handleChange,
+              setFieldTouched,
+              touched,
+              errors,
+            } = formik;
             return (
               <Form className={style.form}>
                 <Field
-                  className={style.field}
+                  className={
+                    touched.email && !errors.email
+                      ? style.field + " " + style.valid_border
+                      : errors.email && touched.email
+                      ? style.field + " " + style.invalid_border
+                      : style.field
+                  }
                   type="email"
                   name="email"
                   placeholder="Email"
@@ -65,7 +83,21 @@ export const SignIn = () => {
                 />
                 <div className={style.hide}>
                   <Field
-                    className={style.field + " " + style.last_field}
+                    className={
+                      touched.password && !errors.password
+                        ? style.field +
+                          " " +
+                          style.valid_border +
+                          " " +
+                          style.last_field
+                        : errors.password && touched.password
+                        ? style.field +
+                          " " +
+                          style.invalid_border +
+                          " " +
+                          style.last_field
+                        : style.field
+                    }
                     type={showPassword ? "text" : "password"}
                     name="password"
                     placeholder="Password"

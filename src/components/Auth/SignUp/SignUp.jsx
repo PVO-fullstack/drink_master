@@ -41,7 +41,14 @@ export const SignUp = () => {
           }}
         >
           {(formik) => {
-            const { isValid, dirty, handleChange, setFieldTouched } = formik;
+            const {
+              isValid,
+              dirty,
+              handleChange,
+              setFieldTouched,
+              touched,
+              errors,
+            } = formik;
             return (
               <Form className={style.form}>
                 <Field
@@ -55,7 +62,13 @@ export const SignUp = () => {
                   }}
                 />
                 <Field
-                  className={style.field}
+                  className={
+                    touched.email && !errors.email
+                      ? style.field + " " + style.valid_border
+                      : errors.email && touched.email
+                      ? style.field + " " + style.invalid_border
+                      : style.field
+                  }
                   type="email"
                   name="email"
                   placeholder="Email"
@@ -73,7 +86,21 @@ export const SignUp = () => {
                 )}
                 <div className={style.hide}>
                   <Field
-                    className={style.field + " " + style.last_field}
+                    className={
+                      touched.password && !errors.password
+                        ? style.field +
+                          " " +
+                          style.valid_border +
+                          " " +
+                          style.last_field
+                        : errors.password && touched.password
+                        ? style.field +
+                          " " +
+                          style.invalid_border +
+                          " " +
+                          style.last_field
+                        : style.field
+                    }
                     type={showPassword ? "text" : "password"}
                     name="password"
                     placeholder="Password"

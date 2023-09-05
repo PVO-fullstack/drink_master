@@ -117,6 +117,18 @@
     &:focus::placeholder {
         color: #F3F3F3;
     }
+
+    &.valid_border {
+        border-color: green;
+        outline: none;
+        background-color: transparent;
+    }
+
+    &.invalid_border {
+        border-color: red;
+        outline: none;
+        background-color: transparent;
+    }
 }
 
 
