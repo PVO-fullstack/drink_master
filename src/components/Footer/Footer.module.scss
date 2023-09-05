@@ -4,13 +4,17 @@
 
 .footerContainer {
   padding: 40px 20px 18px 20px;
+  width: 375px;
+  margin: 0 auto;
 
   @media screen and (min-width: 768px) {
     padding: 80px 32px 24px 32px;
+    width: 768px;
   }
 
-  @media screen and (min-width: 1439px) {
+  @media screen and (min-width: 1440px) {
     padding: 80px 100px 24px 100px;
+    width: 1440px;
   }
 }
 
@@ -50,8 +54,7 @@
 }
 
 .footerNavigation {
-  @media screen and (min-width: 748px) and (max-width: 1439px) {
-  }
+  @media screen and (min-width: 748px) and (max-width: 1439px) {}
 }
 
 .footerSubscribe {

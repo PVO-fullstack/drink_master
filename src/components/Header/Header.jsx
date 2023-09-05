@@ -13,15 +13,19 @@ export const Header = ({ headerRef }) => {
   const [BurgerNavigation, setBurgerNavigation] = useState(false);
   const toggleBurgerBackdrop = (e) => {
     setBurgerNavigation(!BurgerNavigation);
-    // e.target.classList.toggle("active")
+    document.body.classList.toggle('Noowerflow')
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
   };
+
   const burgerPosition = BurgerNavigation ? '0px' : '-100vh';
 
   return (
     <header className={css.header} ref={headerRef}>
       <div className={css.headerContainer}>
         <Logo />
-        <Navigation style="csshead" />
+        <Navigation style="csshead" callback={
+          () => window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
+        } />
         <div className={css.headerSideWrapper}>
           <UserMenu />
           <button
@@ -39,8 +43,8 @@ export const Header = ({ headerRef }) => {
           </button>
         </div>
       </div>
-      <div className={css.headerBurgerBackdrop} style={{ top: burgerPosition }}>
-        <Navigation style="cssBurger" />
+      <div className={css.headerBurgerBackdrop} style={{ top: burgerPosition }} >
+        <Navigation style="cssBurger" callback={toggleBurgerBackdrop} />
       </div>
       <div className={css.headerUnderline}></div>
     </header>
