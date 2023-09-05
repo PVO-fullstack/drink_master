@@ -15,7 +15,7 @@ export const SearchDropdown = (props) => {
     data,
     hasFakeField = false,
     // isSearchable = true,
-    labelVisibility = 'visible',
+    labelVisible = true,
   } = props;
   //
   // eslint-disable-next-line no-unused-vars
@@ -64,15 +64,14 @@ export const SearchDropdown = (props) => {
           {...props}
         />
 
-        <label
-          htmlFor={label || name}
-          className={hasFakeField ? style.fakeFieldLabel : style.label}
-          style={{
-            visibility: labelVisibility === 'hidden' ? 'hidden' : 'visible',
-          }}
-        >
-          {hasFakeField ? capitalizedName : label || name}
-        </label>
+        {labelVisible && (
+          <label
+            htmlFor={label || name}
+            className={hasFakeField ? style.fakeFieldLabel : style.label}
+          >
+            {hasFakeField ? capitalizedName : label || name}
+          </label>
+        )}
       </div>
 
       {meta.touched && meta.error ? (
@@ -88,5 +87,5 @@ SearchDropdown.propTypes = {
   data: PropTypes.arrayOf(PropTypes.shape),
   hasFakeField: PropTypes.bool,
   isSearchable: PropTypes.bool,
-  labelVisibility: oneOf(['visible', 'hidden']),
+  labelVisible: PropTypes.bool,
 };
