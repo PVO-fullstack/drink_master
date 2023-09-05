@@ -2,8 +2,14 @@ import { useEffect } from "react";
 import style from "./UserLogoModal.module.scss";
 import editSVG from "/images/SVG/edit.svg";
 import PropTypes from "prop-types";
+import { createPortal } from "react-dom";
 
-export const UserLogoModal = ({ showUserInfo, showLogOut, closeModal }) => {
+export const UserLogoModal = ({
+  showUserInfo,
+  showLogOut,
+  closeModal,
+  setShowLogoModal,
+}) => {
   useEffect(() => {
     const handleEsc = (e) => {
       if (e.key === "Escape") {
@@ -27,29 +33,33 @@ export const UserLogoModal = ({ showUserInfo, showLogOut, closeModal }) => {
 
   const handleCloseModal = (e) => {
     if (e.target === e.currentTarget) {
+      console.log("AAAAAA");
       closeModal();
     }
   };
 
   return (
     <>
-      <div onClick={handleCloseModal} className={style.backdrop}>
-        <div className={style.modal}>
-          <div className={style.btnConteiner}>
-            <button onClick={showUser} className={style.edit} type="button">
-              Edit profile
-              <img className={style.edit_swg} src={editSVG} alt="edit" />
-            </button>
-            <button
-              onClick={showLogOutModal}
-              className={style.btn}
-              type="button"
-            >
-              Log out
-            </button>
+      {createPortal(
+        <div onClick={handleCloseModal} className={style.backdrop}>
+          <div className={style.modal}>
+            <div className={style.btnConteiner}>
+              <button onClick={showUser} className={style.edit} type="button">
+                Edit profile
+                <img className={style.edit_swg} src={editSVG} alt="edit" />
+              </button>
+              <button
+                onClick={showLogOutModal}
+                className={style.btn}
+                type="button"
+              >
+                Log out
+              </button>
+            </div>
           </div>
-        </div>
-      </div>
+        </div>,
+        document.getElementById("modal-root")
+      )}
     </>
   );
 };
