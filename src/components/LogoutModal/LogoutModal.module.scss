@@ -21,6 +21,11 @@
     border-radius: 16px;
     box-shadow: 0px 4px 48px 0px rgba(0, 0, 0, 0.10);
 
+    @media screen and (max-width: $mobile) {
+        width: 280px;
+        height: 190px;
+    }
+
     @media screen and (min-width: $mobile) {
         width: 335px;
         height: 193px;
@@ -52,6 +57,13 @@
     text-align: center;
     font-weight: 400;
 
+    @media screen and (max-width: $mobile) {
+        // margin-top: 12px;
+        font-size: 12px;
+        line-height: 1.28;
+        letter-spacing: -0.28px;
+    }
+
     @media screen and (min-width: $mobile) {
         margin-top: 12px;
         font-size: 14px;
@@ -69,9 +81,9 @@
 
 .btnConteiner {
     display: flex;
-    margin-top: 37px;
     gap: 12px;
     justify-content: center;
+    margin-top: 37px;
 }
 
 .btn {
@@ -79,6 +91,13 @@
     background: #F3F3F3;
     color: #161F37;
     font-weight: 600;
+
+    @media screen and (max-width: $mobile) {
+        width: 120px;
+        padding: 12px 35px;
+        font-size: 12px;
+        line-height: 1.12;
+    }
 
     @media screen and (min-width: $mobile) {
         width: 140px;

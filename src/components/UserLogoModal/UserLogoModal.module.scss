@@ -121,6 +121,13 @@
     font-weight: 600;
     border-width: 0;
 
+    @media screen and (max-width: $mobile) {
+        width: 120px;
+        padding: 12px 35px;
+        font-size: 12px;
+        line-height: 1.28;
+    }
+
     @media screen and (min-width: $mobile) {
         width: 141px;
         padding: 12px 45px;
