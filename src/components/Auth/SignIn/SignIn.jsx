@@ -96,7 +96,7 @@ export const SignIn = () => {
                           style.invalid_border +
                           " " +
                           style.last_field
-                        : style.field
+                        : style.field + " " + style.last_field
                     }
                     type={showPassword ? "text" : "password"}
                     name="password"
