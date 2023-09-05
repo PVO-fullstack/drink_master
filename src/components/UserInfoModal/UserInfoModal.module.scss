@@ -66,6 +66,11 @@
 
     object-fit: cover;
 
+    @media screen and (max-width: $mobile) {
+        width: 60px;
+        height: 60px;
+    }
+
     @media screen and (min-width: $mobile) {
         width: 80px;
         height: 80px;
@@ -101,6 +106,12 @@ input[type='file'].avatar {
         white-space: nowrap;
         -webkit-user-select: none;
         cursor: pointer;
+
+        @media screen and (max-width: $mobile) {
+            width: 24px;
+            height: 24px;
+            top: -45px;
+        }
 
         @media screen and (min-width: $mobile) {
             width: 28px;
@@ -152,6 +163,10 @@ input[type='file'].avatar {
     align-items: center;
     margin-top: 66px;
 
+    @media screen and (max-width: $mobile) {
+        margin-top: 29px;
+    }
+
     @media screen and (min-width: $mobile) {
         margin-top: 39px;
     }
@@ -178,6 +193,12 @@ input[type='file'].avatar {
     font-weight: 400;
     background-color: inherit;
 
+    @media screen and (max-width: $mobile) {
+        margin: 0 10px;
+        width: 240px;
+        font-size: 12px;
+    }
+
     @media screen and (min-width: $mobile) {
         width: 285px;
         font-size: 14px;
@@ -200,6 +221,14 @@ input.img {
     background: #F3F3F3;
     color: #161F37;
     font-weight: 600;
+
+    @media screen and (max-width: $mobile) {
+        width: 240px;
+        padding: 14px 65px;
+        margin-top: 18px;
+        font-size: 12px;
+        line-height: 1.28;
+    }
 
     @media screen and (min-width: $mobile) {
         width: 285px;
