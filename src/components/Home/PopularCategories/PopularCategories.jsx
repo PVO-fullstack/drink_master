@@ -1,25 +1,25 @@
-import { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchRecipesByCategory } from '../../../redux/drinks/operationsDrinks';
-import { selectDrinksByCategory } from '../../../redux/drinks/selectorsDrinks';
-import css from '../PopularCategories/PopularCategories.module.scss';
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchRecipesByCategory } from "../../../redux/drinks/operationsDrinks";
+import { memoizedSelectDrinksByCategory } from "../../../redux/drinks/selectorsDrinks";
+import css from "../PopularCategories/PopularCategories.module.scss";
 
 const PopularCategories = () => {
   const categoriesToDisplay = [
-    'Ordinary Drink',
-    'Cocktail',
-    'Shake',
-    'Other/Unknown',
+    "Ordinary Drink",
+    "Cocktail",
+    "Shake",
+    "Other/Unknown",
   ];
-  const drinks = useSelector(selectDrinksByCategory);
-  // console.log(drinks);
+  const drinks = useSelector(memoizedSelectDrinksByCategory);
+
   const dispatch = useDispatch();
   const [cardsPerRow, setCardsPerRow] = useState(3);
 
   useEffect(() => {
     dispatch(fetchRecipesByCategory())
       .unwrap()
-      .catch((e) => console.log('error: ', e));
+      .catch((e) => console.log("error: ", e));
   }, [dispatch]);
 
   useEffect(() => {
@@ -35,10 +35,10 @@ const PopularCategories = () => {
 
     updateCardsPerRow();
 
-    window.addEventListener('resize', updateCardsPerRow);
+    window.addEventListener("resize", updateCardsPerRow);
 
     return () => {
-      window.removeEventListener('resize', updateCardsPerRow);
+      window.removeEventListener("resize", updateCardsPerRow);
     };
   }, []);
 

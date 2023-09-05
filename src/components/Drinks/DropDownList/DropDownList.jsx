@@ -1,20 +1,55 @@
 import Select from "react-select";
-import React, { useState, useEffect } from "react";
-import { selectCategories } from "../../../redux/preparation/selectors";
-import instance from "../../../shared/api/instance";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import css from "../DropDownList/DropDownList.module.scss";
 
-const DropDownList = () => {
-  const [drinksCategory, setDrinksCategory] = useState([]);
+import {
+  selectCategories,
+  selectIngredients,
+} from "../../../redux/preparation/selectors";
+import {
+  fetchCategories,
+  fetchIngredients,
+} from "../../../redux/preparation/operations";
+
+const DropDownList = ({ placeholder }) => {
+  const categories = useSelector(selectCategories);
+  const ingridients = useSelector(selectIngredients);
+  const dispatch = useDispatch();
+
   useEffect(() => {
-    instance.get("/category").then((res) => {
-      const data = res.data;
-    });
-  });
-  return (
-    <div>
-      <Select />
-    </div>
-  );
+    dispatch(fetchCategories())
+      .unwrap()
+      .catch((e) => console.log("error: ", e));
+  }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(fetchIngredients())
+      .unwrap()
+      .catch((e) => console.log("error: ", e));
+  }, [dispatch]);
+
+  const category = categories.map((data) => ({
+    label: data.name,
+  }));
+
+  const ingridient = ingridients.map((data) => ({
+    label: data.title,
+  }));
+
+  if (placeholder === "All categories") {
+    return (
+      <div>
+        <Select placeholder={placeholder} options={category} />
+      </div>
+    );
+  } else if (placeholder === "Ingredients") {
+    return (
+      <div>
+        <Select placeholder={placeholder} options={ingridient} />
+      </div>
+    );
+  }
 };
 
 export default DropDownList;
