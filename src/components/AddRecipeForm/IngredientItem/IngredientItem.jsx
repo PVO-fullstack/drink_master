@@ -34,6 +34,7 @@ export const IngredientItem = ({ index, length, onRemove }) => {
             placeholder="Ingredient name"
             itemsBeforeScroll={itemsBeforeScroll}
             labelVisible={false}
+            errorStyles={{ marginLeft: '1.5rem' }}
           />
         </div>
 
@@ -45,21 +46,22 @@ export const IngredientItem = ({ index, length, onRemove }) => {
             placeholder="Measure"
             itemsBeforeScroll={itemsBeforeScroll}
             labelVisible={false}
+            errorStyles={{ marginLeft: '1.5rem' }}
           />
         </div>
       </div>
 
-      <div className={style.removeButtonCnt}>
-        <button
-          className={style.removeButton}
-          type="button"
-          onClick={onRemove}
-          disabled={length === 1}
-          aria-label="Remove ingredient"
-        >
-          <RemoveIcon width={20} height={20} />
-        </button>
-      </div>
+      {/* <div className={style.removeButtonCnt}> */}
+      <button
+        className={style.removeButton}
+        type="button"
+        onClick={onRemove}
+        disabled={length === 1}
+        aria-label="Remove ingredient"
+      >
+        <RemoveIcon width={20} height={20} />
+      </button>
+      {/* </div> */}
     </div>
   );
 };

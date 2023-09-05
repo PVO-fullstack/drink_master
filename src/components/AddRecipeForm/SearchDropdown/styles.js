@@ -3,12 +3,14 @@
 // const tablet = `@media screen and (min-width: ${sizes.tablet})`;
 // const desktop = `@media screen and (min-width: ${sizes.desktop})`;
 
-export const makeStyles = ({ style }) => ({
+export const makeStyles = ({ style }, meta = null) => ({
   //
   control: (baseStyles, state) => ({
     ...baseStyles,
     backgroundColor: 'transparent',
-    border: '1px solid rgba(243, 243, 243, 0.50)',
+    border: '1px solid',
+    borderColor:
+      meta.touched && meta.error ? 'firebrick' : 'rgba(243, 243, 243, 0.50)',
     borderRadius: 200,
     color: state.isFocused ? '#f3f3f3' : 'rgba(243, 243, 243, 0.50)',
     width: '100%',

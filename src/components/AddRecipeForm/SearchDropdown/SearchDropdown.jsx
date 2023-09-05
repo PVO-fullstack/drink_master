@@ -16,6 +16,7 @@ export const SearchDropdown = (props) => {
     hasFakeField = false,
     // isSearchable = true,
     labelVisible = true,
+    errorStyles = null,
   } = props;
   //
   // eslint-disable-next-line no-unused-vars
@@ -47,7 +48,7 @@ export const SearchDropdown = (props) => {
   const capitalizedName =
     props.name.charAt(0).toUpperCase() + props.name.slice(1);
 
-  const styles = makeStyles(props);
+  const styles = makeStyles(props, meta);
 
   return (
     <div className={style.wrapper}>
@@ -62,6 +63,7 @@ export const SearchDropdown = (props) => {
           unstyled
           maxMenuHeight={menuHeight}
           {...props}
+          {...field}
         />
 
         {labelVisible && (
@@ -75,7 +77,9 @@ export const SearchDropdown = (props) => {
       </div>
 
       {meta.touched && meta.error ? (
-        <div className={style.error}>{meta.error}</div>
+        <div className={style.error} style={errorStyles}>
+          {meta.error}
+        </div>
       ) : null}
     </div>
   );

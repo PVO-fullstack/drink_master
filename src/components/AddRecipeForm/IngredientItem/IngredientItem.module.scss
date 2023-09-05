@@ -2,7 +2,7 @@
 
 .item {
   display: flex;
-  align-items: center;
+  align-items: baseline;
   // justify-content: space-between;
 
   transition: color $transition-duration $transition-timing-function,
@@ -29,15 +29,12 @@
 //   gap: 4px;
 // }
 
-.removeButtonCnt {
-  display: flex;
-  justify-content: center;
-}
-
 .removeButton {
   background-color: transparent;
   border: none;
   color: $accent;
+  // background-color: red;
+  transform: translateY(0.2rem);
 
   &:disabled {
     color: rgba($accent, 0.3);
