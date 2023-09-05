@@ -31,8 +31,24 @@ export const fetchRecipesForPage = async ({ type, page, limit }) => {
   return data;
 };
 
-export const fetchAllRecipesForPage = async ({ type, page, limit }) => {
-  const { data } = await instance.get(`/${type}?page=${page}&limit=${limit}`);
+export const fetchAllRecipesForPage = async ({
+  type,
+  page,
+  limit,
+  search,
+  category,
+  ingredient,
+}) => {
+  let apiUrl = `/${type}?page=${page}&limit=${limit}&search=${search}`;
+  if (ingredient) {
+    apiUrl += `&ingredient=${ingredient}`;
+  }
+
+  if (category) {
+    apiUrl += `&category=${category}`;
+  }
+
+  const { data } = await instance.get(apiUrl);
   return data;
 };
 
@@ -64,11 +80,5 @@ export const fetchCategories = async () => {
 
 export const fetchGlasses = async () => {
   const { data } = await instance.get("/glass");
-  return data;
-};
-
-// ############### Search #######################
-export const fetchAllRecipesForName = async ({ drink }) => {
-  const { data } = await instance.get(`/recipes?search=${drink}`);
   return data;
 };

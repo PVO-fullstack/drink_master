@@ -7,18 +7,13 @@ import {
 import * as ops from "./operationsDrinks";
 import * as rds from "./redusersDrinks";
 
-const extraActions = [
-  ops.fetchRecipesByCategory,
-  ops.fetchAllRecipesThunk,
-  ops.fetchRecipesForNameThunk,
-];
+const extraActions = [ops.fetchRecipesByCategory, ops.fetchAllRecipesThunk];
 
 export const sliceDrinks = createSlice({
   name: "drinks",
   initialState: {
     randomDrinks: [],
     allRecipes: [],
-    searchDrinks: [],
     totalAllRecipes: 0,
     isLoading: false,
     error: null,
@@ -34,10 +29,7 @@ export const sliceDrinks = createSlice({
         ops.fetchAllRecipesThunk.fulfilled,
         rds.handleFetchAllRecipesFulfilled
       )
-      .addCase(
-        ops.fetchRecipesForNameThunk.fulfilled,
-        rds.handleFetchRecipesForNameFulfilled
-      )
+
       .addMatcher(isFulfilled(...extraActions), rds.handleFulfilled)
       .addMatcher(isPending(...extraActions), rds.handlePending)
       .addMatcher(isRejected(...extraActions), rds.handleRejected),

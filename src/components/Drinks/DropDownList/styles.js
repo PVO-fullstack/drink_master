@@ -7,27 +7,27 @@ export const makeStyles = ({ style }) => ({
   //
   control: (baseStyles, state) => ({
     ...baseStyles,
-    backgroundColor: "transparent",
-    border: "1px solid rgba(243, 243, 243, 0.50)",
+    backgroundColor: 'transparent',
+    border: '1px solid rgba(243, 243, 243, 0.50)',
     borderRadius: 200,
-    color: state.isFocused ? "#f3f3f3" : "rgba(243, 243, 243, 0.50)",
-    width: "100%",
+    color: state.isFocused ? '#f3f3f3' : 'rgba(243, 243, 243, 0.50)',
+    width: '100%',
     marginTop: 0,
     gap: 8,
-    minHeight: "auto",
-    verticalAlign: "text-top",
-    cursor: "pointer",
-    display: "flex",
+    minHeight: 'auto',
+    verticalAlign: 'text-top',
+    cursor: 'pointer',
+    display: 'flex',
     ...style?.control,
   }),
 
   container: (baseStyles) => ({
     ...baseStyles,
-    fontSize: "inherit",
-    lineHeight: "100%",
-    display: "flex",
-    justifyContent: "center",
-    width: "auto",
+    fontSize: 'inherit',
+    lineHeight: '100%',
+    display: 'flex',
+    justifyContent: 'center',
+    width: 'auto',
     ...style?.container,
     // backgroundColor: 'blueViolet',
     // [tablet]: {
@@ -37,16 +37,16 @@ export const makeStyles = ({ style }) => ({
 
   singleValue: (baseStyles) => ({
     ...baseStyles,
-    color: "currentColor",
-    width: "100%",
+    color: 'currentColor',
+    width: '100%',
     // maxWidth: 300,
     ...style?.singleValue,
   }),
 
   dropdownIndicator: (baseStyles, state) => ({
     ...baseStyles,
-    color: "#f3f3f3",
-    transform: state.selectProps.menuIsOpen ? "rotate(0.5turn)" : "unset",
+    color: '#f3f3f3',
+    transform: state.selectProps.menuIsOpen ? 'rotate(0.5turn)' : 'unset',
     // cursor: 'pointer',
     ...style?.dropdownIndicator,
   }),
@@ -62,9 +62,9 @@ export const makeStyles = ({ style }) => ({
 
   menu: (baseStyles) => ({
     ...baseStyles,
-    backgroundColor: "#161f37",
+    backgroundColor: '#161f37',
     marginTop: 4,
-    width: "100%", // 'max-content'
+    width: '100%', // 'max-content'
     borderRadius: 20,
     padding: 8,
     ...style?.menu,
@@ -72,9 +72,9 @@ export const makeStyles = ({ style }) => ({
 
   menuList: (baseStyles) => ({
     ...baseStyles,
-    overflowX: "hidden",
-    display: "flex",
-    flexDirection: "column",
+    overflowX: 'hidden',
+    display: 'flex',
+    flexDirection: 'column',
     gap: 8,
     padding: 6,
     // backgroundColor: 'blueviolet',
@@ -85,11 +85,11 @@ export const makeStyles = ({ style }) => ({
 
   option: (baseStyles, state) => ({
     ...baseStyles,
-    color: state.isFocused ? "#f3f3f3" : "rgba(243, 243, 243, 0.5)",
+    color: state.isFocused ? '#f3f3f3' : 'rgba(243, 243, 243, 0.5)',
     //   fontSize: variant === 'addrecipe' ? 14 : 17,
     //   lineHeight: variant === 'addrecipe' ? '128%' : '156%',
-    lineHeight: "128%",
-    whiteSpace: "nowrap",
+    lineHeight: '128%',
+    whiteSpace: 'nowrap',
     ...style?.option,
   }),
 

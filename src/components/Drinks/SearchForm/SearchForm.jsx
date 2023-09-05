@@ -1,24 +1,19 @@
-import { useDispatch, useSelector } from "react-redux";
-import { useState, useEffect } from "react";
-import css from "../SearchForm/SearchForm.module.scss";
+import React, { useState } from "react";
+import css from "./SearchForm.module.scss";
 import SearchSVG from "./SearchSVG";
 
-import { selectRecipesForName } from "../../../redux/drinks/selectorsDrinks";
-import { fetchRecipesForNameThunk } from "../../../redux/drinks/operationsDrinks";
+const SearchForm = ({ setSearchText }) => {
+  const [inputText, setInputText] = useState("");
 
-const SearchForm = () => {
-  const drinks = useSelector(selectRecipesForName);
-  const dispatch = useDispatch();
-  const [searchInput, setSearchInput] = useState("");
-  console.log(searchInput);
-  useEffect(() => {
-    const searchQuery = { drink: searchInput };
-    dispatch(fetchRecipesForNameThunk(searchQuery))
-      .unwrap()
-      .catch((e) => console.log("error: ", e));
-  }, [dispatch, searchInput]);
-  const handleInputChange = (event) => {
-    setSearchInput(event.target.value);
+  const handleSearch = () => {
+    setSearchText(inputText);
+    setInputText("");
+  };
+
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      handleSearch();
+    }
   };
 
   return (
@@ -27,10 +22,11 @@ const SearchForm = () => {
         type="text"
         placeholder="Enter the text"
         className={css.searchFormInput}
-        value={searchInput}
-        onChange={handleInputChange}
+        value={inputText}
+        onChange={(e) => setInputText(e.target.value)}
+        onKeyDown={handleKeyPress}
       />
-      <div className={css.logoContainer}>
+      <div className={css.logoContainer} onClick={handleSearch}>
         <SearchSVG />
       </div>
     </div>

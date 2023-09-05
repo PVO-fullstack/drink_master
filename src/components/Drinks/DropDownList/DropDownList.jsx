@@ -1,8 +1,6 @@
-import Select from "react-select";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import css from "../DropDownList/DropDownList.module.scss";
-
+import Select from "react-select";
 import {
   selectCategories,
   selectIngredients,
@@ -12,7 +10,13 @@ import {
   fetchIngredients,
 } from "../../../redux/preparation/operations";
 
-const DropDownList = ({ placeholder }) => {
+const DropDownList = ({
+  placeholder,
+  selectedCategory,
+  setSelectedCategory,
+  selectedIngredient,
+  setSelectedIngredient,
+}) => {
   const categories = useSelector(selectCategories);
   const ingridients = useSelector(selectIngredients);
   const dispatch = useDispatch();
@@ -21,35 +25,47 @@ const DropDownList = ({ placeholder }) => {
     dispatch(fetchCategories())
       .unwrap()
       .catch((e) => console.log("error: ", e));
-  }, [dispatch]);
-
-  useEffect(() => {
     dispatch(fetchIngredients())
       .unwrap()
       .catch((e) => console.log("error: ", e));
   }, [dispatch]);
 
-  const category = categories.map((data) => ({
+  const categoryOptions = categories.map((data) => ({
     label: data.name,
+    value: data.name,
   }));
 
-  const ingridient = ingridients.map((data) => ({
+  const ingredientOptions = ingridients.map((data) => ({
     label: data.title,
+    value: data.title,
   }));
 
-  if (placeholder === "All categories") {
-    return (
-      <div>
-        <Select placeholder={placeholder} options={category} />
-      </div>
-    );
-  } else if (placeholder === "Ingredients") {
-    return (
-      <div>
-        <Select placeholder={placeholder} options={ingridient} />
-      </div>
-    );
-  }
+  return (
+    <div>
+      <Select
+        placeholder={placeholder}
+        options={
+          placeholder === "All categories" ? categoryOptions : ingredientOptions
+        }
+        onChange={(selectedOption) => {
+          if (placeholder === "All categories") {
+            setSelectedCategory(selectedOption.value);
+          } else if (placeholder === "Ingredients") {
+            setSelectedIngredient(selectedOption.value);
+          }
+        }}
+        value={
+          placeholder === "All categories"
+            ? categoryOptions.find(
+                (option) => option.value === selectedCategory
+              )
+            : ingredientOptions.find(
+                (option) => option.value === selectedIngredient
+              )
+        }
+      />
+    </div>
+  );
 };
 
 export default DropDownList;

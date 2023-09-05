@@ -1,7 +1,6 @@
-import PropTypes from "prop-types";
-import css from "./DrinksLIst.module.scss";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import css from "./DrinksList.module.scss";
 import { DrinksItem } from "../DrinksItem/DrinksItem";
 import { memoizedSelectAllRecipes } from "../../../redux/drinks/selectorsDrinks";
 import { fetchAllRecipesThunk } from "../../../redux/drinks/operationsDrinks";
@@ -17,7 +16,12 @@ const determineRecipesPerPage = () => {
   }
 };
 
-const DrinksLIst = ({ type }) => {
+const DrinksList = ({
+  type,
+  searchText,
+  selectedCategory,
+  selectedIngredient,
+}) => {
   const dispatch = useDispatch();
   const [currentPage, setCurrentPage] = useState(1);
   const recipesPerPage = determineRecipesPerPage();
@@ -30,10 +34,25 @@ const DrinksLIst = ({ type }) => {
   useEffect(() => {
     if (type === "recipes") {
       dispatch(
-        fetchAllRecipesThunk({ type, page: currentPage, limit: recipesPerPage })
+        fetchAllRecipesThunk({
+          type,
+          page: currentPage,
+          limit: recipesPerPage,
+          search: searchText,
+          category: selectedCategory,
+          ingredient: selectedIngredient,
+        })
       );
     }
-  }, [dispatch, currentPage, recipesPerPage, type]);
+  }, [
+    dispatch,
+    currentPage,
+    recipesPerPage,
+    type,
+    searchText,
+    selectedCategory,
+    selectedIngredient,
+  ]);
 
   const calculateTotalPages = (totalRecipes, recipesPerPage) => {
     return Math.ceil(totalRecipes / recipesPerPage);
@@ -64,8 +83,5 @@ const DrinksLIst = ({ type }) => {
     </>
   );
 };
-export default DrinksLIst;
 
-DrinksLIst.propTypes = {
-  type: PropTypes.oneOf(["recipes"]).isRequired,
-};
+export default DrinksList;
