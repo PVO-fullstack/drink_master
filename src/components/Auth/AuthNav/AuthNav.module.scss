@@ -4,25 +4,29 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
     background-size: contain;
     background-position: right center;
     background-repeat: no-repeat;
 
     @media screen and (max-width: $mobile) {
-        background-image: url(/startBgTablet.jpg);
+        background-image: url(/startBgMobile.jpg);
+        align-items: center;
     }
 
     @media screen and (min-width: $mobile) {
         background-image: url(/startBgTablet.jpg);
+        align-items: center;
     }
 
     @media screen and (min-width: $tablet) {
         background-image: url(/startBgTablet.jpg);
+        align-items: normal;
+        padding-left: 64px;
     }
 
     @media screen and (min-width: $desktop) {
         background-image: url(/startBg.jpg);
+        padding-left: 100px;
     }
 }
 
@@ -144,4 +148,15 @@
         font-size: 16px;
         padding: 18px 44px;
     }
+}
+
+.showPassword {
+    position: absolute;
+    top: 50%;
+    left: 90%;
+    transform: translate(-50%, -50%);
+    border-radius: 42px;
+    padding: 5px 10px;
+    background-color: inherit;
+    color: white
 }

@@ -1,8 +1,28 @@
+import { useEffect } from "react";
 import style from "./UserLogoModal.module.scss";
 import editSVG from "/images/SVG/edit.svg";
 import PropTypes from "prop-types";
+import { createPortal } from "react-dom";
 
-export const UserLogoModal = ({ showUserInfo, showLogOut }) => {
+export const UserLogoModal = ({
+  showUserInfo,
+  showLogOut,
+  closeModal,
+  setShowLogoModal,
+}) => {
+  useEffect(() => {
+    const handleEsc = (e) => {
+      if (e.key === "Escape") {
+        closeModal();
+      }
+    };
+    window.addEventListener("keydown", handleEsc);
+
+    return () => {
+      window.removeEventListener("keydown", handleEsc);
+    };
+  }, [closeModal]);
+
   const showUser = () => {
     showUserInfo();
   };
@@ -11,25 +31,35 @@ export const UserLogoModal = ({ showUserInfo, showLogOut }) => {
     showLogOut();
   };
 
+  const handleCloseModal = (e) => {
+    if (e.target === e.currentTarget) {
+      console.log("AAAAAA");
+      closeModal();
+    }
+  };
+
   return (
     <>
-      <div className={style.backdrop}>
-        <div className={style.modal}>
-          <div className={style.btnConteiner}>
-            <button onClick={showUser} className={style.edit} type="button">
-              Edit profile
-              <img className={style.edit_swg} src={editSVG} alt="edit" />
-            </button>
-            <button
-              onClick={showLogOutModal}
-              className={style.btn}
-              type="button"
-            >
-              Log out
-            </button>
+      {createPortal(
+        <div onClick={handleCloseModal} className={style.backdrop}>
+          <div className={style.modal}>
+            <div className={style.btnConteiner}>
+              <button onClick={showUser} className={style.edit} type="button">
+                Edit profile
+                <img className={style.edit_swg} src={editSVG} alt="edit" />
+              </button>
+              <button
+                onClick={showLogOutModal}
+                className={style.btn}
+                type="button"
+              >
+                Log out
+              </button>
+            </div>
           </div>
-        </div>
-      </div>
+        </div>,
+        document.getElementById("modal-root")
+      )}
     </>
   );
 };
@@ -37,4 +67,5 @@ export const UserLogoModal = ({ showUserInfo, showLogOut }) => {
 UserLogoModal.propTypes = {
   showUserInfo: PropTypes.func,
   showLogOut: PropTypes.func,
+  closeModal: PropTypes.func,
 };

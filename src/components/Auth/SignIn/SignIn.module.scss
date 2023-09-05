@@ -4,13 +4,13 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
     background-size: contain;
     background-position: right center;
     background-repeat: no-repeat;
 
     @media screen and (max-width: $mobile) {
-        background-image: url(/startBgTablet.jpg);
+        background-image: url(/startBgMobile.jpg);
+        align-items: center;
     }
 
     @media screen and (min-width: $mobile) {
@@ -117,6 +117,18 @@
     &:focus::placeholder {
         color: #F3F3F3;
     }
+
+    &.valid_border {
+        border-color: green;
+        outline: none;
+        background-color: transparent;
+    }
+
+    &.invalid_border {
+        border-color: red;
+        outline: none;
+        background-color: transparent;
+    }
 }
 
 
@@ -173,7 +185,23 @@
 }
 
 .error {
+    // position: absolute;
     margin-left: auto;
     margin-right: auto;
     color: red
+}
+
+.hide {
+    position: relative;
+}
+
+.showPassword {
+    position: absolute;
+    top: 50%;
+    left: 90%;
+    transform: translate(-50%, -50%);
+    border-radius: 42px;
+    padding: 5px 10px;
+    background-color: inherit;
+    color: white
 }

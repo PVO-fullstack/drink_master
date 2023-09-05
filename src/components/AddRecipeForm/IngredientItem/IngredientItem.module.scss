@@ -2,8 +2,8 @@
 
 .item {
   display: flex;
-  // align-items: center;
-  justify-content: space-between;
+  align-items: center;
+  // justify-content: space-between;
 
   transition: color $transition-duration $transition-timing-function,
     border-color $transition-duration $transition-timing-function;
@@ -11,31 +11,33 @@
 
 .inputsWrapper {
   display: flex;
-  align-items: center;
+  // align-items: center;
   gap: 14px;
-  // background-color: gray;
 
   width: 100%;
+
   @media screen and (min-width: $mobile) and (max-width: ($desktop - 1)) {
     max-width: 496px;
   }
 }
 
-.label {
-  background-color: transparent;
+// .label {
+//   background-color: transparent;
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: flex-start;
+//   gap: 4px;
+// }
+
+.removeButtonCnt {
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  gap: 4px;
+  justify-content: center;
 }
 
 .removeButton {
   background-color: transparent;
   border: none;
   color: $accent;
-  // height: 100%;
-  // min-height: 50px;
-  // background-color: blueviolet;
 
   &:disabled {
     color: rgba($accent, 0.3);

@@ -3,11 +3,17 @@ import * as Yup from "yup";
 import style from "./SignIn.module.scss";
 import { NavLink } from "react-router-dom";
 import { logInUser } from "../../../redux/auth/authOperations";
-import { useDispatch } from "react-redux";
-import { Toaster, toast } from "react-hot-toast";
+import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-hot-toast";
+import { useState } from "react";
+import { selectIsLoading } from "../../../redux/auth/authSelectors";
+import { Spiner } from "../../Loader/Loader";
 
 export const SignIn = () => {
   const dispatch = useDispatch();
+  const [showPassword, setshowPassword] = useState(false);
+
+  const isLoading = useSelector(selectIsLoading);
 
   const passwordRules = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,16}$/;
   // min 6 characters, 1 upper case letter, 1 lower case letter, 1 numeric digit.
@@ -34,8 +40,8 @@ export const SignIn = () => {
           onSubmit={(values, { resetForm }) => {
             console.log(values);
             dispatch(logInUser(values)).then((result) => {
+              isLoading && <Spiner />;
               if (result.error) {
-                console.log("first", result);
                 toast.error(result.payload);
                 return;
               }
@@ -44,16 +50,30 @@ export const SignIn = () => {
           }}
         >
           {(formik) => {
-            const { isValid, dirty, setFieldValue } = formik;
+            const {
+              isValid,
+              dirty,
+              handleChange,
+              setFieldTouched,
+              touched,
+              errors,
+            } = formik;
             return (
               <Form className={style.form}>
                 <Field
-                  className={style.field}
+                  className={
+                    touched.email && !errors.email
+                      ? style.field + " " + style.valid_border
+                      : errors.email && touched.email
+                      ? style.field + " " + style.invalid_border
+                      : style.field
+                  }
                   type="email"
                   name="email"
                   placeholder="Email"
                   onChange={(e) => {
-                    setFieldValue("email", e.currentTarget.value);
+                    setFieldTouched("email");
+                    handleChange(e);
                   }}
                 />
                 <ErrorMessage
@@ -61,16 +81,39 @@ export const SignIn = () => {
                   component="span"
                   className={style.error}
                 />
-
-                <Field
-                  className={style.field + " " + style.last_field}
-                  type="password"
-                  name="password"
-                  placeholder="Password"
-                  onChange={(e) => {
-                    setFieldValue("password", e.currentTarget.value);
-                  }}
-                />
+                <div className={style.hide}>
+                  <Field
+                    className={
+                      touched.password && !errors.password
+                        ? style.field +
+                          " " +
+                          style.valid_border +
+                          " " +
+                          style.last_field
+                        : errors.password && touched.password
+                        ? style.field +
+                          " " +
+                          style.invalid_border +
+                          " " +
+                          style.last_field
+                        : style.field + " " + style.last_field
+                    }
+                    type={showPassword ? "text" : "password"}
+                    name="password"
+                    placeholder="Password"
+                    onChange={(e) => {
+                      setFieldTouched("password");
+                      handleChange(e);
+                    }}
+                  />
+                  <button
+                    onClick={() => setshowPassword((prev) => !prev)}
+                    className={style.showPassword}
+                    type="button"
+                  >
+                    {showPassword ? "hide" : "show"}
+                  </button>
+                </div>
                 <ErrorMessage
                   name="password"
                   component="span"
