@@ -31,6 +31,11 @@ export const fetchRecipesForPage = async ({ type, page, limit }) => {
   return data;
 };
 
+export const fetchAllRecipesForPage = async ({ type, page, limit }) => {
+  const { data } = await instance.get(`/${type}?page=${page}&limit=${limit}`);
+  return data;
+};
+
 export const deleteRecipeType = async ({ _id, type }) => {
   const { data } = await instance.delete(`/${type}/${_id}`);
   return data;
@@ -59,5 +64,11 @@ export const fetchCategories = async () => {
 
 export const fetchGlasses = async () => {
   const { data } = await instance.get("/glass");
+  return data;
+};
+
+// ############### Search #######################
+export const fetchAllRecipesForName = async ({ drink }) => {
+  const { data } = await instance.get(`/recipes?search=${drink}`);
   return data;
 };
