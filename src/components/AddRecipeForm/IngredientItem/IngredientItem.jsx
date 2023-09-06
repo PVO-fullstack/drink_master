@@ -26,7 +26,7 @@ export const IngredientItem = ({ index, length, onRemove }) => {
   return (
     <div className={style.item}>
       <div className={style.inputsWrapper}>
-        <div>
+        <div className={style.ingredientWrapper}>
           <SearchDropdown
             name={`ingredients.${index}.title`}
             data={ingredients}
@@ -38,7 +38,7 @@ export const IngredientItem = ({ index, length, onRemove }) => {
           />
         </div>
 
-        <div>
+        <div className={style.measureWrapper}>
           <SearchDropdown
             name={`ingredients.${index}.measure`}
             data={measures}
@@ -86,6 +86,7 @@ const measures = makeMeasures(10);
 
 // *********************************************
 
+const mobile = `@media screen and (min-width: ${sizes.mobile})`;
 const tablet = `@media screen and (min-width: ${sizes.tablet})`;
 const desktop = `@media screen and (min-width: ${sizes.desktop})`;
 
@@ -95,7 +96,7 @@ const ingredientStyleOverride = {
     [tablet]: { padding: '14px 24px' },
   },
   container: {
-    minWidth: 101,
+    minWidth: 100,
     [tablet]: { width: 316 },
     [desktop]: { width: 332 },
   },
@@ -104,6 +105,7 @@ const ingredientStyleOverride = {
 const measureStyleOverride = {
   control: {
     padding: '16px 18px',
+    [mobile]: { maxWidth: 101 },
     [tablet]: { padding: '14px 24px' },
   },
   container: {

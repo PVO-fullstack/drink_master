@@ -3,7 +3,8 @@
 .item {
   display: flex;
   align-items: baseline;
-  // justify-content: space-between;
+  gap: 8px;
+  justify-content: space-between;
 
   transition: color $transition-duration $transition-timing-function,
     border-color $transition-duration $transition-timing-function;
@@ -15,9 +16,21 @@
   gap: 14px;
 
   width: 100%;
+  // background-color: blueviolet;
 
   @media screen and (min-width: $mobile) and (max-width: ($desktop - 1)) {
     max-width: 496px;
+  }
+}
+
+.ingredientWrapper {
+  // width: 100%;
+  flex-grow: 1;
+}
+
+.measureWrapper {
+  @media screen and (max-width: $mobile) {
+    max-width: 101px;
   }
 }
 
