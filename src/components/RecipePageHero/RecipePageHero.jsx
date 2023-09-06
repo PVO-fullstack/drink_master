@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import css from "./RecipePageHero.module.scss";
 import { PageTitle } from "../index.js";
-import placeholder from "/recipePrep.jpg";
+import placeholder from "/images/recipePrep.jpg";
 import { RecipeInngredientsList, RecipePreparation } from "../index.js";
 import { useDispatch, useSelector } from "react-redux";
 import { selectRecipe } from "../../redux/recipe/recipeSelector.js";
