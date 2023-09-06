@@ -18,25 +18,28 @@ const toastOption = {
   duration: 3000,
   style: {
     borderRadius: "10px",
-    background: "#161f37",
+    background: "#434d67",
     color: "#fff",
   },
 };
 
 Confirm.init({
   width: "500px",
-  backgroundColor: "#161f37",
-  titleColor: "white",
+  backgroundColor: "#161F37",
+  titleColor: "#F3F3F3",
   titleFontSize: "24px",
-  messageColor: "white",
+  messageColor: "#F3F3F3",
   messageFontSize: "18px",
 
-  buttonsFontSize: "18px",
-  okButtonColor: "#f8f8f8",
-  okButtonBackground: "firebrick",
+  backOverlayColor: "rgba(0,0,0,0.8)",
 
-  cancelButtonColor: "#f8f8f8",
-  cancelButtonBackground: "#a9a9a9",
+  buttonsFontSize: "18px",
+
+  okButtonColor: "#161F37",
+  okButtonBackground: "#F3F3F3",
+
+  cancelButtonColor: "#F3F3F3",
+  cancelButtonBackground: "#434D67",
 });
 
 export const RecipesItem = ({
@@ -52,7 +55,7 @@ export const RecipesItem = ({
 
   const deleteRecipe = async () => {
     Confirm.show(
-      "DELETE RECIPE?",
+      "DELETE RECIPE",
       `Do you want to delete "${drink}" from your collection?`,
       "Yes",
       "No",
@@ -66,7 +69,7 @@ export const RecipesItem = ({
             await dispatch(fetchRecipesThunk({ type, page: newPage, limit }));
 
             toast.success(
-              `Recipe "${drink}" has has been successfully deleted!`,
+              `"${drink}" has been successfully deleted!`,
               toastOption
             );
           } else if (type === "favorite") {
@@ -76,7 +79,7 @@ export const RecipesItem = ({
             );
 
             toast.success(
-              `Recipe "${drink}" has has been successfully deleted!`,
+              `"${drink}" has been successfully deleted!`,
               toastOption
             );
           }
