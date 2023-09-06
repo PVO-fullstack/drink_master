@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import PropTypes from 'prop-types';
 import { useField } from 'formik';
 import Select from 'react-select';
@@ -19,7 +18,6 @@ export const SearchDropdown = (props) => {
     itemsBeforeScroll: n,
   } = props;
   //
-  // eslint-disable-next-line no-unused-vars
   const [field, meta, helpers] = useField(props);
 
   const { setValue, setTouched, setError } = helpers;
@@ -90,4 +88,6 @@ SearchDropdown.propTypes = {
   hasFakeField: PropTypes.bool,
   isSearchable: PropTypes.bool,
   labelVisible: PropTypes.bool,
+  errorStyles: PropTypes.object,
+  itemsBeforeScroll: PropTypes.number,
 };

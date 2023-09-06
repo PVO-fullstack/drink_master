@@ -6,6 +6,7 @@ export { Paragraph } from './Typography/Paragraph/Paragraph';
 
 // Building blocks
 export { Button } from './Button/Button';
+export { SearchDropdown } from './SearchDropdown/SearchDropdown';
 
 // Page elements
 export { FollowUs } from './FollowUs/FollowUs';

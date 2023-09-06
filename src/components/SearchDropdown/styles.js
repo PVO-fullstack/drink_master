@@ -3,13 +3,15 @@
 // const tablet = `@media screen and (min-width: ${sizes.tablet})`;
 // const desktop = `@media screen and (min-width: ${sizes.desktop})`;
 
+// eslint-disable-next-line no-unused-vars
 export const makeStyles = ({ style }, { touched, error }) => ({
   //
   control: (baseStyles, state) => ({
     ...baseStyles,
     backgroundColor: 'transparent',
     border: '1px solid',
-    borderColor: touched && error ? 'firebrick' : 'rgba(243, 243, 243, 0.50)',
+    // borderColor: touched && error ? 'firebrick' : 'rgba(243, 243, 243, 0.50)',
+    borderColor: 'rgba(243, 243, 243, 0.50)',
     borderRadius: 200,
     color: state.isFocused ? '#f3f3f3' : 'rgba(243, 243, 243, 0.50)',
     width: '100%',

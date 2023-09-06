@@ -5,8 +5,7 @@ export { RecipePreparationFields } from './RecipePreparationFields/RecipePrepara
 
 export { FormikImageUploader } from './FormikImageUploader/FormikImageUploader';
 export { FormikTextInput } from './FormikTextInput/FormikTextInput';
-export { ImageUploadBlock } from './ImageUploadBlock/ImageUploadBlock';
-export { SearchDropdown } from './SearchDropdown/SearchDropdown';
+export { ImageUploadBlock } from './FormikImageUploader/ImageUploadBlock/ImageUploadBlock';
 
 export { IngredientItem } from './IngredientItem/IngredientItem';
 export { Counter } from './Counter/Counter';

@@ -5,7 +5,7 @@ import { selectIngredients } from '../../../redux/preparation/selectors';
 
 import PropTypes from 'prop-types';
 
-import { SearchDropdown } from '../SearchDropdown/SearchDropdown';
+import { SearchDropdown } from '../../SearchDropdown/SearchDropdown';
 import { RemoveIcon } from '../../icons';
 
 import sizes from '../../../constants/breakpoints';
@@ -31,10 +31,10 @@ export const IngredientItem = ({ index, length, onRemove }) => {
             name={`ingredients.${index}.title`}
             data={ingredients}
             style={ingredientStyleOverride}
-            placeholder="Ingredient name"
+            placeholder="Ingredient"
             itemsBeforeScroll={itemsBeforeScroll}
             labelVisible={false}
-            errorStyles={{ marginLeft: '1.5rem' }}
+            errorStyles={{ marginLeft: '1.2rem' }}
           />
         </div>
 
@@ -43,10 +43,10 @@ export const IngredientItem = ({ index, length, onRemove }) => {
             name={`ingredients.${index}.measure`}
             data={measures}
             style={measureStyleOverride}
-            placeholder="Measure"
+            placeholder="Unit"
             itemsBeforeScroll={itemsBeforeScroll}
             labelVisible={false}
-            errorStyles={{ marginLeft: '1.5rem' }}
+            errorStyles={{ marginLeft: '1.2rem' }}
           />
         </div>
       </div>

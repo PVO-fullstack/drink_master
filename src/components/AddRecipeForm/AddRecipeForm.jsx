@@ -37,7 +37,7 @@ export const AddRecipeForm = () => {
     if (typeof values.instructions === 'string') {
       values.instructions = convertTextAreaToArray(values.instructions);
     }
-    // alert('values:', JSON.stringify(values, null, 2));
+    // console.log('values:', JSON.stringify(values, null, 2));
 
     dispatch(addRecipe(values))
       .then((data) => {
@@ -104,6 +104,6 @@ const initialValues = {
     { title: '', measure: '' },
     { title: '', measure: '' },
   ],
-  instructions: [''],
+  instructions: '',
   imageOfRecipe: '',
 };
