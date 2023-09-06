@@ -18,14 +18,18 @@ export const SignIn = () => {
   const passwordRules = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,16}$/;
   // min 6 characters, 1 upper case letter, 1 lower case letter, 1 numeric digit.
 
+  const emailRegexp = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+
   const SignupSchema = Yup.object({
     email: Yup.string()
-      .email("Invalid email address")
+      .matches(emailRegexp, { message: "Invalid email address" })
       .required("Email required"),
     password: Yup.string()
+      .min(6, "Password is too short - should be 6 chars minimum.")
+      .max(16, "Password is too long - should be 16 chars maximum.")
       .matches(passwordRules, {
         message:
-          "Password must contain min 6 characters, max 16 characters, 1 upper case letter, 1 lower case letter, 1 numeric digit",
+          "Password must contain 1 lowercase, 1 uppercase letter and 1 number.",
       })
       .required("Password required"),
   });
@@ -38,11 +42,9 @@ export const SignIn = () => {
           initialValues={{ email: "", password: "" }}
           validationSchema={SignupSchema}
           onSubmit={(values, { resetForm }) => {
-            console.log(values);
             dispatch(logInUser(values)).then((result) => {
-              isLoading && <Spiner />;
               if (result.error) {
-                toast.error(result.payload);
+                toast.error("Email or password invalid");
                 return;
               }
               resetForm();
@@ -65,7 +67,11 @@ export const SignIn = () => {
                     touched.email && !errors.email
                       ? style.field + " " + style.valid_border
                       : errors.email && touched.email
-                      ? style.field + " " + style.invalid_border
+                      ? style.field +
+                        " " +
+                        style.invalid_border +
+                        " " +
+                        style.last_field
                       : style.field
                   }
                   type="email"
@@ -114,6 +120,9 @@ export const SignIn = () => {
                     {showPassword ? "hide" : "show"}
                   </button>
                 </div>
+
+                {dirty}
+
                 <ErrorMessage
                   name="password"
                   component="span"
