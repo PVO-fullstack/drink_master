@@ -39,6 +39,15 @@
   &:disabled {
     color: rgba($accent, 0.3);
   }
+
+  &:hover,
+  &:focus-visible {
+    color: gray;
+  }
+
+  &:active {
+    color: dimgray;
+  }
 }
 
 .error {
