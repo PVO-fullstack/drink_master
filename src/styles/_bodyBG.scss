@@ -1,0 +1,43 @@
+body {
+    background-color: rgba(10, 10, 17, 1);
+    background-image: url(/images/PNG/BffullGreen.png),
+        url(/images/PNG/BffullBlue.png),
+        url(/images/PNG/BffullGreen.png),
+        url(/images/PNG/BffullBlue.png),
+        url(/images/PNG/BffullBlue.png),
+        url(/images/PNG/BffullGreen.png),
+        url(/images/PNG/BffullBlue.png);
+    background-position: top 120px left 20px,
+        top 20px left -1300px,
+        top 450px right -500px,
+        top 250px right -500px,
+        bottom -300px left -750px,
+        bottom -800px left 50%,
+        bottom -700px right -400px;
+    background-repeat: no-repeat,
+        no-repeat,
+        no-repeat,
+        no-repeat,
+        no-repeat,
+        no-repeat;
+    background-size: 900px 900px,
+        2000px 1600px,
+        800px 800px,
+        800px 800px,
+        1100px 1100px,
+        1100px 1100px,
+        1100px 1100px,
+        900px 900px;
+}
+
+.Noowerflow {
+    overflow: hidden;
+}
+
+.blurred {
+    background-color: #1e2428;
+    backdrop-filter: blur(10px);
+    opacity: 0.9;
+}
+
+// url(/images/PNG/BffullGreen.png), url(/images/PNG/BffullBlue.png),

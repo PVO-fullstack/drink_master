@@ -1,13 +1,12 @@
 import React from "react";
 import { RecipePageHero } from "../components";
 
-
-export const Recipe = () => {
-
-
+const Recipe = () => {
   return (
     <div>
-      <RecipePageHero/>
-    </div>);
-  
+      <RecipePageHero />
+    </div>
+  );
 };
+
+export default Recipe;

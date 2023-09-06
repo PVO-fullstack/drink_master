@@ -12,7 +12,7 @@ import {
 
 import style from "./AddRecipe.module.scss";
 
-export const AddRecipe = () => {
+const AddRecipe = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -48,3 +48,5 @@ export const AddRecipe = () => {
     </>
   );
 };
+
+export default AddRecipe;

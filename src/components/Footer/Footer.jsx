@@ -14,7 +14,9 @@ export const Footer = () => {
             <FollowUs />
           </div>
           <div className={css.footerNavigation}>
-            <Navigation style="cssfoot" />
+            <Navigation style="cssfoot" callback={
+              () => window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
+            } />
           </div>
           <div className={css.footerSubscribe}>
             <SubscribeForm />

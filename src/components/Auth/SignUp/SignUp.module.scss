@@ -1,20 +1,27 @@
 .conteiner {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    // background-size: contain;
+    background-position: right center;
+    background-repeat: no-repeat;
+
+    @media screen and (max-width: $mobile) {
+        background-image: url(/startBgMobile.jpg);
+        align-items: center;
+    }
+
     @media screen and (min-width: $mobile) {
         background-image: url(/startBgTablet.jpg);
-        background-position: top -145px right -100px;
-        background-repeat: no-repeat;
     }
 
     @media screen and (min-width: $tablet) {
         background-image: url(/startBgTablet.jpg);
-        background-position: right;
-        background-repeat: no-repeat;
     }
 
     @media screen and (min-width: $desktop) {
         background-image: url(/startBg.jpg);
-        background-position: right;
-        background-repeat: no-repeat;
     }
 }
 
@@ -109,10 +116,28 @@
     &:focus::placeholder {
         color: #F3F3F3;
     }
+
+    &.valid_border {
+        border-color: green;
+        outline: none;
+        background-color: transparent;
+    }
+
+    &.invalid_border {
+        border-color: red;
+        outline: none;
+        background-color: transparent;
+    }
 }
 
 
 .btn {
+    width: 100%;
+    height: 54px;
+    border: none;
+    cursor: pointer;
+    transition: box-shadow 0.3s ease 0s;
+
     border-radius: 42px;
     margin-top: 40px;
     margin-bottom: 14px;
@@ -121,17 +146,22 @@
     font-weight: 600;
 
     @media screen and (min-width: $mobile) {
-        width: 335px;
+        // width: 335px;
         padding: 18px 140px;
         font-size: 14px;
         line-height: 1.28;
     }
 
     @media screen and (min-width: $tablet) {
-        width: 400px;
+        // width: 400px;
         padding: 18px 169px;
         font-size: 16px;
         line-height: 1.12;
+    }
+
+    &:hover {
+        text-decoration: underline;
+        box-shadow: rgba(245, 245, 23, 0.87) 1px 0px 3px 4px inset;
     }
 }
 
@@ -154,7 +184,30 @@
 }
 
 .error {
-    margin-left: auto;
-    margin-right: auto;
-    color: red
+    margin: 1px auto;
+    font-size: 12px;
+    font-weight: 400;
+    color: #ff0000;
+}
+
+.hide {
+    position: relative;
+}
+
+.showPassword {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 42px;
+    padding: 5px 10px;
+    background-color: inherit;
+    color: white;
+
+    @media screen and (max-width: $mobile) {
+        left: 85%;
+    }
+
+    @media screen and (min-width: $mobile) {
+        left: 90%;
+    }
 }

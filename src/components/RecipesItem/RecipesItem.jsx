@@ -11,6 +11,33 @@ import {
   updateFavRecipeThunk,
 } from "../../redux/cockteil/cockteilsOperations";
 import imageholder from "/placeholder_image.jpg";
+import { Confirm } from "notiflix/build/notiflix-confirm-aio";
+import { toast } from "react-hot-toast";
+
+const toastOption = {
+  duration: 3000,
+  style: {
+    borderRadius: "10px",
+    background: "#161f37",
+    color: "#fff",
+  },
+};
+
+Confirm.init({
+  width: "500px",
+  backgroundColor: "#161f37",
+  titleColor: "white",
+  titleFontSize: "24px",
+  messageColor: "white",
+  messageFontSize: "18px",
+
+  buttonsFontSize: "18px",
+  okButtonColor: "#f8f8f8",
+  okButtonBackground: "firebrick",
+
+  cancelButtonColor: "#f8f8f8",
+  cancelButtonBackground: "#a9a9a9",
+});
 
 export const RecipesItem = ({
   recipe,
@@ -24,20 +51,43 @@ export const RecipesItem = ({
   const { _id, drinkThumb, drink, description } = recipe;
 
   const deleteRecipe = async () => {
-    try {
-      let newPage = page;
-      if (totalPages > 1 && newPage === totalPages && recipes === 1)
-        newPage -= 1;
-      if (type === "own") {
-        await dispatch(deleteRecipeThunk({ _id, type }));
-        await dispatch(fetchRecipesThunk({ type, page: newPage, limit }));
-      } else if (type === "favorite") {
-        await dispatch(updateFavRecipeThunk({ _id, type }));
-        await dispatch(fetchFavRecipesThunk({ type, page: newPage, limit }));
+    Confirm.show(
+      "DELETE RECIPE?",
+      `Do you want to delete "${drink}" from your collection?`,
+      "Yes",
+      "No",
+      async () => {
+        try {
+          let newPage = page;
+          if (totalPages > 1 && newPage === totalPages && recipes === 1)
+            newPage -= 1;
+          if (type === "own") {
+            await dispatch(deleteRecipeThunk({ _id, type }));
+            await dispatch(fetchRecipesThunk({ type, page: newPage, limit }));
+
+            toast.success(
+              `Recipe "${drink}" has has been successfully deleted!`,
+              toastOption
+            );
+          } else if (type === "favorite") {
+            await dispatch(updateFavRecipeThunk({ _id, type }));
+            await dispatch(
+              fetchFavRecipesThunk({ type, page: newPage, limit })
+            );
+
+            toast.success(
+              `Recipe "${drink}" has has been successfully deleted!`,
+              toastOption
+            );
+          }
+        } catch (error) {
+          toast.error("Something went wrong:", error.message);
+        }
+      },
+      async () => {
+        return;
       }
-    } catch (error) {
-      alert("Something went wrong:", error.message);
-    }
+    );
   };
 
   return (
@@ -59,7 +109,10 @@ export const RecipesItem = ({
         <p className={css.recipes_item__description}>{description}</p>
 
         <div className={css.recipes_item__button_wrapper}>
-          <NavLink className={cssButton.button} to={`/recipes/${_id}`}>
+          <NavLink
+            className={`${cssButton.button} ${css.nav_link}`}
+            to={`/recipes/${_id}`}
+          >
             See recipe
           </NavLink>
           <button

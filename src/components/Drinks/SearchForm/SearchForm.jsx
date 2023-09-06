@@ -1,23 +1,36 @@
-import css from "../SearchForm/SearchForm.module.scss";
+import React, { useState } from "react";
+import css from "./SearchForm.module.scss";
 import SearchSVG from "./SearchSVG";
-import Select from "react-select";
-import DropDownList from "../DropDownList/DropDownList";
 
-const SearchForm = () => {
+const SearchForm = ({ setSearchText }) => {
+  const [inputText, setInputText] = useState("");
+
+  const handleSearch = () => {
+    setSearchText(inputText);
+    setInputText("");
+  };
+
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      handleSearch();
+    }
+  };
+
   return (
-    <div>
-      <div className={css.containerInput}>
-        <input
-          type="text"
-          placeholder="Enter the text"
-          className={css.searchFormInput}
-        />
-        <div className={css.logoContainer}>
-          <SearchSVG />
-        </div>
+    <div className={css.containerInput}>
+      <input
+        type="text"
+        placeholder="Enter the text"
+        className={css.searchFormInput}
+        value={inputText}
+        onChange={(e) => setInputText(e.target.value)}
+        onKeyDown={handleKeyPress}
+      />
+      <div className={css.logoContainer} onClick={handleSearch}>
+        <SearchSVG />
       </div>
-      <DropDownList />
     </div>
   );
 };
+
 export default SearchForm;

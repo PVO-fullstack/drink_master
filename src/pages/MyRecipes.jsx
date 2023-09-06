@@ -2,7 +2,7 @@ import { RecipesList } from "../components";
 // import { PageTitle } from "../components/Typography/PageTitle/PageTitle";
 import css from "../components/RecipesList/RecipesList.module.scss";
 
-export const MyRecipes = () => {
+const MyRecipes = () => {
   return (
     <div className={css.container}>
       <h1 className={css.heading}>MyRecipes</h1>
@@ -11,3 +11,5 @@ export const MyRecipes = () => {
     </div>
   );
 };
+
+export default MyRecipes;

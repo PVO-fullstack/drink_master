@@ -17,15 +17,12 @@
 .heading {
   color: $accent;
   font-size: $page-title;
-  margin-top: 80px;
   margin-bottom: 40px;
 
   @media screen and (min-width: $tablet) {
-    margin-top: 140px;
     margin-bottom: 60px;
   }
   @media screen and (min-width: $desktop) {
-    margin-top: 158px;
     margin-bottom: 62px;
   }
 }
