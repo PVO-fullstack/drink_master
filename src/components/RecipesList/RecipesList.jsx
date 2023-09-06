@@ -32,10 +32,9 @@ export const RecipesList = ({ type }) => {
   const { recipes, totalRecipes } = useSelector(
     type === "own" ? selectMyRecipes : selectFavRecipes
   );
+  const error = useSelector(selectError);
 
   const recipesLength = recipes.length;
-
-  const error = useSelector(selectError);
 
   useEffect(() => {
     if (type === "own") {

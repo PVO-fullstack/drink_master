@@ -1,10 +1,18 @@
 import PropTypes from "prop-types";
 import css from "./Paginator.module.scss";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
+import { useEffect } from "react";
 
 export const Paginator = ({ currentPage, totalPages, onPageChange }) => {
   const pagesToShow = [];
   const maxPagesToShow = 5;
+
+  useEffect(() => {
+    window.scroll({
+      top: 100,
+      behavior: "instant",
+    });
+  });
 
   for (let i = 1; i <= totalPages; i++) {
     if (pagesToShow.length >= maxPagesToShow) {
