@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import css from "./DrinksList.module.scss";
+// import css from "./DrinksList.module.scss";
 import { DrinksItem } from "../DrinksItem/DrinksItem";
 import { memoizedSelectAllRecipes } from "../../../redux/drinks/selectorsDrinks";
 import { fetchAllRecipesThunk } from "../../../redux/drinks/operationsDrinks";
