@@ -5,7 +5,7 @@ import { Suspense, useEffect, useRef, useState } from "react";
 // import { Loading } from "notiflix/build/notiflix-loading-aio";
 
 import style from "./Layout.module.scss";
-import { Spiner } from "../Loader/Loader";
+import { Loader, Spiner } from "../Loader/Loader";
 
 const Layout = () => {
   const headerRef = useRef(null);
@@ -33,7 +33,13 @@ const Layout = () => {
     <div>
       <Header headerRef={headerRef} />
       <div className={style.container}>
-        <Suspense fallback={<Spiner />}>
+        <Suspense
+          fallback={
+            <div>
+              <Loader />
+            </div>
+          }
+        >
           <main className={style.page} style={{ marginTop: headerHeight }}>
             <Outlet />
           </main>
