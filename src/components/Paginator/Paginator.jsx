@@ -46,6 +46,17 @@ export const Paginator = ({ currentPage, totalPages, onPageChange }) => {
             </button>
           </li>
         ))}
+        {currentPage > maxPagesToShow && (
+          <>
+            <span>...</span>
+            <button
+              type="button"
+              className={`${css.paginator_Btn} ${css.active}`}
+            >
+              {currentPage}
+            </button>
+          </>
+        )}
       </ul>
 
       <button
