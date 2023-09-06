@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchRecipesByCategory } from "../../../redux/drinks/operationsDrinks";
 import { memoizedSelectDrinksByCategory } from "../../../redux/drinks/selectorsDrinks";
@@ -25,9 +25,9 @@ const PopularCategories = () => {
 
   useEffect(() => {
     const updateCardsPerRow = () => {
-      if (window.innerWidth > 768) {
+      if (window.innerWidth >= 1440) {
         setCardsPerRow(3);
-      } else if (window.innerWidth > 375) {
+      } else if (window.innerWidth >= 768) {
         setCardsPerRow(2);
       } else {
         setCardsPerRow(1);
