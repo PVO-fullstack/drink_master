@@ -20,9 +20,11 @@ export const SignUp = () => {
       .matches(emailRegexp, { message: "Invalid email address" })
       .required("Email required"),
     password: Yup.string()
+      .min(6, "Password is too short - should be 6 chars minimum.")
+      .max(16, "Password is too long - should be 16 chars maximum.")
       .matches(passwordRules, {
         message:
-          "Password must contain min 6 characters, max 16 characters, 1 upper case letter, 1 lower case letter, 1 numeric digit",
+          "Password must contain 1 lowercase, 1 uppercase letter and 1 number.",
       })
       .required("Password required"),
   });
@@ -35,7 +37,6 @@ export const SignUp = () => {
           initialValues={{ name: "", email: "", password: "" }}
           validationSchema={SignupSchema}
           onSubmit={async (values, { resetForm }) => {
-            console.log(values);
             dispatch(registerUser(values));
             resetForm();
           }}
@@ -66,7 +67,11 @@ export const SignUp = () => {
                     touched.email && !errors.email
                       ? style.field + " " + style.valid_border
                       : errors.email && touched.email
-                      ? style.field + " " + style.invalid_border
+                      ? style.field +
+                        " " +
+                        style.invalid_border +
+                        " " +
+                        style.last_field
                       : style.field
                   }
                   type="email"

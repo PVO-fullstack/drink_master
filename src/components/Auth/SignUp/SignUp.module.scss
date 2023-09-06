@@ -1,10 +1,9 @@
 .conteiner {
-    width: 100vw;
     height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-size: contain;
+    // background-size: contain;
     background-position: right center;
     background-repeat: no-repeat;
 
@@ -185,9 +184,10 @@
 }
 
 .error {
-    margin-left: auto;
-    margin-right: auto;
-    color: red
+    margin: 1px auto;
+    font-size: 12px;
+    font-weight: 400;
+    color: #ff0000;
 }
 
 .hide {
@@ -197,10 +197,17 @@
 .showPassword {
     position: absolute;
     top: 50%;
-    left: 90%;
     transform: translate(-50%, -50%);
     border-radius: 42px;
     padding: 5px 10px;
     background-color: inherit;
-    color: white
+    color: white;
+
+    @media screen and (max-width: $mobile) {
+        left: 85%;
+    }
+
+    @media screen and (min-width: $mobile) {
+        left: 90%;
+    }
 }

@@ -33,7 +33,6 @@ export const UserLogoModal = ({
 
   const handleCloseModal = (e) => {
     if (e.target === e.currentTarget) {
-      console.log("AAAAAA");
       closeModal();
     }
   };
