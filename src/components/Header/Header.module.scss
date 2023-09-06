@@ -20,14 +20,18 @@
   justify-content: space-between;
   padding: 20px 20px;
   z-index: 100;
+  margin: 0 auto;
+  width: 375px;
 
   @media screen and (min-width: 768px) {
     padding: 20px 32px;
+    width: 768px;
   }
 
   @media screen and (min-width: 1440px) {
     justify-content: space-between;
     padding: 20px 100px;
+    width: 1440px;
   }
 }
 
@@ -53,7 +57,7 @@
     height: 38px;
   }
 
-  @media screen and (min-width: 1199px) {
+  @media screen and (min-width: 1439px) {
     display: none;
   }
 }
@@ -69,6 +73,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 
   background-color: rgba(10, 10, 17, 1);
   background-image: url(/images/PNG/Background.png),

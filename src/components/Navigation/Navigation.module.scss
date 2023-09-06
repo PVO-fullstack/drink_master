@@ -5,7 +5,7 @@
     justify-content: center;
     gap: 30px;
 
-    @media screen and (max-width: 1199px) {
+    @media screen and (max-width: 1439px) {
         display: none;
     }
 }
@@ -17,6 +17,10 @@
     color: $accent;
     font-weight: $medium;
     font-size: 14px;
+
+    &:hover {
+        background-color: rgba(22, 31, 55, 1);
+    }
 }
 
 ;
