@@ -12,7 +12,7 @@ export const Paginator = ({ currentPage, totalPages, onPageChange }) => {
       top: 100,
       behavior: "instant",
     });
-  });
+  }, [currentPage]);
 
   for (let i = 1; i <= totalPages; i++) {
     if (pagesToShow.length >= maxPagesToShow) {
