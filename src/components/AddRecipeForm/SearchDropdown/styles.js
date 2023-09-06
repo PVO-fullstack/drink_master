@@ -3,14 +3,13 @@
 // const tablet = `@media screen and (min-width: ${sizes.tablet})`;
 // const desktop = `@media screen and (min-width: ${sizes.desktop})`;
 
-export const makeStyles = ({ style }, meta = null) => ({
+export const makeStyles = ({ style }, { touched, error }) => ({
   //
   control: (baseStyles, state) => ({
     ...baseStyles,
     backgroundColor: 'transparent',
     border: '1px solid',
-    borderColor:
-      meta.touched && meta.error ? 'firebrick' : 'rgba(243, 243, 243, 0.50)',
+    borderColor: touched && error ? 'firebrick' : 'rgba(243, 243, 243, 0.50)',
     borderRadius: 200,
     color: state.isFocused ? '#f3f3f3' : 'rgba(243, 243, 243, 0.50)',
     width: '100%',
@@ -18,7 +17,7 @@ export const makeStyles = ({ style }, meta = null) => ({
     gap: 8,
     minHeight: 'auto',
     verticalAlign: 'text-top',
-    cursor: 'pointer',
+    cursor: state.selectProps.isSearchable ? 'text' : 'pointer',
     display: 'flex',
     ...style?.control,
   }),
@@ -48,8 +47,9 @@ export const makeStyles = ({ style }, meta = null) => ({
   dropdownIndicator: (baseStyles, state) => ({
     ...baseStyles,
     color: '#f3f3f3',
+    transition: 'transform 200ms ease-out',
     transform: state.selectProps.menuIsOpen ? 'rotate(0.5turn)' : 'unset',
-    // cursor: 'pointer',
+    cursor: 'pointer',
     ...style?.dropdownIndicator,
   }),
 
@@ -69,6 +69,7 @@ export const makeStyles = ({ style }, meta = null) => ({
     width: '100%', // 'max-content'
     borderRadius: 20,
     padding: 8,
+    // maxHeight: option
     ...style?.menu,
   }),
 
@@ -102,11 +103,11 @@ export const makeStyles = ({ style }, meta = null) => ({
   //     textOverflow: 'ellipsis',
   //   }),
 
-  //   valueContainer: (baseStyles) => ({
-  //     ...baseStyles,
-  //     // backgroundColor: 'yellow',
-  //     // paddingLeft: variant === 'addrecipe' ? 12 : 0,
-  //     padding: 0,
-  // marginTop: -4,
-  //   }),
+  // valueContainer: (baseStyles) => ({
+  //   ...baseStyles,
+  //   // backgroundColor: 'yellow',
+  //   // paddingLeft: variant === 'addrecipe' ? 12 : 0,
+  //   //     padding: 0,
+  //   // marginTop: -4,
+  // }),
 });

@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import PropTypes, { oneOf } from 'prop-types';
+import PropTypes from 'prop-types';
 import { useField } from 'formik';
 import Select from 'react-select';
 
@@ -14,9 +14,9 @@ export const SearchDropdown = (props) => {
     label,
     data,
     hasFakeField = false,
-    // isSearchable = true,
     labelVisible = true,
     errorStyles = null,
+    itemsBeforeScroll: n,
   } = props;
   //
   // eslint-disable-next-line no-unused-vars
@@ -37,18 +37,16 @@ export const SearchDropdown = (props) => {
     }));
   const options = makeOptions(data);
 
-  let menuHeight = null;
-  if (props.itemsBeforeScroll) {
-    const number = props.itemsBeforeScroll;
-
-    menuHeight = number * 14 + number * 8 + 14 * 3;
-  } // fontSize + itemsBeforeScroll * gap * vertical padding * 3
-  // console.log('menuHeight: ', menuHeight);
+  const fontSize = 14;
+  const maxMenuHeight = n ? n * fontSize + n * 8 + fontSize * 2 : null;
+  // fontSize + itemsBeforeScroll * gap * vertical padding
 
   const capitalizedName =
     props.name.charAt(0).toUpperCase() + props.name.slice(1);
 
   const styles = makeStyles(props, meta);
+
+  const value = options.find((option) => option.value === field.value) || '';
 
   return (
     <div className={style.wrapper}>
@@ -59,11 +57,11 @@ export const SearchDropdown = (props) => {
           name={props.name}
           options={options}
           styles={styles}
-          onChange={(selectedOption) => setFieldProps(selectedOption)}
+          onChange={setFieldProps}
           unstyled
-          maxMenuHeight={menuHeight}
+          maxMenuHeight={maxMenuHeight}
+          value={value}
           {...props}
-          {...field}
         />
 
         {labelVisible && (
