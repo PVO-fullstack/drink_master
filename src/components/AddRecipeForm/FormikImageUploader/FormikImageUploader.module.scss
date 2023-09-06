@@ -6,19 +6,12 @@
   gap: 4px;
 }
 
-.input {
-  background-color: red;
+input[type='file'] {
   height: 0;
   padding: 0;
   opacity: 0;
   display: none;
 }
-
-// input[type='file'] {
-//   height: 0;
-//   padding: 0;
-//   opacity: 0;
-// }
 
 .error {
   color: $error;
