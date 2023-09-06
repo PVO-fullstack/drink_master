@@ -4,12 +4,7 @@ import editSVG from "/images/SVG/edit.svg";
 import PropTypes from "prop-types";
 import { createPortal } from "react-dom";
 
-export const UserLogoModal = ({
-  showUserInfo,
-  showLogOut,
-  closeModal,
-  setShowLogoModal,
-}) => {
+export const UserLogoModal = ({ showUserInfo, showLogOut, closeModal }) => {
   useEffect(() => {
     const handleEsc = (e) => {
       if (e.key === "Escape") {

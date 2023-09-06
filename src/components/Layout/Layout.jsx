@@ -5,7 +5,7 @@ import { Suspense, useEffect, useRef, useState } from "react";
 // import { Loading } from "notiflix/build/notiflix-loading-aio";
 
 import style from "./Layout.module.scss";
-import { Loader, Spiner } from "../Loader/Loader";
+import { Loader } from "../Loader/Loader";
 
 const Layout = () => {
   const headerRef = useRef(null);
