@@ -1,54 +1,54 @@
 .container {
-  margin-left: auto;
-  margin-right: auto;
+    margin-left: auto;
+    margin-right: auto;
 
-  width: 335px;
+    width: 335px;
 
-  @media screen and (min-width: $tablet) {
-    width: 704px;
-  }
+    @media screen and (min-width: $tablet) {
+        width: 704px;
+    }
 
-  @media screen and (min-width: $desktop) {
-    width: 1240px;
-  }
+    @media screen and (min-width: $desktop) {
+        width: 1240px;
+    }
 }
 
 .heading {
-  color: $accent;
-  font-size: $page-title;
-  margin-bottom: 40px;
+    color: $accent;
+    font-size: $page-title;
+    margin-bottom: 40px;
 
-  @media screen and (min-width: $tablet) {
-    margin-bottom: 60px;
-  }
+    @media screen and (min-width: $tablet) {
+        margin-bottom: 60px;
+    }
 
-  @media screen and (min-width: $desktop) {
-    margin-bottom: 62px;
-  }
+    @media screen and (min-width: $desktop) {
+        margin-bottom: 62px;
+    }
 }
 
 .recipes_list {
-  display: flex;
-  gap: 40px;
+    display: flex;
+    gap: 40px;
 
-  @media screen and (max-width: ($tablet - 1px)) {
-    flex-direction: column;
-    margin-bottom: 40px;
-  }
+    @media screen and (max-width: ($tablet - 1px)) {
+        flex-direction: column;
+        margin-bottom: 40px;
+    }
 
-  @media screen and (min-width: $tablet) {
-    gap: 20px;
-    flex-wrap: wrap;
-  }
+    @media screen and (min-width: $tablet) {
+        gap: 20px;
+        flex-wrap: wrap;
+    }
 
-  @media screen and (min-width: $desktop) {
-    gap: 20px;
-  }
+    @media screen and (min-width: $desktop) {
+        gap: 20px;
+    }
 }
 
 .error {
-  color: $error;
-  font-size: 18px;
-  font-weight: 500;
-  line-height: calc(22 / 14);
+    color: $error;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: calc(22 / 14);
 }
