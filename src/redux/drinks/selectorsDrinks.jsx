@@ -5,7 +5,7 @@ export const selectAllRecipes = (state) => ({
   recipes: state.drinks.allRecipes,
   totalRecipes: state.drinks.totalAllRecipes,
 });
-export const selectRecipesForName = (state) => state.drinks.searchDrinks;
+// export const selectRecipesForName = (state) => state.drinks.searchDrinks;
 
 export const memoizedSelectDrinksByCategory = createSelector(
   [selectDrinksByCategory],

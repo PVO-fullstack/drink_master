@@ -22,24 +22,38 @@ export const fetchRecipesByCategory = createAsyncThunk(
 
 export const fetchAllRecipesThunk = createAsyncThunk(
   "recipes/fetchAllRecipes",
-  async ({ page, limit, type }, thunkAPI) => {
+  async ({ page, limit, type, search, category, ingredient }, thunkAPI) => {
     try {
-      const data = await api.fetchAllRecipesForPage({ page, limit, type });
-      return { recipes: data.recipes, totalRecipes: data.totalRecipes, type };
+      const data = await api.fetchAllRecipesForPage({
+        page,
+        limit,
+        type,
+        search,
+        category,
+        ingredient,
+      });
+      return {
+        recipes: data.recipes,
+        totalRecipes: data.totalRecipes,
+        type,
+        search,
+        category,
+        ingredient,
+      };
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
 
-export const fetchRecipesForNameThunk = createAsyncThunk(
-  "recipes/fetchRecipesForName",
-  async ({ drink }, thunkAPI) => {
-    try {
-      const data = await api.fetchAllRecipesForName({ drink });
-      return { searchDrinks: data };
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  }
-);
+// export const fetchRecipesForNameThunk = createAsyncThunk(
+//   "recipes/fetchRecipesForName",
+//   async ({ drink }, thunkAPI) => {
+//     try {
+//       const data = await api.fetchAllRecipesForName({ drink });
+//       return { searchDrinks: data };
+//     } catch (error) {
+//       return thunkAPI.rejectWithValue(error.message);
+//     }
+//   }
+// );

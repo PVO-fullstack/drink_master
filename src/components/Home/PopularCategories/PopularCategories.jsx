@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchRecipesByCategory } from "../../../redux/drinks/operationsDrinks";
 import { memoizedSelectDrinksByCategory } from "../../../redux/drinks/selectorsDrinks";
 import css from "../PopularCategories/PopularCategories.module.scss";
+import { Link } from "react-router-dom";
 
 const PopularCategories = () => {
   const categoriesToDisplay = [
@@ -51,20 +52,22 @@ const PopularCategories = () => {
             <h2 className={css.nameCategory}>{categoryDrink}</h2>
             <ul className={css.cocktailList}>
               {categoryDrinks.slice(0, cardsPerRow).map((drink) => (
-                <li key={drink.drink}>
-                  <div className={css.imgContainer}>
-                    <img
-                      src={drink.drinkThumb}
-                      alt={drink.drink}
-                      className={css.imgCocktail}
-                    />
-                  </div>
+                <Link key={drink._id} to={`/recipes/${drink._id}`}>
+                  <li key={drink.drink}>
+                    <div className={css.imgContainer}>
+                      <img
+                        src={drink.drinkThumb}
+                        alt={drink.drink}
+                        className={css.imgCocktail}
+                      />
+                    </div>
 
-                  <div className={css.nameAndIngridients}>
-                    <p className={css.nameCocktail}>{drink.drink}</p>
-                    <p className={css.ingredients}>Ingredients</p>
-                  </div>
-                </li>
+                    <div className={css.nameAndIngridients}>
+                      <p className={css.nameCocktail}>{drink.drink}</p>
+                      <p className={css.ingredients}>Ingredients</p>
+                    </div>
+                  </li>
+                </Link>
               ))}
             </ul>
           </div>

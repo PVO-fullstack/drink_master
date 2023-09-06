@@ -23,8 +23,3 @@ export const handleFetchAllRecipesFulfilled = (state, { payload }) => {
   state.totalAllRecipes = payload.totalRecipes;
   state.error = null;
 };
-
-export const handleFetchRecipesForNameFulfilled = (state, { payload }) => {
-  state.searchDrinks = payload;
-  state.isDataLoaded = true;
-};

@@ -22,11 +22,14 @@
 .imgContainer {
   max-width: $img-width;
   max-height: $img-height;
+  overflow: hidden;
+  border-radius: 8px;
 }
 
 .imgCocktail {
   width: 100%;
-  height: 100%;
+  height: auto;
+  object-fit: cover;
 }
 .nameAndIngridients {
   display: flex;
