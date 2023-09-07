@@ -4,6 +4,7 @@ import style from "./SignUp.module.scss";
 import { NavLink } from "react-router-dom";
 import { registerUser } from "../../../redux/auth/authOperations";
 import { useDispatch } from "react-redux";
+import { toast } from "react-hot-toast";
 import { useState } from "react";
 
 export const SignUp = () => {
@@ -36,9 +37,14 @@ export const SignUp = () => {
         <Formik
           initialValues={{ name: "", email: "", password: "" }}
           validationSchema={SignupSchema}
-          onSubmit={async (values, { resetForm }) => {
-            dispatch(registerUser(values));
-            resetForm();
+          onSubmit={(values, { resetForm }) => {
+            dispatch(registerUser(values)).then((result) => {
+              if (result.error) {
+                toast.error("Email alredy used");
+                return;
+              }
+              resetForm();
+            });
           }}
         >
           {(formik) => {
