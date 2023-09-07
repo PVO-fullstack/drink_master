@@ -1,6 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import * as api from "../../services/api";
-import Notiflix from "notiflix";
 
 const payloadCreator =
   (request) =>
@@ -25,7 +24,7 @@ export const fetchAllRecipesThunk = createAsyncThunk(
   "recipes/fetchAllRecipes",
   async ({ page, limit, type, search, category, ingredient }, thunkAPI) => {
     try {
-      Notiflix.Loading.pulse();
+      // Notiflix.Loading.pulse();
       const data = await api.fetchAllRecipesForPage({
         page,
         limit,
@@ -34,7 +33,7 @@ export const fetchAllRecipesThunk = createAsyncThunk(
         category,
         ingredient,
       });
-      Notiflix.Loading.remove();
+      // Notiflix.Loading.remove();
       return {
         recipes: data.recipes,
         totalRecipes: data.totalRecipes,
@@ -44,7 +43,7 @@ export const fetchAllRecipesThunk = createAsyncThunk(
         ingredient,
       };
     } catch (error) {
-      Notiflix.Loading.remove();
+      // Notiflix.Loading.remove();
       return thunkAPI.rejectWithValue(error.message);
     }
   }
