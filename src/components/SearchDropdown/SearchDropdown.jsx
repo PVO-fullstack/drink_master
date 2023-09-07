@@ -2,6 +2,8 @@ import PropTypes from 'prop-types';
 import { useField } from 'formik';
 import Select from 'react-select';
 
+import sizes from '../../constants/breakpoints';
+
 import style from './SearchDropdown.module.scss';
 import { makeStyles } from './styles';
 
@@ -35,8 +37,8 @@ export const SearchDropdown = (props) => {
     }));
   const options = makeOptions(data);
 
-  const fontSize = 14;
-  const maxMenuHeight = n ? n * fontSize + n * 8 + fontSize * 2 : null;
+  const fontSize = Window.innerWidth > sizes.mobile ? 17 : 14;
+  const maxMenuHeight = n ? n * fontSize + n * 8 + fontSize * 3 : null;
   // fontSize + itemsBeforeScroll * gap * vertical padding
 
   const capitalizedName =
