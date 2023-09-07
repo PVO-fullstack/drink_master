@@ -87,6 +87,7 @@ input[type='file'].avatar {
     opacity: 1;
     width: 0;
     height: 0;
+    display: block;
 
     &::-webkit-file-upload-button {
         visibility: hidden;
