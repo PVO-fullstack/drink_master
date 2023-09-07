@@ -104,7 +104,7 @@ const measureStyleOverride = {
   control: {
     padding: '16px 18px',
     [mobile]: { maxWidth: 101 },
-    [tablet]: { padding: '14px 24px' },
+    [tablet]: { padding: '14px 24px', minWidth: 150 },
   },
   container: {
     minWidth: 101,
