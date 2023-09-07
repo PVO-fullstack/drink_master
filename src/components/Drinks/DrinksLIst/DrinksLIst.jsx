@@ -5,6 +5,7 @@ import { DrinksItem } from "../DrinksItem/DrinksItem";
 import { memoizedSelectAllRecipes } from "../../../redux/drinks/selectorsDrinks";
 import { fetchAllRecipesThunk } from "../../../redux/drinks/operationsDrinks";
 import Paginator from "../../Paginator/Paginator";
+import noСontentImg from "/noСontentImg.png";
 
 const determineRecipesPerPage = () => {
   if (window.innerWidth <= 375) {
@@ -63,7 +64,7 @@ const DrinksList = ({
       {recipes.length === 0 ? (
         <div className={css.noResults}>
           <img
-            src="/noСontentImg.png"
+            src={noСontentImg}
             alt="No Results"
             className={css.noResaltsImg}
           />
