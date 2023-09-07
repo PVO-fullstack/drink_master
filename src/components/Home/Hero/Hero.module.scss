@@ -1,17 +1,18 @@
 .container {
-  margin-top: 0;
-  background-image: url(/heroImgPhone.png);
-  background-size: 273px 700px;
-  background-repeat: no-repeat;
-  background-position: top 34px right;
-  @media screen and (min-width: $tablet) {
-    background-image: url(/heroImgTablet.png);
+	margin-top: 0;
+	background-image: url(/heroImgPhone.png);
 
-    background-size: 445px 1001px;
-    background-position: top -84px right;
-  }
-  @media screen and (min-width: $desktop) {
-    background-image: url(/heroImgDesktop.png);
-    background-size: 710px 790px;
-  }
+	background-size: 253px 600px;
+	background-repeat: no-repeat;
+	background-position: top -74px right;
+	@media screen and (min-width: $tablet) {
+		background-image: url(/heroImgTablet.png);
+
+		background-size: 405px 901px;
+		background-position: top -124px right;
+	}
+	@media screen and (min-width: $desktop) {
+		background-image: url(/heroImgDesktop.png);
+		background-size: 630px 700px;
+	}
 }
