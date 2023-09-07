@@ -1,0 +1,57 @@
+@import '../../styles/variables';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  // gap: 80px;
+
+  color: $accent;
+  padding: 40px;
+
+  width: 500px;
+  height: 500px;
+
+  border-radius: 30px;
+  // background: linear-gradient(
+  //     0deg,
+  //     rgba(10, 10, 17, 0.4) 0%,
+  //     rgba(10, 10, 17, 0.4) 100%
+  //   ),
+  //   url('/images/jpg/motivation.jpg'),
+  //   lightgray -19.635px -143.546px / 106.127% 158.996% no-repeat;
+
+  background-size: cover;
+  background-position: center;
+}
+
+.blurred {
+  width: 268px;
+  height: 242px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  background-color: rgba(217, 217, 217, 0.14);
+  backdrop-filter: blur(27.976364135742188px);
+
+  mask-image: url('/images/PNG/motivation.png'); // DO NOT touch!
+  mask-size: contain;
+  mask-repeat: no-repeat;
+
+  color: #f3f3f3;
+  text-align: center;
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 32px; /* 114.286% */
+  letter-spacing: -0.56px;
+
+  padding: 32px 19px 14px;
+}
+
+.closeButton {
+  color: $accent;
+  padding: 10px;
+}

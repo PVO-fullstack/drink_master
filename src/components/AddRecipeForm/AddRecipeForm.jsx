@@ -1,6 +1,5 @@
-/* eslint-disable no-unused-vars */
-import React from 'react';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import { toast } from 'react-hot-toast';
 
@@ -17,7 +16,6 @@ import { Button } from '../Button/Button';
 import { addRecipe } from '../../redux/preparation/operations';
 
 import style from './AddRecipeForm.module.scss';
-import { useNavigate } from 'react-router-dom';
 
 // ###################################################
 
