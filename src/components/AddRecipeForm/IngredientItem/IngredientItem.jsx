@@ -1,17 +1,15 @@
-// eslint-disable-next-line no-unused-vars
-import React from "react";
-import { useSelector } from "react-redux";
-import { selectIngredients } from "../../../redux/preparation/selectors";
+import { useSelector } from 'react-redux';
+import { selectIngredients } from '../../../redux/preparation/selectors';
 
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
-import { SearchDropdown } from "../../SearchDropdown/SearchDropdown";
-import { RemoveIcon } from "../../icons";
+import { SearchDropdown } from '../../SearchDropdown/SearchDropdown';
+import { RemoveIcon } from '../../icons';
 
-import sizes from "../../../constants/breakpoints";
-import itemsBeforeScroll from "../../../constants/select";
+import sizes from '../../../constants/breakpoints';
+import itemsBeforeScroll from '../../../constants/select';
 
-import style from "./IngredientItem.module.scss";
+import style from './IngredientItem.module.scss';
 
 // ###################################################
 
@@ -34,7 +32,7 @@ export const IngredientItem = ({ index, length, onRemove }) => {
             placeholder="Ingredient"
             itemsBeforeScroll={itemsBeforeScroll}
             labelVisible={false}
-            errorStyles={{ marginLeft: "1.2rem" }}
+            errorStyles={{ marginLeft: '1.2rem' }}
           />
         </div>
 
@@ -46,7 +44,7 @@ export const IngredientItem = ({ index, length, onRemove }) => {
             placeholder="Unit"
             itemsBeforeScroll={itemsBeforeScroll}
             labelVisible={false}
-            errorStyles={{ marginLeft: "1.2rem" }}
+            errorStyles={{ marginLeft: '1.2rem' }}
           />
         </div>
       </div>
@@ -92,8 +90,8 @@ const desktop = `@media screen and (min-width: ${sizes.desktop})`;
 
 const ingredientStyleOverride = {
   control: {
-    padding: "16px 18px",
-    [tablet]: { padding: "14px 24px" },
+    padding: '16px 18px',
+    [tablet]: { padding: '14px 24px' },
   },
   container: {
     minWidth: 100,
@@ -104,9 +102,9 @@ const ingredientStyleOverride = {
 
 const measureStyleOverride = {
   control: {
-    padding: "16px 18px",
+    padding: '16px 18px',
     [mobile]: { maxWidth: 101 },
-    [tablet]: { maxWidth: 150, padding: "14px 24px" },
+    [tablet]: { padding: '14px 24px', minWidth: 150 },
   },
   container: {
     minWidth: 101,
