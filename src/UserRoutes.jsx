@@ -9,7 +9,8 @@ const HomePage = lazy(() => import("./pages/Home"));
 const DrinksPage = lazy(() => import("./pages/Drinks"));
 const AddRecipePage = lazy(() => import("./pages/AddRecipe"));
 const MyRecipesPage = lazy(() => import("./pages/MyRecipes"));
-const FavoritesPage = lazy(() => import("./pages/Favorites")
+const FavoritesPage = lazy(() => import("./pages/Favorites"));
+const WelcomePage = lazy(() => import("./pages/AuthPages/Welcome"));
 const RegistrationPage = lazy(() => import("./pages/AuthPages/Registration"));
 const LoginPage = lazy(() => import("./pages/AuthPages/Login"));
 const RecipePage = lazy(() => import("./pages/Recipe"));
@@ -18,6 +19,8 @@ import { Toaster } from "react-hot-toast";
 import { toastOptions, containerStyle } from "./services/toastOptions";
 // import { Loading } from "notiflix/build/notiflix-loading-aio";
 import { Loader, Spiner } from "./components/Loader/Loader";
+
+// const WelcomePage = lazy(() => import("./pages/WelcomePage/WelcomePage"));
 
 export const UserRoutes = () => {
   const isRefresh = useSelector(selectIsRefresh);
