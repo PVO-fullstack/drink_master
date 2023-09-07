@@ -8,6 +8,8 @@ export { Paragraph } from './Typography/Paragraph/Paragraph';
 export { Button } from './Button/Button';
 export { SearchDropdown } from './SearchDropdown/SearchDropdown';
 
+// Motivation modals
+
 // Page elements
 export { FollowUs } from './FollowUs/FollowUs';
 export { AddRecipeForm } from './AddRecipeForm/AddRecipeForm';
@@ -16,6 +18,3 @@ export { RecipesList } from './RecipesList/RecipesList';
 export { RecipePageHero } from './RecipePageHero/RecipePageHero';
 export { RecipeInngredientsList } from './RecipeInngredientsList/RecipeInngredientsList';
 export { RecipePreparation } from './RecipePreparation/RecipePreparation';
-
-// Icons
-export { AddIcon } from './icons/AddIcon/AddIcon';

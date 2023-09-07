@@ -26,5 +26,5 @@ PageTitle.propTypes = {
   children: PropTypes.string.isRequired,
   margin: PropTypes.oneOf(['large', 'small', 'none']),
   style: PropTypes.object,
-  className: PropTypes.object,
+  className: PropTypes.string,
 };

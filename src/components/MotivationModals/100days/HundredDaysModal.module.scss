@@ -1,0 +1,11 @@
+@import '../../../styles/variables';
+
+.container {
+  background: linear-gradient(
+      0deg,
+      rgba(10, 10, 17, 0.4) 0%,
+      rgba(10, 10, 17, 0.4) 100%
+    ),
+    url('/images/jpg/motivation.jpg'),
+    lightgray -19.635px -143.546px / 106.127% 158.996% no-repeat;
+}
