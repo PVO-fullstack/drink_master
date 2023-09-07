@@ -19,7 +19,7 @@ export const RecipePageHero = () => {
   const [favorite, setFavorite] = useState(false);
   const [showModal, setShowModal] = useState({
     showModalFirstRecipe: false,
-    showModalTenthRecipe: true,
+    showModalTenthRecipe: false,
   });
 
   const closeModal = () => {
