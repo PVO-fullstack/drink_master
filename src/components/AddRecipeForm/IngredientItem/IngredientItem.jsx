@@ -97,7 +97,10 @@ const ingredientStyleOverride = {
     minWidth: 100,
     [tablet]: { width: 316 },
     [desktop]: { width: 332 },
+    justifyContent: 'flex-end',
   },
+
+  menu: { maxWidth: '70%' },
 };
 
 const measureStyleOverride = {
@@ -110,5 +113,5 @@ const measureStyleOverride = {
     minWidth: 101,
     [tablet]: { width: 150 },
   },
-  menu: { maxWidth: 80, borderRadius: 15 },
+  menu: { maxWidth: 100, borderRadius: 15 },
 };

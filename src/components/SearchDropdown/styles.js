@@ -32,17 +32,12 @@ export const makeStyles = ({ style }, { touched, error }) => ({
     justifyContent: 'center',
     width: 'auto',
     ...style?.container,
-    // backgroundColor: 'blueViolet',
-    // [tablet]: {
-    //   backgroundColor: 'yellow',
-    // },
   }),
 
   singleValue: (baseStyles) => ({
     ...baseStyles,
     color: 'currentColor',
     width: '100%',
-    // maxWidth: 300,
     ...style?.singleValue,
   }),
 
@@ -71,7 +66,7 @@ export const makeStyles = ({ style }, { touched, error }) => ({
     width: '100%', // 'max-content'
     borderRadius: 20,
     padding: 8,
-    // maxHeight: option
+    // maxHeight:
     ...style?.menu,
   }),
 
@@ -82,7 +77,6 @@ export const makeStyles = ({ style }, { touched, error }) => ({
     flexDirection: 'column',
     gap: 8,
     padding: 6,
-    // backgroundColor: 'blueviolet',
     ...style?.menuList,
   }),
 
