@@ -1,11 +1,19 @@
 // import React from 'react'
-import { Motivation } from '../../Motivation/Motivation';
-import style from './FirstRecipe.module.scss';
+import { Modal } from "../../Modal/Modal";
+import { Motivation } from "../../Motivation/Motivation";
+import style from "./FirstRecipe.module.scss";
+import PropTypes from "prop-types";
 
-export const FirstRecipe = () => {
+export const FirstRecipe = ({ close }) => {
   return (
-    <Motivation className={style.container}>
-      Wow! You have been using the application for 100 days!
-    </Motivation>
+    <Modal>
+      <Motivation closeModal={close} className={style.container}>
+        Wow! You have added the first recipe to your favorites!
+      </Motivation>
+    </Modal>
   );
+};
+
+FirstRecipe.propTypes = {
+  close: PropTypes.func,
 };

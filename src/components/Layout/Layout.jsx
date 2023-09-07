@@ -1,13 +1,12 @@
 import { Header } from "../Header/Header";
 import { Footer } from "../Footer/Footer";
 import { Outlet } from "react-router";
-import { Suspense, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import style from "./Layout.module.scss";
-import { Loader } from "../Loader/Loader";
 import { useSelector } from "react-redux";
 import { selectIsShowModals } from "../../redux/auth/authSelectors";
-import { Motivation } from "../Motivation/Motivation";
+import { HundredDaysModal } from "../MotivationModals/100days/HundredDaysModal";
 
 const Layout = () => {
   const headerRef = useRef(null);
@@ -34,11 +33,9 @@ const Layout = () => {
   }, [headerHeight, showModalTimeUsing]);
   // *****************
 
-  console.log("showModal", showModal);
-
   return (
     <div>
-      {showModal && <Motivation />}
+      {showModal && <HundredDaysModal />}
       <Header headerRef={headerRef} />
       <div className={style.container}>
         {/* <Suspense fallback={<Loader />}> */}
