@@ -1,8 +1,8 @@
-import { Header } from '../Header/Header';
-import { Footer } from '../Footer/Footer';
-import { Outlet } from 'react-router';
-import { Suspense, useEffect, useRef, useState } from 'react';
-// import { Loading } from "notiflix/build/notiflix-loading-aio";
+
+import { Header } from "../Header/Header";
+import { Footer } from "../Footer/Footer";
+import { Outlet } from "react-router";
+import { Suspense, useEffect, useRef, useState } from "react";
 
 import style from './Layout.module.scss';
 import { Loader } from '../Loader/Loader';
