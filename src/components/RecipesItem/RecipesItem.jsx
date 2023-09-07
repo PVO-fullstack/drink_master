@@ -121,7 +121,7 @@ export const RecipesItem = ({
           <button
             type="button"
             onClick={() => dispatch(deleteRecipe)}
-            className={`${cssButton.button} ${cssButton.icon}`}
+            className={`${cssButton.button} ${css.buttonIcon}`}
           >
             <RiDeleteBinLine style={{ width: "24px", height: "24px" }} />
           </button>
