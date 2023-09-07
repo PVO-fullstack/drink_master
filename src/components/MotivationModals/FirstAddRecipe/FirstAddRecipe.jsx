@@ -1,19 +1,18 @@
-// import React from 'react'
 import { Modal } from "../../Modal/Modal";
 import { Motivation } from "../../Motivation/Motivation";
-import style from "./TenRecipes.module.scss";
+import style from "./FirstAddRecipe.module.scss";
 import PropTypes from "prop-types";
 
-export const TenRecipes = ({ close }) => {
+export const FirstAddRecipe = ({ close }) => {
   return (
     <Modal>
       <Motivation closeModal={close} className={style.container}>
-        Wow! You have added 10 recipes to your favorites!
+        Wow! You have added the first recipe to your favorites!
       </Motivation>
     </Modal>
   );
 };
 
-TenRecipes.propTypes = {
+FirstAddRecipe.propTypes = {
   close: PropTypes.func,
 };

@@ -4,24 +4,35 @@
     flex-direction: column;
     justify-content: center;
     // background-size: contain;
-    background-position: right center;
-    background-repeat: no-repeat;
+    background-repeat: no-repeat, no-repeat;
 
     @media screen and (max-width: $mobile) {
         background-image: url(/startBgMobile.jpg);
         align-items: center;
+        background-position: center;
+        background-size: cover;
     }
 
     @media screen and (min-width: $mobile) {
         background-image: url(/startBgTablet.jpg);
+        background-position: center;
+        background-size: cover;
     }
 
     @media screen and (min-width: $tablet) {
-        background-image: url(/startBgTablet.jpg);
+        background-image:
+            linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 40%, rgba(0, 0, 0, 1) 60%, rgba(0, 0, 0, 0) 100%),
+            url(/startBgTablet.jpg);
+        background-position: calc(100vw - 616px), right center;
+        background-size: 300px, auto;
     }
 
     @media screen and (min-width: $desktop) {
-        background-image: url(/startBg.jpg);
+        background-image:
+            linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 40%, rgba(0, 0, 0, 1) 60%, rgba(0, 0, 0, 0) 100%),
+            url(/startBg.jpg);
+        background-position: calc(40vw - 300px), right center;
+        background-size: 500px, 60vw 100vh;
     }
 }
 

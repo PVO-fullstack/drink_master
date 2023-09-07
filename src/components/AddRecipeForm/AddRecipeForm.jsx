@@ -22,10 +22,20 @@ import { Motivation } from '../Motivation/Motivation';
 // ###################################################
 
 export const AddRecipeForm = () => {
-  const [showModal, setShowModal] = useState(false);
-  //
+  // const [showModal, setShowModal] = useState({
+  //     showModalFirstRecipe: false,
+  //     showModalTenthRecipe: false,
+  //   });
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  // const closeModal = () => {
+  //   setShowModal({
+  //     showModalFirstRecipe: false,
+  //     showModalTenthRecipe: false,
+  //   });
+  // };
 
   const convertTextAreaToArray = (string) => {
     const normalizedString = string.replace(/\r\n/g, '\n');
@@ -47,6 +57,7 @@ export const AddRecipeForm = () => {
         if (error) throw new Error(payload);
 
         if (id) {
+          console.log(payload.showModalMyRecipes);
           setShowModal(payload.showModalMyRecipes);
           toast.success(
             'Recipe has has been successfully added. Redirecting...'
@@ -93,8 +104,7 @@ export const AddRecipeForm = () => {
           </Form>
         )}
       </Formik>
-      {(showModal.showModalFirstRecipe && <Motivation />) ||
-        (showModal.showModalTenthRecipe && <Motivation />)}
+      {/* {showModal.showModalFirstRecipe && <FirstAddRecipe />} */}
     </>
   );
 };
