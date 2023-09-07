@@ -12,16 +12,14 @@ export const yupSchema = object({
   ingredients: array()
     .of(
       object().shape({
-        title: string().required('Please select an ingredient'),
-        measure: string().required('Please specify measure'),
+        title: string().required('Required'),
+        measure: string().required('Required'),
       })
     )
     .required('Please add at least one ingredient')
     .min(1, 'Must contain at least one ingredient'),
-  instructions: string().required(
-    'Please leave instructions on how to mix the ingredients'
-  ),
-  imageOfRecipe: mixed().required('Please upload an image for your recipe'),
+  instructions: string().required('Please supply preparation directions'),
+  imageOfRecipe: mixed().required('Please upload a recipe image'),
   // imageOfRecipe: mixed().test('is-file-too-big', 'File exceeds 2MB', () => {
   //   let valid = true;
   //   const file = fileRef?.current?.files[0];

@@ -2,8 +2,9 @@
 
 .item {
   display: flex;
-  align-items: center;
-  // justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
+  justify-content: space-between;
 
   transition: color $transition-duration $transition-timing-function,
     border-color $transition-duration $transition-timing-function;
@@ -15,9 +16,21 @@
   gap: 14px;
 
   width: 100%;
+  // background-color: blueviolet;
 
   @media screen and (min-width: $mobile) and (max-width: ($desktop - 1)) {
     max-width: 496px;
+  }
+}
+
+.ingredientWrapper {
+  // width: 100%;
+  flex-grow: 1;
+}
+
+.measureWrapper {
+  @media screen and (max-width: $mobile) {
+    max-width: 101px;
   }
 }
 
@@ -29,18 +42,24 @@
 //   gap: 4px;
 // }
 
-.removeButtonCnt {
-  display: flex;
-  justify-content: center;
-}
-
 .removeButton {
   background-color: transparent;
   border: none;
   color: $accent;
+  // background-color: red;
+  transform: translateY(0.2rem);
 
   &:disabled {
     color: rgba($accent, 0.3);
+  }
+
+  &:hover,
+  &:focus-visible {
+    color: gray;
+  }
+
+  &:active {
+    color: dimgray;
   }
 }
 

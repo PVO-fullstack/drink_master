@@ -21,7 +21,16 @@
   color: $accent;
   padding: 11px;
 
+  &:hover,
+  &:focus-visible {
+    color: gray;
+  }
+
   &:disabled {
     color: rgba($accent, 0.3);
+  }
+
+  &:active {
+    color: dimgray;
   }
 }
