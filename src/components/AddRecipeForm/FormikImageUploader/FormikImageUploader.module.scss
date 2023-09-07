@@ -1,15 +1,21 @@
 @import '../../../styles/variables';
 
-.wrapper {
-  // position: relative;
+.addImageGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
 input[type='file'] {
   height: 0;
   padding: 0;
   opacity: 0;
+  display: none;
 }
 
 .error {
   color: $error;
+  // margin-top: 4px;
+  font-size: 12px;
+  line-height: calc(14 / 12);
 }

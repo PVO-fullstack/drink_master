@@ -1,23 +1,23 @@
 /* eslint-disable no-unused-vars */
-import React from "react";
-import { useDispatch } from "react-redux";
+import React from 'react';
+import { useDispatch } from 'react-redux';
 
-import { toast } from "react-hot-toast";
+import { toast } from 'react-hot-toast';
 
-import { Formik, Form } from "formik";
-import { yupSchema } from "./YupSchema";
+import { Formik, Form } from 'formik';
+import { yupSchema } from './YupSchema';
 
 import {
   RecipeDescriptionFields,
   RecipeIngredientsFields,
   RecipePreparationFields,
-} from ".";
+} from '.';
 
-import { Button } from "../Button/Button";
-import { addRecipe } from "../../redux/preparation/operations";
+import { Button } from '../Button/Button';
+import { addRecipe } from '../../redux/preparation/operations';
 
-import style from "./AddRecipeForm.module.scss";
-import { useNavigate } from "react-router-dom";
+import style from './AddRecipeForm.module.scss';
+import { useNavigate } from 'react-router-dom';
 
 // ###################################################
 
@@ -27,42 +27,32 @@ export const AddRecipeForm = () => {
   const navigate = useNavigate();
 
   const convertTextAreaToArray = (string) => {
-    const normalizedString = string.replace(/\r\n/g, "\n");
-    return normalizedString.split("\n").filter((el) => el.trim());
+    const normalizedString = string.replace(/\r\n/g, '\n');
+    return normalizedString.split('\n').filter((el) => el.trim());
   };
-
-  // const testSubmit = (values, formikBag) => {
-  //   const { resetForm, setSubmitting } = formikBag;
-  //   if (typeof values.instructions === 'string') {
-  //     values.instructions = convertTextAreaToArray(values.instructions);
-  //   }
-  //   // console.log('values:', JSON.stringify(values, null, 2));
-  //   let formData = new FormData();
-  //   for (const key in values) {
-  //     formData.append(key, values[key]);
-  //   }
-  //   console.log('formData: ', formData);
-  //   setSubmitting(false);
-  // };
 
   const handleSubmit = (values, formikBag) => {
     const { resetForm, setSubmitting } = formikBag;
 
-    if (typeof values.instructions === "string") {
+    if (typeof values.instructions === 'string') {
       values.instructions = convertTextAreaToArray(values.instructions);
     }
+    // console.log('values:', JSON.stringify(values, null, 2));
 
     dispatch(addRecipe(values))
       .then((data) => {
         const { error, payload } = data;
-        console.log("payload: ", payload);
         const { _id: id } = payload;
         if (error) throw new Error(payload);
-        toast.success("Recipe has has been successfully added. Redirecting...");
+
         if (id)
-          setTimeout(() => {
-            navigate(`/recipes/${id}`);
-          }, 1500);
+          toast.success(
+            'Recipe has has been successfully added. Redirecting...'
+          );
+
+        setTimeout(() => {
+          navigate(`/recipes/${id}`);
+        }, 1500);
       })
       .catch((error) => {
         toast.error("We're sorry, but something went wrong...");
@@ -84,7 +74,6 @@ export const AddRecipeForm = () => {
       initialValues={initialValues}
       onSubmit={handleSubmit}
       validationSchema={yupSchema}
-      // onSubmit={testSubmit}
     >
       {({ values, setFieldValue, isSubmitting }) => (
         <Form className={style.form}>
@@ -106,15 +95,15 @@ export const AddRecipeForm = () => {
 // ####################################################
 
 const initialValues = {
-  drink: "",
-  description: "",
-  category: "",
-  glass: "",
+  drink: '',
+  description: '',
+  category: '',
+  glass: '',
   ingredients: [
-    { title: "", measure: "" },
-    { title: "", measure: "" },
-    { title: "", measure: "" },
+    { title: '', measure: '' },
+    { title: '', measure: '' },
+    { title: '', measure: '' },
   ],
-  instructions: [""],
-  imageOfRecipe: "",
+  instructions: '',
+  imageOfRecipe: '',
 };

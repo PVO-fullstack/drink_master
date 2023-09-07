@@ -23,7 +23,6 @@ export const RecipeIngredientsFields = ({ items }) => {
         { remove, pop, push } // arrayHelpers
       ) => (
         <div className={style.container}>
-          {/*  */}
           <div className={style.titleAndCounter}>
             <SectionTitle>Ingredients</SectionTitle>
 

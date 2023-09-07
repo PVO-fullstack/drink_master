@@ -3,12 +3,15 @@
 // const tablet = `@media screen and (min-width: ${sizes.tablet})`;
 // const desktop = `@media screen and (min-width: ${sizes.desktop})`;
 
-export const makeStyles = ({ style }) => ({
+// eslint-disable-next-line no-unused-vars
+export const makeStyles = ({ style }, { touched, error }) => ({
   //
   control: (baseStyles, state) => ({
     ...baseStyles,
     backgroundColor: 'transparent',
-    border: '1px solid rgba(243, 243, 243, 0.50)',
+    border: '1px solid',
+    // borderColor: touched && error ? 'firebrick' : 'rgba(243, 243, 243, 0.50)',
+    borderColor: 'rgba(243, 243, 243, 0.50)',
     borderRadius: 200,
     color: state.isFocused ? '#f3f3f3' : 'rgba(243, 243, 243, 0.50)',
     width: '100%',
@@ -16,7 +19,7 @@ export const makeStyles = ({ style }) => ({
     gap: 8,
     minHeight: 'auto',
     verticalAlign: 'text-top',
-    cursor: 'pointer',
+    cursor: state.selectProps.isSearchable ? 'text' : 'pointer',
     display: 'flex',
     ...style?.control,
   }),
@@ -46,8 +49,9 @@ export const makeStyles = ({ style }) => ({
   dropdownIndicator: (baseStyles, state) => ({
     ...baseStyles,
     color: '#f3f3f3',
+    transition: 'transform 200ms ease-out',
     transform: state.selectProps.menuIsOpen ? 'rotate(0.5turn)' : 'unset',
-    // cursor: 'pointer',
+    cursor: 'pointer',
     ...style?.dropdownIndicator,
   }),
 
@@ -67,6 +71,7 @@ export const makeStyles = ({ style }) => ({
     width: '100%', // 'max-content'
     borderRadius: 20,
     padding: 8,
+    // maxHeight: option
     ...style?.menu,
   }),
 
@@ -100,11 +105,11 @@ export const makeStyles = ({ style }) => ({
   //     textOverflow: 'ellipsis',
   //   }),
 
-  //   valueContainer: (baseStyles) => ({
-  //     ...baseStyles,
-  //     // backgroundColor: 'yellow',
-  //     // paddingLeft: variant === 'addrecipe' ? 12 : 0,
-  //     padding: 0,
-  // marginTop: -4,
-  //   }),
+  // valueContainer: (baseStyles) => ({
+  //   ...baseStyles,
+  //   // backgroundColor: 'yellow',
+  //   // paddingLeft: variant === 'addrecipe' ? 12 : 0,
+  //   //     padding: 0,
+  //   // marginTop: -4,
+  // }),
 });

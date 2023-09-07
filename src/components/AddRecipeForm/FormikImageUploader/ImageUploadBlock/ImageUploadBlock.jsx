@@ -3,19 +3,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { RiCloseCircleFill } from 'react-icons/ri';
-import { AddIcon } from '../../../components';
+import { AddIcon } from '../../..';
 
 import style from './ImageUploadBlock.module.scss';
 
 // ###################################################
 
-export const ImageUploadBlock = ({ labelFor, imageURL, removeHandler }) => {
+export const ImageUploadBlock = ({ name, imageURL, removeHandler }) => {
   return (
     <div className={style.thumbnail}>
       {!imageURL ? (
         <div className={style.fileLabelGroup}>
           <label
-            htmlFor={labelFor}
+            htmlFor={name}
             className={style.fileLabel}
             aria-label="Upload an image for your recipe"
           >
@@ -48,5 +48,5 @@ export const ImageUploadBlock = ({ labelFor, imageURL, removeHandler }) => {
 ImageUploadBlock.propTypes = {
   imageURL: PropTypes.string || null,
   removeHandler: PropTypes.func,
-  labelFor: PropTypes.string,
+  name: PropTypes.string,
 };

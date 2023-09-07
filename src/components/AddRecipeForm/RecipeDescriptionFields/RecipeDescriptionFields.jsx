@@ -1,62 +1,30 @@
-// eslint-disable-next-line no-unused-vars
-import React, { useEffect, useState } from 'react';
-
 import { useSelector } from 'react-redux';
 import { selectPreparation } from '../../../redux/preparation/selectors';
 
 import PropTypes from 'prop-types';
 
-import { ImageUploadBlock, FormikTextInput, SearchDropdown } from '..';
+import { FormikTextInput, FormikImageUploader } from '..';
+import { SearchDropdown } from '../..';
 import itemsBeforeScroll from '../../../constants/select';
+
 import style from './RecipeDescriptionFields.module.scss';
 
 // ###################################################
 
 export const RecipeDescriptionFields = ({ setFieldValue }) => {
   //
-  const aux = useSelector(selectPreparation);
+  const prep = useSelector(selectPreparation);
 
-  const glasses = [...aux.glasses].sort((a, b) => a.name.localeCompare(b.name));
-
-  const categories = [...aux.categories].sort((a, b) =>
+  const glasses = [...prep.glasses].sort((a, b) =>
+    a.name.localeCompare(b.name)
+  );
+  const categories = [...prep.categories].sort((a, b) =>
     a.name.localeCompare(b.name)
   );
 
-  const [objectURL, setObjectURL] = useState(null);
-
-  const handleImageUpload = (event) => {
-    const selectedFile = event.target.files[0];
-
-    if (selectedFile.size > 2000000) {
-      alert('File too large');
-      throw new Error('File is too big');
-    }
-    setObjectURL(URL.createObjectURL(selectedFile));
-    setFieldValue('imageOfRecipe', selectedFile);
-  };
-  const handleRemoveThumbnail = () => {
-    URL.revokeObjectURL(objectURL);
-    setObjectURL(null);
-    setFieldValue('imageOfRecipe', '');
-  };
-
   return (
     <div className={style.container}>
-      <div className={style.addImageGroup}>
-        <ImageUploadBlock
-          labelFor="imageOfRecipe" //must match FormikImageUploader
-          imageURL={objectURL}
-          removeHandler={handleRemoveThumbnail}
-        />
-
-        <input
-          type="file"
-          accept="image/*"
-          name="imageOfRecipe"
-          id="imageOfRecipe"
-          onChange={handleImageUpload}
-        />
-      </div>
+      <FormikImageUploader name="imageOfRecipe" setFieldValue={setFieldValue} />
 
       <div className={style.fieldsGroup}>
         <FormikTextInput name="drink" label="Drink title" />
