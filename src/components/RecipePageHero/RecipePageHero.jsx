@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import css from "./RecipePageHero.module.scss";
 import { PageTitle } from "../index.js";
-import placeholder from "/images/recipePrep.jpg";
+import placeholder from "/images/RecipePlaceholder.png";
 import { RecipeInngredientsList, RecipePreparation } from "../index.js";
 import { useDispatch, useSelector } from "react-redux";
 import { selectRecipe } from "../../redux/recipe/recipeSelector.js";
@@ -50,7 +50,7 @@ export const RecipePageHero = () => {
             </button>
           </div>
           {recipe.drinkThumb === "" ? (
-            <img src={placeholder} alt="" />
+            <img className={css.img} src={placeholder} alt="" />
           ) : (
             <img
               className={css.img}
