@@ -1,3 +1,19 @@
 header nav .active {
     background-color: rgba(22, 31, 55, 1);
 }
+
+.headerBurgerMenuIcon {
+    animation: rotate-center 0.3s reverse ease-in-out both;
+}
+
+@keyframes rotate-center {
+    0% {
+        -webkit-transform: rotate(0);
+        transform: rotate(0);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
