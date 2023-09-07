@@ -3,29 +3,21 @@ import { Route, Routes } from "react-router-dom";
 import Layout from "./components/Layout/Layout";
 import { RestrictedRoute } from "./components/Routes/RestrictedRoute";
 import { PrivatRoute } from "./components/Routes/PrivatRoute";
-import { useSelector } from "react-redux";
-import { selectIsRefresh } from "./redux/auth/authSelectors";
-const HomePage = lazy(() => import("./pages/Home"));
-const DrinksPage = lazy(() => import("./pages/Drinks"));
+import Home from "./pages/Home";
+import Drinks from "./pages/Drinks";
+import MyRecipes from "./pages/MyRecipes";
+import Recipe from "./pages/Recipe";
+import Favorites from "./pages/Favorites";
 const AddRecipePage = lazy(() => import("./pages/AddRecipe"));
-const MyRecipesPage = lazy(() => import("./pages/MyRecipes"));
-const FavoritesPage = lazy(() => import("./pages/Favorites"));
 const WelcomePage = lazy(() => import("./pages/AuthPages/Welcome"));
 const RegistrationPage = lazy(() => import("./pages/AuthPages/Registration"));
 const LoginPage = lazy(() => import("./pages/AuthPages/Login"));
-const RecipePage = lazy(() => import("./pages/Recipe"));
 const ErrorPage = lazy(() => import("./pages/404"));
 import { Toaster } from "react-hot-toast";
 import { toastOptions, containerStyle } from "./services/toastOptions";
-// import { Loading } from "notiflix/build/notiflix-loading-aio";
 import { Loader, Spiner } from "./components/Loader/Loader";
-
 export const UserRoutes = () => {
-  const isRefresh = useSelector(selectIsRefresh);
-
-  return isRefresh ? (
-    <Spiner />
-  ) : (
+  return (
     <>
       {/* <ThemeProvider theme={theme === 'dark' ? darkTheme : lightTheme}> */}
 
@@ -42,13 +34,13 @@ export const UserRoutes = () => {
             <Route
               index
               element={
-                <PrivatRoute redirectTo="/welcome" component={<HomePage />} />
+                <PrivatRoute redirectTo="/welcome" component={<Home />} />
               }
             />
             <Route
               path="drinks"
               element={
-                <PrivatRoute redirectTo="/welcome" component={<DrinksPage />} />
+                <PrivatRoute redirectTo="/welcome" component={<Drinks />} />
               }
             />
             <Route
@@ -63,27 +55,22 @@ export const UserRoutes = () => {
             <Route
               path="myrecipes"
               element={
-                <PrivatRoute
-                  redirectTo="/welcome"
-                  component={<MyRecipesPage />}
-                />
+                <PrivatRoute redirectTo="/welcome" component={<MyRecipes />} />
               }
             />
             <Route
               path="recipes/:id"
               element={
-                <PrivatRoute redirectTo="/welcome" component={<RecipePage />} />
+                <PrivatRoute redirectTo="/welcome" component={<Recipe />} />
               }
             />
             <Route
               path="favorites"
               element={
-                <PrivatRoute
-                  redirectTo="/welcome"
-                  component={<FavoritesPage />}
-                />
+                <PrivatRoute redirectTo="/welcome" component={<Favorites />} />
               }
             />
+            <Route path="*" element={<ErrorPage />} />
           </Route>
 
           <Route
@@ -107,7 +94,6 @@ export const UserRoutes = () => {
               <RestrictedRoute redirectTo="/" component={<LoginPage />} />
             }
           />
-          <Route path="*" element={<ErrorPage />} />
         </Routes>
       </Suspense>
       {/* </ThemeProvider> */}

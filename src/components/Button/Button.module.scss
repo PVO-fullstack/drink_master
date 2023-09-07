@@ -1,4 +1,4 @@
-@import '../../styles/variables';
+@import "../../styles/variables";
 
 .button {
   padding: 14px 40px;
@@ -125,9 +125,7 @@
 
 .otherDrinksBtn {
   margin-top: 60px;
-  margin-bottom: 80px;
   @media screen and (min-width: $tablet) {
     margin-top: 80px;
-    margin-bottom: 140px;
   }
 }

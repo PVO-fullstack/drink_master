@@ -18,18 +18,15 @@
   opacity: 0.8;
   border-radius: $field-radius;
   background-color: #161f37;
-  margin-top: 40px;
-
+  &::placeholder {
+    color: $accent;
+  }
   @media screen and (min-width: $tablet) {
     font-size: 17px;
     line-height: 1.56;
     padding-top: 14px;
     padding-bottom: 15px;
     width: 264px;
-    margin-top: 60px;
-  }
-  @media screen and (min-width: $desktop) {
-    margin-top: 60px;
   }
 }
 
@@ -38,6 +35,5 @@
   right: 24px;
   transform: translateY(-180%);
   @media screen and (max-width: 767px) {
-    display: none;
   }
 }

@@ -1,8 +1,8 @@
-import { useDispatch } from 'react-redux';
-import { UserRoutes } from './UserRoutes';
-import { useEffect } from 'react';
-import { refreshUser } from './redux/auth/authOperations';
-import { useState } from 'react';
+import { useDispatch } from "react-redux";
+import { UserRoutes } from "./UserRoutes";
+import { useEffect } from "react";
+import { refreshUser } from "./redux/auth/authOperations";
+import { useState } from "react";
 
 export const App = () => {
   const dispatch = useDispatch();

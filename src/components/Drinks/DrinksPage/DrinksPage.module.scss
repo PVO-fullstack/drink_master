@@ -1,0 +1,16 @@
+.filterContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 40px;
+  margin-top: 40px;
+  @media screen and (min-width: $tablet) {
+    flex-direction: row;
+    margin-top: 60px;
+    margin-bottom: 20px;
+    gap: 8px;
+  }
+  @media screen and (min-width: $desktop) {
+    margin-top: 80px;
+  }
+}

@@ -1,27 +1,13 @@
 @import "../../../styles/variables";
 
-.recipes_item {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-  // align-items: flex-start;
-
-  @media screen and (max-width: calc($tablet - 1px)) {
-    max-width: 335px;
-  }
-  @media screen and (min-width: $tablet) {
-    flex-basis: calc((100% - 20px) / 2);
-    gap: 24px;
-    height: 650px;
-    margin-bottom: 60px;
-  }
+.recipesItem {
+  margin-top: 20px;
   @media screen and (min-width: $desktop) {
-    flex-basis: calc((100% - 20px * 2) / 3);
-    height: 676px;
+    margin-bottom: 60px;
   }
 }
 
-.recipes_item__img_wrapper {
+.recipesItemImgWrapper {
   width: 335px;
   height: 360px;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
@@ -36,7 +22,7 @@
   }
 }
 
-.recipes_item__img {
+.recipesItemImg {
   border-radius: 8px;
   border: 1px solid #000;
   object-fit: cover;
@@ -53,43 +39,38 @@
   }
 }
 
-.recipes_item__info_wrapper {
+.recipesItemInfoWrapper {
   display: flex;
-  flex-direction: column;
-  gap: 18px;
   width: 100%;
-
-  @media screen and (min-width: $tablet) {
-    gap: 24px;
-  }
+  justify-content: space-between;
+  margin-top: 14px;
 }
 
-.recipes_item_title {
+.recipesItemTitle {
   color: $accent;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 18px;
-  line-height: calc(24 / 18);
+  font-size: 16px;
+  font-weight: $medium;
+  line-height: 1.13;
 
   @media screen and (min-width: $tablet) {
-    font-size: 24px;
-
-    line-height: calc(32 / 24);
+    font-size: 18px;
+    line-height: 1.33;
   }
 }
 
-.recipes_item__ingredients {
+.recipesItemIngredients {
   color: rgba(243, 243, 243, 0.5);
   font-size: 14px;
-  font-weight: 500;
-  line-height: calc(18 / 14);
+  font-weight: $medium;
+  line-height: 1.29;
 
   @media screen and (min-width: $tablet) {
-    line-height: calc(18 / 16);
+    font-size: 16px;
+    line-height: 1.13;
   }
 }
 
-.recipes_item__description {
+.recipesItemDescription {
   display: -webkit-box;
   -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
@@ -112,12 +93,12 @@
   }
 }
 
-.recipes_item__button_wrapper {
+.recipesItemButtonWrapper {
   display: flex;
   gap: 8px;
 }
 
-.nav_link {
+.navLink {
   @media screen and (max-width: calc($tablet - 1px)) {
     padding-top: 18px;
     padding-bottom: 17px;

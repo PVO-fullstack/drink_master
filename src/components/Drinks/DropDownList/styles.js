@@ -1,7 +1,7 @@
-// import sizes from '../../../constants/breakpoints';
+import sizes from "../../../constants/breakpoints";
 
-// const tablet = `@media screen and (min-width: ${sizes.tablet})`;
-// const desktop = `@media screen and (min-width: ${sizes.desktop})`;
+const tablet = `@media screen and (min-width: ${sizes.tablet})`;
+const desktop = `@media screen and (min-width: ${sizes.desktop})`;
 
 export const makeStyles = ({ style }) => ({
   //
@@ -11,13 +11,18 @@ export const makeStyles = ({ style }) => ({
     border: 0,
     borderRadius: 200,
     color: state.isFocused ? "#f3f3f3" : "rgba(243, 243, 243, 0.50)",
-    width: "100%",
+    fontSize: 14,
+    fontWeight: 400,
+    lineHeight: 1.29,
+    width: 335,
     marginTop: 0,
-    gap: 8,
-    minHeight: "auto",
-    verticalAlign: "text-top",
+    paddingTop: 10,
+    paddingBottom: 10,
+    paddingLeft: 18,
     cursor: "pointer",
     display: "flex",
+    [tablet]: { width: 199, fontSize: 17, lineHeight: 1.56 },
+
     ...style?.control,
   }),
 
@@ -33,9 +38,9 @@ export const makeStyles = ({ style }) => ({
 
   singleValue: (baseStyles) => ({
     ...baseStyles,
-    color: "currentColor",
+    color: "#F3F3F3",
     width: "100%",
-    // maxWidth: 300,
+
     ...style?.singleValue,
   }),
 
@@ -43,7 +48,7 @@ export const makeStyles = ({ style }) => ({
     ...baseStyles,
     color: "#f3f3f3",
     transform: state.selectProps.menuIsOpen ? "rotate(0.5turn)" : "unset",
-    // cursor: 'pointer',
+    marginLeft: -50,
     ...style?.dropdownIndicator,
   }),
 
@@ -51,9 +56,10 @@ export const makeStyles = ({ style }) => ({
     ...baseStyles,
     backgroundColor: "#161f37",
     marginTop: 4,
-    width: "100%", // 'max-content'
+    width: "100%",
     borderRadius: 20,
     padding: 8,
+
     ...style?.menu,
   }),
 
@@ -62,38 +68,42 @@ export const makeStyles = ({ style }) => ({
     overflowX: "hidden",
     display: "flex",
     flexDirection: "column",
-    gap: 8,
-    padding: 6,
-
+    backgroundColor: "transparent",
+    cursor: "pointer",
     ...style?.menuList,
   }),
 
   option: (baseStyles, state) => ({
     ...baseStyles,
     color: state.isFocused ? "#f3f3f3" : "rgba(243, 243, 243, 0.5)",
-    //   fontSize: variant === 'addrecipe' ? 14 : 17,
-    //   lineHeight: variant === 'addrecipe' ? '128%' : '156%',
-    lineHeight: "128%",
+    fontSize: 14,
+    fontWeight: 400,
+    lineHeight: 1.29,
+    cursor: "pointer",
     whiteSpace: "nowrap",
+    backgroundColor: "transparent",
     "&:hover": {
-      backgroundColor: "#161f37", // Замініть на свій бажаний колір
-      color: "#your-hover-text-color", // Замініть на колір тексту при наведенні
+      backgroundColor: "#161f37",
+      color: "#f3f3f3",
     },
+    ...(state.isSelected && {
+      backgroundColor: "#161f37",
+      color: "#f3f3f3",
+    }),
+    [tablet]: { fontSize: 17, lineHeight: 1.56 },
     ...style?.option,
   }),
 
   placeholder: (baseStyles) => ({
     ...baseStyles,
+    color: "#F3F3F3",
     whiteSpace: "nowrap",
     overflow: "hidden",
     textOverflow: "ellipsis",
   }),
-
-  // valueContainer: (baseStyles) => ({
-  //   ...baseStyles,
-  //   // backgroundColor: 'yellow',
-  //   // paddingLeft: variant === 'addrecipe' ? 12 : 0,
-  //   padding: 0,
-  //   marginTop: -4,
-  // }),
+  indicatorSeparator: (baseStyles) => ({
+    ...baseStyles,
+    display: "none",
+    ...style?.dropdownIndicator,
+  }),
 });

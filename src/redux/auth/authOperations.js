@@ -1,6 +1,6 @@
 import instance from "../../shared/api/instance";
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import Notiflix from "notiflix";
+import { Loading } from "notiflix/build/notiflix-loading-aio";
 
 const token = {
   set(token) {
@@ -15,13 +15,13 @@ export const registerUser = createAsyncThunk(
   "user/singup",
   async (credentials, thunkAPI) => {
     try {
-      Notiflix.Loading.pulse();
+      Loading.pulse();
       const user = await instance.post("/auth/signup", credentials);
       token.set(user.data.token);
-      Notiflix.Loading.remove();
+      // Notiflix.Loading.remove();
       return user.data;
     } catch (e) {
-      Notiflix.Loading.remove();
+      // Notiflix.Loading.remove();
       return thunkAPI.rejectWithValue(e.message);
     }
   }
@@ -31,13 +31,13 @@ export const logInUser = createAsyncThunk(
   "user/login",
   async (credentials, thunkAPI) => {
     try {
-      Notiflix.Loading.pulse();
+      // Notiflix.Loading.pulse();
       const user = await instance.post("/auth/signin", credentials);
       token.set(user.data.token);
-      Notiflix.Loading.remove();
+      // Notiflix.Loading.remove();
       return user.data;
     } catch (e) {
-      Notiflix.Loading.remove();
+      // Notiflix.Loading.remove();
       return thunkAPI.rejectWithValue(e.message);
     }
   }
@@ -56,12 +56,12 @@ export const refreshUser = createAsyncThunk(
     token.set(tokenSt);
 
     try {
-      Notiflix.Loading.pulse();
+      // Notiflix.Loading.pulse();
       const user = await instance.get("/auth/current");
-      Notiflix.Loading.remove();
+      // Notiflix.Loading.remove();
       return user.data;
     } catch (e) {
-      Notiflix.Loading.remove();
+      // Notiflix.Loading.remove();
       return thunkAPI.rejectWithValue(e.message);
     }
   }

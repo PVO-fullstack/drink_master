@@ -7,20 +7,17 @@ export const DrinksItem = ({ recipe }) => {
   const { drinkThumb, drink, _id } = recipe;
   return (
     <Link to={`/recipes/${_id}`}>
-      <li className={css.recipes_item}>
-        <div className={css.recipes_item__img_wrapper}>
+      <li className={css.recipesItem}>
+        <div className={css.recipesItemImgWrapper}>
           <img
-            className={css.recipes_item__img}
+            className={css.recipesItemImg}
             src={drinkThumb || imageholder}
             alt="Coctail"
           />
         </div>
-
-        <div className={css.recipes_item__info_wrapper}>
-          <div>
-            <h2 className={css.recipes_item_title}>{drink}</h2>
-            <p className={css.recipes_item__ingredients}>Ingredients</p>
-          </div>
+        <div className={css.recipesItemInfoWrapper}>
+          <h2 className={css.recipesItemTitle}>{drink}</h2>
+          <p className={css.recipesItemIngredients}>Ingredients</p>
         </div>
       </li>
     </Link>

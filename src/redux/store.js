@@ -19,7 +19,7 @@ import { sliceDrinks } from "./drinks/sliceDrinks";
 const persistConfig = {
   key: "auth",
   storage,
-  whitelist: ["token"],
+  whitelist: ["token", "isFirst"],
 };
 
 export const store = configureStore({
