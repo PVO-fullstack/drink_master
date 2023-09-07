@@ -1,51 +1,39 @@
-import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
-import { toast } from 'react-hot-toast';
+import { toast } from "react-hot-toast";
 
-import { Formik, Form } from 'formik';
-import { yupSchema } from './YupSchema';
+import { Formik, Form } from "formik";
+import { yupSchema } from "./YupSchema";
 
 import {
   RecipeDescriptionFields,
   RecipeIngredientsFields,
   RecipePreparationFields,
-} from '.';
+} from ".";
 
-import { Button } from '../Button/Button';
-import { addRecipe } from '../../redux/preparation/operations';
+import { Button } from "../Button/Button";
+import { addRecipe } from "../../redux/preparation/operations";
 
-import style from './AddRecipeForm.module.scss';
-import { useState } from 'react';
-import { Motivation } from '../Motivation/Motivation';
+import style from "./AddRecipeForm.module.scss";
+import { useState } from "react";
+import { Motivation } from "../Motivation/Motivation";
 
 // ###################################################
 
 export const AddRecipeForm = () => {
-  // const [showModal, setShowModal] = useState({
-  //     showModalFirstRecipe: false,
-  //     showModalTenthRecipe: false,
-  //   });
-
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  // const closeModal = () => {
-  //   setShowModal({
-  //     showModalFirstRecipe: false,
-  //     showModalTenthRecipe: false,
-  //   });
-  // };
-
   const convertTextAreaToArray = (string) => {
-    const normalizedString = string.replace(/\r\n/g, '\n');
-    return normalizedString.split('\n').filter((el) => el.trim());
+    const normalizedString = string.replace(/\r\n/g, "\n");
+    return normalizedString.split("\n").filter((el) => el.trim());
   };
 
   const handleSubmit = (values, formikBag) => {
     const { resetForm, setSubmitting } = formikBag;
 
-    if (typeof values.instructions === 'string') {
+    if (typeof values.instructions === "string") {
       values.instructions = convertTextAreaToArray(values.instructions);
     }
     // console.log('values:', JSON.stringify(values, null, 2));
@@ -57,10 +45,8 @@ export const AddRecipeForm = () => {
         if (error) throw new Error(payload);
 
         if (id) {
-          console.log(payload.showModalMyRecipes);
-          setShowModal(payload.showModalMyRecipes);
           toast.success(
-            'Recipe has has been successfully added. Redirecting...'
+            "Recipe has has been successfully added. Redirecting..."
           );
         }
 
@@ -112,15 +98,15 @@ export const AddRecipeForm = () => {
 // ####################################################
 
 const initialValues = {
-  drink: '',
-  description: '',
-  category: '',
-  glass: '',
+  drink: "",
+  description: "",
+  category: "",
+  glass: "",
   ingredients: [
-    { title: '', measure: '' },
-    { title: '', measure: '' },
-    { title: '', measure: '' },
+    { title: "", measure: "" },
+    { title: "", measure: "" },
+    { title: "", measure: "" },
   ],
-  instructions: '',
-  imageOfRecipe: '',
+  instructions: "",
+  imageOfRecipe: "",
 };
