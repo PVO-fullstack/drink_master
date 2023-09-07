@@ -1,6 +1,6 @@
-import PropTypes from 'prop-types';
-import clsx from 'clsx';
-import styles from './PageTitle.module.scss';
+import PropTypes from "prop-types";
+import clsx from "clsx";
+import styles from "./PageTitle.module.scss";
 
 // ###################################################
 
@@ -10,7 +10,7 @@ export const PageTitle = ({
   children,
   style = null,
   className = null,
-  margin = 'none',
+  margin = "none",
 }) => {
   return (
     <h1
@@ -23,8 +23,8 @@ export const PageTitle = ({
 };
 
 PageTitle.propTypes = {
-  children: PropTypes.string.isRequired,
-  margin: PropTypes.oneOf(['large', 'small', 'none']),
+  children: PropTypes.string,
+  margin: PropTypes.oneOf(["large", "small", "none"]),
   style: PropTypes.object,
   className: PropTypes.string,
 };

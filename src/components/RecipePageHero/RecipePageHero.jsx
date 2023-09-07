@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import css from "./RecipePageHero.module.scss";
 import { PageTitle } from "../index.js";
-import placeholder from "/images/RecipePlaceholder.png";
+// import placeholder from "/images/RecipePlaceholder.png";
 import { RecipeInngredientsList, RecipePreparation } from "../index.js";
 import { useDispatch, useSelector } from "react-redux";
 import { selectRecipe } from "../../redux/recipe/recipeSelector.js";
@@ -9,26 +9,31 @@ import {
   addToFavoriteThunk,
   fetchRecipIdThunk,
 } from "../../redux/recipe/recipeOperations.js";
+import { Motivation } from "../Motivation/Motivation";
 
 export const RecipePageHero = () => {
   const dispatch = useDispatch();
   const recipe = useSelector(selectRecipe);
 
   const [favorite, setFavorite] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   const currentURL = window.location.href;
   const parts = currentURL.split("/");
   const recipeId = parts[parts.length - 1];
 
   const handleAddToFavorite = () => {
-    dispatch(addToFavoriteThunk(recipeId));
+    dispatch(addToFavoriteThunk(recipeId)).then((result) => {
+      console.log(result.payload.showModalFavorite);
+      setShowModal(result.payload.showModalFavorite);
+    });
     setFavorite(!favorite);
   };
 
   useEffect(() => {
-    dispatch(fetchRecipIdThunk(recipeId)).then((result) =>
-      setFavorite(result.payload.isFavorite)
-    );
+    dispatch(fetchRecipIdThunk(recipeId)).then((result) => {
+      setFavorite(result.payload.isFavorite);
+    });
   }, [dispatch, recipeId]);
 
   return (
@@ -62,6 +67,8 @@ export const RecipePageHero = () => {
       </div>
       <RecipeInngredientsList ingredients={recipe.ingredients} />
       <RecipePreparation instructions={recipe.instructions} />
+      {(showModal.showModalFirstRecipe && <Motivation />) ||
+        (showModal.showModalTenthRecipe && <Motivation />)}
     </div>
   );
 };
