@@ -55,6 +55,7 @@ export const authSlice = createSlice({
         Loading.remove("Something went wrong");
       })
       .addCase(refreshUser.pending, (state) => {
+        state.isRefresh = true;
         if (state.isFirst) {
           Loading.pulse("Loading");
         }

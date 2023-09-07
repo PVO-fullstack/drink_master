@@ -12,12 +12,20 @@ const AddRecipePage = lazy(() => import("./pages/AddRecipe"));
 const WelcomePage = lazy(() => import("./pages/AuthPages/Welcome"));
 const RegistrationPage = lazy(() => import("./pages/AuthPages/Registration"));
 const LoginPage = lazy(() => import("./pages/AuthPages/Login"));
-const ErrorPage = lazy(() => import("./pages/404"));
+import ErrorPage from "./pages/404";
 import { Toaster } from "react-hot-toast";
 import { toastOptions, containerStyle } from "./services/toastOptions";
-import { Loader, Spiner } from "./components/Loader/Loader";
+import { Loader } from "./components/Loader/Loader";
+import { useSelector } from "react-redux";
+import { selectIsRefresh } from "./redux/auth/authSelectors";
+import { Error } from "./components/404/404Component";
+
 export const UserRoutes = () => {
-  return (
+  const isRefresh = useSelector(selectIsRefresh);
+
+  return isRefresh ? (
+    <div>Refresh...</div>
+  ) : (
     <>
       {/* <ThemeProvider theme={theme === 'dark' ? darkTheme : lightTheme}> */}
 
