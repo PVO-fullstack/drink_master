@@ -37,4 +37,14 @@ textarea {
     outline: none;
     border-color: $accent;
   }
+
+  &:required:invalid {
+    border-color: maroon;
+  }
+}
+.error {
+  color: $error;
+  // margin-top: 4px;
+  font-size: 12px;
+  line-height: calc(14 / 12);
 }

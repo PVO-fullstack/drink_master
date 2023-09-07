@@ -1,4 +1,4 @@
-@import '../../../styles/variables';
+@import '../../../../styles/variables';
 
 .thumbnail {
   height: 320px;
@@ -51,8 +51,6 @@
 }
 
 .image {
-  height: 320px;
-  width: 320px;
   object-fit: cover;
   object-position: center;
 }

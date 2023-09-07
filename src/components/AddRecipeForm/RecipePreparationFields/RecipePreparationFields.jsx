@@ -13,12 +13,23 @@ export const RecipePreparationFields = () => {
       <SectionTitle>Recipe Preparation</SectionTitle>
 
       <label htmlFor="instructions">
-        <Field
-          className={style.instructions}
-          name="instructions"
-          as="textarea"
-          placeholder="Enter the recipe"
-        />
+        <Field name="instructions">
+          {({ meta }) => {
+            console.log('meta: ', meta);
+            return (
+              <>
+                <textarea
+                  className={style.instructions}
+                  placeholder="Preparation directions"
+                />
+
+                {meta.touched && meta.error ? (
+                  <div className={style.error}>{meta.error}</div>
+                ) : null}
+              </>
+            );
+          }}
+        </Field>
       </label>
     </div>
   );

@@ -1,5 +1,5 @@
-import { createAsyncThunk } from '@reduxjs/toolkit';
-import * as api from '../../services/api';
+import { createAsyncThunk } from "@reduxjs/toolkit";
+import * as api from "../../services/api";
 
 // ####################################################
 
@@ -20,7 +20,7 @@ const ingredientsPayload = payloadCreator(api.fetchIngredients);
 
 // Operation
 export const fetchIngredients = createAsyncThunk(
-  'ingredients',
+  "ingredients",
   ingredientsPayload
 );
 
@@ -30,7 +30,7 @@ export const fetchIngredients = createAsyncThunk(
 const categoriesPayload = payloadCreator(api.fetchCategories);
 
 // Operation
-export const fetchCategories = createAsyncThunk('category', categoriesPayload);
+export const fetchCategories = createAsyncThunk("category", categoriesPayload);
 
 // ---------------* Glasses *----------------------------
 
@@ -38,7 +38,7 @@ export const fetchCategories = createAsyncThunk('category', categoriesPayload);
 const glassesPayload = payloadCreator(api.fetchGlasses);
 
 // Operation
-export const fetchGlasses = createAsyncThunk('glass', glassesPayload);
+export const fetchGlasses = createAsyncThunk("glass", glassesPayload);
 
 // -------------* Popular Recipes *-----------------------
 
@@ -47,14 +47,14 @@ const fetchPopularRecipesPayload = payloadCreator(api.fetchPopularRecipes);
 
 // Operation
 export const fetchPopularRecipes = createAsyncThunk(
-  'popular-recipes',
+  "popular-recipes",
   fetchPopularRecipesPayload
 );
 
 // --------------* AddRecipe *----------------------------
 
 export const addRecipe = createAsyncThunk(
-  'own',
+  "own",
   async (recipe, { rejectWithValue }) => {
     try {
       return await api.addRecipe(recipe);

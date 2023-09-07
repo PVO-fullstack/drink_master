@@ -20,11 +20,6 @@
     gap: 40px;
   }
 }
-// .addImageGroup {
-//   display: flex;
-//   flex-direction: column;
-//   gap: 40px;
-// }
 
 .fieldsGroup {
   display: flex;
@@ -76,4 +71,7 @@ input[type='file'] {
 
 .error {
   color: $error;
+  // margin-top: 4px;
+  font-size: 12px;
+  line-height: calc(14 / 12);
 }

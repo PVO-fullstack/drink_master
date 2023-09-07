@@ -19,7 +19,7 @@
   border: 1px solid $bg;
 
   &:hover,
-  &:focus {
+  &:focus-visible {
     color: $dark-blue;
     background-color: $accent;
   }
@@ -42,7 +42,7 @@
   border: 2px solid $bg;
 
   &:hover,
-  &:focus {
+  &:focus-visible {
     color: $accent;
 
     $bg: $dark-blue;
@@ -68,7 +68,7 @@
   border: 1px solid $accent-faded-20;
 
   &:hover,
-  &:focus {
+  &:focus-visible {
     $bg: $slate-blue;
     background-color: $bg;
     border-color: $bg;
@@ -87,7 +87,7 @@
   background-color: $slate-blue;
 
   &:hover,
-  &:focus {
+  &:focus-visible {
     color: $dark-blue;
 
     $bg: $accent;

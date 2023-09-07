@@ -7,10 +7,10 @@
   gap: 40px;
   width: 100%;
 
-  @media screen and (min-width: $tablet) {
-    gap: 40px;
-    width: $tablet;
-  }
+  // @media screen and (min-width: $tablet) {
+  //   gap: 40px;
+  //   width: $tablet;
+  // }
 
   @media screen and (min-width: $desktop) {
     width: 540px;

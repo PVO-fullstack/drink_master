@@ -34,4 +34,10 @@ body {
     overflow: hidden;
 }
 
+.blurred {
+    background-color: #1e2428;
+    backdrop-filter: blur(10px);
+    opacity: 0.9;
+}
+
 // url(/images/PNG/BffullGreen.png), url(/images/PNG/BffullBlue.png),
