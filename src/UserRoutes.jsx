@@ -84,6 +84,7 @@ export const UserRoutes = () => {
                 />
               }
             />
+            <Route path="*" element={<ErrorPage />} />
           </Route>
 
           <Route
@@ -107,7 +108,6 @@ export const UserRoutes = () => {
               <RestrictedRoute redirectTo="/" component={<LoginPage />} />
             }
           />
-          <Route path="*" element={<ErrorPage />} />
         </Routes>
       </Suspense>
       {/* </ThemeProvider> */}
