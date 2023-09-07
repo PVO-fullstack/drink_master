@@ -5,14 +5,20 @@ import { Suspense, useEffect, useRef, useState } from "react";
 
 import style from "./Layout.module.scss";
 import { Loader } from "../Loader/Loader";
+import { useSelector } from "react-redux";
+import { selectIsShowModals } from "../../redux/auth/authSelectors";
+import { Motivation } from "../Motivation/Motivation";
 
 const Layout = () => {
   const headerRef = useRef(null);
+  const showModalTimeUsing = useSelector(selectIsShowModals);
 
   const [headerHeight, setHeaderHeight] = useState(null);
+  const [showModal, setShowModal] = useState(false);
 
   // *****************
   useEffect(() => {
+    setShowModal(showModalTimeUsing);
     const header = headerRef.current;
     const { height } = header.getBoundingClientRect();
     setHeaderHeight(height);
@@ -25,11 +31,14 @@ const Layout = () => {
         header.style.backdropFilter = "none";
       }
     };
-  }, [headerHeight]);
+  }, [headerHeight, showModalTimeUsing]);
   // *****************
+
+  console.log("showModal", showModal);
 
   return (
     <div>
+      {showModal && <Motivation />}
       <Header headerRef={headerRef} />
       <div className={style.container}>
         {/* <Suspense fallback={<Loader />}> */}

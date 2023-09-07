@@ -13,6 +13,8 @@ const initialState = {
   isLoggedIn: false,
   isRefresh: false,
   isLoading: false,
+  isFirst: false,
+  showModalTimeUsing: false,
 };
 
 const userIn = (state, { payload }) => {
@@ -46,6 +48,7 @@ export const authSlice = createSlice({
       })
       .addCase(logInUser.fulfilled, (state, action) => {
         userIn(state, action);
+        state.showModalTimeUsing = action.payload.showModalTimeUsing;
         Loading.remove();
       })
       .addCase(logInUser.rejected, (state, action) => {
