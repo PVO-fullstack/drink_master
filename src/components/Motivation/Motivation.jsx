@@ -1,10 +1,10 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
-import { Button } from '..';
-import { RemoveIcon } from '../icons';
+import { Button } from "..";
+import { RemoveIcon } from "../icons";
 
-import clsx from 'clsx';
-import styles from './Motivation.module.scss';
+import clsx from "clsx";
+import styles from "./Motivation.module.scss";
 
 // ###################################################
 
@@ -12,9 +12,12 @@ export const Motivation = ({
   children,
   style = null,
   className = null,
-  bgPath = 'null',
+  bgPath = "null",
+  closeModal,
 }) => {
-  const handleClose = () => {};
+  const handleClose = () => {
+    closeModal();
+  };
 
   return (
     <div
@@ -42,4 +45,5 @@ Motivation.propTypes = {
   bgPath: PropTypes.string,
   style: PropTypes.object,
   className: PropTypes.string,
+  closeModal: PropTypes.func,
 };

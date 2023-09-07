@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import css from "./RecipePageHero.module.scss";
 import { PageTitle } from "../index.js";
-// import placeholder from "/images/RecipePlaceholder.png";
+import placeholder from "/images/RecipePlaceholder.png";
 import { RecipeInngredientsList, RecipePreparation } from "../index.js";
 import { useDispatch, useSelector } from "react-redux";
 import { selectRecipe } from "../../redux/recipe/recipeSelector.js";
@@ -9,14 +9,25 @@ import {
   addToFavoriteThunk,
   fetchRecipIdThunk,
 } from "../../redux/recipe/recipeOperations.js";
-import { Motivation } from "../Motivation/Motivation";
+import { FirstRecipe } from "../MotivationModals/FirstRecipe/FirstRecipe";
+import { TenRecipes } from "../MotivationModals/TenRecipes/TenRecipes";
 
 export const RecipePageHero = () => {
   const dispatch = useDispatch();
   const recipe = useSelector(selectRecipe);
 
   const [favorite, setFavorite] = useState(false);
-  const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState({
+    showModalFirstRecipe: false,
+    showModalTenthRecipe: false,
+  });
+
+  const closeModal = () => {
+    setShowModal({
+      showModalFirstRecipe: false,
+      showModalTenthRecipe: false,
+    });
+  };
 
   const currentURL = window.location.href;
   const parts = currentURL.split("/");
@@ -67,8 +78,8 @@ export const RecipePageHero = () => {
       </div>
       <RecipeInngredientsList ingredients={recipe.ingredients} />
       <RecipePreparation instructions={recipe.instructions} />
-      {(showModal.showModalFirstRecipe && <Motivation />) ||
-        (showModal.showModalTenthRecipe && <Motivation />)}
+      {showModal.showModalFirstRecipe && <FirstRecipe close={closeModal} />}
+      {showModal.showModalTenthRecipe && <TenRecipes close={closeModal} />}
     </div>
   );
 };
