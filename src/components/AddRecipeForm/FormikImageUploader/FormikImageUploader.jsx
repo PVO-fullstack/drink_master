@@ -15,7 +15,7 @@ export const FormikImageUploader = ({ name, setFieldValue }) => {
   const handleImageUpload = (event) => {
     const selectedFile = event.target.files[0];
 
-    if (selectedFile.size > 2000000) {
+    if (selectedFile.size > 10000000) {
       alert('File too large');
       throw new Error('File is too big');
     }

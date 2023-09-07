@@ -28,6 +28,6 @@ export const RecipePreparation = ({ instructions }) => {
   );
 };
 
-RecipePreparation.PropTypes = {
+RecipePreparation.propTypes = {
   instructions: PropTypes.array.isRequired,
 };

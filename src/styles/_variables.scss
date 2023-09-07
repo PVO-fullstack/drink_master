@@ -93,7 +93,7 @@ $transition-timing-function: ease-out;
 // HeroTitle
 :root {
   --line-height-hero-title: 1.19;
-  --width-hero-title: 279px;
+  --width-hero-title: 100%;
   --pudding-top-hero-title: 128px;
   @media screen and (min-width: $tablet) {
     --line-height-hero-title: 1.07;

@@ -73,19 +73,4 @@ const DropDownList = ({
   );
 };
 
-// const tablet = `@media screen and (min-width: ${sizes.tablet})`;
-// const desktop = `@media screen and (min-width: ${sizes.desktop})`;
-
-// const ingredientStyleOverride = {
-//   control: {
-//     padding: "16px 18px",
-//     [tablet]: { padding: "14px 24px" },
-//   },
-//   container: {
-//     minWidth: 101,
-//     [tablet]: { width: 316 },
-//     [desktop]: { width: 332 },
-//   },
-// };
-
 export default DropDownList;
