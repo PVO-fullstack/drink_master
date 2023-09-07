@@ -1,54 +1,51 @@
-.container {
-    margin-left: auto;
-    margin-right: auto;
+@import "../../../styles/variables";
 
-    width: 335px;
+.recipesList {
+  display: flex;
+  gap: 28px;
 
-    @media screen and (min-width: $tablet) {
-        width: 704px;
-    }
-
-    @media screen and (min-width: $desktop) {
-        width: 1240px;
-    }
-}
-
-.heading {
-    color: $accent;
-    font-size: $page-title;
+  @media screen and (max-width: ($tablet - 1px)) {
+    flex-direction: column;
     margin-bottom: 40px;
+  }
 
-    @media screen and (min-width: $tablet) {
-        margin-bottom: 60px;
-    }
+  @media screen and (min-width: $tablet) {
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
 
-    @media screen and (min-width: $desktop) {
-        margin-bottom: 62px;
-    }
+  @media screen and (min-width: $desktop) {
+    gap: 20px;
+  }
 }
 
-.recipes_list {
-    display: flex;
-    gap: 40px;
-
-    @media screen and (max-width: ($tablet - 1px)) {
-        flex-direction: column;
-        margin-bottom: 40px;
-    }
-
-    @media screen and (min-width: $tablet) {
-        gap: 20px;
-        flex-wrap: wrap;
-    }
-
-    @media screen and (min-width: $desktop) {
-        gap: 20px;
-    }
+.noResults {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.error {
-    color: $error;
-    font-size: 18px;
-    font-weight: 500;
-    line-height: calc(22 / 14);
+.noResaltsImg {
+  width: 375px;
+  height: 476px;
+  @media screen and (min-width: $tablet) {
+    width: 465px;
+    height: 500px;
+  }
+}
+
+.noResaltsText {
+  color: $accent;
+  font-size: 14px;
+  font-weight: $medium;
+  line-height: 1.29;
+  text-align: center;
+
+  @media screen and (min-width: $tablet) {
+    font-size: 16px;
+    line-height: 1.38;
+    width: 465px;
+  }
 }

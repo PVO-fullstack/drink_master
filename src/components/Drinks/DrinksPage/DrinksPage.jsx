@@ -13,17 +13,20 @@ const DrinksPage = () => {
   return (
     <div>
       <PageTitle children="Drinks" />
-      <SearchForm searchText={searchText} setSearchText={setSearchText} />
-      <DropDownList
-        placeholder={"All categories"}
-        selectedCategory={selectedCategory}
-        setSelectedCategory={setSelectedCategory}
-      />
-      <DropDownList
-        placeholder={"Ingredients"}
-        selectedIngredient={selectedIngredient}
-        setSelectedIngredient={setSelectedIngredient}
-      />
+      <div className={css.filterContainer}>
+        <SearchForm searchText={searchText} setSearchText={setSearchText} />
+        <DropDownList
+          placeholder={"All categories"}
+          selectedCategory={selectedCategory}
+          setSelectedCategory={setSelectedCategory}
+        />
+        <DropDownList
+          placeholder={"Ingredients"}
+          selectedIngredient={selectedIngredient}
+          setSelectedIngredient={setSelectedIngredient}
+        />
+      </div>
+
       <DrinksList
         type="recipes"
         searchText={searchText}

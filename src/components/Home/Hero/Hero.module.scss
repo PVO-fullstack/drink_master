@@ -1,20 +1,16 @@
 .container {
+  margin-top: 0;
   background-image: url(/heroImgPhone.png);
-  width: 375px;
-  padding-left: 20px;
   background-size: 273px 700px;
   background-repeat: no-repeat;
   background-position: top 34px right;
   @media screen and (min-width: $tablet) {
     background-image: url(/heroImgTablet.png);
-    width: 768px;
-    padding-left: 32px;
+
     background-size: 445px 1001px;
     background-position: top -84px right;
   }
   @media screen and (min-width: $desktop) {
-    width: 1440px;
-    padding-left: 100px;
     background-image: url(/heroImgDesktop.png);
     background-size: 710px 790px;
   }

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import css from "./DrinksLIst.module.scss";
 import { DrinksItem } from "../DrinksItem/DrinksItem";
@@ -60,25 +60,41 @@ const DrinksList = ({
 
   return (
     <>
-      <ul className={css.recipes_list}>
-        {recipes.map((recipe) => (
-          <DrinksItem
-            key={recipe._id}
-            recipe={recipe}
-            type={type}
-            page={currentPage}
-            limit={recipesPerPage}
-            totalPages={calculateTotalPages(totalRecipes, recipesPerPage)}
-            recipes={recipesLength}
+      {recipes.length === 0 ? (
+        <div className={css.noResults}>
+          <img
+            src="/noСontentImg.png"
+            alt="No Results"
+            className={css.noResaltsImg}
           />
-        ))}
-      </ul>
-      {calculateTotalPages(totalRecipes, recipesPerPage) > 1 && (
-        <Paginator
-          currentPage={currentPage}
-          totalPages={calculateTotalPages(totalRecipes, recipesPerPage)}
-          onPageChange={setCurrentPage}
-        />
+          <p className={css.noResaltsText}>
+            Sorry, but nothing was found for your query. Change the search
+            parameters.
+          </p>
+        </div>
+      ) : (
+        <>
+          <ul className={css.recipesList}>
+            {recipes.map((recipe) => (
+              <DrinksItem
+                key={recipe._id}
+                recipe={recipe}
+                type={type}
+                page={currentPage}
+                limit={recipesPerPage}
+                totalPages={calculateTotalPages(totalRecipes, recipesPerPage)}
+                recipes={recipesLength}
+              />
+            ))}
+          </ul>
+          {calculateTotalPages(totalRecipes, recipesPerPage) > 1 && (
+            <Paginator
+              currentPage={currentPage}
+              totalPages={calculateTotalPages(totalRecipes, recipesPerPage)}
+              onPageChange={setCurrentPage}
+            />
+          )}
+        </>
       )}
     </>
   );
