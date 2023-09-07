@@ -2,12 +2,12 @@ import PropTypes from 'prop-types';
 import { useField } from 'formik';
 import Select from 'react-select';
 
-import style from './SearchDropdown.module.scss';
+import style from './FakeDropdown.module.scss';
 import { makeStyles } from './styles';
 
 // ###################################################
 
-export const SearchDropdown = (props) => {
+export const FakeDropdown = (props) => {
   const {
     name,
     label,
@@ -19,55 +19,43 @@ export const SearchDropdown = (props) => {
   } = props;
   //
   const [field, meta, helpers] = useField(props);
+  console.log('meta: ', meta);
+  console.log('field: ', field);
 
   const { setValue, setTouched, setError } = helpers;
-
   const setFieldProps = (selectedOption) => {
     setValue(selectedOption.value);
-    !hasFakeField && setTouched(true);
+    // setTouched(true);
     setError(undefined);
   };
-
   const makeOptions = (arrayOfObjects) =>
-    arrayOfObjects.map(({ name = null, title = null }) => ({
-      value: name || title,
-      label: name || title,
-    }));
+    arrayOfObjects.map(({ name }) => ({ value: name, label: name }));
   const options = makeOptions(data);
-
   const fontSize = 14;
   const maxMenuHeight = n ? n * fontSize + n * 8 + fontSize * 2 : null;
   // fontSize + itemsBeforeScroll * gap * vertical padding
-
   const capitalizedName =
     props.name.charAt(0).toUpperCase() + props.name.slice(1);
-
   const styles = makeStyles(props, meta);
-
-  const value = options.find((option) => option.value === field.value) || '';
 
   return (
     <div className={style.wrapper}>
-      <div
-        className={hasFakeField ? style.fakeFieldWrapper : style.fieldWrapper}
-      >
+      <div className={style.fakeFieldWrapper}>
         <Select
-          name={props.name}
+          name={name}
           options={options}
           styles={styles}
           onChange={setFieldProps}
           unstyled
           maxMenuHeight={maxMenuHeight}
-          value={value}
-          {...props}
+          // {...field}
+          // {...meta}
+          // {...props}
         />
 
         {labelVisible && (
-          <label
-            htmlFor={label || name}
-            className={hasFakeField ? style.fakeFieldLabel : style.label}
-          >
-            {hasFakeField ? capitalizedName : label || name}
+          <label htmlFor={name} className={style.fakeFieldLabel}>
+            {capitalizedName}
           </label>
         )}
       </div>
@@ -81,7 +69,7 @@ export const SearchDropdown = (props) => {
   );
 };
 
-SearchDropdown.propTypes = {
+FakeDropdown.propTypes = {
   name: PropTypes.string,
   label: PropTypes.string,
   data: PropTypes.arrayOf(PropTypes.shape),
