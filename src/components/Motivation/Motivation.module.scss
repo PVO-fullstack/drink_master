@@ -3,15 +3,17 @@
 .container {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
   align-items: center;
-  // gap: 80px;
+  justify-content: center;
 
   color: $accent;
   padding: 40px;
 
-  width: 500px;
-  height: 500px;
+  @media screen and (min-width: $tablet) {
+    width: 500px;
+    height: 500px;
+    justify-content: flex-end;
+  }
 
   border-radius: 30px;
   // background: linear-gradient(
@@ -24,11 +26,40 @@
 
   background-size: cover;
   background-position: center;
+  width: 100vw;
+  height: 100vh;
+
+  @media screen and (min-width: $tablet) {
+    width: 500px;
+    height: 500px;
+    background-position: 0 -20vh;
+  }
+
+  // background-image: url('/images/modal/modal_bg1.jpg');
+  background-repeat: no-repeat;
+  overflow: hidden;
 }
 
 .blurred {
-  width: 268px;
-  height: 242px;
+  width: 90vw;
+  height: 80vw;
+  font-size: 26px;
+
+  padding: 28px 14px 14px;
+
+  @media screen and (min-width: $mobile) {
+    width: 299px;
+    height: 269px;
+    padding: 32px 19px 14px;
+
+    font-size: 28px;
+  }
+
+  @media screen and (min-width: $tablet) {
+    width: 268px;
+    height: 242px;
+    justify-content: flex-end;
+  }
 
   display: flex;
   flex-direction: column;
@@ -43,12 +74,9 @@
 
   color: #f3f3f3;
   text-align: center;
-  font-size: 28px;
   font-weight: 500;
-  line-height: 32px; /* 114.286% */
+  line-height: 114.286%;
   letter-spacing: -0.56px;
-
-  padding: 32px 19px 14px;
 }
 
 .closeButton {
