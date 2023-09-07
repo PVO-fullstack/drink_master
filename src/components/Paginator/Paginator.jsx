@@ -1,10 +1,10 @@
 import PropTypes from "prop-types";
 import css from "./Paginator.module.scss";
-import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
+// import { FiChevronLeft } from "react-icons/fi";
 import { useEffect } from "react";
+import { BiChevronsLeft, BiChevronsRight } from "react-icons/bi";
 
 export const Paginator = ({ currentPage, totalPages, onPageChange }) => {
-  const pagesToShow = [];
   const maxPagesToShow = 5;
 
   useEffect(() => {
@@ -14,12 +14,18 @@ export const Paginator = ({ currentPage, totalPages, onPageChange }) => {
     });
   }, [currentPage]);
 
-  for (let i = 1; i <= totalPages; i++) {
-    if (pagesToShow.length >= maxPagesToShow) {
-      break;
+  const generatePageNumbers = () => {
+    const pagesToShow = [];
+    for (let i = 1; i <= totalPages; i++) {
+      pagesToShow.push(i);
     }
-    pagesToShow.push(i);
-  }
+    return pagesToShow;
+  };
+
+  const pageNumbers = generatePageNumbers();
+  const startPage = Math.max(1, currentPage - Math.floor(maxPagesToShow / 2));
+  const endPage = Math.min(totalPages, startPage + maxPagesToShow - 1);
+  const visiblePageNumbers = pageNumbers.slice(startPage - 1, endPage);
 
   return (
     <div className={css.button__wrapper}>
@@ -27,13 +33,13 @@ export const Paginator = ({ currentPage, totalPages, onPageChange }) => {
         type="button"
         className={css.paginator_Btn}
         disabled={currentPage === 1}
-        onClick={() => onPageChange(currentPage - 1)}
+        onClick={() => onPageChange(1)}
       >
-        <FiChevronLeft className={css.svg_Btn} size={27} />
+        <BiChevronsLeft className={css.svg_Btn} size={27} />
       </button>
 
       <ul className={css.button_number__wrapper}>
-        {pagesToShow.map((page) => (
+        {visiblePageNumbers.map((page) => (
           <li key={page}>
             <button
               type="button"
@@ -46,26 +52,15 @@ export const Paginator = ({ currentPage, totalPages, onPageChange }) => {
             </button>
           </li>
         ))}
-        {currentPage > maxPagesToShow && (
-          <>
-            <span>...</span>
-            <button
-              type="button"
-              className={`${css.paginator_Btn} ${css.active}`}
-            >
-              {currentPage}
-            </button>
-          </>
-        )}
       </ul>
 
       <button
         type="button"
         disabled={currentPage === totalPages}
-        onClick={() => onPageChange(currentPage + 1)}
+        onClick={() => onPageChange(totalPages)}
         className={css.paginator_Btn}
       >
-        <FiChevronRight className={css.svg_Btn} size={27} />
+        <BiChevronsRight className={css.svg_Btn} size={27} />
       </button>
     </div>
   );
