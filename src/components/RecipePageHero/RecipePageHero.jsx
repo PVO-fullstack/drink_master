@@ -79,7 +79,7 @@ export const RecipePageHero = () => {
       <RecipeIngredientsList ingredients={recipe.ingredients} />
       <RecipePreparation instructions={recipe.instructions} />
       {showModal.showModalFirstRecipe && <FirstRecipe close={closeModal} />}
-      {!showModal.showModalTenthRecipe && <TenRecipes close={closeModal} />}
+      {showModal.showModalTenthRecipe && <TenRecipes close={closeModal} />}
     </div>
   );
 };
