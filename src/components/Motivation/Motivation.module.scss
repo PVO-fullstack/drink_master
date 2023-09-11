@@ -43,15 +43,13 @@
 .blurred {
   width: 90vw;
   height: 80vw;
-  font-size: 26px;
-
   padding: 28px 14px 14px;
+  font-size: 26px;
 
   @media screen and (min-width: $mobile) {
     width: 299px;
     height: 269px;
     padding: 32px 19px 14px;
-
     font-size: 28px;
   }
 
@@ -62,9 +60,8 @@
 
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  outline: auto;
-  // gap: 10px;
+  justify-content: flex-end;
+  gap: 20px;
 
   background-color: rgba(217, 217, 217, 0.14);
   backdrop-filter: blur(27.976364135742188px);
@@ -78,6 +75,13 @@
   font-weight: 500;
   line-height: 114.286%;
   letter-spacing: -0.56px;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-grow: 1;
 }
 
 .closeButton {

@@ -16,7 +16,7 @@ export const Motivation = ({ children, className = null, closeModal }) => {
   return (
     <div className={clsx(styles.container, className)}>
       <div className={styles.blurred}>
-        {children}
+        <div className={styles.content}>{children}</div>
         <div>
           <Button
             variant="icon"
