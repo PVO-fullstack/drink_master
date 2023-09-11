@@ -58,12 +58,13 @@
   @media screen and (min-width: $tablet) {
     width: 268px;
     height: 242px;
-    justify-content: flex-end;
   }
 
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  outline: auto;
+  // gap: 10px;
 
   background-color: rgba(217, 217, 217, 0.14);
   backdrop-filter: blur(27.976364135742188px);

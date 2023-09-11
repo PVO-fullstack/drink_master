@@ -1,6 +1,6 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { addToFavoriteThunk, fetchRecipIdThunk } from "./recipeOperations";
-import { Loading } from "notiflix/build/notiflix-loading-aio";
+import { createSlice } from '@reduxjs/toolkit';
+import { addToFavoriteThunk, fetchRecipeIdThunk } from './recipeOperations';
+import { Loading } from 'notiflix/build/notiflix-loading-aio';
 
 const initialState = {
   recipeId: {
@@ -14,30 +14,30 @@ const initialState = {
 };
 
 export const recipeSlice = createSlice({
-  name: "recipeById",
+  name: 'recipeById',
   initialState,
   reducers: {},
   extraReducers: (builder) =>
     builder
-      .addCase(fetchRecipIdThunk.pending, (state, { payload }) => {
-        Loading.pulse("Loading");
+      .addCase(fetchRecipeIdThunk.pending, (state, { payload }) => {
+        Loading.pulse('Loading');
       })
-      .addCase(fetchRecipIdThunk.fulfilled, (state, { payload }) => {
+      .addCase(fetchRecipeIdThunk.fulfilled, (state, { payload }) => {
         state.recipeId = payload;
         state.error = null;
         Loading.remove();
       })
-      .addCase(fetchRecipIdThunk.rejected, (state, { payload }) => {
-        Loading.remove("Something went wrong");
+      .addCase(fetchRecipeIdThunk.rejected, (state, { payload }) => {
+        Loading.remove('Something went wrong');
       })
       .addCase(addToFavoriteThunk.pending, (state, { payload }) => {
-        Loading.pulse("Loading");
+        Loading.pulse('Loading');
       })
       .addCase(addToFavoriteThunk.fulfilled, (state, { payload }) => {
         Loading.remove();
       })
       .addCase(addToFavoriteThunk.rejected, (state, { payload }) => {
-        Loading.remove("Something went wrong");
+        Loading.remove('Something went wrong');
       }),
 });
 

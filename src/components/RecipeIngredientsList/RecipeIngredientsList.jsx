@@ -1,15 +1,14 @@
-import React from "react";
-import PropTypes from "prop-types";
-import css from "./RecipeInngredientsList.module.scss";
+import PropTypes from 'prop-types';
+import css from './RecipeIngredientsList.module.scss';
 
-export const RecipeInngredientsList = ({ ingredients }) => {
+export const RecipeIngredientsList = ({ ingredients }) => {
   return (
-    <div className={css.ingr}>
-      <h3 className={css.indr_title}>Ingredients</h3>
-      <ul className={css.indr_list}>
+    <div className={css.ingredient}>
+      <h3 className={css.ingredient_title}>Ingredients</h3>
+      <ul className={css.ingredient_list}>
         {ingredients.map(({ title, measure, ingredientThumb }) => (
-          <li className={css.ingr_item} key={title}>
-            {ingredientThumb === "" ? (
+          <li className={css.ingredient_item} key={title}>
+            {ingredientThumb === '' ? (
               <svg
                 className={css.svg}
                 xmlns="http://www.w3.org/2000/svg"
@@ -33,8 +32,8 @@ export const RecipeInngredientsList = ({ ingredients }) => {
               <img className={css.img} src={ingredientThumb} alt="Coctail" />
             )}
 
-            <p className={css.ingr_name}>
-              {title} <span className={css.ingr_measure}>{measure}</span>
+            <p className={css.ingredient_name}>
+              {title} <span className={css.ingredient_measure}>{measure}</span>
             </p>
           </li>
         ))}
@@ -43,12 +42,12 @@ export const RecipeInngredientsList = ({ ingredients }) => {
   );
 };
 
-RecipeInngredientsList.propTypes = {
-  array: PropTypes.arrayOf(
+RecipeIngredientsList.propTypes = {
+  ingredients: PropTypes.arrayOf(
     PropTypes.exact({
       title: PropTypes.string.isRequired,
       measure: PropTypes.string.isRequired,
-      thumb_small: PropTypes.string.isRequired,
+      ingredientThumb: PropTypes.string.isRequired,
     })
   ),
 };

@@ -16,5 +16,5 @@ export { AddRecipeForm } from './AddRecipeForm/AddRecipeForm';
 export { RecipesItem } from './RecipesItem/RecipesItem';
 export { RecipesList } from './RecipesList/RecipesList';
 export { RecipePageHero } from './RecipePageHero/RecipePageHero';
-export { RecipeInngredientsList } from './RecipeInngredientsList/RecipeInngredientsList';
+export { RecipeIngredientsList } from './RecipeIngredientsList/RecipeIngredientsList';
 export { RecipePreparation } from './RecipePreparation/RecipePreparation';

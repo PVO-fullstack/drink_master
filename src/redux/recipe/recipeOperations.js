@@ -1,6 +1,6 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import instance from "../../shared/api/instance";
-import Notiflix from "notiflix";
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import instance from '../../shared/api/instance';
+import Notiflix from 'notiflix';
 
 export const fetchRecipeById = async (recipeId) => {
   // Notiflix.Loading.pulse();
@@ -9,7 +9,7 @@ export const fetchRecipeById = async (recipeId) => {
   return data;
 };
 
-export const fetchRecipIdThunk = createAsyncThunk(
+export const fetchRecipeIdThunk = createAsyncThunk(
   `recipes/fetchRecipeById`,
   async (recipeId, thunkAPI) => {
     try {

@@ -1,29 +1,20 @@
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
-import { Button } from "..";
-import { RemoveIcon } from "../icons";
+import { Button } from '..';
+import { RemoveIcon } from '../icons';
 
-import clsx from "clsx";
-import styles from "./Motivation.module.scss";
+import clsx from 'clsx';
+import styles from './Motivation.module.scss';
 
 // ###################################################
 
-export const Motivation = ({
-  children,
-  style = null,
-  className = null,
-  bgPath = "null",
-  closeModal,
-}) => {
+export const Motivation = ({ children, className = null, closeModal }) => {
   const handleClose = () => {
     closeModal();
   };
 
   return (
-    <div
-      className={clsx(styles.container, className)}
-      // style={{ container: { backgroundImage: `url(${bgPath})` } }}
-    >
+    <div className={clsx(styles.container, className)}>
       <div className={styles.blurred}>
         {children}
         <div>

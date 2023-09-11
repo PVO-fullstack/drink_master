@@ -1,8 +1,7 @@
-// import React from 'react'
-import { Modal } from "../../Modal/Modal";
-import { Motivation } from "../../Motivation/Motivation";
-import style from "./FirstRecipe.module.scss";
-import PropTypes from "prop-types";
+import { Modal } from '../../Modal/Modal';
+import { Motivation } from '../../Motivation/Motivation';
+import style from './FirstRecipe.module.scss';
+import PropTypes from 'prop-types';
 
 export const FirstRecipe = ({ close }) => {
   return (

@@ -1,121 +1,113 @@
-@import "../../styles/variables";
-
+@import '../../styles/variables';
 
 .page_recipe {
-    @media screen and (min-width: $desktop) {
-            margin-bottom: 100px;
-    }
+  @media screen and (min-width: $desktop) {
+    margin-bottom: 100px;
+  }
 }
 .recipe_title {
-        font-size: 32px;
-        font-weight: 600;
-        line-height: 1.19;
-        
-        color: $accent;
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1.19;
 
-    @media screen and (min-width: $tablet) {
-        margin: 0;
-        font-size: 56px;
-        line-height: 1.07;
-    }
+  color: $accent;
+
+  @media screen and (min-width: $tablet) {
+    margin: 0;
+    font-size: 56px;
+    line-height: 1.07;
+  }
 }
 
 .recipe_list {
-    margin-bottom: 40px;
+  margin-bottom: 40px;
 
-    @media screen and (min-width: $tablet) {
-        margin-bottom: 80px;
-    }
+  @media screen and (min-width: $tablet) {
+    margin-bottom: 80px;
+  }
 
-    @media screen and (min-width: $desktop) {
+  @media screen and (min-width: $desktop) {
     margin: 0;
     display: flex;
     justify-content: space-between;
-    } 
+  }
 }
-
 
 .glass {
-    margin-bottom: 8px;
-    font-size: 12px;
-    line-height: 1.17;
-    
-    color: $accent-faded-50;
+  margin-bottom: 8px;
+  font-size: 12px;
+  line-height: 1.17;
 
-    @media screen and (min-width: $tablet) {
-        font-size: 16px;
-        line-height: 1.25;
-        
-    }
+  color: $accent-faded-50;
 
+  @media screen and (min-width: $tablet) {
+    font-size: 16px;
+    line-height: 1.25;
+  }
 }
 
-.descrip {
-    margin-top: 20px;
-    width: 335px;
-    font-size: 14px;
-    line-height: 1.29;
-        
-    color: $accent;
+.description {
+  margin-top: 20px;
+  width: 335px;
+  font-size: 14px;
+  line-height: 1.29;
 
-    @media screen and (min-width: $tablet) {
-        margin-top: 28px;
-        width: 593px;
-        font-size: 16px;
-        line-height: 1.38;
-    }
+  color: $accent;
 
+  @media screen and (min-width: $tablet) {
+    margin-top: 28px;
+    width: 593px;
+    font-size: 16px;
+    line-height: 1.38;
+  }
 }
 
 .btn_add {
-    margin-top: 40px;
-    margin-bottom: 80px;
-    padding: 14px 40px;
-    
-    font-size: 14px;
-    font-weight: 600;
-    line-height: 1.29;
+  margin-top: 40px;
+  margin-bottom: 80px;
+  padding: 14px 40px;
 
-    color: $dark-blue;
-    background-color: $accent;
-    border: 0px;
-    border-radius: $button-radius;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.29;
 
-    &:hover,
-    &:focus {
-            color: $accent ;
-            background-color: $dark-blue;
-        }
+  color: $dark-blue;
+  background-color: $accent;
+  border: 0px;
+  border-radius: $button-radius;
 
-    &:active {
-        background-color: $dark-blue;
-    }
+  &:hover,
+  &:focus {
+    color: $accent;
+    background-color: $dark-blue;
+  }
 
-    &:disabled {
-        color: $accent-faded-20;
-        background-color: $slate-blue;
-    }
-    
-    @media screen and (min-width: $tablet) {
-        padding: 18px 44px;
-        font-size: 16px;
-        line-height: 1.13;
-    }
+  &:active {
+    background-color: $dark-blue;
+  }
 
+  &:disabled {
+    color: $accent-faded-20;
+    background-color: $slate-blue;
+  }
+
+  @media screen and (min-width: $tablet) {
+    padding: 18px 44px;
+    font-size: 16px;
+    line-height: 1.13;
+  }
 }
 
 .img {
-    width: 335px;
-    height: 400px;
-    object-fit: cover;
+  width: 335px;
+  height: 400px;
+  object-fit: cover;
 
-    @media screen and (min-width: $tablet) {
-        width: 704px;
-    }
+  @media screen and (min-width: $tablet) {
+    width: 704px;
+  }
 
-    @media screen and (min-width: $desktop) {
-        width: 400px;
-        
-    }
+  @media screen and (min-width: $desktop) {
+    width: 400px;
+  }
 }
-
