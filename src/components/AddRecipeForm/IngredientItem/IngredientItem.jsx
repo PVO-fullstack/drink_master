@@ -3,13 +3,14 @@ import { selectIngredients } from '../../../redux/preparation/selectors';
 
 import PropTypes from 'prop-types';
 
-import { SearchDropdown } from '../../SearchDropdown/SearchDropdown';
-import { RemoveIcon } from '../../icons';
+import { SearchDropdown } from 'components';
+import { RemoveIcon } from 'components/icons';
 
-import sizes from '../../../constants/breakpoints';
-import itemsBeforeScroll from '../../../constants/select';
+import sizes from 'src/constants/breakpoints';
+import itemsBeforeScroll from 'src/constants/select';
 
 import style from './IngredientItem.module.scss';
+import { FormikNumberInput } from '../FormikNumberInput/FormikNumberInput';
 
 // ###################################################
 
@@ -23,20 +24,46 @@ export const IngredientItem = ({ index, length, onRemove }) => {
 
   return (
     <div className={style.item}>
-      <div className={style.inputsWrapper}>
-        <div className={style.ingredientWrapper}>
+      <div className={style.inputs}>
+        <div className={style.ingredient}>
           <SearchDropdown
             name={`ingredients.${index}.title`}
             data={ingredients}
             style={ingredientStyleOverride}
-            placeholder="Ingredient"
+            placeholder="Name"
             itemsBeforeScroll={itemsBeforeScroll}
             labelVisible={false}
             errorStyles={{ marginLeft: '1.2rem' }}
           />
         </div>
 
-        <div className={style.measureWrapper}>
+        <div className={style.quantity}>
+          {/* <span className={style.stepUp}></span> */}
+
+          <FormikNumberInput
+            name={`ingredients.${index}.quantity`}
+            min={0}
+            step={0.5}
+            placeholder="Qty"
+            // className={style.formikNumber}
+          />
+
+          {/* <span className={style.stepDown}></span> */}
+        </div>
+
+        <div className={style.measure}>
+          <SearchDropdown
+            name={`ingredients.${index}.unit`}
+            data={units}
+            style={measureStyleOverride}
+            placeholder="Unit"
+            itemsBeforeScroll={itemsBeforeScroll}
+            labelVisible={false}
+            errorStyles={{ marginLeft: '1.2rem' }}
+          />
+        </div>
+
+        {/* <div className={style.measureWrapper}>
           <SearchDropdown
             name={`ingredients.${index}.measure`}
             data={measures}
@@ -46,7 +73,9 @@ export const IngredientItem = ({ index, length, onRemove }) => {
             labelVisible={false}
             errorStyles={{ marginLeft: '1.2rem' }}
           />
-        </div>
+        </div> */}
+
+        {/* <MeasureGroup name={`ingredients.${index}.measure`} data={measures} /> */}
       </div>
 
       {/* <div className={style.removeButtonCnt}> */}
@@ -72,15 +101,18 @@ IngredientItem.propTypes = {
 
 // *********************************************
 
-const makeMeasures = (length) => {
-  const array = [];
-  for (let index = 1; index < length; index++) {
-    array.push({ name: `${index} cl` }, { name: `${index} oz` });
-  }
-  return array;
-};
+// const makeMeasures = (length) => {
+//   const array = [];
+//   for (let index = 1; index < length; index++) {
+//     array.push({ name: `${index} cl` }, { name: `${index} oz` });
+//   }
+//   return array;
+// };
 
-const measures = makeMeasures(10);
+// const measures = makeMeasures(10);
+
+const unitNames = ['g', 'ml', 'oz', 'cl', 'tsp', 'cup', 'pinch', 'pc(s)'];
+const units = unitNames.map((string) => ({ name: string }));
 
 // *********************************************
 

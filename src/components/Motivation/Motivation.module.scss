@@ -9,7 +9,7 @@
   color: $accent;
   padding: 40px;
 
-  @media screen and (min-width: $tablet) {
+  @media screen and (min-width: 500px) {
     width: 500px;
     height: 500px;
     justify-content: flex-end;

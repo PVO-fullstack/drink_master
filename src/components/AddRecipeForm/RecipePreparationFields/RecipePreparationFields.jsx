@@ -1,6 +1,3 @@
-// eslint-disable-next-line no-unused-vars
-import React from 'react';
-import { Field } from 'formik';
 import { SectionTitle } from '../../Typography/SectionTitle/SectionTitle';
 
 import style from './RecipePreparationFields.module.scss';
@@ -16,6 +13,7 @@ export const RecipePreparationFields = () => {
       <FormikTextArea
         name="instructions"
         placeholder="Preparation directions"
+        rows={7}
       />
     </div>
   );

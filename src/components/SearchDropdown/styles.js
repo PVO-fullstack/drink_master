@@ -10,10 +10,15 @@ export const makeStyles = ({ style }, { touched, error }) => ({
     ...baseStyles,
     backgroundColor: 'transparent',
     border: '1px solid',
-    // borderColor: touched && error ? 'firebrick' : 'rgba(243, 243, 243, 0.50)',
-    borderColor: 'rgba(243, 243, 243, 0.50)',
+    borderColor:
+      touched && error
+        ? 'rgba(178, 34, 34, 0.40)'
+        : state.isFocused
+        ? '#f3f3f3'
+        : 'rgba(243, 243, 243, 0.50)',
+    // borderColor: state.isFocused ? '#f3f3f3' : 'rgba(243, 243, 243, 0.50)',
     borderRadius: 200,
-    color: state.isFocused ? '#f3f3f3' : 'rgba(243, 243, 243, 0.50)',
+    color: 'rgba(243, 243, 243, 0.50)',
     width: '100%',
     marginTop: 0,
     gap: 8,
@@ -43,7 +48,7 @@ export const makeStyles = ({ style }, { touched, error }) => ({
 
   dropdownIndicator: (baseStyles, state) => ({
     ...baseStyles,
-    color: '#f3f3f3',
+    color: touched && error ? 'rgba(178, 34, 34, 0.80)' : '#f3f3f3',
     transition: 'transform 200ms ease-out',
     transform: state.selectProps.menuIsOpen ? 'rotate(0.5turn)' : 'unset',
     cursor: 'pointer',

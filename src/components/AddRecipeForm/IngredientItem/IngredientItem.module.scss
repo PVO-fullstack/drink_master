@@ -8,9 +8,15 @@
 
   transition: color $transition-duration $transition-timing-function,
     border-color $transition-duration $transition-timing-function;
+
+  width: 100%;
+
+  @media screen and (min-width: $desktop) {
+    width: 540px;
+  }
 }
 
-.inputsWrapper {
+.inputs {
   display: flex;
   // align-items: center;
   gap: 14px;
@@ -23,12 +29,15 @@
   }
 }
 
-.ingredientWrapper {
+.ingredient {
   // width: 100%;
   flex-grow: 1;
 }
 
-.measureWrapper {
+.quantity {
+}
+
+.measure {
   @media screen and (max-width: $mobile) {
     max-width: 101px;
   }
@@ -46,8 +55,9 @@
   background-color: transparent;
   border: none;
   color: $accent;
-  // background-color: red;
   transform: translateY(0.2rem);
+  align-self: stretch;
+  transition: color 100ms linear;
 
   &:disabled {
     color: rgba($accent, 0.3);
@@ -55,7 +65,7 @@
 
   &:hover,
   &:focus-visible {
-    color: gray;
+    color: rgba($accent, 0.7);
   }
 
   &:active {

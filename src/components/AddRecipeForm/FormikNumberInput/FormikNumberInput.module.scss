@@ -1,0 +1,62 @@
+@import '../../../styles/variables';
+
+.fieldWrapper {
+  position: relative;
+}
+
+.field {
+  width: 150px;
+  color: currentColor;
+  background-color: transparent;
+  border: 1px solid;
+  border-color: rgba($accent, 0.5);
+  border-radius: 200px;
+
+  padding: 14px 24px;
+  padding-right: 14px;
+  min-height: 'auto';
+
+  line-height: 100%;
+  font-size: inherit;
+  font-family: inherit;
+
+  transition: color $transition-duration $transition-timing-function,
+    border $transition-duration $transition-timing-function;
+
+  &::placeholder {
+    color: #f3f3f3;
+    font-size: $input-placeholder;
+    font-weight: $regular;
+    letter-spacing: -0.32px;
+  }
+
+  &:focus-visible {
+    outline: none;
+    border-color: $accent;
+
+    &::placeholder {
+      color: $accent;
+    }
+  }
+
+  // &:placeholder-shown {
+  //   color: green;
+  // }
+
+  // &:required:invalid {
+  //   border-color: maroon;
+  // }
+
+  &.fieldError {
+    border-color: rgba(firebrick, 0.4);
+  }
+}
+
+.error {
+  margin-left: 1.2rem;
+
+  color: $error;
+  margin-top: 4px;
+  font-size: 12px;
+  line-height: calc(14 / 12);
+}

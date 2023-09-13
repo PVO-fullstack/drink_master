@@ -34,7 +34,17 @@ export const AddRecipeForm = () => {
     if (typeof values.instructions === 'string') {
       values.instructions = convertTextAreaToArray(values.instructions);
     }
+
+    values.ingredients = values.ingredients.map(
+      ({ title, quantity, unit }) => ({
+        title,
+        measure: `${quantity} ${unit}`,
+      })
+    );
+
     // console.log('values:', JSON.stringify(values, null, 2));
+    // resetForm();
+    // setSubmitting(false);
 
     dispatch(addRecipe(values))
       .then((data) => {
@@ -99,11 +109,7 @@ const initialValues = {
   description: '',
   category: '',
   glass: '',
-  ingredients: [
-    { title: '', measure: '' },
-    { title: '', measure: '' },
-    { title: '', measure: '' },
-  ],
+  ingredients: [{ title: '', quantity: '', unit: '' }],
   instructions: '',
   imageOfRecipe: '',
 };
