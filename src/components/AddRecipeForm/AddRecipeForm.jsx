@@ -80,6 +80,7 @@ export const AddRecipeForm = () => {
   return (
     <>
       <Formik
+        validateOnBlur={false}
         initialValues={initialValues}
         onSubmit={handleSubmit}
         validationSchema={yupSchema}

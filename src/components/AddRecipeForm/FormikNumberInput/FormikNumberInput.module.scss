@@ -12,29 +12,32 @@
 
   padding: 14px 24px;
   padding-right: 14px;
-  min-height: 'auto';
 
   line-height: 100%;
   font-size: inherit;
   font-family: inherit;
 
   transition: color $transition-duration $transition-timing-function,
-    border $transition-duration $transition-timing-function;
+    border-color $transition-duration $transition-timing-function;
 
   &::placeholder {
-    color: #f3f3f3;
+    color: rgba($accent, 0.5);
     font-size: $input-placeholder;
     font-weight: $regular;
     letter-spacing: -0.32px;
+  }
+
+  &::-moz-placeholder {
+    color: $accent;
   }
 
   &:focus-visible {
     outline: none;
     border-color: $accent;
 
-    &::placeholder {
-      color: $accent;
-    }
+    // &::placeholder {
+    //   color: $accent;
+    // }
   }
 
   // &:placeholder-shown {
