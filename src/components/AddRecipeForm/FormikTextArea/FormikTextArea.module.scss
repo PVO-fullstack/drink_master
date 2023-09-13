@@ -47,6 +47,10 @@
     letter-spacing: -0.32px;
   }
 
+  &::-moz-placeholder {
+    color: $accent;
+  }
+
   &:focus {
     outline: none;
     border-color: $accent;
