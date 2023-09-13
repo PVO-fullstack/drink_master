@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import { useField } from 'formik';
 
 import style from './FormikTextInput.module.scss';
+import clsx from 'clsx';
 
 // ###################################################
 
@@ -12,8 +13,12 @@ export const FormikTextInput = ({ label, ...props }) => {
   return (
     <div className={style.fieldWrapper}>
       <input
-        className={style.field}
         placeholder={label}
+        // className={style.field}
+        className={clsx(
+          style.field,
+          meta.touched && meta.error && style.fieldError
+        )}
         {...field}
         {...props}
       />

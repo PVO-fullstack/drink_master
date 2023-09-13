@@ -1,24 +1,19 @@
 import PropTypes from 'prop-types';
 import { useField } from 'formik';
 
-import style from './FormikTextArea.module.scss';
+import style from './FormikNumberInput.module.scss';
 import clsx from 'clsx';
 
 // ###################################################
 
-export const FormikTextArea = ({ name, label, ...props }) => {
+export const FormikNumberInput = ({ label, ...props }) => {
   //
-  const [field, meta] = useField(name);
-
-  // const capitalizedName =
-  //   props.name.charAt(0).toUpperCase() + props.name.slice(1);
+  const [field, meta] = useField(props);
 
   return (
     <div className={style.fieldWrapper}>
-      <textarea
-        name={name}
-        id={name}
-        // className={style.instructions}
+      <input
+        type="number"
         className={clsx(
           style.field,
           meta.touched && meta.error && style.fieldError
@@ -40,9 +35,8 @@ export const FormikTextArea = ({ name, label, ...props }) => {
   );
 };
 
-FormikTextArea.propTypes = {
-  name: PropTypes.string.isRequired,
+FormikNumberInput.propTypes = {
   label: PropTypes.string,
-  placeholder: PropTypes.string,
+  name: PropTypes.string.isRequired,
   id: PropTypes.string,
 };

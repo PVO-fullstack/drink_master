@@ -3,13 +3,14 @@ import { selectIngredients } from '../../../redux/preparation/selectors';
 
 import PropTypes from 'prop-types';
 
-import { SearchDropdown } from '../../SearchDropdown/SearchDropdown';
-import { RemoveIcon } from '../../icons';
+import { SearchDropdown } from 'components';
+import { RemoveIcon } from 'components/icons';
 
-import sizes from '../../../constants/breakpoints';
-import itemsBeforeScroll from '../../../constants/select';
+import sizes from 'src/constants/breakpoints';
+import itemsBeforeScroll from 'src/constants/select';
 
 import style from './IngredientItem.module.scss';
+import { FormikNumberInput } from '../FormikNumberInput/FormikNumberInput';
 
 // ###################################################
 
@@ -23,33 +24,46 @@ export const IngredientItem = ({ index, length, onRemove }) => {
 
   return (
     <div className={style.item}>
-      <div className={style.inputsWrapper}>
-        <div className={style.ingredientWrapper}>
+      <div className={style.inputs}>
+        <div className={style.title}>
           <SearchDropdown
             name={`ingredients.${index}.title`}
             data={ingredients}
             style={ingredientStyleOverride}
-            placeholder="Ingredient"
+            placeholder="Name"
             itemsBeforeScroll={itemsBeforeScroll}
             labelVisible={false}
             errorStyles={{ marginLeft: '1.2rem' }}
           />
         </div>
 
-        <div className={style.measureWrapper}>
+        <div className={style.quantity}>
+          {/* <span className={style.stepUp}></span> */}
+
+          <FormikNumberInput
+            name={`ingredients.${index}.quantity`}
+            min={0}
+            step={0.5}
+            placeholder="Qty"
+          />
+
+          {/* <span className={style.stepDown}></span> */}
+        </div>
+
+        <div className={style.unit}>
           <SearchDropdown
-            name={`ingredients.${index}.measure`}
-            data={measures}
+            name={`ingredients.${index}.unit`}
+            data={units}
             style={measureStyleOverride}
             placeholder="Unit"
             itemsBeforeScroll={itemsBeforeScroll}
             labelVisible={false}
             errorStyles={{ marginLeft: '1.2rem' }}
+            isSearchable={false}
           />
         </div>
       </div>
 
-      {/* <div className={style.removeButtonCnt}> */}
       <button
         className={style.removeButton}
         type="button"
@@ -59,7 +73,6 @@ export const IngredientItem = ({ index, length, onRemove }) => {
       >
         <RemoveIcon width={20} height={20} />
       </button>
-      {/* </div> */}
     </div>
   );
 };
@@ -72,20 +85,16 @@ IngredientItem.propTypes = {
 
 // *********************************************
 
-const makeMeasures = (length) => {
-  const array = [];
-  for (let index = 1; index < length; index++) {
-    array.push({ name: `${index} cl` }, { name: `${index} oz` });
-  }
-  return array;
-};
-
-const measures = makeMeasures(10);
+const unitNames = ['g', 'ml', 'oz', 'cl', 'tsp', 'cup', 'pinch', 'pc(s)'];
+const units = unitNames.map((string) => ({ name: string }));
 
 // *********************************************
 
+// eslint-disable-next-line no-unused-vars
 const mobile = `@media screen and (min-width: ${sizes.mobile})`;
+// eslint-disable-next-line no-unused-vars
 const tablet = `@media screen and (min-width: ${sizes.tablet})`;
+// eslint-disable-next-line no-unused-vars
 const desktop = `@media screen and (min-width: ${sizes.desktop})`;
 
 const ingredientStyleOverride = {
@@ -95,23 +104,26 @@ const ingredientStyleOverride = {
   },
   container: {
     minWidth: 100,
-    [tablet]: { width: 316 },
-    [desktop]: { width: 332 },
+    // [tablet]: { width: 316 },
+    // [desktop]: { width: 332 },
     justifyContent: 'flex-end',
   },
 
-  menu: { maxWidth: '70%' },
+  menu: { maxWidth: '80%' },
 };
 
 const measureStyleOverride = {
   control: {
     padding: '16px 18px',
-    [mobile]: { maxWidth: 101 },
-    [tablet]: { padding: '14px 24px', minWidth: 150 },
+    // [mobile]: { maxWidth: 101 },
+    [tablet]: {
+      padding: '14px 24px',
+      // minWidth: 150
+    },
   },
   container: {
-    minWidth: 101,
-    [tablet]: { width: 150 },
+    minWidth: 60,
+    // [tablet]: { width: 150 },
   },
   menu: { maxWidth: 100, borderRadius: 15 },
 };

@@ -1,4 +1,4 @@
-@import '../../../styles/variables';
+@import 'src/styles/variables';
 
 .item {
   display: flex;
@@ -8,30 +8,39 @@
 
   transition: color $transition-duration $transition-timing-function,
     border-color $transition-duration $transition-timing-function;
-}
-
-.inputsWrapper {
-  display: flex;
-  // align-items: center;
-  gap: 14px;
 
   width: 100%;
-  // background-color: blueviolet;
+}
 
-  @media screen and (min-width: $mobile) and (max-width: ($desktop - 1)) {
-    max-width: 496px;
+.inputs {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+
+  @media screen and (max-width: calc($tablet - 1px)) {
+    flex-wrap: wrap;
+    row-gap: 10px;
   }
 }
 
-.ingredientWrapper {
-  // width: 100%;
-  flex-grow: 1;
+.title {
+  @media screen and (max-width: calc($tablet - 1px)) {
+    width: 90%;
+  }
+
+  @media screen and (min-width: $tablet) {
+    min-width: 18em;
+  }
 }
 
-.measureWrapper {
-  @media screen and (max-width: $mobile) {
-    max-width: 101px;
+.quantity,
+.unit {
+  @media screen and (max-width: calc($tablet - 1px)) {
+    width: calc(45% - 7px);
   }
+
+  width: 8em;
 }
 
 // .label {
@@ -46,16 +55,16 @@
   background-color: transparent;
   border: none;
   color: $accent;
-  // background-color: red;
-  transform: translateY(0.2rem);
-
-  &:disabled {
-    color: rgba($accent, 0.3);
-  }
+  transform: translateY(25%);
+  transition: color 100ms linear;
 
   &:hover,
   &:focus-visible {
-    color: gray;
+    color: rgba($accent, 0.7);
+  }
+
+  &:disabled {
+    color: rgba($accent, 0.3);
   }
 
   &:active {

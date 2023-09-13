@@ -1,4 +1,4 @@
-@import '../../../styles/variables';
+@import 'src/styles/variables';
 
 .container {
   display: flex;
@@ -7,13 +7,8 @@
   gap: 40px;
   width: 100%;
 
-  // @media screen and (min-width: $tablet) {
-  //   gap: 40px;
-  //   width: $tablet;
-  // }
-
   @media screen and (min-width: $desktop) {
-    width: 540px;
+    width: 640px;
   }
 }
 
@@ -26,5 +21,10 @@
 .ingredientsWrapper {
   display: flex;
   flex-direction: column;
+
+  @media screen and (max-width: calc($tablet - 1px)) {
+    gap: 2rem;
+  }
+
   gap: 18px;
 }

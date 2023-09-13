@@ -1,12 +1,12 @@
-import { Header } from "../Header/Header";
-import { Footer } from "../Footer/Footer";
-import { Outlet } from "react-router";
-import { useEffect, useRef, useState } from "react";
+import { Header } from '../Header/Header';
+import { Footer } from '../Footer/Footer';
+import { Outlet } from 'react-router';
+import { useEffect, useRef, useState } from 'react';
 
-import style from "./Layout.module.scss";
-import { useSelector } from "react-redux";
-import { selectIsShowModals } from "../../redux/auth/authSelectors";
-import { HundredDaysModal } from "../MotivationModals/100days/HundredDaysModal";
+import style from './Layout.module.scss';
+import { useSelector } from 'react-redux';
+import { selectIsShowModals } from '../../redux/auth/authSelectors';
+import { HundredDaysModal } from '../MotivationModals/100days/HundredDaysModal';
 
 const Layout = () => {
   const headerRef = useRef(null);
@@ -23,11 +23,11 @@ const Layout = () => {
     setHeaderHeight(height);
     window.onscroll = () => {
       if (window.scrollY > headerHeight) {
-        header.style.backgroundColor = "rgb(1, 1, 24, 0.50)";
-        header.style.backdropFilter = "blur(10px)";
+        header.style.backgroundColor = 'rgb(1, 1, 24, 0.50)';
+        header.style.backdropFilter = 'blur(10px)';
       } else {
-        header.style.backgroundColor = "transparent";
-        header.style.backdropFilter = "none";
+        header.style.backgroundColor = 'transparent';
+        header.style.backdropFilter = 'none';
       }
     };
   }, [headerHeight, showModalTimeUsing]);
@@ -35,7 +35,7 @@ const Layout = () => {
 
   return (
     <div>
-      {showModal && <HundredDaysModal />}
+      {/* {showModal && <HundredDaysModal />} */}
       <Header headerRef={headerRef} />
       <div className={style.container}>
         {/* <Suspense fallback={<Loader />}> */}

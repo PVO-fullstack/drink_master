@@ -1,125 +1,122 @@
-@import "../../styles/variables";
+@import 'src/styles/variables';
 
 .preparation {
-    @media screen and (min-width: $desktop) {
-        margin-top: 100px;
-    }
+  @media screen and (min-width: $desktop) {
+    margin-top: 100px;
+  }
 }
 .prep {
-    @media screen and (min-width: $desktop) {
-        display: flex;
-        flex-direction: row-reverse;
-        justify-content: space-between;
-        gap: 60px;
-    }
+  @media screen and (min-width: $desktop) {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    gap: 60px;
+  }
 }
 .prep_title {
-        margin-bottom: 40px;
-        font-size: 28px;
-        font-weight: 600;
-        line-height: 1.14;
+  margin-bottom: 40px;
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1.14;
 
-        color: $accent;
-  
-    @media screen and (min-width: $tablet) {
-        font-size: 40px;
-        line-height: 1.1;
-    }
-    
-    @media screen and (min-width: $desktop) {
-        margin-bottom: 60px;
-    }
+  color: $accent;
+
+  @media screen and (min-width: $tablet) {
+    font-size: 40px;
+    line-height: 1.1;
+  }
+
+  @media screen and (min-width: $desktop) {
+    margin-bottom: 60px;
+  }
 }
 .prep_img {
-        object-fit: cover;
-        width: 335px;
-        height: 430px;
+  object-fit: cover;
+  width: 335px;
+  height: 430px;
 
-        border-radius: 8px;
+  border-radius: 8px;
 
-    @media screen and (min-width: $tablet) {
-        width: 704px;
-    }
-    
-    @media screen and (min-width: $desktop) {
-        width: 631px;
-    }
+  @media screen and (min-width: $tablet) {
+    width: 704px;
+  }
+
+  @media screen and (min-width: $desktop) {
+    width: 631px;
+  }
 }
 .prep_list {
-        width: 335px;
-        margin-bottom: 40px;
- 
-@media screen and (min-width: $tablet) {
-        width: 549px;
-}
-    
-@media screen and (min-width: $desktop) {
-        padding-left: 30px;
-        width: 549px;
-        margin-left: auto;
-}
+  width: 335px;
+  margin-bottom: 40px;
+
+  @media screen and (min-width: $tablet) {
+    width: 549px;
+  }
+
+  @media screen and (min-width: $desktop) {
+    padding-left: 30px;
+    width: 549px;
+    margin-left: auto;
+  }
 }
 .prep_item {
-        display: flex;
-        margin-bottom: 14px;
-        padding-bottom: 14px;
-        align-items: flex-start;
-        
-        font-size: 14px;
-        line-height: 1.29;
-    
-        border-bottom: 1px solid $accent-faded-20;
+  display: flex;
+  margin-bottom: 14px;
+  padding-bottom: 14px;
+  align-items: flex-start;
 
-        color: $accent;
-    
-@media screen and (min-width: $desktop) {
-        font-size: 16px;
-        line-height: 1.38;
+  font-size: 14px;
+  line-height: 1.29;
 
-}
+  border-bottom: 1px solid $accent-faded-20;
 
+  color: $accent;
+
+  @media screen and (min-width: $desktop) {
+    font-size: 16px;
+    line-height: 1.38;
+  }
 }
 .prep_item_inst {
-        margin-bottom: 40px;
-        color: $accent;
-        font-size: 16px;
-        line-height: 1.38;
-      
-    @media screen and (min-width: $desktop) {
-        margin: 0;
-    }
+  margin-bottom: 40px;
+  color: $accent;
+  font-size: 16px;
+  line-height: 1.38;
+
+  @media screen and (min-width: $desktop) {
+    margin: 0;
+  }
 }
 
-
 .prep_item_marker {
-    margin-bottom: 10px;
-    line-height: 1.5;
-
+  margin-bottom: 10px;
+  line-height: 1.5;
 }
 
 .prep_text {
-    color: $accent;
+  color: $accent;
 }
 
 .marker {
-        width: 4px;
-        height: 4px;
-        margin-top: 8px;
-        margin-right: 5px;
-        margin-left: 5px;
-        border-radius: 50%;
-        background-color: $accent;
+  width: 4px;
+  height: 4px;
+  margin-top: 8px;
+  margin-right: 5px;
+  margin-left: 5px;
+  border-radius: 50%;
+  background-color: $accent;
 
-    @media screen and (min-width: $tablet) {}
-    
-    @media screen and (min-width: $desktop) {
-        width: 5px;
-        height: 5px;
-        margin-top: 8px;
-    }
+  @media screen and (min-width: $tablet) {
+  }
+
+  @media screen and (min-width: $desktop) {
+    width: 5px;
+    height: 5px;
+    margin-top: 8px;
+  }
 }
 .line {
-        width: 100%;
-        height: 1px;
-        background: $accent-faded-20;
+  width: 100%;
+  height: 1px;
+  background: $accent-faded-20;
 }
