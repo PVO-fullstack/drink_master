@@ -1,13 +1,11 @@
-@import '../../../styles/variables';
-
-.fieldWrapper {
-  position: relative;
-}
+@import 'src/styles/variables';
 
 .field {
-  width: 150px;
-  color: currentColor;
+  width: 100%;
+  // color: currentColor;
+  color: rgba($accent, 0.5);
   background-color: transparent;
+
   border: 1px solid;
   border-color: rgba($accent, 0.5);
   border-radius: 200px;

@@ -88,7 +88,9 @@ export const AddRecipeForm = () => {
           <Form className={style.form}>
             <div className={style.wrapper}>
               <RecipeDescriptionFields setFieldValue={setFieldValue} />
+
               <RecipeIngredientsFields items={values.ingredients} />
+
               <RecipePreparationFields values={values} />
             </div>
 

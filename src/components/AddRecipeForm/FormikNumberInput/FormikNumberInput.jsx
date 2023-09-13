@@ -14,7 +14,6 @@ export const FormikNumberInput = ({ label, ...props }) => {
     <div className={style.fieldWrapper}>
       <input
         type="number"
-        // className={style.field}
         className={clsx(
           style.field,
           meta.touched && meta.error && style.fieldError

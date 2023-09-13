@@ -11,7 +11,8 @@ import style from './Counter.module.scss';
 export const Counter = ({ length, pop, push }) => {
   //
   const addItem = () => {
-    push({ title: '', measure: '' });
+    // push({ title: '', measure: '' });
+    push({ title: '', quantity: '', unit: '' });
   };
 
   const removeItem = () => {

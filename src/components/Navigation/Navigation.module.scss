@@ -1,26 +1,24 @@
-@import '../../styles/variables';
+@import 'src/styles/variables';
 
 .Navigation {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
 
-    @media screen and (max-width: 1439px) {
-        display: none;
-    }
+  @media screen and (max-width: 1439px) {
+    display: none;
+  }
 }
 
 .NavigationLink {
-    padding: 8px 16px;
-    border-radius: 40px;
-    border: 1px solid rgba(243, 243, 243, 0.2);
-    color: $accent;
-    font-weight: $medium;
-    font-size: 14px;
+  padding: 8px 16px;
+  border-radius: 40px;
+  border: 1px solid rgba(243, 243, 243, 0.2);
+  color: $accent;
+  font-weight: $medium;
+  font-size: 14px;
 
-    &:hover {
-        background-color: rgba(22, 31, 55, 1);
-    }
+  &:hover {
+    background-color: rgba(22, 31, 55, 1);
+  }
 }
-
-;
