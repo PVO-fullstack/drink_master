@@ -1,9 +1,7 @@
-// eslint-disable-next-line no-unused-vars
-import React from 'react';
 import PropTypes from 'prop-types';
 
 import { RiCloseCircleFill } from 'react-icons/ri';
-import { AddIcon } from '../../../icons';
+import { AddIcon } from 'icons';
 
 import style from './ImageUploadBlock.module.scss';
 
