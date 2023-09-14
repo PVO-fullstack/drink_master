@@ -8,6 +8,7 @@ export default defineConfig(({ command }) => {
       alias: {
         src: '/src',
         components: '/src/components',
+        icons: '/src/components/icons',
       },
     },
     plugins: [react()],
