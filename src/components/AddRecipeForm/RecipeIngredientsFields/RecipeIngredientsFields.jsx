@@ -19,6 +19,7 @@ export const RecipeIngredientsFields = ({ items }) => {
   return (
     <FieldArray // https://formik.org/docs/examples/field-arrays
       name="ingredients"
+      validateOnChange={false} // https://formik.org/docs/api/fieldarray#validateonchange-boolean
       render={(
         { remove, pop, push } // arrayHelpers
       ) => (

@@ -14,7 +14,6 @@ export const FormikTextInput = ({ label, ...props }) => {
     <div className={style.fieldWrapper}>
       <input
         placeholder={label}
-        // className={style.field}
         className={clsx(
           style.field,
           meta.touched && meta.error && style.fieldError
@@ -23,9 +22,11 @@ export const FormikTextInput = ({ label, ...props }) => {
         {...props}
       />
 
-      <label htmlFor={props.id || props.name} className={style.label}>
-        {label}
-      </label>
+      {label && (
+        <label htmlFor={props.id || props.name} className={style.label}>
+          {label}
+        </label>
+      )}
 
       {meta.touched && meta.error ? (
         <div className={style.error}>{meta.error}</div>

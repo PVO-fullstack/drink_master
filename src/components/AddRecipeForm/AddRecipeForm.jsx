@@ -62,12 +62,8 @@ export const AddRecipeForm = () => {
           navigate(`/recipes/${id}`);
         }, 1500);
       })
-      .catch((error) => {
-        toast.error("We're sorry, but something went wrong...");
-
-        setTimeout(() => {
-          toast.error(error.message);
-        }, 1500);
+      .catch(() => {
+        toast.error('Error adding a recipe. Please try again later');
       })
       .finally(() => {
         setSubmitting(false); // If onSubmit is async, then Formik will automatically set isSubmitting to false on your behalf once it has resolved
@@ -80,12 +76,12 @@ export const AddRecipeForm = () => {
   return (
     <>
       <Formik
-        validateOnBlur={false}
         initialValues={initialValues}
-        onSubmit={handleSubmit}
         validationSchema={yupSchema}
+        validateOnBlur={false}
+        onSubmit={handleSubmit}
       >
-        {({ values, setFieldValue, isSubmitting }) => (
+        {({ values, setFieldValue, isSubmitting, isValid }) => (
           <Form className={style.form}>
             <div className={style.wrapper}>
               <RecipeDescriptionFields setFieldValue={setFieldValue} />
@@ -95,7 +91,11 @@ export const AddRecipeForm = () => {
               <RecipePreparationFields values={values} />
             </div>
 
-            <Button type="submit" variant="accented" disabled={isSubmitting}>
+            <Button
+              type="submit"
+              variant="accented"
+              disabled={isSubmitting || !isValid}
+            >
               Add
             </Button>
           </Form>

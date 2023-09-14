@@ -47,6 +47,7 @@
   position: absolute;
   top: 0;
   left: 0;
+  z-index: -1;
 
   transition: color $transition-duration $transition-timing-function,
     transform $transition-duration $transition-timing-function;
