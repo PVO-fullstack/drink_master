@@ -77,6 +77,13 @@ button,
   user-select: none;
 }
 
+input,
+textarea {
+  &::-moz-placeholder {
+    opacity: 1;
+  }
+}
+
 button:disabled {
   cursor: auto;
 }
@@ -84,8 +91,6 @@ button:disabled {
 ul {
   list-style: none;
 }
-
-
 
 address {
   font-style: normal;
